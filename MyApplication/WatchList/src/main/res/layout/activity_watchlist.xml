@@ -28,19 +28,22 @@
                 android:layout_height="fill_parent">
 
                 <LinearLayout
-                    android:id="@+id/tab1"
+                    android:id="@+id/watchlist_tab1"
+                    android:text="@string/watchlist_tab1"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent">
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/tab2"
+                    android:id="@+id/watchlist_tab2"
+                    android:text="@string/watchlist_tab2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent">
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/tab3"
+                    android:id="@+id/watchlist_tab3"
+                    android:text="@string/watchlist_tab3"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent">
 
