@@ -1,15 +1,20 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.zenjin.watchlist.watchlist.WL_Fragment_b"
-    android:background="#a8ff89">
+<RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <TextClock
+    <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textClock"
-        android:layout_gravity="center"/>
-</FrameLayout>
+        android:id="@+id/scrollView">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/wl_example_text"
+            android:id="@+id/textView"
+            />
+    </ScrollView>
+</RelativeLayout>
