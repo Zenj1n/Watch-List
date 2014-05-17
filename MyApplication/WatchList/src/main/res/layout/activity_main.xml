@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Remember me"
-        android:id="@+id/checkBox"
+        android:id="@+id/Remember"
         android:layout_below="@+id/Password"
         android:layout_alignLeft="@+id/Password"
         android:layout_alignStart="@+id/Password"
@@ -53,10 +53,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Log in"
-        android:id="@+id/button"
-        android:layout_below="@+id/checkBox"
+        android:id="@+id/LogIn"
+        android:layout_below="@+id/Remember"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="49dp"
-        android:textColor="#fffff9" />
+        android:textColor="#ffffff" />
 
 </RelativeLayout>
