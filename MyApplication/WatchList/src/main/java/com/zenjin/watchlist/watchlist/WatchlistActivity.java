@@ -3,7 +3,11 @@ package com.zenjin.watchlist.watchlist;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -14,12 +18,34 @@ import android.view.MenuItem;
  */
 public class WatchlistActivity extends FragmentActivity implements ActionBar.TabListener {
 
+    ViewPager mViewPager;
     ActionBar mActionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_watchlist);
+
+        mViewPager= (ViewPager) findViewById(R.id.wl_pager);
+        mViewPager.setAdapter(new myAdapter(getSupportFragmentManager()));
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+                mActionBar.setSelectedNavigationItem(position);
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         mActionBar = getActionBar();
         mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -36,9 +62,9 @@ public class WatchlistActivity extends FragmentActivity implements ActionBar.Tab
         tab3.setText("@string/wl_tab3");
         tab3.setTabListener(this);
 
-
-
-
+        mActionBar.addTab(tab1);
+        mActionBar.addTab(tab2);
+        mActionBar.addTab(tab3);
 
 
     }
@@ -67,15 +93,52 @@ public class WatchlistActivity extends FragmentActivity implements ActionBar.Tab
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 
+        mViewPager.setCurrentItem(tab.getPosition());
+
     }
 
     @Override
     public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+        // do something
 
     }
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 
+        // do something
+
+    }
+}
+
+class myAdapter extends FragmentPagerAdapter
+{
+
+    public myAdapter(FragmentManager fm) {
+        super(fm);
+    }
+
+    @Override
+    public Fragment getItem(int fragment_position) {
+        Fragment fragment = null;
+
+        switch (fragment_position){
+            case 0: fragment = new WL_Fragment_a();
+                break;
+            case 1: fragment = new WL_Fragment_b();
+                break;
+            case 2: fragment = new WL_Fragment_c();
+                break;
+        }
+
+
+
+        return fragment;
+    }
+
+    @Override
+    public int getCount() {
+        return 3;
     }
 }
