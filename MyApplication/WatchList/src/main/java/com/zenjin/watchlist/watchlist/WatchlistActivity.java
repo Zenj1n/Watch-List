@@ -1,7 +1,9 @@
 package com.zenjin.watchlist.watchlist;
 
+import android.app.ActionBar;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -10,12 +12,35 @@ import android.view.MenuItem;
  * com.zenjin.watchlist.watchlist
  * Watch List
  */
-public class WatchlistActivity extends ActionBarActivity {
+public class WatchlistActivity extends FragmentActivity implements ActionBar.TabListener {
+
+    ActionBar mActionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_watchlist);
+
+        mActionBar = getActionBar();
+        mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+        ActionBar.Tab tab1 = mActionBar.newTab();
+        tab1.setText("@string/wl_tab1");
+        tab1.setTabListener(this);
+
+        ActionBar.Tab tab2 = mActionBar.newTab();
+        tab2.setText("@string/wl_tab2");
+        tab2.setTabListener(this);
+
+        ActionBar.Tab tab3 = mActionBar.newTab();
+        tab3.setText("@string/wl_tab3");
+        tab3.setTabListener(this);
+
+
+
+
+
+
     }
 
 
@@ -39,4 +64,18 @@ public class WatchlistActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+    }
+
+    @Override
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+    }
+
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+    }
 }

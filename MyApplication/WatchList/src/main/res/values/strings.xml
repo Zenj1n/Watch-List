@@ -5,7 +5,11 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
-    // strings for Watchlist
-    <string name="wl_title">Watchlist</string>
+    // strings for Watchlist    <string name="wl_title">Watchlist</string>
+    <string name="wl_tab1">Tab 1</string>
+    <string name="wl_tab2">Tab 2</string>
+    <string name="wl_tab3">Tab 3</string>
+
+
 
 </resources>
