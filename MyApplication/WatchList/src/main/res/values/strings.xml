@@ -6,9 +6,6 @@
     <string name="action_settings">Settings</string>
 
     // strings for Watchlist
-    <string name="watchlist_title">Watchlist</string>
-    <string name="watchlist_tab1">item 1</string>
-    <string name="watchlist_tab2">item 2</string>
-    <string name="watchlist_tab3">item 3</string>
+    <string name="wl_title">Watchlist</string>
 
 </resources>
