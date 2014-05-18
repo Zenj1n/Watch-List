@@ -4,7 +4,6 @@
     <string name="app_name">Watch List</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
     //Home Screen
     <string name="Home_head">Home</string>
     //Tabs
@@ -12,16 +11,21 @@
     <string name="hm_discover_tab">Discover</string>
     <string name="hm_agenda_tab">Agenda</string>
     //Overview tab
-        //nog niks >_>
+    <string name="hm_overview">Overview</string>
 
     //Discover tab
+    <string name="hm_discover">Discover</string>
     <string name="hm_discover_recommended">Recommended</string>
     <string name="hm_discover_popular">Popular</string>
-    <string name="hm_discover_editor">Editor's Choice</string>
+    <string name="hm_discover_editor">Editors Choice</string>
     //Agenda tab
+    <string name="hm_agenda">Agenda</string>
     <string name="hm_agenda_today">Today</string>
     <string name="hm_agenda_week">This Week</string>
     <string name="hm_agenda_season">This Season</string>
+
+
+
 
 
 </resources>
