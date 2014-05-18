@@ -39,18 +39,23 @@ public class WL_Fragment_a extends Fragment {
         // Inflate the layout for this fragment
 
 
-
         Resources res = getResources();
 
         a_title= res.getStringArray(R.array.wl_a_title);
         a_message= res.getStringArray(R.array.wl_a_message);
 
-        mListView = (ListView) getView().findViewById(R.id.wl_a_listview);
+        View v = inflater.inflate(R.layout.fragment_a_wl, container, false);
 
-        myArrayAdaptera adapter = new myArrayAdaptera(this, a_title, a_images, a_message);
+        mListView = (ListView) v.findViewById(R.id.wl_a_listview);
+
+
+
+        myArrayAdaptera adapter = new myArrayAdaptera(getActivity().getApplicationContext(),a_title,a_images,a_message);
         mListView.setAdapter(adapter);
 
-        return inflater.inflate(R.layout.fragment_a_wl, container, false);
+
+
+        return v;
     }
 
 }
@@ -70,6 +75,8 @@ class myArrayAdaptera extends ArrayAdapter<String>
         this.titlearray=wl_a_title;
         this.messagearray=mssg;
     }
+
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
