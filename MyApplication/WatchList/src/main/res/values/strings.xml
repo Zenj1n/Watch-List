@@ -5,21 +5,41 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
-    // strings for Watchlist    <string name="wl_title">Watchlist</string>
-    <string name="wl_tab1">Tab 1</string>
-    <string name="wl_tab2">Tab 2</string>
-    <string name="wl_tab3">Tab 3</string>
-    <string name="wl_example_text">
+    // strings for Watchlist. DO NOT CHANGE!
 
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <string name="wl_title">Watchlist</string>
+    <string name="wl_tab1">Watching</string>
+    <string name="wl_tab2">Completed</string>
+    <string name="wl_tab3">On hold</string>
 
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <string name="wl_example_text"> Random text message </string>
 
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <string-array name="wl_watching_title">
+        <item>Game of Thrones</item>
+        <item>The Big Bang Theory</item>
+        <item>True Blood</item>
+        <item>NCIS</item>
+        <item>Criminal Minds</item>
+        <item>Pretty Little Liars</item>
+        <item>Falling Skies</item>
+        <item>Family Guy</item>
+        <item>Hannibal</item>
+        <item>Bones</item>
+    </string-array>
 
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <string-array name="wl_watching_message">
+        <item>Episode 7 "Mockingbird" airs today</item>
+        <item>Next Episode is not available</item>
+        <item>Episode 1 "Jesus Gonna Be Here" airs in 1 months and 5 days</item>
+        <item>Next Episode is not available</item>
+        <item>Next Episode is not available</item>
+        <item>Episode 1 "EscApe From New York" airs in 23 days</item>
+        <item>Episode 1 "Ghost in the Machine" airs in 1 months and 5 days</item>
+        <item>Episode 21 "Chap Stewie" airs in 9 hours</item>
+        <item>Episode 13 "Mizumono" airs in 5 days</item>
+        <item>Episode 24 "The Recluse in the Recliner" airs in tomorrow</item>
+    </string-array>
 
-    </string>
 
 
 
