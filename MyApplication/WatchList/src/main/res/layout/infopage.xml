@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Arrow"
+            android:layout_margin="10dp"
+            android:paddingLeft="20dp"
+            android:textSize="30sp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ArrowImage"
+            android:src="@drawable/arrow"
+            android:adjustViewBounds="true"
+            android:maxHeight="300dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="50dp"
+            />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:id="@+id/Baddto"
+            android:text="@string/addto"
+            android:layout_toRightOf="@+id/ArrowImage"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
+            />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:id="@+id/Brate"
+            android:text="@string/rate"
+            android:layout_below="@+id/Baddto"
+            android:layout_toRightOf="@+id/ArrowImage"
+            android:layout_marginLeft="50dp"
+            android:layout_marginBottom="50dp"
+            />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:id="@+id/addepisode"
+            android:text="@string/addepisode"
+            android:layout_toRightOf="@+id/ArrowImage"
+            android:layout_below="@+id/Brate"
+            android:layout_marginLeft="50dp"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Tgenre"
+            android:text="@string/genre"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Tgenres"
+            android:text="@string/genres"
+            android:layout_toRightOf="@+id/Tgenre"
+            android:layout_margin="25dp"/>
+        </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="@string/beschrijving"/>
+
+
+
+
+
+</LinearLayout>
