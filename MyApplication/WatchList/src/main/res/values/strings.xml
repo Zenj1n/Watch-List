@@ -14,7 +14,7 @@
 
     <string name="wl_example_text"> Random text message </string>
 
-    <string-array name="wl_watching_title">
+    <string-array name="wl_a_title">
         <item>Game of Thrones</item>
         <item>The Big Bang Theory</item>
         <item>True Blood</item>
@@ -27,7 +27,7 @@
         <item>Bones</item>
     </string-array>
 
-    <string-array name="wl_watching_message">
+    <string-array name="wl_a_message">
         <item>Episode 7 "Mockingbird" airs today</item>
         <item>Next Episode is not available</item>
         <item>Episode 1 "Jesus Gonna Be Here" airs in 1 months and 5 days</item>
