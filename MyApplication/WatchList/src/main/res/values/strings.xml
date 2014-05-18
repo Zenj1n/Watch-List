@@ -40,6 +40,32 @@
         <item>Episode 24 "The Recluse in the Recliner" airs in tomorrow</item>
     </string-array>
 
+    <string-array name="wl_b_title">
+        <item>Game of Thrones</item>
+        <item>The Big Bang Theory</item>
+        <item>NCIS</item>
+
+    </string-array>
+
+    <string-array name="wl_b_message">
+        <item>Episode 7 "Mockingbird" airs today</item>
+        <item>Next Episode is not available</item>
+        <item>Next Episode is not available</item>
+    </string-array>
+
+    <string-array name="wl_c_title">
+        <item>Family Guy</item>
+        <item>Hannibal</item>
+        <item>Bones</item>
+
+    </string-array>
+
+    <string-array name="wl_c_message">
+        <item>Episode 21 "Chap Stewie" airs in 9 hours</item>
+        <item>Episode 13 "Mizumono" airs in 5 days</item>
+        <item>Episode 24 "The Recluse in the Recliner" airs in tomorrow</item>
+    </string-array>
+
 
 
 
