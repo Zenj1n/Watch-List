@@ -50,7 +50,7 @@ public class WatchlistActivity extends FragmentActivity implements ActionBar.Tab
         mActionBar = getActionBar();
         mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-        //TODO: add non nard coded texts.
+
 
         ActionBar.Tab tab1 = mActionBar.newTab();
         tab1.setText(R.string.wl_tab1);
