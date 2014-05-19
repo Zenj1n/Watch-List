@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -13,26 +14,41 @@ import android.widget.Toast;
 public class MainActivity extends ActionBarActivity {
     public String username = "test";
     public String password = "test123";
-
+    public String username_remember ="";
+    public String password_remember ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Button LogIn=(Button)findViewById(R.id.LogIn);
+        EditText usernameInput = (EditText) findViewById(R.id.Username);
+        EditText passwordInput = (EditText) findViewById(R.id.Password);
+        usernameInput.setText(username_remember);
+        passwordInput.setText(password_remember);
+        Button LogIn = (Button) findViewById(R.id.LogIn);
         LogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 EditText usernameInput = (EditText) findViewById(R.id.Username);
                 EditText passwordInput = (EditText) findViewById(R.id.Password);
-
-                if(username.equals( usernameInput.getText().toString()) && password.equals(passwordInput.getText().toString())){
+                if (username.equals(usernameInput.getText().toString()) && password.equals(passwordInput.getText().toString())) {
                     Toast.makeText(getApplicationContext(), "Correct",
                             Toast.LENGTH_SHORT).show();
 
-                }
-                else{
+                    CheckBox CBRemember=(CheckBox)findViewById(R.id.Remember);
+
+                                if (CBRemember.isChecked()) {
+                                    username_remember = usernameInput.getText().toString();
+                                    password_remember = passwordInput.getText().toString();
+                                }
+                                else {
+                                    username_remember = "";
+                                    password_remember = "";
+                                }
+
+
+
+                } else {
                     Toast.makeText(getApplicationContext(), "Wrong Username or Password!",
                             Toast.LENGTH_SHORT).show();
 
@@ -41,6 +57,8 @@ public class MainActivity extends ActionBarActivity {
             }
         });
     }
+
+
 
 
     @Override
