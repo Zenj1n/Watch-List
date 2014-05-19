@@ -1,5 +1,6 @@
 package com.zenjin.watchlist.watchlist;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -14,8 +15,10 @@ import android.widget.Toast;
 public class MainActivity extends ActionBarActivity {
     public String username = "test";
     public String password = "test123";
-    public String username_remember ="";
-    public String password_remember ="";
+    SharedPreferences remember_user = getSharedPreferences("lol", 0);
+    SharedPreferences remember_password = getSharedPreferences("lol", 0);
+    String r_username = remember_user.getString("SavedUser","");
+    String r_password = remember_password.getString("SavedPassword","");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +26,11 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         EditText usernameInput = (EditText) findViewById(R.id.Username);
         EditText passwordInput = (EditText) findViewById(R.id.Password);
-        usernameInput.setText(username_remember);
-        passwordInput.setText(password_remember);
+        usernameInput.setText(r_username);
+        passwordInput.setText(r_password);
         Button LogIn = (Button) findViewById(R.id.LogIn);
         LogIn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 EditText usernameInput = (EditText) findViewById(R.id.Username);
@@ -35,17 +39,15 @@ public class MainActivity extends ActionBarActivity {
                     Toast.makeText(getApplicationContext(), "Correct",
                             Toast.LENGTH_SHORT).show();
 
+
                     CheckBox CBRemember=(CheckBox)findViewById(R.id.Remember);
-
                                 if (CBRemember.isChecked()) {
-                                    username_remember = usernameInput.getText().toString();
-                                    password_remember = passwordInput.getText().toString();
+                                    SharedPreferences.Editor edit_username = remember_user.edit();
+                                    edit_username.putString(usernameInput.getText().toString(),(usernameInput.getText().toString()));
                                 }
-                                else {
-                                    username_remember = "";
-                                    password_remember = "";
-                                }
+                                else{
 
+                                }
 
 
                 } else {
