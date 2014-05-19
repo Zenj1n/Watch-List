@@ -27,7 +27,7 @@ public class MainActivity extends ActionBarActivity {
                 EditText usernameInput = (EditText) findViewById(R.id.Username);
                 EditText passwordInput = (EditText) findViewById(R.id.Password);
 
-                if(username == usernameInput.getText().toString() && password == passwordInput.getText().toString()){
+                if(username.equals( usernameInput.getText().toString()) && password.equals(passwordInput.getText().toString())){
                     Toast.makeText(getApplicationContext(), "Correct",
                             Toast.LENGTH_SHORT).show();
 
