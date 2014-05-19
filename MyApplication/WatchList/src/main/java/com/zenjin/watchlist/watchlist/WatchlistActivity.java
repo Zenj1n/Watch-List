@@ -27,7 +27,7 @@ public class WatchlistActivity extends FragmentActivity implements ActionBar.Tab
         setContentView(R.layout.activity_watchlist);
 
         mViewPager= (ViewPager) findViewById(R.id.wl_pager);
-        mViewPager.setAdapter(new myAdapter(getSupportFragmentManager()));
+        mViewPager.setAdapter(new WL_myAdapter(getSupportFragmentManager()));
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -114,10 +114,10 @@ public class WatchlistActivity extends FragmentActivity implements ActionBar.Tab
     }
 }
 
-class myAdapter extends FragmentPagerAdapter
+class WL_myAdapter extends FragmentPagerAdapter
 {
 
-    public myAdapter(FragmentManager fm) {
+    public WL_myAdapter(FragmentManager fm) {
         super(fm);
     }
 
