@@ -15,7 +15,7 @@ import android.view.MenuItem;
 import android.support.v4.app.FragmentActivity;
 
 
-public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
+public class Hm_MainActivity extends FragmentActivity implements ActionBar.TabListener {
 
     ViewPager viewPager;
     ActionBar actionBar;
@@ -27,7 +27,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         //ViewPager om te swipen
         viewPager= (ViewPager) findViewById(R.id.pager);
 
-        viewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
+        viewPager.setAdapter(new Hm_MyAdapter(getSupportFragmentManager()));
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -113,10 +113,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
 
 
-class MyAdapter extends FragmentPagerAdapter
+class Hm_MyAdapter extends FragmentPagerAdapter
 {
 
-    public MyAdapter(FragmentManager fm) {
+    public Hm_MyAdapter(FragmentManager fm) {
         super(fm);
     }
 
