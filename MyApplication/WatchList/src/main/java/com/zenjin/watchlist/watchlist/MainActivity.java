@@ -15,19 +15,17 @@ import android.widget.Toast;
 public class MainActivity extends ActionBarActivity {
     public String username = "test";
     public String password = "test123";
-    SharedPreferences remember_user = getSharedPreferences("lol", 0);
-    SharedPreferences remember_password = getSharedPreferences("lol", 0);
-    String r_username = remember_user.getString("SavedUser","");
-    String r_password = remember_password.getString("SavedPassword","");
-
+    SharedPreferences LogIndata = getSharedPreferences("logIn", MODE_PRIVATE);
+    String LastUser = LogIndata.getString("username", null);
+    String LastPassword = LogIndata.getString("password", null);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         EditText usernameInput = (EditText) findViewById(R.id.Username);
         EditText passwordInput = (EditText) findViewById(R.id.Password);
-        usernameInput.setText(r_username);
-        passwordInput.setText(r_password);
+        usernameInput.setText(LastUser);
+        passwordInput.setText(LastPassword);
         Button LogIn = (Button) findViewById(R.id.LogIn);
         LogIn.setOnClickListener(new View.OnClickListener() {
 
@@ -42,11 +40,16 @@ public class MainActivity extends ActionBarActivity {
 
                     CheckBox CBRemember=(CheckBox)findViewById(R.id.Remember);
                                 if (CBRemember.isChecked()) {
-                                    SharedPreferences.Editor edit_username = remember_user.edit();
-                                    edit_username.putString(usernameInput.getText().toString(),(usernameInput.getText().toString()));
+                                    SharedPreferences.Editor editor = LogIndata.edit();
+                                    editor.putString("username", usernameInput.getText().toString());
+                                    editor.putString("password", passwordInput.getText().toString());
+                                    editor.commit();
                                 }
                                 else{
-
+                                    SharedPreferences.Editor editor = LogIndata.edit();
+                                    editor.putString("username", "");
+                                    editor.putString("password", "");
+                                    editor.commit();
                                 }
 
 
