@@ -24,7 +24,7 @@ public class WL_Fragment_a extends Fragment {
     ListView mListView;
     String[] a_title;
     String[] a_message;
-    int[] a_images = {R.drawable.gameofthrones,R.drawable.thebigbangtheory,R.drawable.trueblood,R.drawable.ncis,R.drawable.criminalminds,R.drawable.prettylittleliars,R.drawable.fallingskies,R.drawable.familyguy,R.drawable.hannibal,R.drawable.bones};
+    int[] a_images = {R.drawable.gameofthrones,R.drawable.thebigbangtheory,R.drawable.truebloodimage,R.drawable.ncis,R.drawable.criminalminds,R.drawable.prettylittleliars,R.drawable.fallingskies,R.drawable.familyguy,R.drawable.hannibal,R.drawable.bones};
 
 
     public WL_Fragment_a() {
