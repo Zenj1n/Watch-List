@@ -11,6 +11,8 @@
     <string name="addepisode">Episode</string>
     <string name="genre">Genres:</string>
     <string name="genres">Action, Adventure, Crime</string>
+    <string name="statusw">Status :</string>
+    <string name="status">Airing </string>
     <string name="beschrijving">Spoiled billionaire playboy Oliver Queen is missing
         and presumed dead when his yacht is lost at sea. He returns five years later a changed man,
         determined to clean up the city as a hooded vigilante armed with a bow.</string>
