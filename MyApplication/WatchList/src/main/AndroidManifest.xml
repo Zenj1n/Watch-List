@@ -20,10 +20,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name="com.zenjin.watchlist.watchlist.InfoPage"
+            android:label="@string/title_activity_info_page" >
+        </activity>n
+
+        <activity
+            android:name="com.zenjin.watchlist.watchlist.Hm_MainActivity"
             android:label="@string/title_activity_info_page" >
         </activity>
 

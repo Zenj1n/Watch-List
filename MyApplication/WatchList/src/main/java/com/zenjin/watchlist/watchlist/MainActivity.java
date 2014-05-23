@@ -1,5 +1,6 @@
 package com.zenjin.watchlist.watchlist;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -38,6 +39,10 @@ public class MainActivity extends ActionBarActivity {
                 if (username.equals(usernameInput.getText().toString()) && password.equals(passwordInput.getText().toString())) {
                     Toast.makeText(getApplicationContext(), "Correct",
                             Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(MainActivity.this, Hm_MainActivity.class);
+                    startActivity(intent);
+                    finish();
 
 
                     CheckBox CBRemember=(CheckBox)findViewById(R.id.Remember);
