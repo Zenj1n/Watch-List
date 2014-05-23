@@ -3,13 +3,8 @@
     package="com.zenjin.watchlist.watchlist" >
 
     <uses-sdk
-<<<<<<< HEAD
         android:minSdkVersion="14"
         android:targetSdkVersion="18" />
-=======
-        android:minSdkVersion="11"
-        android:targetSdkVersion="19" />
->>>>>>> origin/Hoye
 
     <application
         android:allowBackup="true"
