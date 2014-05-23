@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.app.FragmentActivity;
@@ -22,7 +21,7 @@ public class Hm_MainActivity extends FragmentActivity implements ActionBar.TabLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.hm_activity);
 
         //ViewPager om te swipen
         viewPager= (ViewPager) findViewById(R.id.pager);

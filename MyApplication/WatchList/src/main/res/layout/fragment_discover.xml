@@ -1,15 +1,35 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#15DCFF"
     tools:context="com.zenjin.watchlist.watchlist.Overview">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_margin="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hm_discover" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hm_discover"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/hm_discover" />
 
-</LinearLayout>
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/popularListView"
+        android:layout_below="@+id/hm_discover"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="35dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hm_discover_popular"
+        android:id="@+id/popularTextView"
+        android:layout_below="@+id/hm_discover"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>
