@@ -3,8 +3,13 @@
     package="com.zenjin.watchlist.watchlist" >
 
     <uses-sdk
+<<<<<<< HEAD
         android:minSdkVersion="14"
         android:targetSdkVersion="18" />
+=======
+        android:minSdkVersion="11"
+        android:targetSdkVersion="19" />
+>>>>>>> origin/Hoye
 
     <application
         android:allowBackup="true"
@@ -15,16 +20,16 @@
             android:name="com.zenjin.watchlist.watchlist.MainActivity"
             android:label="@string/app_name" >
 
-        </activity>
-        <activity
-            android:name="com.zenjin.watchlist.watchlist.InfoPage"
-            android:label="@string/title_activity_info_page" >
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity
+            android:name="com.zenjin.watchlist.watchlist.InfoPage"
+            android:label="@string/title_activity_info_page" >
         </activity>
 
 
