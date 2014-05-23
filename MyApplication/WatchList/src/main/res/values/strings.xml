@@ -4,12 +4,12 @@
     <string name="app_name">Watch List</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-<<<<<<< HEAD
+
     <string name="LogIn">Log In</string>
     <string name="Remember">Remember me</string>
     <string name="Password">Password</string>
     <string name="Username">Username</string>
-=======
+
     //Home Screen
     <string name="Home_head">Home</string>
     //Tabs
@@ -29,7 +29,6 @@
     <string name="hm_agenda_today">Today</string>
     <string name="hm_agenda_week">This Week</string>
     <string name="hm_agenda_season">This Season</string>
->>>>>>> origin/Hoye
 
     <string name="addto">Add to</string>
     <string name="Arrow">Arrow</string>
