@@ -22,7 +22,7 @@ public class Hm_MainActivity extends FragmentActivity implements ActionBar.TabLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.hm_activity);
 
         //ViewPager om te swipen
         viewPager= (ViewPager) findViewById(R.id.pager);
