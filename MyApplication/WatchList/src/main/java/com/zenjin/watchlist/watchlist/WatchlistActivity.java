@@ -27,7 +27,7 @@ public class WatchlistActivity extends FragmentActivity implements ActionBar.Tab
         setContentView(R.layout.activity_watchlist);
 
         mViewPager= (ViewPager) findViewById(R.id.wl_pager);
-        mViewPager.setAdapter(new myAdapter(getSupportFragmentManager()));
+        mViewPager.setAdapter(new WL_myAdapter(getSupportFragmentManager()));
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -50,18 +50,18 @@ public class WatchlistActivity extends FragmentActivity implements ActionBar.Tab
         mActionBar = getActionBar();
         mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-        //TODO: add non nard coded texts.
+
 
         ActionBar.Tab tab1 = mActionBar.newTab();
-        tab1.setText("Watching");
+        tab1.setText(R.string.wl_tab1);
         tab1.setTabListener(this);
 
         ActionBar.Tab tab2 = mActionBar.newTab();
-        tab2.setText("Completed");
+        tab2.setText(R.string.wl_tab2);
         tab2.setTabListener(this);
 
         ActionBar.Tab tab3 = mActionBar.newTab();
-        tab3.setText("Plan to watch");
+        tab3.setText(R.string.wl_tab3);
         tab3.setTabListener(this);
 
         mActionBar.addTab(tab1);
@@ -114,10 +114,10 @@ public class WatchlistActivity extends FragmentActivity implements ActionBar.Tab
     }
 }
 
-class myAdapter extends FragmentPagerAdapter
+class WL_myAdapter extends FragmentPagerAdapter
 {
 
-    public myAdapter(FragmentManager fm) {
+    public WL_myAdapter(FragmentManager fm) {
         super(fm);
     }
 
