@@ -7,10 +7,10 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="C:\Users\Rinesh\Documents\GitHub\Watch-List\MyApplication" />
-            <option value="C:\Users\Rinesh\Documents\GitHub\Watch-List\MyApplication\WatchList" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/WatchList" />
+            <option value="C:\Users\Rinesh\Documents\GitHub\Watch-List\MyApplication" />
+            <option value="C:\Users\Rinesh\Documents\GitHub\Watch-List\MyApplication\WatchList" />
           </set>
         </option>
       </GradleProjectSettings>
