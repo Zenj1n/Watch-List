@@ -4,7 +4,6 @@
     <string name="app_name">Watch List</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
     //Home Screen
     <string name="Home_head">Home</string>
     //Tabs
@@ -12,16 +11,39 @@
     <string name="hm_discover_tab">Discover</string>
     <string name="hm_agenda_tab">Agenda</string>
     //Overview tab
-        //nog niks >_>
+    <string name="hm_overview">Overview</string>
 
     //Discover tab
+    <string name="hm_discover">Discover</string>
     <string name="hm_discover_recommended">Recommended</string>
     <string name="hm_discover_popular">Popular</string>
-    <string name="hm_discover_editor">Editor's Choice</string>
+    <string name="hm_discover_editor">Editors Choice</string>
+        <string-array name="Hm_Titles">
+            <item>Arrow</item>
+            <item>Black-ish</item>
+            <item>Constatine</item>
+            <item>Game of Thrones</item>
+            <item>Gotham</item>
+            <item>Gracepoint</item>
+            <item>Lost</item>
+            <item>Supernatural</item>
+            <item>The Flash</item>
+                    </string-array>
+    <string-array name="Hm_Description">
+        <item>Description1</item>
+        <item>Description2</item>
+        <item>Description3</item>
+        <item>Description4</item>
+        <item>Description5</item>
+        <item>Description6</item>
+        <item>Description7</item>
+        <item>Description8</item>
+        <item>Description9</item>
+    </string-array>
     //Agenda tab
+    <string name="hm_agenda">Agenda</string>
     <string name="hm_agenda_today">Today</string>
     <string name="hm_agenda_week">This Week</string>
     <string name="hm_agenda_season">This Season</string>
-
 
 </resources>
