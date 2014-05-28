@@ -54,7 +54,7 @@ public class WL_Fragment_a extends Fragment {
         mListView = getListView();
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
-                
+
                 Toast.makeText(getActivity(), "Positie "+i , Toast.LENGTH_SHORT).show();
 
                 if (i == 10){
