@@ -18,6 +18,8 @@ public class MainActivity extends ActionBarActivity {
     public String password = "test123";
     public static String LogInfile = "LogInData";
     private SharedPreferences LogInData;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +42,7 @@ public class MainActivity extends ActionBarActivity {
                     Toast.makeText(getApplicationContext(), "Correct",
                             Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(MainActivity.this, Hm_MainActivity.class);
-                    startActivity(intent);
-                    finish();
+
 
 
                     CheckBox CBRemember=(CheckBox)findViewById(R.id.Remember);
