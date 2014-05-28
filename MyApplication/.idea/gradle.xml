@@ -9,6 +9,7 @@
           <set>
             <option value="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication" />
             <option value="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication\WatchList" />
+            <option value="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication\app" />
           </set>
         </option>
       </GradleProjectSettings>
