@@ -33,7 +33,7 @@ public class InfoPage extends ActionBarActivity {
     TextView Tplot;
     ImageView Image;
 
-    public static String url = "http://www.omdbapi.com/?t=Divergent&plot=full";
+    public static String url = "http://www.omdbapi.com/?t=Game+of+Thrones&plot=full";
 
 
     private static final String TAG_TITLE = "Title";
