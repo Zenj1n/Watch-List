@@ -1,18 +1,20 @@
 package com.zenjin.watchlist.watchlist;
 
 
-
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -24,7 +26,7 @@ public class WL_Fragment_a extends Fragment {
     ListView mListView;
     String[] a_title;
     String[] a_message;
-    int[] a_images = {R.drawable.gameofthrones,R.drawable.thebigbangtheory,R.drawable.truebloodimage,R.drawable.ncis,R.drawable.criminalminds,R.drawable.prettylittleliars,R.drawable.fallingskies,R.drawable.familyguy,R.drawable.hannibal,R.drawable.bones};
+    int[] a_images = {R.drawable.gameofthrones,R.drawable.thebigbangtheory,R.drawable.truebloodimage,R.drawable.ncis,R.drawable.criminalminds,R.drawable.prettylittleliars,R.drawable.fallingskies,R.drawable.familyguy,R.drawable.hannibal,R.drawable.bones,R.drawable.arrow};
 
 
     public WL_Fragment_a() {
@@ -49,6 +51,21 @@ public class WL_Fragment_a extends Fragment {
         mListView = (ListView) v.findViewById(R.id.wl_a_listview);
 
 
+        mListView = getListView();
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> av, View view, int i, long l) {
+                Toast.makeText(getActivity(), "Positie "+i , Toast.LENGTH_SHORT).show();
+
+                if (i == 10){
+
+                    Intent intent;
+                    intent = new Intent(getActivity(),InfoPage.class);
+                    startActivity(intent);
+
+                }
+
+            }
+        });
 
         myArrayAdaptera adapter = new myArrayAdaptera(getActivity().getApplicationContext(),a_title,a_images,a_message);
         mListView.setAdapter(adapter);
@@ -58,6 +75,9 @@ public class WL_Fragment_a extends Fragment {
         return v;
     }
 
+    public ListView getListView() {
+        return mListView;
+    }
 }
 
 class myArrayAdaptera extends ArrayAdapter<String>
