@@ -9,10 +9,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -49,6 +51,12 @@ public class WL_Fragment_c extends Fragment {
         mListView = (ListView) v.findViewById(R.id.wl_c_listview);
 
 
+        mListView = getListView();
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> av, View view, int i, long l) {
+                Toast.makeText(getActivity(), "Positie " + i, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         myArrayAdapterc adapter = new myArrayAdapterc(getActivity().getApplicationContext(),c_title,c_images,c_message);
         mListView.setAdapter(adapter);
@@ -58,6 +66,9 @@ public class WL_Fragment_c extends Fragment {
         return v;
     }
 
+    public ListView getListView() {
+        return mListView;
+    }
 }
 
 class myArrayAdapterc extends ArrayAdapter<String>
