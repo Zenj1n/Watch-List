@@ -40,14 +40,7 @@ public class MainActivity extends ActionBarActivity {
                             Toast.LENGTH_SHORT).show();
 
 
-                    //TODO: fix
-                    /*
-
-                    Intent intent = new Intent(MainActivity.this, Hm_MainActivity.class);
-                    startActivity(intent);
-                    finish();
-
-                    */
+                  
 
                     CheckBox CBRemember=(CheckBox)findViewById(R.id.Remember);
                                 if (CBRemember.isChecked()) {
