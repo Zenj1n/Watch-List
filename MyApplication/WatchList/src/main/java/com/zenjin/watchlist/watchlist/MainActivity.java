@@ -1,5 +1,6 @@
 package com.zenjin.watchlist.watchlist;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -43,7 +44,8 @@ public class MainActivity extends ActionBarActivity {
 
                     Intent intent = new Intent(MainActivity.this, Hm_MainActivity.class);
                     startActivity(intent);
-                    finish();
+
+
 
 
 

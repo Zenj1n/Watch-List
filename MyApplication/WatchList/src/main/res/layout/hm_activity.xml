@@ -169,13 +169,13 @@
             android:layout_width="363dp"
             android:layout_height="wrap_content"
             android:text="MyWatchList"
-            android:id="@+id/button" />
+            android:id="@+id/BMyWatchList" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="News Feed"
-            android:id="@+id/button2"
+            android:id="@+id/BNewsFeed"
             android:layout_gravity="center_horizontal" />
 
 
