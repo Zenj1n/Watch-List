@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="C:\Users\Fabian\Documents\GitHub\Watch-List\MyApplication\WatchList\src\androidTest\res" />
+        <source path="C:\Users\Fabian\Documents\GitHub\Watch-List\MyApplication\WatchList\build\res\rs\test\debug" />
+        <source path="C:\Users\Fabian\Documents\GitHub\Watch-List\MyApplication\WatchList\build\res\generated\test\debug" />
+    </dataSet>
+
+</merger>
