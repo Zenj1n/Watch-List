@@ -4,28 +4,31 @@
     android:layout_height="match_parent">
 
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Arrow"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:id="@+id/title"
                 android:layout_margin="10dp"
                 android:paddingLeft="20dp"
                 android:textSize="30sp"/>
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ArrowImage"
-                android:src="@drawable/arrow"
+                android:layout_width="200dp"
+                android:layout_height="298dp"
+                android:id="@+id/Image"
+
                 android:adjustViewBounds="true"
                 android:maxHeight="300dp"
                 android:paddingLeft="20dp"
@@ -38,7 +41,7 @@
                 android:id="@+id/Baddto"
                 android:onClick="showPopup"
                 android:text="@string/addto"
-                android:layout_toRightOf="@+id/ArrowImage"
+                android:layout_toRightOf="@+id/Image"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="50dp"
@@ -50,7 +53,7 @@
                 android:id="@+id/Brate"
                 android:text="@string/rate"
                 android:layout_below="@+id/Baddto"
-                android:layout_toRightOf="@+id/ArrowImage"
+                android:layout_toRightOf="@+id/Image"
                 android:layout_marginLeft="50dp"
                 android:layout_marginBottom="50dp"
                 />
@@ -60,7 +63,7 @@
                 android:layout_height="50dp"
                 android:id="@+id/addepisode"
                 android:text="@string/addepisode"
-                android:layout_toRightOf="@+id/ArrowImage"
+                android:layout_toRightOf="@+id/Image"
                 android:layout_below="@+id/Brate"
                 android:layout_marginLeft="50dp"
                 />
@@ -68,7 +71,11 @@
         </RelativeLayout>
     </RelativeLayout>
 
+    </ScrollView>
 
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -87,7 +94,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/Tgenres"
-            android:text="@string/genres"
             android:layout_toRightOf="@+id/Tgenre"
             android:layout_margin="25dp"/>
 
@@ -111,11 +117,20 @@
 
     </RelativeLayout>
 
+    </ScrollView>
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="20dp"
-        android:text="@string/beschrijving"/>
+        android:id="@+id/plot"/>
+
+     </ScrollView>
+
+
 
 
 

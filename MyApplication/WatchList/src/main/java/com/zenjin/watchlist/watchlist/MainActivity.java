@@ -42,8 +42,10 @@ public class MainActivity extends ActionBarActivity {
                     Toast.makeText(getApplicationContext(), "Correct",
                             Toast.LENGTH_SHORT).show();
 
+
                     Intent intent = new Intent(MainActivity.this, Hm_MainActivity.class);
                     startActivity(intent);
+
 
 
 
