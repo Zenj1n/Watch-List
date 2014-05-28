@@ -40,7 +40,7 @@ public class MainActivity extends ActionBarActivity {
                             Toast.LENGTH_SHORT).show();
 
 
-                  
+
 
                     CheckBox CBRemember=(CheckBox)findViewById(R.id.Remember);
                                 if (CBRemember.isChecked()) {
