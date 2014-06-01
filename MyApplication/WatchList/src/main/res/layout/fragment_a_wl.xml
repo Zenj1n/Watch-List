@@ -10,5 +10,7 @@
         android:id="@+id/wl_a_listview"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="1dip"/>
 </RelativeLayout>
