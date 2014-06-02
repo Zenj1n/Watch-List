@@ -1,6 +1,7 @@
 package com.zenjin.watchlist.watchlist;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -33,7 +34,8 @@ public class InfoPage extends ActionBarActivity {
     TextView Tplot;
     ImageView Image;
 
-    public static String url = "http://www.omdbapi.com/?t=Game+of+Thrones&plot=full";
+
+
 
 
     private static final String TAG_TITLE = "Title";
@@ -84,6 +86,11 @@ public class InfoPage extends ActionBarActivity {
         }
         @Override
         protected JSONObject doInBackground(String... args) {
+
+            Intent intent = getIntent();
+            String message = intent.getStringExtra(WL_Fragment_a.EXTRA_MESSAGE);
+
+            String url = "http://www.omdbapi.com/?t="+message+"&plot=full";
             ServiceHandler jParser = new ServiceHandler();
             // Getting JSON from URL
             JSONObject json = jParser.getJSONFromUrl(url);

@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
+
     public String username = "test";
     public String password = "test123";
     public static String LogInfile = "LogInData";
