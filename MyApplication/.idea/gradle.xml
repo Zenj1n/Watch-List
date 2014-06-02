@@ -7,8 +7,8 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/WatchList" />
+            <option value="E:\Git Hub Repositories\Watch-List\MyApplication" />
+            <option value="E:\Git Hub Repositories\Watch-List\MyApplication\WatchList" />
           </set>
         </option>
       </GradleProjectSettings>
