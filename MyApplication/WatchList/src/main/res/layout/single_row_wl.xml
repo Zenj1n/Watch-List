@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:padding="3dp"
+
+    >
+
+
+<RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/wl_row_background_xml"
+                 >
 
     <ImageView
         android:src="@drawable/gameofthrones"
@@ -40,5 +50,10 @@
         android:layout_alignStart="@+id/wl_title"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:fontFamily="sans-serif-light"/>
+        android:fontFamily="sans-serif-light"
+        android:textColor="@android:color/darker_gray"/>
+
+
 </RelativeLayout>
+
+</LinearLayout>
