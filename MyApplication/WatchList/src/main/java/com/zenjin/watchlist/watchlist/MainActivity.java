@@ -72,11 +72,12 @@ public class MainActivity extends ActionBarActivity {
 
         TextView Recover = (TextView) findViewById(R.id.Forgot);
         Recover.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
 
-                Intent Recovery = new Intent(MainActivity.this, RecoverPasswordActivity.class);
-                startActivity(Recovery);
+                Toast.makeText(getApplicationContext(), "click",
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
