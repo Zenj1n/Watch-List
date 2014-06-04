@@ -1,5 +1,6 @@
 package com.zenjin.watchlist.watchlist;
 
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -45,10 +46,12 @@ public class InfoPage extends ActionBarActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infopage);
+
 
         new JSONParse().execute();
 

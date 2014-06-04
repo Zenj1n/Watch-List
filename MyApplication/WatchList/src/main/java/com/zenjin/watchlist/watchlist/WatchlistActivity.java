@@ -47,6 +47,8 @@ public class WatchlistActivity extends FragmentActivity implements ActionBar.Tab
             }
         });
 
+
+
         mActionBar = getActionBar();
         mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
@@ -143,4 +145,6 @@ class WL_myAdapter extends FragmentPagerAdapter
     public int getCount() {
         return 3;
     }
+
+
 }

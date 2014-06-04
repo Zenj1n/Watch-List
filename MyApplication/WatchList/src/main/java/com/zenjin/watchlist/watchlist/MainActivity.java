@@ -44,7 +44,7 @@ public class MainActivity extends ActionBarActivity {
                             Toast.LENGTH_SHORT).show();
 
 
-                    Intent intent = new Intent(MainActivity.this, Hm_MainActivity.class);
+                    Intent intent = new Intent(MainActivity.this, HomeFragment.class);
                     startActivity(intent);
 
 
