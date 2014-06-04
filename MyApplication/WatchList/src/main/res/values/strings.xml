@@ -48,8 +48,10 @@
 
 
     <string name="LogIn">Log In</string>
+    <string name="SignUp">Sign Up</string>
     <string name="Remember">Remember me</string>
     <string name="Password">Password</string>
+    <string name="ConfirmPassword">Confirm password</string>
     <string name="Username">Username</string>
 
 
