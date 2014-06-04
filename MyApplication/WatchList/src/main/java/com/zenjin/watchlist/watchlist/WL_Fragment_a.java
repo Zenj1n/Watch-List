@@ -23,6 +23,11 @@ import android.widget.Toast;
  */
 public class WL_Fragment_a extends Fragment {
 
+    public final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";
+    Intent intent;
+
+
+
     ListView mListView;
     String[] a_title;
     String[] a_message;
@@ -54,14 +59,72 @@ public class WL_Fragment_a extends Fragment {
         mListView = getListView();
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
+<<<<<<< HEAD
 
                 Toast.makeText(getActivity(), "Positie "+i , Toast.LENGTH_SHORT).show();
+=======
+>>>>>>> origin/master
 
-                if (i == 10){
+                Toast.makeText(getActivity(), "Positie "+i , Toast.LENGTH_SHORT).show();
+                intent = new Intent(getActivity(),InfoPage.class);
 
-                    Intent intent;
-                    intent = new Intent(getActivity(),InfoPage.class);
-                    startActivity(intent);
+                switch(i) {
+
+                    case 0:
+                        intent.putExtra(EXTRA_MESSAGE, "Game+of+thrones");
+                        startActivity(intent);
+                        break;
+
+                    case 1:
+                        intent.putExtra(EXTRA_MESSAGE, "The+big+bang+theory");
+                        startActivity(intent);
+                        break;
+
+                    case 2:
+                        intent.putExtra(EXTRA_MESSAGE, "True+blood");
+                        startActivity(intent);
+                        break;
+
+                    case 3:
+                        intent.putExtra(EXTRA_MESSAGE, "NCIS");
+                        startActivity(intent);
+                        break;
+
+                    case 4:
+                        intent.putExtra(EXTRA_MESSAGE, "Criminal+minds");
+                        startActivity(intent);
+                        break;
+
+                    case 5:
+                        intent.putExtra(EXTRA_MESSAGE, "Pretty+little+liars");
+                        startActivity(intent);
+                        break;
+
+                    case 6:
+                        intent.putExtra(EXTRA_MESSAGE, "Falling+skies");
+                        startActivity(intent);
+                        break;
+
+                    case 7:
+                        intent.putExtra(EXTRA_MESSAGE, "Family+guy");
+                        startActivity(intent);
+                        break;
+
+                    case 8:
+                        intent.putExtra(EXTRA_MESSAGE, "Hannibal");
+                        startActivity(intent);
+                        break;
+
+                    case 9:
+                        intent.putExtra(EXTRA_MESSAGE, "Bones");
+                        startActivity(intent);
+                        break;
+
+                    case 10:
+                        intent.putExtra(EXTRA_MESSAGE, "Arrow");
+                        startActivity(intent);
+                        break;
+
 
                 }
 

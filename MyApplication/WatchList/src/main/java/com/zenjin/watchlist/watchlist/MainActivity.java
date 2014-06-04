@@ -1,5 +1,6 @@
 package com.zenjin.watchlist.watchlist;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -11,16 +12,30 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.Parse;
+import com.parse.ParseAnalytics;
+import com.parse.ParseObject;
+
 
 public class MainActivity extends ActionBarActivity {
+
     public String username = "test";
     public String password = "test123";
     public static String LogInfile = "LogInData";
     private SharedPreferences LogInData;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Parse.initialize(this, "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
+        ParseObject testObject = new ParseObject("TestObject");
+        testObject.put("foo", "bar");
+        testObject.saveInBackground();
+
+
         LogInData = getSharedPreferences(LogInfile, 0);
         String LastUser = LogInData.getString("username", "");
         String LastPassword = LogInData.getString("password", "");
@@ -38,6 +53,13 @@ public class MainActivity extends ActionBarActivity {
                 if (username.equals(usernameInput.getText().toString()) && password.equals(passwordInput.getText().toString())) {
                     Toast.makeText(getApplicationContext(), "Correct",
                             Toast.LENGTH_SHORT).show();
+
+
+                    Intent intent = new Intent(MainActivity.this, MyWatchList.class);
+                    startActivity(intent);
+
+
+
 
 
 
