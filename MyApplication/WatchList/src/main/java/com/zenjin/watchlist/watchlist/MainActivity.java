@@ -15,13 +15,15 @@ import android.widget.Toast;
 public class MainActivity extends ActionBarActivity {
     public String username = "test";
     public String password = "test123";
-    SharedPreferences LogIndata = getSharedPreferences("logIn", MODE_PRIVATE);
-    String LastUser = LogIndata.getString("username", null);
-    String LastPassword = LogIndata.getString("password", null);
+    public static String LogInfile = "LogInData";
+    private SharedPreferences LogInData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        LogInData = getSharedPreferences(LogInfile, 0);
+        String LastUser = LogInData.getString("username", "");
+        String LastPassword = LogInData.getString("password", "");
         EditText usernameInput = (EditText) findViewById(R.id.Username);
         EditText passwordInput = (EditText) findViewById(R.id.Password);
         usernameInput.setText(LastUser);
@@ -40,13 +42,13 @@ public class MainActivity extends ActionBarActivity {
 
                     CheckBox CBRemember=(CheckBox)findViewById(R.id.Remember);
                                 if (CBRemember.isChecked()) {
-                                    SharedPreferences.Editor editor = LogIndata.edit();
+                                    SharedPreferences.Editor editor = LogInData.edit();
                                     editor.putString("username", usernameInput.getText().toString());
                                     editor.putString("password", passwordInput.getText().toString());
                                     editor.commit();
                                 }
                                 else{
-                                    SharedPreferences.Editor editor = LogIndata.edit();
+                                    SharedPreferences.Editor editor = LogInData.edit();
                                     editor.putString("username", "");
                                     editor.putString("password", "");
                                     editor.commit();
