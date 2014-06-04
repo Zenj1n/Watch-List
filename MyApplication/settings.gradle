@@ -1,1 +1,1 @@
-include ':WatchList'
+include ':WatchList', ':Mealspotting'
