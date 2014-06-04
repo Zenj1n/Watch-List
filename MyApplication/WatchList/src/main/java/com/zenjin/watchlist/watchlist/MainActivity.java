@@ -76,8 +76,8 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getApplicationContext(), "click",
-                        Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, RecoverPasswordActivity.class);
+                startActivity(intent);
             }
         });
     }

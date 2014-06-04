@@ -44,6 +44,17 @@
             android:label="@string/title_activity_info_page" >
         </activity>
 
+        <activity
+            android:name="com.zenjin.watchlist.watchlist.RecoverPasswordActivity"
+            android:label="@string/title_activity_info_page" >
+        </activity>
+
+        <activity
+            android:name="com.zenjin.watchlist.watchlist.SignUpActivity"
+            android:label="@string/title_activity_info_page" >
+        </activity>
+
+
 
 
 
