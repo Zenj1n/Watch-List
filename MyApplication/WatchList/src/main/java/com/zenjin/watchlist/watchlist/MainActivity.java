@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+import com.parse.Parse;
+import com.parse.ParseAnalytics;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -25,6 +27,9 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Parse.initialize(this, "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
+
         LogInData = getSharedPreferences(LogInfile, 0);
         String LastUser = LogInData.getString("username", "");
         String LastPassword = LogInData.getString("password", "");
