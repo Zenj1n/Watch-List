@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -46,23 +47,18 @@ public class MainActivity extends ActionBarActivity {
                     startActivity(intent);
 
 
-
-
-
-
-                    CheckBox CBRemember=(CheckBox)findViewById(R.id.Remember);
-                                if (CBRemember.isChecked()) {
-                                    SharedPreferences.Editor editor = LogInData.edit();
-                                    editor.putString("username", usernameInput.getText().toString());
-                                    editor.putString("password", passwordInput.getText().toString());
-                                    editor.commit();
-                                }
-                                else{
-                                    SharedPreferences.Editor editor = LogInData.edit();
-                                    editor.putString("username", "");
-                                    editor.putString("password", "");
-                                    editor.commit();
-                                }
+                    CheckBox CBRemember = (CheckBox) findViewById(R.id.Remember);
+                    if (CBRemember.isChecked()) {
+                        SharedPreferences.Editor editor = LogInData.edit();
+                        editor.putString("username", usernameInput.getText().toString());
+                        editor.putString("password", passwordInput.getText().toString());
+                        editor.commit();
+                    } else {
+                        SharedPreferences.Editor editor = LogInData.edit();
+                        editor.putString("username", "");
+                        editor.putString("password", "");
+                        editor.commit();
+                    }
 
 
                 } else {
@@ -71,6 +67,16 @@ public class MainActivity extends ActionBarActivity {
 
                 }
 
+            }
+        });
+
+        TextView Recover = (TextView) findViewById(R.id.Forgot);
+        Recover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent Recovery = new Intent(MainActivity.this, RecoverPasswordActivity.class);
+                startActivity(Recovery);
             }
         });
     }

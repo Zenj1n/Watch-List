@@ -53,6 +53,9 @@
     <string name="Password">Password</string>
     <string name="ConfirmPassword">Confirm password</string>
     <string name="Username">Username</string>
+    <string name="Email">E-mail</string>
+    <string name="Recover">Recover account</string>
+    <string name="Forgot">Forgot username or password?</string>
 
 
 
