@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WatchList</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
+    //Navigation Menu    <string name="drawer_open">Slider Menu Opened</string>
+    <string name="drawer_close">Slider Menu Closed</string>
+
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item>Home</item>
+        <item>MyWatchList</item>
+        <item>Photos</item>
+    </string-array>
+
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_home</item>
+        <item>@drawable/ic_people</item>
+        <item>@drawable/ic_photos</item>
+    </array>
+
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+    //Home Screen    <string name="Home_head">Home</string>
+    //Tabs    <string name="hm_overview_tab">Overview</string>
+    <string name="hm_discover_tab">Discover</string>
+    <string name="hm_agenda_tab">Agenda</string>
+    //Overview tab    <string name="hm_overview">Overview</string>
+    //Discover tab    <string name="hm_discover">Discover</string>
+    <string name="hm_discover_recommended">Recommended</string>
+    <string name="hm_discover_popular">Popular</string>
+    <string name="hm_discover_editor">Editors Choice</string>
+
+    <string-array name="Hm_Titles">
+        <item>Arrow</item>
+        <item>Black-ish</item>
+        <item>Constatine</item>
+        <item>Game of Thrones</item>
+        <item>Gotham</item>
+        <item>Gracepoint</item>
+        <item>Lost</item>
+        <item>Supernatural</item>
+        <item>The Flash</item>
+    </string-array>
+    <string-array name="Hm_Description">
+        <item>Description1</item>
+        <item>Description2</item>
+        <item>Description3</item>
+        <item>Description4</item>
+        <item>Description5</item>
+        <item>Description6</item>
+        <item>Description7</item>
+        <item>Description8</item>
+        <item>Description9</item>
+    </string-array>
+    //Agenda tab    <string name="hm_agenda">Agenda</string>
+    <string name="hm_agenda_today">Today</string>
+    <string name="hm_agenda_week">This Week</string>
+    <string name="hm_agenda_season">This Season</string>
+    <string name="LogIn">Log In</string>
+    <string name="Remember">Remember me</string>
+    <string name="Password">Password</string>
+    <string name="Username">Username</string>
+    <string name="addto">Add to</string>
+    <string name="Arrow">Arrow</string>
+    <string name="rate">Rate</string>
+    <string name="title_activity_info_page">InfoPage</string>
+    <string name="addepisode">Episode</string>
+    <string name="genre">Genres:</string>
+    <string name="genres">Action, Adventure, Crime</string>
+    <string name="statusw">Status :</string>
+    <string name="status">Airing </string>
+    <string name="beschrijving">Spoiled billionaire playboy Oliver Queen is missing
+        and presumed dead when his yacht is lost at sea. He returns five years later a changed man,
+        determined to clean up the city as a hooded vigilante armed with a bow.</string>
+    // strings for Watchlist. DO NOT CHANGE!    <string name="wl_title">Watchlist</string>
+    <string name="wl_tab1">Watching</string>
+    <string name="wl_tab2">Completed</string>
+    <string name="wl_tab3">On hold</string>
+    <string name="wl_example_text"> Random text message </string>
+
+    <string-array name="wl_a_title">
+        <item>Game of Thrones</item>
+        <item>The Big Bang Theory</item>
+        <item>True Blood</item>
+        <item>NCIS</item>
+        <item>Criminal Minds</item>
+        <item>Pretty Little Liars</item>
+        <item>Falling Skies</item>
+        <item>Family Guy</item>
+        <item>Hannibal</item>
+        <item>Bones</item>
+        <item>Arrow</item>
+    </string-array>
+    <string-array name="wl_a_message">
+        <item>Episode 7 "Mockingbird" airs today</item>
+        <item>Next Episode is not available</item>
+        <item>Episode 1 "Jesus Gonna Be Here" airs in 1 months and 5 days</item>
+        <item>Next Episode is not available</item>
+        <item>Next Episode is not available</item>
+        <item>Episode 1 "EscApe From New York" airs in 23 days</item>
+        <item>Episode 1 "Ghost in the Machine" airs in 1 months and 5 days</item>
+        <item>Episode 21 "Chap Stewie" airs in 9 hours</item>
+        <item>Episode 13 "Mizumono" airs in 5 days</item>
+        <item>Episode 24 "The Recluse in the Recliner" airs in tomorrow</item>
+        <item>Next Episode is not available</item>
+    </string-array>
+    <string-array name="wl_b_title">
+        <item>Game of Thrones</item>
+        <item>The Big Bang Theory</item>
+        <item>NCIS</item>
+    </string-array>
+    <string-array name="wl_b_message">
+        <item>Episode 7 "Mockingbird" airs today</item>
+        <item>Next Episode is not available</item>
+        <item>Next Episode is not available</item>
+    </string-array>
+    <string-array name="wl_c_title">
+        <item>Family Guy</item>
+        <item>Hannibal</item>
+        <item>Bones</item>
+    </string-array>
+    <string-array name="wl_c_message">
+        <item>Episode 21 "Chap Stewie" airs in 9 hours</item>
+        <item>Episode 13 "Mizumono" airs in 5 days</item>
+        <item>Episode 24 "The Recluse in the Recliner" airs in tomorrow</item>
+    </string-array>
+
+    <string name="title_activity_main_main">MyWatchList</string>
+
+</resources>
