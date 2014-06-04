@@ -10,11 +10,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.parse.Parse;
+import com.parse.ParseAnalytics;
+import com.parse.ParseObject;
 
 
 public class MainActivity extends ActionBarActivity {
+
     public String username = "test";
     public String password = "test123";
     public static String LogInfile = "LogInData";
@@ -25,6 +29,13 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Parse.initialize(this, "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
+        ParseObject testObject = new ParseObject("TestObject");
+        testObject.put("foo", "bar");
+        testObject.saveInBackground();
+
+
         LogInData = getSharedPreferences(LogInfile, 0);
         String LastUser = LogInData.getString("username", "");
         String LastPassword = LogInData.getString("password", "");
@@ -43,22 +54,29 @@ public class MainActivity extends ActionBarActivity {
                     Toast.makeText(getApplicationContext(), "Correct",
                             Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(MainActivity.this, Hm_MainActivity.class);
+
+                    Intent intent = new Intent(MainActivity.this, MyWatchList.class);
                     startActivity(intent);
 
 
-                    CheckBox CBRemember = (CheckBox) findViewById(R.id.Remember);
-                    if (CBRemember.isChecked()) {
-                        SharedPreferences.Editor editor = LogInData.edit();
-                        editor.putString("username", usernameInput.getText().toString());
-                        editor.putString("password", passwordInput.getText().toString());
-                        editor.commit();
-                    } else {
-                        SharedPreferences.Editor editor = LogInData.edit();
-                        editor.putString("username", "");
-                        editor.putString("password", "");
-                        editor.commit();
-                    }
+
+
+
+
+
+                    CheckBox CBRemember=(CheckBox)findViewById(R.id.Remember);
+                                if (CBRemember.isChecked()) {
+                                    SharedPreferences.Editor editor = LogInData.edit();
+                                    editor.putString("username", usernameInput.getText().toString());
+                                    editor.putString("password", passwordInput.getText().toString());
+                                    editor.commit();
+                                }
+                                else{
+                                    SharedPreferences.Editor editor = LogInData.edit();
+                                    editor.putString("username", "");
+                                    editor.putString("password", "");
+                                    editor.commit();
+                                }
 
 
                 } else {
@@ -67,17 +85,6 @@ public class MainActivity extends ActionBarActivity {
 
                 }
 
-            }
-        });
-
-        TextView Recover = (TextView) findViewById(R.id.Forgot);
-        Recover.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(MainActivity.this, RecoverPasswordActivity.class);
-                startActivity(intent);
             }
         });
     }

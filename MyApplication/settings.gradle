@@ -1,1 +1,1 @@
-include ':WatchList', ':app', ':galgje 2'
+include ':WatchList', ':Mealspotting'

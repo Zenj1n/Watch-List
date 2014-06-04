@@ -7,10 +7,9 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication" />
-            <option value="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication\WatchList" />
-            <option value="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication\app" />
-            <option value="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication\galgje 2" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Mealspotting" />
+            <option value="$PROJECT_DIR$/WatchList" />
           </set>
         </option>
       </GradleProjectSettings>
