@@ -5,6 +5,7 @@ package com.zenjin.watchlist.watchlist;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 
-public class HomeFragment extends Fragment  {
+public class HomeFragment extends Fragment {
 
     Button BMyWatchList;
 

@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.parse.Parse;
+import com.parse.ParseAnalytics;
 import com.parse.ParseObject;
 
 
@@ -34,6 +35,7 @@ public class MainActivity extends ActionBarActivity {
         testObject.put("foo", "bar");
         testObject.saveInBackground();
 
+
         LogInData = getSharedPreferences(LogInfile, 0);
         String LastUser = LogInData.getString("username", "");
         String LastPassword = LogInData.getString("password", "");
@@ -53,7 +55,7 @@ public class MainActivity extends ActionBarActivity {
                             Toast.LENGTH_SHORT).show();
 
 
-                    Intent intent = new Intent(MainActivity.this, HomeFragment.class);
+                    Intent intent = new Intent(MainActivity.this, MyWatchList.class);
                     startActivity(intent);
 
 
