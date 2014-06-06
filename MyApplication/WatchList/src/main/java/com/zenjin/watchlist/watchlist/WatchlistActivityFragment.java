@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,7 +21,7 @@ import android.widget.LinearLayout;
  * com.zenjin.watchlist.watchlist
  * Watch List
  */
-public class WatchlistActivityFragment extends Fragment implements ActionBar.TabListener {
+public class WatchlistActivityFragment extends Fragment implements FragmentTabHost {
 
     ViewPager mViewPager;
     ActionBar mActionBar;
@@ -66,15 +67,15 @@ public class WatchlistActivityFragment extends Fragment implements ActionBar.Tab
 
         ActionBar.Tab tab1 = mActionBar.newTab();
         tab1.setText(R.string.wl_tab1);
-        tab1.setTabListener(this);
+        tab1.setTabListener((ActionBar.TabListener) this);
 
         ActionBar.Tab tab2 = mActionBar.newTab();
         tab2.setText(R.string.wl_tab2);
-        tab2.setTabListener(this);
+        tab2.setTabListener((ActionBar.TabListener) this);
 
         ActionBar.Tab tab3 = mActionBar.newTab();
         tab3.setText(R.string.wl_tab3);
-        tab3.setTabListener(this);
+        tab3.setTabListener((ActionBar.TabListener) this);
 
         mActionBar.addTab(tab1);
         mActionBar.addTab(tab2);
@@ -104,21 +105,21 @@ public class WatchlistActivityFragment extends Fragment implements ActionBar.Tab
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
+
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 
         mViewPager.setCurrentItem(tab.getPosition());
 
     }
 
-    @Override
+
     public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 
         // do something
 
     }
 
-    @Override
+
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 
         // do something
