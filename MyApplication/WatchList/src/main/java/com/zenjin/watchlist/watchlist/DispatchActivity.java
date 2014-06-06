@@ -30,7 +30,7 @@ public class DispatchActivity extends Activity {
             startActivity(new Intent(this, MyWatchList.class));
         } else {
             // Start and intent for the logged out activity
-            startActivity(new Intent(this, RegistreerActivity.class));
+            startActivity(new Intent(this, SignUpOrLoginInActivity.class));
         }
     }
 
