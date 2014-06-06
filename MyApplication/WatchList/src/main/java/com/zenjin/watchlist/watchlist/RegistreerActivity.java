@@ -84,6 +84,7 @@ public class RegistreerActivity extends ActionBarActivity {
                 ParseUser user = new ParseUser();
                 user.setUsername(usernameregister.getText().toString());
                 user.setPassword(passwordregister.getText().toString());
+                
                 // Call the Parse signup method
                 user.signUpInBackground(new SignUpCallback() {
 
