@@ -25,6 +25,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
+
+
 import java.io.InputStream;
 import java.net.URL;
 
@@ -55,7 +62,7 @@ public class InfoPage extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infopage);
 
-
+        Parse.initialize(this, "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
         new JSONParse().execute();
 
 
@@ -167,4 +174,6 @@ public class InfoPage extends ActionBarActivity {
             bmImage.setImageBitmap(result);
         }
     }
+
+
 }

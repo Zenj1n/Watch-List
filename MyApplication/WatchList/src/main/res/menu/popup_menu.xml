@@ -3,7 +3,8 @@
 
     <item
         android:id="@+id/watching"
-        android:title="Watching"/>
+        android:title="Watching"
+        android:onClick="AddToWatching"/>
 
     <item
         android:id="@+id/plantowatch"
