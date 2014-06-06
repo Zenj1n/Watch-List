@@ -1,5 +1,6 @@
 package com.zenjin.watchlist.watchlist;
 
+import java.util.ArrayList;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -17,11 +18,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
 import com.zenjin.watchlist.watchlist.adapter.NavDrawerListAdapter;
 import com.zenjin.watchlist.watchlist.model.NavDrawerItem;
-
-import java.util.ArrayList;
 
 
 
@@ -114,7 +112,7 @@ public class MyWatchList extends Activity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position,
                                 long id) {
-             displayView(position);
+            displayView(position);
         }
     }
 
@@ -127,7 +125,7 @@ public class MyWatchList extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-            if (mDrawerToggle.onOptionsItemSelected(item)) {
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
 
@@ -156,7 +154,7 @@ public class MyWatchList extends Activity {
                 fragment = new HomeFragment();
                 break;
             case 1:
-                fragment = new WatchlistActivityFragment();
+                fragmentActivity = new WatchlistActivity();
                 break;
             case 2:
                 fragment = new HomeFragment();
@@ -182,7 +180,7 @@ public class MyWatchList extends Activity {
         }
 
         if (fragmentActivity != null) {
-            Intent intent = new Intent(this, WatchlistActivityFragment.class);
+            Intent intent = new Intent(this, WatchlistActivity.class);
             startActivity(intent);
 
 
