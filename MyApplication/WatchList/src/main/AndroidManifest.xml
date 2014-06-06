@@ -30,6 +30,10 @@
         <activity
             android:name="com.zenjin.watchlist.watchlist.RegistreerActivity"
             android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name="com.zenjin.watchlist.watchlist.DispatchActivity"
+            android:label="@string/title_activity_dispatch" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,8 +41,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.zenjin.watchlist.watchlist.DispatchActivity"
-            android:label="@string/title_activity_dispatch" >
+            android:name="com.zenjin.watchlist.watchlist.SignupOrLogin"
+            android:label="@string/title_activity_signup_or_login" >
+        </activity>
+        <activity
+            android:name="com.zenjin.watchlist.watchlist.LoginActivity"
+            android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name="com.zenjin.watchlist.watchlist.SignupOrLoginActivity"
+            android:label="@string/title_activity_signup_or_login" >
+        </activity>
+        <activity
+            android:name="com.zenjin.watchlist.watchlist.SignUpOrLoginInActivity"
+            android:label="@string/title_activity_sign_up_or_login_in" >
         </activity>
     </application>
 
