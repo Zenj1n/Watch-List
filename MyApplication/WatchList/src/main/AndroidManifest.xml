@@ -13,7 +13,7 @@
         android:theme="@style/Theme.AppCompat.Light" >
 
         <activity
-            android:name=".WatchlistActivity"
+            android:name=".WatchlistActivityFragment"
             android:label="@string/wl_title" >
         </activity>
         <activity

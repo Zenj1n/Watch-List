@@ -5,10 +5,7 @@ package com.zenjin.watchlist.watchlist;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -32,7 +29,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), WatchlistActivity.class);
+                Intent intent = new Intent(getActivity(), WatchlistActivityFragment.class);
                 startActivity(intent);
             }
         });

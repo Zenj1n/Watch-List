@@ -1,6 +1,5 @@
 package com.zenjin.watchlist.watchlist;
 
-import java.util.ArrayList;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -18,8 +17,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
 import com.zenjin.watchlist.watchlist.adapter.NavDrawerListAdapter;
 import com.zenjin.watchlist.watchlist.model.NavDrawerItem;
+
+import java.util.ArrayList;
 
 
 
@@ -154,7 +156,7 @@ public class MyWatchList extends Activity {
                 fragment = new HomeFragment();
                 break;
             case 1:
-                fragmentActivity = new WatchlistActivity();
+                fragment = new WatchlistActivityFragment();
                 break;
             case 2:
                 fragment = new HomeFragment();
@@ -180,7 +182,7 @@ public class MyWatchList extends Activity {
         }
 
         if (fragmentActivity != null) {
-            Intent intent = new Intent(this, WatchlistActivity.class);
+            Intent intent = new Intent(this, WatchlistActivityFragment.class);
             startActivity(intent);
 
 
