@@ -81,44 +81,43 @@ public class InfoPage extends ActionBarActivity {
                             switch (menuItem.getItemId()) {
                                 case R.id.watching:
 
-                                    ParseObject watching = new ParseObject("Koppel");
-                                    watching.put("User", ParseUser.getCurrentUser());
-                                    watching.put("Serie",  Title.getText());
-                                    watching.put("Status", "Watching");
-                                    watching.saveInBackground();
-
-
-                                    ParseQuery<ParseObject> query = ParseQuery.getQuery("Koppel");
-                                    query.whereEqualTo("User", ParseUser.getCurrentUser());
+                                    final ParseQuery<ParseObject> query = ParseQuery.getQuery("Koppel");
+                                    query.whereEqualTo("User", "d");
                                     query.whereEqualTo("Serie", Title.getText());
                                     query.findInBackground(new FindCallback<ParseObject>()  {
                                         @Override
-                                        public void done(List<ParseObject> User, com.parse.ParseException e) {
+                                        public void done(List<ParseObject> status, com.parse.ParseException e) {
                                             if (e == null) {
-                                                Log.d("score", "Retrieved " + User.size() + " scores");
+                                                ParseObject watching = new ParseObject("Koppel");
+                                                watching.put("User", "error");
+                                                watching.put("Serie",  Title.getText());
+                                                watching.put("Status", "Watching");
+                                                watching.saveInBackground();
+
                                             } else {
-                                                Log.d("score", "Error: " + e.getMessage());
+                                                ParseObject watching = new ParseObject("Koppel");
+                                                watching.put("User", "error");
+                                                watching.put("Serie",  Title.getText());
+                                                watching.put("Status", "Watching");
+                                                watching.saveInBackground();
                                             }
                                         }
                                     });
 
 
-
-
-
                                     return true;
                                 case R.id.plantowatch:
                                     ParseObject plantowatch = new ParseObject("Koppel");
-                                    plantowatch.put("User", ParseUser.getCurrentUser());
+                                    plantowatch.put("User", "joke");
                                     plantowatch.put("Serie", Title.getText());
-                                    plantowatch.put("Status", "Watching");
+                                    plantowatch.put("Status", "Plan to watch");
                                     plantowatch.saveInBackground();
                                     return true;
                                 case R.id.completed:
                                     ParseObject completed = new ParseObject("Koppel");
                                     completed.put("User", ParseUser.getCurrentUser());
                                     completed.put("Serie", Title.getText());
-                                    completed.put("Status", "Watching");
+                                    completed.put("Status", "Completed");
                                     completed.saveInBackground();
                                     return true;
                                 default:
