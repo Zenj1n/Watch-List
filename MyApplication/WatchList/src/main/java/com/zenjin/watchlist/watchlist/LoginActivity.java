@@ -25,6 +25,7 @@ public class LoginActivity extends ActionBarActivity {
     private EditText usernameView;
     private EditText passwordView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

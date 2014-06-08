@@ -34,11 +34,6 @@ public class RegistreerActivity extends ActionBarActivity {
 
         Parse.initialize(this, "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
 
-        ParseObject koppel = new ParseObject("Koppel");
-        koppel.put("User", "test");
-        koppel.put("Serie", "Pokemon");
-        koppel.saveInBackground();
-
 
         usernameregister = (EditText) findViewById(R.id.UsernameRegister);
         passwordregister = (EditText) findViewById(R.id.PasswordRegister);
