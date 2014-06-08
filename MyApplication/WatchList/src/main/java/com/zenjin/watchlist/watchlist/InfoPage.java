@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
+
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseObject;
@@ -79,18 +80,20 @@ public class InfoPage extends ActionBarActivity {
                         public boolean onMenuItemClick(MenuItem menuItem) {
                             switch (menuItem.getItemId()) {
                                 case R.id.watching:
-                                    //ParseObject watching = new ParseObject("Koppel");
-                                    //watching.put("User", ParseUser.getCurrentUser());
-                                    //watching.put("Serie",  Title.getText());
-                                    //watching.put("Status", "Watching");
-                                    //watching.saveInBackground();
 
-                                    /*
+                                    ParseObject watching = new ParseObject("Koppel");
+                                    watching.put("User", ParseUser.getCurrentUser());
+                                    watching.put("Serie",  Title.getText());
+                                    watching.put("Status", "Watching");
+                                    watching.saveInBackground();
+
+
                                     ParseQuery<ParseObject> query = ParseQuery.getQuery("Koppel");
                                     query.whereEqualTo("User", ParseUser.getCurrentUser());
                                     query.whereEqualTo("Serie", Title.getText());
                                     query.findInBackground(new FindCallback<ParseObject>()  {
-                                        public void done (List<ParseObject> User, ParseException e) {
+                                        @Override
+                                        public void done(List<ParseObject> User, com.parse.ParseException e) {
                                             if (e == null) {
                                                 Log.d("score", "Retrieved " + User.size() + " scores");
                                             } else {
@@ -98,7 +101,7 @@ public class InfoPage extends ActionBarActivity {
                                             }
                                         }
                                     });
-                                    */
+
 
 
 
