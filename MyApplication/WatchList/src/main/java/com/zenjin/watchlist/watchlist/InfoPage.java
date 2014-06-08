@@ -78,6 +78,8 @@ public class InfoPage extends ActionBarActivity {
                 }
             });
 
+
+
         Brate = (Button) findViewById(R.id.Brate);
         Brate.setOnClickListener(new View.OnClickListener() {
             @Override
