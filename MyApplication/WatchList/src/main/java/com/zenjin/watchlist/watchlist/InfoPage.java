@@ -1,13 +1,16 @@
 package com.zenjin.watchlist.watchlist;
 
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,14 +19,21 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
+
+import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+import com.parse.ParseQuery;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.InputStream;
+import java.net.URL;
+import java.text.ParseException;
+import java.util.List;
 
 
 public class InfoPage extends ActionBarActivity {
@@ -70,26 +80,28 @@ public class InfoPage extends ActionBarActivity {
                         public boolean onMenuItemClick(MenuItem menuItem) {
                             switch (menuItem.getItemId()) {
                                 case R.id.watching:
-                                    /*ParseObject watching = new ParseObject("Koppel");
+
+                                    ParseObject watching = new ParseObject("Koppel");
                                     watching.put("User", ParseUser.getCurrentUser());
                                     watching.put("Serie",  Title.getText());
                                     watching.put("Status", "Watching");
                                     watching.saveInBackground();
 
-                                    /*
+
                                     ParseQuery<ParseObject> query = ParseQuery.getQuery("Koppel");
                                     query.whereEqualTo("User", ParseUser.getCurrentUser());
                                     query.whereEqualTo("Serie", Title.getText());
                                     query.findInBackground(new FindCallback<ParseObject>()  {
-                                        public void done (List<ParseObject> User, ParseException e) {
+                                        @Override
+                                        public void done(List<ParseObject> User, com.parse.ParseException e) {
                                             if (e == null) {
-
+                                                Log.d("score", "Retrieved " + User.size() + " scores");
                                             } else {
-
+                                                Log.d("score", "Error: " + e.getMessage());
                                             }
                                         }
                                     });
-                                    */
+
 
 
 
