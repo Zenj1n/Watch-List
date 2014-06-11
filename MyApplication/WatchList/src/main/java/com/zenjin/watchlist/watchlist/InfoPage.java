@@ -75,21 +75,10 @@ public class InfoPage extends ActionBarActivity {
                     MenuInflater inflater = popup.getMenuInflater();
                     inflater.inflate(R.menu.popup_menu, popup.getMenu());
                     popup.show();
+
                 }
             });
 
-
-
-        Brate = (Button) findViewById(R.id.Brate);
-        Brate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ParseUser.logOut();
-                Intent intent = new Intent(InfoPage.this, DispatchActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        });
         }
 
 
