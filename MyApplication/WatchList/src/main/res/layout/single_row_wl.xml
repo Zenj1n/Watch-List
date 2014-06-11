@@ -8,52 +8,60 @@
     >
 
 
-<RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/wl_row_background_xml"
-                 >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/wl_row_background_xml"
+        >
 
-    <ImageView
-        android:src="@drawable/gameofthrones"
-        android:layout_margin="10dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/wl_image"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        />
+        <ImageView
+            android:src="@drawable/gameofthrones"
+            android:layout_margin="10dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/wl_image"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/wl_title"
-        android:layout_alignTop="@+id/wl_image"
-        android:layout_toRightOf="@+id/wl_image"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:textColor="#000000"
-        android:fontFamily="sans-serif-condensed"
-        android:textIsSelectable="false"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/wl_title"
+            android:layout_alignTop="@+id/wl_image"
+            android:layout_toRightOf="@+id/wl_image"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textColor="#000000"
+            android:fontFamily="sans-serif-condensed"
+            android:textIsSelectable="false"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/wl_message"
-        android:layout_alignBottom="@+id/wl_image"
-        android:layout_alignLeft="@+id/wl_title"
-        android:layout_alignStart="@+id/wl_title"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:fontFamily="sans-serif-light"
-        android:textColor="@android:color/darker_gray"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/wl_message"
+            android:layout_marginTop="45dp"
+            android:layout_alignLeft="@+id/wl_title"
+            android:layout_alignStart="@+id/wl_title"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@android:color/darker_gray"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@+id/wl_message"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+        </View>
 
 
-</RelativeLayout>
+    </RelativeLayout>
 
 </LinearLayout>
