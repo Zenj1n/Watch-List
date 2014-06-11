@@ -89,7 +89,7 @@ public class InfoPage extends ActionBarActivity {
                                     watching.saveInBackground();
 
 
-                                    ParseQuery<ParseObject> query = ParseQuery.getQuery("Koppel");
+                                    /*ParseQuery<ParseObject> query = ParseQuery.getQuery("Koppel");
                                     query.whereEqualTo("User", ParseUser.getCurrentUser());
                                     query.whereEqualTo("Serie", Title.getText());
                                     query.findInBackground(new FindCallback<ParseObject>()  {
@@ -101,7 +101,7 @@ public class InfoPage extends ActionBarActivity {
 
                                             }
                                         }
-                                    });
+                                    }); */
 
 
 
