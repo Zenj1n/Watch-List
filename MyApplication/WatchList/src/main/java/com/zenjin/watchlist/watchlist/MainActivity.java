@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseObject;
@@ -30,7 +31,6 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         Parse.initialize(this, "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
-        
 
         LogInData = getSharedPreferences(LogInfile, 0);
         String LastUser = LogInData.getString("username", "");

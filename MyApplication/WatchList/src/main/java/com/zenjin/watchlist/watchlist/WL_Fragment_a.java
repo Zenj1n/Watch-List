@@ -48,6 +48,18 @@ public class WL_Fragment_a extends Fragment {
 
         Resources res = getResources();
 
+
+
+        // TODO: build method to create int array "a_images"
+        // TODO: build method to create string array and put it in "a_title"
+        // TODO: build method to create string array and put it in "a_message"
+        
+        // TODO: same things with fragment "b" and "c"
+
+
+
+
+
         a_title= res.getStringArray(R.array.wl_a_title);
         a_message= res.getStringArray(R.array.wl_a_message);
 
@@ -59,6 +71,10 @@ public class WL_Fragment_a extends Fragment {
         mListView = getListView();
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
+
+
+                Toast.makeText(getActivity(), "Positie "+i , Toast.LENGTH_SHORT).show();
+
 
                 Toast.makeText(getActivity(), "Positie "+i , Toast.LENGTH_SHORT).show();
                 intent = new Intent(getActivity(),InfoPage.class);

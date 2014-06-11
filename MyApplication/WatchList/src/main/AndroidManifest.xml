@@ -11,31 +11,71 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat.Light" >
+
         <activity
-            android:name=".WatchlistActivity"
+            android:name="com.zenjin.watchlist.watchlist.WatchlistActivity"
             android:label="@string/wl_title" >
         </activity>
+
         <activity
-            android:name=".MainActivity"
+            android:name="com.zenjin.watchlist.watchlist.MainActivity"
             android:label="@string/app_name" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
-            android:name=".MyWatchList"
+            android:name="com.zenjin.watchlist.watchlist.MyWatchList"
             android:label="@string/title_activity_main_main" >
+
+        </activity>
+
+        <activity
+            android:name=".WatchlistActivity"
+            android:label="@string/title_activity_main_main" >
+
         </activity>
         <activity
             android:name=".InfoPage"
             android:label="@string/title_activity_info_page" >
         </activity>
         <activity
+
             android:name=".BaseActivity"
             android:label="@string/title_activity_base" >
         </activity>
+
+            android:name="com.zenjin.watchlist.watchlist.RegistreerActivity"
+            android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name="com.zenjin.watchlist.watchlist.DispatchActivity"
+            android:label="@string/title_activity_dispatch" >
+
+
+
+
+
+        </activity>
+        <activity
+            android:name="com.zenjin.watchlist.watchlist.SignUpOrLoginInActivity"
+            android:label="@string/title_activity_signup_or_login" >
+        </activity>
+        <activity
+            android:name="com.zenjin.watchlist.watchlist.LoginActivity"
+            android:label="@string/title_activity_login" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

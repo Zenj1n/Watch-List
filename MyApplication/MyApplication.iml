@@ -3,9 +3,10 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/.gradle" />
+      <sourceFolder url="file://$MODULE_DIR$/WatchList/src/main/res" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/WatchList/src/main/java" isTestSource="false" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
