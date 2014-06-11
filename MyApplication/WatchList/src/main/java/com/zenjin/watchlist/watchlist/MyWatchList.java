@@ -112,7 +112,7 @@ public class MyWatchList extends Activity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position,
                                 long id) {
-             displayView(position);
+            displayView(position);
         }
     }
 
@@ -125,7 +125,7 @@ public class MyWatchList extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-            if (mDrawerToggle.onOptionsItemSelected(item)) {
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
 
