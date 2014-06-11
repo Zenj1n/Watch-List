@@ -26,6 +26,7 @@ public class WatchlistActivity extends FragmentActivity implements ActionBar.Tab
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_watchlist);
 
+
         mViewPager= (ViewPager) findViewById(R.id.wl_pager);
         mViewPager.setAdapter(new WL_myAdapter(getSupportFragmentManager()));
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {

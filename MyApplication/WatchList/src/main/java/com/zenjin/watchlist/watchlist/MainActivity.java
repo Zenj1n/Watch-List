@@ -53,13 +53,6 @@ public class MainActivity extends ActionBarActivity {
 
                     Intent intent = new Intent(MainActivity.this, MyWatchList.class);
                     startActivity(intent);
-
-
-
-
-
-
-
                     CheckBox CBRemember=(CheckBox)findViewById(R.id.Remember);
                                 if (CBRemember.isChecked()) {
                                     SharedPreferences.Editor editor = LogInData.edit();

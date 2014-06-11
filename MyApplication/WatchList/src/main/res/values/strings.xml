@@ -5,7 +5,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="action_search">Search</string>
-    //Navigation Menu    <string name="drawer_open">Slider Menu Opened</string>
+    //Navigation Menu            <string name="drawer_open">Slider Menu Opened</string>
     <string name="drawer_close">Slider Menu Closed</string>
 
     <!-- Nav Drawer Menu Items -->
@@ -23,15 +23,14 @@
         <item>@drawable/ic_photos</item>
     </array>
 
-
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
-    //Home Screen    <string name="Home_head">Home</string>
-    //Tabs    <string name="hm_overview_tab">Overview</string>
+    //Home Screen            <string name="Home_head">Home</string>
+    //Tabs            <string name="hm_overview_tab">Overview</string>
     <string name="hm_discover_tab">Discover</string>
     <string name="hm_agenda_tab">Agenda</string>
-    //Overview tab    <string name="hm_overview">Overview</string>
-    //Discover tab    <string name="hm_discover">Discover</string>
+    //Overview tab            <string name="hm_overview">Overview</string>
+    //Discover tab            <string name="hm_discover">Discover</string>
     <string name="hm_discover_recommended">Recommended</string>
     <string name="hm_discover_popular">Popular</string>
     <string name="hm_discover_editor">Editors Choice</string>
@@ -58,7 +57,7 @@
         <item>Description8</item>
         <item>Description9</item>
     </string-array>
-    //Agenda tab    <string name="hm_agenda">Agenda</string>
+    //Agenda tab            <string name="hm_agenda">Agenda</string>
     <string name="hm_agenda_today">Today</string>
     <string name="hm_agenda_week">This Week</string>
     <string name="hm_agenda_season">This Season</string>
@@ -78,7 +77,7 @@
     <string name="beschrijving">Spoiled billionaire playboy Oliver Queen is missing
         and presumed dead when his yacht is lost at sea. He returns five years later a changed man,
         determined to clean up the city as a hooded vigilante armed with a bow.</string>
-    // strings for Watchlist. DO NOT CHANGE!    <string name="wl_title">Watchlist</string>
+    // strings for Watchlist. DO NOT CHANGE!            <string name="wl_title">Watchlist</string>
     <string name="wl_tab1">Watching</string>
     <string name="wl_tab2">Completed</string>
     <string name="wl_tab3">On hold</string>
@@ -132,5 +131,7 @@
     </string-array>
 
     <string name="title_activity_main_main">MyWatchList</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_base">BaseActivity</string>
 
 </resources>

@@ -45,6 +45,7 @@ public class MyWatchList extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_main);
+        
 
         mTitle = mDrawerTitle = getTitle();
 
@@ -146,7 +147,6 @@ public class MyWatchList extends Activity {
     }
 
     private void displayView(int position) {
-
         Fragment fragment = null;
         FragmentActivity fragmentActivity = null;
         switch (position) {
@@ -194,6 +194,8 @@ public class MyWatchList extends Activity {
         }
 
     }
+
+
 
     @Override
     public void setTitle(CharSequence title) {
