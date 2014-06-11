@@ -83,14 +83,14 @@ public class InfoPage extends ActionBarActivity {
                                 case R.id.watching:
 
                                     ParseObject watching = new ParseObject("Koppel");
-                                    watching.put("User", ParseUser.getCurrentUser());
+                                    watching.put("User", ParseUser.getCurrentUser().getUsername());
                                     watching.put("Serie",  Title.getText());
                                     watching.put("Status", "Watching");
                                     watching.saveInBackground();
 
 
                                     /*ParseQuery<ParseObject> query = ParseQuery.getQuery("Koppel");
-                                    query.whereEqualTo("User", ParseUser.getCurrentUser());
+                                    query.whereEqualTo("User", ParseUser.getCurrentUser.getUsername());
                                     query.whereEqualTo("Serie", Title.getText());
                                     query.findInBackground(new FindCallback<ParseObject>()  {
                                         @Override
