@@ -8,6 +8,7 @@
         <option name="modules">
           <set>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <option value="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication" />
             <option value="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication\Mealspotting" />
             <option value="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication\WatchList" />
@@ -20,6 +21,10 @@
             <option value="E:\Git Hub Repositories\Watch-List\MyApplication\WatchList" />
 >>>>>>> c5ff903902ffdb7eb126c2f1e5ee13f6e2803753
 >>>>>>> origin/Fabian-v3
+=======
+            <option value="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication" />
+            <option value="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication\WatchList" />
+>>>>>>> origin/Jason-v00
           </set>
         </option>
       </GradleProjectSettings>

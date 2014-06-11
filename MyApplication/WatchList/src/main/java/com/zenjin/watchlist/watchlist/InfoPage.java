@@ -1,16 +1,13 @@
 package com.zenjin.watchlist.watchlist;
 
-import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.os.StrictMode;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,9 +16,12 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
+import com.parse.FindCallback;
+import com.parse.Parse;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -33,7 +33,7 @@ import com.parse.SignUpCallback;
 
 
 import java.io.InputStream;
-import java.net.URL;
+import java.util.List;
 
 
 public class InfoPage extends ActionBarActivity {
@@ -63,6 +63,7 @@ public class InfoPage extends ActionBarActivity {
         setContentView(R.layout.infopage);
 
         Parse.initialize(this, "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
+
         new JSONParse().execute();
 
 
@@ -75,6 +76,58 @@ public class InfoPage extends ActionBarActivity {
                     MenuInflater inflater = popup.getMenuInflater();
                     inflater.inflate(R.menu.popup_menu, popup.getMenu());
                     popup.show();
+                    popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem menuItem) {
+                            switch (menuItem.getItemId()) {
+                                case R.id.watching:
+
+                                    ParseObject watching = new ParseObject("Koppel");
+                                    watching.put("User", ParseUser.getCurrentUser());
+                                    watching.put("Serie",  Title.getText());
+                                    watching.put("Status", "Watching");
+                                    watching.saveInBackground();
+
+
+                                    ParseQuery<ParseObject> query = ParseQuery.getQuery("Koppel");
+                                    query.whereEqualTo("User", ParseUser.getCurrentUser());
+                                    query.whereEqualTo("Serie", Title.getText());
+                                    query.findInBackground(new FindCallback<ParseObject>()  {
+                                        @Override
+                                        public void done(List<ParseObject> User, com.parse.ParseException e) {
+                                            if (e == null) {
+                                                
+                                            } else {
+
+                                            }
+                                        }
+                                    });
+
+
+
+
+
+                                    return true;
+                                case R.id.plantowatch:
+                                    ParseObject plantowatch = new ParseObject("Koppel");
+                                    plantowatch.put("User", ParseUser.getCurrentUser());
+                                    plantowatch.put("Serie", Title.getText());
+                                    plantowatch.put("Status", "Watching");
+                                    plantowatch.saveInBackground();
+                                    return true;
+                                case R.id.completed:
+                                    ParseObject completed = new ParseObject("Koppel");
+                                    completed.put("User", ParseUser.getCurrentUser());
+                                    completed.put("Serie", Title.getText());
+                                    completed.put("Status", "Watching");
+                                    completed.saveInBackground();
+                                    return true;
+                                default:
+                                    return false;
+                            }
+
+                        }
+                    });
 
                 }
             });
@@ -152,6 +205,7 @@ public class InfoPage extends ActionBarActivity {
             String urldisplay = urls[0];
             Bitmap mIcon11 = null;
             try {
+
                 InputStream in = new java.net.URL(urldisplay).openStream();
                 mIcon11 = BitmapFactory.decodeStream(in);
             } catch (Exception e) {
