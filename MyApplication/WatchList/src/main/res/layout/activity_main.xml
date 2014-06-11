@@ -82,7 +82,7 @@ android:background="#909090"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/Forgot"
+
         android:id="@+id/Forgot"
         android:layout_below="@+id/LogIn"
         android:layout_centerHorizontal="true"
