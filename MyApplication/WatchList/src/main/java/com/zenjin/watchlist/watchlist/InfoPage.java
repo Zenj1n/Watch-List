@@ -82,26 +82,29 @@ public class InfoPage extends ActionBarActivity {
                             switch (menuItem.getItemId()) {
                                 case R.id.watching:
 
-                                    ParseObject watching = new ParseObject("Koppel");
+                                    /*ParseObject watching = new ParseObject("Koppel");
                                     watching.put("User", ParseUser.getCurrentUser().getUsername());
                                     watching.put("Serie",  Title.getText());
                                     watching.put("Status", "Watching");
-                                    watching.saveInBackground();
+                                    watching.saveInBackground(); */
 
 
-                                    /*ParseQuery<ParseObject> query = ParseQuery.getQuery("Koppel");
-                                    query.whereEqualTo("User", ParseUser.getCurrentUser.getUsername());
+                                    ParseQuery<ParseObject> query = ParseQuery.getQuery("Koppel");
+                                    query.whereEqualTo("User", "Fabian");
                                     query.whereEqualTo("Serie", Title.getText());
                                     query.findInBackground(new FindCallback<ParseObject>()  {
                                         @Override
                                         public void done(List<ParseObject> User, com.parse.ParseException e) {
                                             if (e == null) {
+                                                ParseObject koppel = User.get(1);
+                                                koppel.put("Status", "test");
+                                                koppel.saveInBackground();
                                                 
                                             } else {
 
                                             }
                                         }
-                                    }); */
+                                    });
 
 
 
