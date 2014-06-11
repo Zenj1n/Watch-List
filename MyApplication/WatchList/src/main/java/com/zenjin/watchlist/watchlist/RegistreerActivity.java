@@ -84,7 +84,7 @@ public class RegistreerActivity extends ActionBarActivity {
 
                 // Set up a new Parse user
                 ParseUser user = new ParseUser();
-                user.setUsername(usernameregister.getText().toString());
+                user.setUsername(usernameregister.getText().toString().toLowerCase());
                 user.setPassword(passwordregister.getText().toString());
                 
                 // Call the Parse signup method
