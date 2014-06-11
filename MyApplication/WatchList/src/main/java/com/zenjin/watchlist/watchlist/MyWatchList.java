@@ -18,6 +18,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.parse.ParseUser;
 import com.zenjin.watchlist.watchlist.adapter.NavDrawerListAdapter;
 import com.zenjin.watchlist.watchlist.model.NavDrawerItem;
 
@@ -67,7 +69,8 @@ public class MyWatchList extends Activity {
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
         // InfoPage
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
-
+        //Log Out
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
 
 
 
@@ -158,6 +161,12 @@ public class MyWatchList extends Activity {
                 break;
             case 2:
                 fragment = new HomeFragment();
+                break;
+            case 3:
+                ParseUser.logOut();
+                Intent intent = new Intent(MyWatchList.this, DispatchActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
                 break;
 
             default:

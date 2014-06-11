@@ -68,10 +68,7 @@ public class InfoPage extends ActionBarActivity {
                     inflater.inflate(R.menu.popup_menu, popup.getMenu());
                     popup.show();
 
-                    ParseUser.logOut();
-                    Intent intent = new Intent(InfoPage.this, DispatchActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
+
                 }
             });
         }
