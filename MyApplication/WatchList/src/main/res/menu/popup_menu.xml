@@ -3,7 +3,8 @@
 
     <item
         android:id="@+id/watching"
-        android:title="Watching"/>
+        android:title="Watching"
+        />
 
     <item
         android:id="@+id/plantowatch"
