@@ -88,7 +88,9 @@ public class InfoPage extends ActionBarActivity {
                                         @Override
                                         public void done(List<ParseObject> User, com.parse.ParseException e) {
                                             if (e == null) {
-                                                
+                                                ParseObject koppel = User.get(0);
+                                                koppel.put("Status","test");
+                                                koppel.saveInBackground();
                                             } else {
 
                                             }
