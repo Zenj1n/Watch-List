@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/Remove_rating"
+        android:title="Remove rating"
+        />
+
+    <item
+        android:id="@+id/Very_bad"
+        android:title="1 - Very bad"
+        />
+
+    <item
+        android:id="@+id/Bad"
+        android:title="2 - Bad"/>
+
+    <item
+         android:id="@+id/Average"
+         android:title="3 - Average"/>
+
+    <item
+        android:id="@+id/Good"
+        android:title="4 - Good"/>
+    <item
+        android:id="@+id/Great"
+        android:title="5 - Great"/>
+
+</menu>  
