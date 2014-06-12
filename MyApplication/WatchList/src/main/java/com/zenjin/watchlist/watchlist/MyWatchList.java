@@ -1,17 +1,13 @@
 package com.zenjin.watchlist.watchlist;
 
 import java.util.ArrayList;
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
+
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -25,35 +21,34 @@ import com.zenjin.watchlist.watchlist.model.NavDrawerItem;
 
 
 
-public class MyWatchList extends Activity {
+public class MyWatchList extends BaseActivity {
 
-    private DrawerLayout mDrawerLayout;
+    protected DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
-
     private CharSequence mDrawerTitle;
-
-
     private CharSequence mTitle;
-
-
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
-
     private ArrayList<NavDrawerItem> navDrawerItems;
     private NavDrawerListAdapter adapter;
+
+    public static final int MENU_ITEM_MYWATCHLST_POSITION = 0;
+
+    public static final int MENU_ITEM_BROWSE_POSITION = 1;
+
+    public static final int MENU_ITEM_NEWSFEED_POSITION = 2;
+
+    public static final int MENU_ITEM_LOGOUT_POSITION = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_main);
-        
 
         mTitle = mDrawerTitle = getTitle();
 
-
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
-
 
         navMenuIcons = getResources()
                 .obtainTypedArray(R.array.nav_drawer_icons);
@@ -62,7 +57,6 @@ public class MyWatchList extends Activity {
         mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
 
         navDrawerItems = new ArrayList<NavDrawerItem>();
-
 
         // Home
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
@@ -73,17 +67,13 @@ public class MyWatchList extends Activity {
         //Log Out
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
 
-
-
         navMenuIcons.recycle();
 
         mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
 
-
         adapter = new NavDrawerListAdapter(getApplicationContext(),
                 navDrawerItems);
         mDrawerList.setAdapter(adapter);
-
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
@@ -105,9 +95,7 @@ public class MyWatchList extends Activity {
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-        if (savedInstanceState == null) {
-            displayView(0);
-        }
+
     }
 
 
@@ -116,7 +104,40 @@ public class MyWatchList extends Activity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position,
                                 long id) {
-            displayView(position);
+            Intent launchIntent = null;
+            switch (position) {
+                case 0:
+                    launchIntent = new Intent(getApplicationContext(), WatchlistActivity.class);
+                    launchIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK
+                        | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    mDrawerLayout.closeDrawer(mDrawerList);
+                    break;
+
+                case 1:
+                    launchIntent = new Intent(getApplicationContext(), HomeActivity.class);
+                    launchIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    mDrawerLayout.closeDrawer(mDrawerList);
+                    break;
+
+                case 2:
+                    launchIntent = new Intent(getApplicationContext(), WatchlistActivity.class);
+                    launchIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    mDrawerLayout.closeDrawer(mDrawerList);
+                    break;
+
+                case 3:
+                    ParseUser.logOut();
+                    Intent intent3 = new Intent(MyWatchList.this, DispatchActivity.class);
+                    intent3.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent3);
+                    break;
+
+            }
+            if (launchIntent == null) {
+                mDrawerLayout.closeDrawer(mDrawerList);
+                return;
+            }
+            startActivity(launchIntent);
         }
     }
 
@@ -149,60 +170,6 @@ public class MyWatchList extends Activity {
         return super.onPrepareOptionsMenu(menu);
     }
 
-    private void displayView(int position) {
-        Fragment fragment = null;
-        FragmentActivity fragmentActivity = null;
-        switch (position) {
-            case 0:
-                fragment = new HomeFragment();
-                break;
-            case 1:
-                fragmentActivity = new WatchlistActivity();
-                break;
-            case 2:
-                fragment = new HomeFragment();
-                break;
-            case 3:
-                ParseUser.logOut();
-                Intent intent = new Intent(MyWatchList.this, DispatchActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                break;
-
-            default:
-                break;
-        }
-
-        if (fragment != null) {
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.frame_container, fragment).commit();
-
-
-            mDrawerList.setItemChecked(position, true);
-            mDrawerList.setSelection(position);
-            setTitle(navMenuTitles[position]);
-            mDrawerLayout.closeDrawer(mDrawerList);
-        } else {
-
-            Log.e("MainActivity", "Error in creating fragment");
-        }
-
-        if (fragmentActivity != null) {
-            Intent intent = new Intent(this, WatchlistActivity.class);
-            startActivity(intent);
-
-
-            mDrawerList.setItemChecked(position, true);
-            mDrawerList.setSelection(position);
-            setTitle(navMenuTitles[position]);
-            mDrawerLayout.closeDrawer(mDrawerList);
-        } else {
-
-            Log.e("MainActivity", "Error in creating fragment");
-        }
-
-    }
 
 
 
@@ -212,10 +179,6 @@ public class MyWatchList extends Activity {
         getActionBar().setTitle(mTitle);
     }
 
-    /**
-     * When using the ActionBarDrawerToggle, you must call it during
-     * onPostCreate() and onConfigurationChanged()...
-     */
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -228,5 +191,4 @@ public class MyWatchList extends Activity {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
-
 }
