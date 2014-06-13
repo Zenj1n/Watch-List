@@ -74,48 +74,6 @@ public class InfoPage extends ActionBarActivity {
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         switch (menuItem.getItemId()) {
                             case R.id.watching:
-
-
-                                    /*ParseObject watching = new ParseObject("Koppel");
-                                    watching.put("User", ParseUser.getCurrentUser().getUsername());
-                                    watching.put("Serie",  Title.getText());
-                                    watching.put("Status", "Watching");
-                                    watching.saveInBackground(); */
-
-
-                                ParseQuery<ParseObject> query = ParseQuery.getQuery("Koppel");
-                                query.whereEqualTo("User", "Fabian");
-                                query.whereEqualTo("Serie", Title.getText());
-                                query.findInBackground(new FindCallback<ParseObject>() {
-                                    @Override
-                                    public void done(List<ParseObject> User, com.parse.ParseException e) {
-                                        if (e == null) {
-                                            ParseObject koppel = User.get(1);
-                                            koppel.put("Status", "test");
-                                            koppel.saveInBackground();
-
-                                        } else {
-
-                                        }
-                                    }
-                                });
-
-
-                                return true;
-                            case R.id.plantowatch:
-                                ParseObject plantowatch = new ParseObject("Koppel");
-                                plantowatch.put("User", ParseUser.getCurrentUser());
-                                plantowatch.put("Serie", Title.getText());
-                                plantowatch.put("Status", "Watching");
-                                plantowatch.saveInBackground();
-                                return true;
-                            case R.id.completed:
-                                ParseObject completed = new ParseObject("Koppel");
-                                completed.put("User", ParseUser.getCurrentUser());
-                                completed.put("Serie", Title.getText());
-                                completed.put("Status", "Watching");
-                                completed.saveInBackground();
-
                                 ParseQuery<ParseObject> watching_query = ParseQuery.getQuery("Koppel");
                                 watching_query.whereEqualTo("User", ParseUser.getCurrentUser().getUsername());
                                 watching_query.whereEqualTo("Serie", Title.getText());
@@ -132,6 +90,52 @@ public class InfoPage extends ActionBarActivity {
                                                 watching.put("User", ParseUser.getCurrentUser().getUsername());
                                                 watching.put("Serie", Title.getText());
                                                 watching.put("Status", "Watching");
+                                                watching.saveInBackground();
+                                            }
+                                        }
+                                    }
+                                });
+                                return true;
+                            case R.id.plantowatch:
+                                ParseQuery<ParseObject> plantowatch_query = ParseQuery.getQuery("Koppel");
+                                plantowatch_query.whereEqualTo("User", ParseUser.getCurrentUser().getUsername());
+                                plantowatch_query.whereEqualTo("Serie", Title.getText());
+                                plantowatch_query.findInBackground(new FindCallback<ParseObject>() {
+                                    @Override
+                                    public void done(List<ParseObject> User, com.parse.ParseException p) {
+                                        if (p == null) {
+                                            try {
+                                                ParseObject koppel = User.get(0);
+                                                koppel.put("Status", "Plan to watch");
+                                                koppel.saveInBackground();
+                                            } catch (Exception e) {
+                                                ParseObject watching = new ParseObject("Koppel");
+                                                watching.put("User", ParseUser.getCurrentUser().getUsername());
+                                                watching.put("Serie", Title.getText());
+                                                watching.put("Status", "Plan to watch");
+                                                watching.saveInBackground();
+                                            }
+                                        }
+                                    }
+                                });
+                                return true;
+                            case R.id.completed:
+                                ParseQuery<ParseObject> completed_query = ParseQuery.getQuery("Koppel");
+                                completed_query.whereEqualTo("User", ParseUser.getCurrentUser().getUsername());
+                                completed_query.whereEqualTo("Serie", Title.getText());
+                                completed_query.findInBackground(new FindCallback<ParseObject>() {
+                                    @Override
+                                    public void done(List<ParseObject> User, com.parse.ParseException p) {
+                                        if (p == null) {
+                                            try {
+                                                ParseObject koppel = User.get(0);
+                                                koppel.put("Status", "Completed");
+                                                koppel.saveInBackground();
+                                            } catch (Exception e) {
+                                                ParseObject watching = new ParseObject("Koppel");
+                                                watching.put("User", ParseUser.getCurrentUser().getUsername());
+                                                watching.put("Serie", Title.getText());
+                                                watching.put("Status", "Completed");
                                                 watching.saveInBackground();
                                             }
                                         }
