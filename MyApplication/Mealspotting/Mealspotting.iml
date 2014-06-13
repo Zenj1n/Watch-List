@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <module external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/.." external.system.id="GRADLE" external.system.module.group="MyApplication" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+=======
+<module external.linked.project.path="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication\Mealspotting" external.root.project.path="$MODULE_DIR$/.." external.system.id="GRADLE" external.system.module.group="MyApplication" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+>>>>>>> origin/Jason-V002
   <component name="FacetManager">
     <facet type="android-gradle" name="Android-Gradle">
       <configuration>
@@ -15,7 +19,11 @@
       <excludeFolder url="file://$MODULE_DIR$/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
     </content>
+<<<<<<< HEAD
     <orderEntry type="inheritedJdk" />
+=======
+    <orderEntry type="jdk" jdkName="JDK" jdkType="JavaSDK" />
+>>>>>>> origin/Jason-V002
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
