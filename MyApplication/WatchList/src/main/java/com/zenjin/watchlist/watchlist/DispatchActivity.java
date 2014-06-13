@@ -27,7 +27,7 @@ public class DispatchActivity extends Activity {
         // Check if there is current user info
         if (ParseUser.getCurrentUser() != null) {
             // Start an intent for the logged in activity
-            startActivity(new Intent(this, MyWatchList.class));
+            startActivity(new Intent(this, WatchlistActivity.class));
         } else {
             // Start and intent for the logged out activity
             startActivity(new Intent(this, SignUpOrLoginInActivity.class));
