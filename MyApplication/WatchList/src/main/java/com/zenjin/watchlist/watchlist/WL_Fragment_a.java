@@ -52,6 +52,9 @@ public class WL_Fragment_a extends Fragment {
 
         // TODO: build method to create int array "a_images"
         // TODO: build method to create string array and put it in "a_title"
+
+
+
         // TODO: build method to create string array and put it in "a_message"
         
         // TODO: same things with fragment "b" and "c"
