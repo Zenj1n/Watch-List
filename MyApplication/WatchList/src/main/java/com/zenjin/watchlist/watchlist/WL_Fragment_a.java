@@ -16,6 +16,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
+import com.parse.Parse;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
+import java.util.List;
+
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
@@ -53,6 +61,27 @@ public class WL_Fragment_a extends Fragment {
         // TODO: build method to create int array "a_images"
         // TODO: build method to create string array and put it in "a_title"
 
+        Parse.initialize(getActivity(), "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
+
+        ParseQuery<ParseObject> watching_query = ParseQuery.getQuery("Koppel");
+        watching_query.whereEqualTo("User", ParseUser.getCurrentUser().getUsername());
+        watching_query.whereEqualTo("Status", "Watching");
+        watching_query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> User, com.parse.ParseException e) {
+                if (e == null) {
+
+                    ParseObject koppel = User.get(0);
+                    String test = koppel.getString("Serie");
+                    Toast.makeText(getActivity(), test , Toast.LENGTH_SHORT).show();
+
+            } else {
+
+                    //error
+
+            }
+        }
+        });
 
 
         // TODO: build method to create string array and put it in "a_message"
