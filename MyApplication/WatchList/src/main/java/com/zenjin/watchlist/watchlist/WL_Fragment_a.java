@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +17,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.CountCallback;
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.text.ParseException;
 import java.util.List;
 
 
@@ -63,6 +66,26 @@ public class WL_Fragment_a extends Fragment {
 
         Parse.initialize(getActivity(), "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
 
+
+        ParseQuery<ParseObject> count_query = ParseQuery.getQuery("Koppel");
+        count_query.whereEqualTo("User", ParseUser.getCurrentUser().getUsername());
+        count_query.whereEqualTo("Status", "Watching");
+        count_query.countInBackground(new CountCallback() {
+            public void done(public int count, ParseException e) {
+                if (e == null) {
+
+                    Toast.makeText(getActivity(), count , Toast.LENGTH_SHORT).show();
+                    // The count request succeeded.
+
+
+                } else {
+
+                    Toast.makeText(getActivity(), "An error occured. Cannot get series count" , Toast.LENGTH_SHORT).show();
+                    // The request failed
+                }
+            }
+        });
+
         ParseQuery<ParseObject> watching_query = ParseQuery.getQuery("Koppel");
         watching_query.whereEqualTo("User", ParseUser.getCurrentUser().getUsername());
         watching_query.whereEqualTo("Status", "Watching");
@@ -72,10 +95,23 @@ public class WL_Fragment_a extends Fragment {
                 if (e == null) {
 
                     ParseObject koppel = User.get(0);
+
+                    /*
+
+                    for(int i=1; i<count; i++){
+
+                        a_title[i] = koppel.getString("Serie");
+
+                    }
+
+                    */
+
                     String test = koppel.getString("Serie");
                     Toast.makeText(getActivity(), test , Toast.LENGTH_SHORT).show();
 
             } else {
+
+                    Toast.makeText(getActivity(), "An error occured. Cannot get series name" , Toast.LENGTH_SHORT).show();
 
                     //error
 
