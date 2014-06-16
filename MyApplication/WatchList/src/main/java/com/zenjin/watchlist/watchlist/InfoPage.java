@@ -1,16 +1,13 @@
 package com.zenjin.watchlist.watchlist;
 
-import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.os.StrictMode;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,20 +16,16 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
-
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseObject;
-import com.parse.ParseUser;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.InputStream;
-import java.net.URL;
-import java.text.ParseException;
 import java.util.List;
 
 
@@ -81,43 +74,46 @@ public class InfoPage extends ActionBarActivity {
                             switch (menuItem.getItemId()) {
                                 case R.id.watching:
 
-                                    final ParseQuery<ParseObject> query = ParseQuery.getQuery("Koppel");
-                                    query.whereEqualTo("User", "d");
+                                    ParseObject watching = new ParseObject("Koppel");
+                                    watching.put("User", ParseUser.getCurrentUser());
+                                    watching.put("Serie",  Title.getText());
+                                    watching.put("Status", "Watching");
+                                    watching.saveInBackground();
+
+
+                                    ParseQuery<ParseObject> query = ParseQuery.getQuery("Koppel");
+                                    query.whereEqualTo("User", ParseUser.getCurrentUser());
                                     query.whereEqualTo("Serie", Title.getText());
                                     query.findInBackground(new FindCallback<ParseObject>()  {
                                         @Override
-                                        public void done(List<ParseObject> status, com.parse.ParseException e) {
+                                        public void done(List<ParseObject> User, com.parse.ParseException e) {
                                             if (e == null) {
-                                                ParseObject watching = new ParseObject("Koppel");
-                                                watching.put("User", "error");
-                                                watching.put("Serie",  Title.getText());
-                                                watching.put("Status", "Watching");
-                                                watching.saveInBackground();
-
+                                                ParseObject koppel = User.get(0);
+                                                koppel.put("Status","test");
+                                                koppel.saveInBackground();
                                             } else {
-                                                ParseObject watching = new ParseObject("Koppel");
-                                                watching.put("User", "error");
-                                                watching.put("Serie",  Title.getText());
-                                                watching.put("Status", "Watching");
-                                                watching.saveInBackground();
+
                                             }
                                         }
                                     });
 
 
+
+
+
                                     return true;
                                 case R.id.plantowatch:
                                     ParseObject plantowatch = new ParseObject("Koppel");
-                                    plantowatch.put("User", "joke");
+                                    plantowatch.put("User", ParseUser.getCurrentUser());
                                     plantowatch.put("Serie", Title.getText());
-                                    plantowatch.put("Status", "Plan to watch");
+                                    plantowatch.put("Status", "Watching");
                                     plantowatch.saveInBackground();
                                     return true;
                                 case R.id.completed:
                                     ParseObject completed = new ParseObject("Koppel");
                                     completed.put("User", ParseUser.getCurrentUser());
                                     completed.put("Serie", Title.getText());
-                                    completed.put("Status", "Completed");
+                                    completed.put("Status", "Watching");
                                     completed.saveInBackground();
                                     return true;
                                 default:
