@@ -35,7 +35,7 @@ public class SearchActivity extends ActionBarActivity {
             }
 
             public void performSearch() {
-                String word = searchET.getText().toString();
+                String word = java.net.URLEncoder.encode(searchET.getText().toString());
                 intent = new Intent(SearchActivity.this,InfoPage.class);
                 intent.putExtra(EXTRA_MESSAGE, word);
                 startActivity(intent);
