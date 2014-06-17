@@ -56,86 +56,14 @@ public class WL_Fragment_a extends Fragment {
 
         Resources res = getResources();
 
-
-
         // TODO: build method to create int array "a_images"
         // TODO: build method to create string array and put it in "a_title"
+        // TODO: build method to create string array and put it in "a_message"
+        // TODO: same things with fragment "b" and "c"
 
         Parse.initialize(getActivity(), "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
 
-
-        /*
-
-        ParseQuery<ParseObject> count_query = ParseQuery.getQuery("Koppel");
-        count_query.whereEqualTo("User", ParseUser.getCurrentUser().getUsername());
-        count_query.whereEqualTo("Status", "Watching");
-        count_query.countInBackground(new CountCallback() {
-            public void done(int count, ParseException e) {
-                if (e == null) {
-
-                    //Toast.makeText(getActivity(), count , Toast.LENGTH_SHORT).show();
-                    // The count request succeeded.
-
-
-                } else {
-
-                    Toast.makeText(getActivity(), "An error occured. Cannot get series count" , Toast.LENGTH_SHORT).show();
-                    // The request failed
-                }
-            }
-        }); */
-
-
-
-        ParseQuery<ParseObject> watching_query = ParseQuery.getQuery("Koppel");
-        watching_query.whereEqualTo("User", ParseUser.getCurrentUser().getUsername());
-        watching_query.whereEqualTo("Status", "Watching");
-        watching_query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> User, com.parse.ParseException e) {
-                if (e == null) {
-
-                    ParseObject koppel = User.get(1);
-                    int count = User.size() - 1;
-                    //Toast.makeText(getActivity(), toString(count) , Toast.LENGTH_SHORT).show();
-
-
-
-
-
-
-                    /*
-
-                    for(int i=1; i<count; i++){
-
-                        a_title[i] = koppel.getString("Serie");
-
-                    }
-
-                    */
-
-                    String test = koppel.getString("Serie");
-                    Toast.makeText(getActivity(), test , Toast.LENGTH_SHORT).show();
-
-            } else {
-
-                    Toast.makeText(getActivity(), "An error occured. Cannot get series name" , Toast.LENGTH_SHORT).show();
-
-                    //error
-
-            }
-        }
-        });
-
-
-
-        // TODO: build method to create string array and put it in "a_message"
-        
-        // TODO: same things with fragment "b" and "c"
-
-
-
-
+        gettitles();
 
         a_title= res.getStringArray(R.array.wl_a_title);
         a_message= res.getStringArray(R.array.wl_a_message);
@@ -149,11 +77,9 @@ public class WL_Fragment_a extends Fragment {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
 
-
                 Toast.makeText(getActivity(), "Positie "+i , Toast.LENGTH_SHORT).show();
 
-
-                Toast.makeText(getActivity(), "Positie "+i , Toast.LENGTH_SHORT).show();
+                /*
                 intent = new Intent(getActivity(),InfoPage.class);
 
                 switch(i) {
@@ -213,19 +139,59 @@ public class WL_Fragment_a extends Fragment {
                         startActivity(intent);
                         break;
 
-
                 }
+
+                */
 
             }
         });
 
+        gettitles();
+
         myArrayAdaptera adapter = new myArrayAdaptera(getActivity().getApplicationContext(),a_title,a_images,a_message);
         mListView.setAdapter(adapter);
 
-
-
         return v;
+
     }
+
+
+    public void gettitles() {
+
+        ParseQuery<ParseObject> watching_query = ParseQuery.getQuery("Koppel");
+        watching_query.whereEqualTo("User", ParseUser.getCurrentUser().getUsername());
+        watching_query.whereEqualTo("Status", "Watching");
+        watching_query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> User, com.parse.ParseException e) {
+                if (e == null) {
+
+                    int count = User.size();                // aantal items op parse
+                    int i = 0;
+
+                    do {
+
+                        ParseObject koppel = User.get(i);
+                        a_title[i] = koppel.getString("Serie");
+                        i++;
+
+                    }
+                    while (i < count);
+
+                    //Toast.makeText(getActivity(), test , Toast.LENGTH_SHORT).show();
+
+                } else {
+
+                    Toast.makeText(getActivity(), "An error occured. Cannot get serie names" , Toast.LENGTH_SHORT).show();
+
+                      //error
+
+                }
+            }
+        });
+
+    }
+
 
     public ListView getListView() {
         return mListView;
@@ -239,12 +205,12 @@ class myArrayAdaptera extends ArrayAdapter<String>
     String[] titlearray;
     String[] messagearray;
 
-    myArrayAdaptera(Context a,String[] wl_a_title,int img[],String[] mssg)
+    myArrayAdaptera(Context a,String[] a_title,int img[],String[] mssg)
     {
-        super(a,R.layout.single_row_wl,R.id.wl_title,wl_a_title);
+        super(a,R.layout.single_row_wl,R.id.wl_title,a_title);
         this.mContext=a;
         this.imagesarray=img;
-        this.titlearray=wl_a_title;
+        this.titlearray=a_title;
         this.messagearray=mssg;
     }
 
