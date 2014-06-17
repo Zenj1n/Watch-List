@@ -26,12 +26,12 @@
 
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
-    //Home Screen                    <string name="Home_head">Home</string>
-    //Tabs                           <string name="hm_overview_tab">Overview</string>
+    //Home Screen                        <string name="Home_head">Home</string>
+    //Tabs                               <string name="hm_overview_tab">Overview</string>
     <string name="hm_discover_tab">Discover</string>
     <string name="hm_agenda_tab">Agenda</string>
-    //Overview tab                    <string name="hm_overview">Overview</string>
-    //Discover tab                    <string name="hm_discover">Discover</string>
+    //Overview tab                        <string name="hm_overview">Overview</string>
+    //Discover tab                        <string name="hm_discover">Discover</string>
     <string name="hm_discover_recommended">Recommended</string>
     <string name="hm_discover_popular">Popular</string>
     <string name="hm_discover_editor">Editors Choice</string>
@@ -60,8 +60,6 @@
     </string-array>
 
     <string name="hm_agenda_today">Today</string>
-
-
     <string name="LogIn">Log In</string>
     <string name="Remember">Remember me</string>
     <string name="Password">Password</string>
@@ -75,7 +73,7 @@
     <string name="genres">Action, Adventure, Crime</string>
     <string name="statusw">Status :</string>
     <string name="status">Airing </string>
-    // strings for Watchlist. DO NOT CHANGE!                    <string name="wl_title">MyWatchlist</string>
+    // strings for Watchlist. DO NOT CHANGE!                        <string name="wl_title">MyWatchlist</string>
     <string name="wl_tab1">Watching</string>
     <string name="wl_tab2">Completed</string>
     <string name="wl_tab3">On hold</string>
@@ -171,5 +169,6 @@
     <string name="title_activity_sign_up_or_login_in">SignUpOrLoginInActivity</string>
     <string name="title_activity_test">TestActivity</string>
     <string name="title_activity_test_activity2">TestActivity2</string>
+    <string name="title_activity_search">SearchActivity</string>
 
 </resources>

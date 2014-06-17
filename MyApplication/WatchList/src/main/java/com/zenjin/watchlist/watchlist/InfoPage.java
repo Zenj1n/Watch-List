@@ -156,8 +156,10 @@ public class InfoPage extends ActionBarActivity {
         @Override
         protected JSONObject doInBackground(String... args) {
 
+
             Intent intent = getIntent();
-            String message = intent.getStringExtra(WL_Fragment_a.EXTRA_MESSAGE);
+            String message = intent.getStringExtra(SearchActivity.EXTRA_MESSAGE);
+            //String message = intent.getStringExtra(WL_Fragment_a.EXTRA_MESSAGE);
 
             String url = "http://www.omdbapi.com/?t=" + message + "&plot=full";
             ServiceHandler jParser = new ServiceHandler();
