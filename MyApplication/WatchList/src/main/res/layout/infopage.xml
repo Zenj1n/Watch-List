@@ -103,7 +103,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/TStatus"
-            android:text="@string/status"
+
             android:layout_toRightOf="@+id/TStatusW"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="55dp"/>

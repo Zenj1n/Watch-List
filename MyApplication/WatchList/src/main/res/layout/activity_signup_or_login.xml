@@ -16,7 +16,8 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="128dp"
-            android:text="@string/log_in" />
+            android:text="@string/log_in"
+            android:onClick="onClickLogin"/>
 
         <Button
             android:id="@+id/signUpButton"

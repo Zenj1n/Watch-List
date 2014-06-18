@@ -40,6 +40,7 @@ public class InfoPage extends ActionBarActivity {
     TextView Title;
     TextView TGenres;
     TextView Tplot;
+    TextView TStatus;
     ImageView Image;
 
 
@@ -48,6 +49,7 @@ public class InfoPage extends ActionBarActivity {
     private static final String TAG_PLOT = "Plot";
     private static final String TAG_IMAGE = "Poster";
 
+    private static final String TAG_STATUS = "status";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +77,7 @@ public class InfoPage extends ActionBarActivity {
                         switch (menuItem.getItemId()) {
                             case R.id.watching:
                                 ParseQuery<ParseObject> watching_query = ParseQuery.getQuery("Koppel");
-                                watching_query.whereEqualTo("User", ParseUser.getCurrentUser().getUsername());
+                                watching_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
                                 watching_query.whereEqualTo("Serie", Title.getText());
                                 watching_query.findInBackground(new FindCallback<ParseObject>() {
                                     @Override
@@ -87,7 +89,7 @@ public class InfoPage extends ActionBarActivity {
                                                 koppel.saveInBackground();
                                             } catch (Exception e) {
                                                 ParseObject watching = new ParseObject("Koppel");
-                                                watching.put("User", ParseUser.getCurrentUser().getUsername());
+                                                watching.put(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
                                                 watching.put("Serie", Title.getText());
                                                 watching.put("Status", "Watching");
                                                 watching.saveInBackground();
@@ -305,6 +307,8 @@ public class InfoPage extends ActionBarActivity {
             TGenres = (TextView) findViewById(R.id.Tgenres);
             Tplot = (TextView) findViewById(R.id.plot);
             Image = (ImageView) findViewById(R.id.Image);
+            TStatus = (TextView)findViewById(R.id.TStatus);
+
 
             pDialog = new ProgressDialog(InfoPage.this);
             pDialog.setMessage("Getting Data ...");
@@ -322,13 +326,32 @@ public class InfoPage extends ActionBarActivity {
             //String message = intent.getStringExtra(WL_Fragment_a.EXTRA_MESSAGE);
 
             String url = "http://www.omdbapi.com/?t=" + message + "&plot=full";
+            String urlTrakt = "http://api.trakt.tv/show/summary.json/390983740f2092270bc0fa267334db88/"+ message;
             ServiceHandler jParser = new ServiceHandler();
+
             // Getting JSON from URL
             JSONObject json = jParser.getJSONFromUrl(url);
+            JSONObject jsonTrakt = jParser.getJSONFromUrl(urlTrakt);
+
+            try {
+
+            String Status = jsonTrakt.getString(TAG_STATUS);
+
+            TStatus.setText(Status);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
             return json;
 
+
+
+
+
         }
+
+
 
         @Override
         protected void onPostExecute(JSONObject json) {
@@ -346,6 +369,7 @@ public class InfoPage extends ActionBarActivity {
                 Title.setText(TitleMovie);
                 TGenres.setText(GenreMovie);
                 Tplot.setText(PlotMovie);
+
 
                 new DownloadImageTask((ImageView) findViewById(R.id.Image))
                         .execute(json.getString(TAG_IMAGE));
