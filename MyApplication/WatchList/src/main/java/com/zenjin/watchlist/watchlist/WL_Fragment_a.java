@@ -2,10 +2,10 @@ package com.zenjin.watchlist.watchlist;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +22,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -32,9 +33,6 @@ import java.util.List;
 public class WL_Fragment_a extends Fragment {
 
     public final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";
-    Intent intent;
-
-
 
     ListView mListView;
     String[] a_title;
@@ -63,21 +61,25 @@ public class WL_Fragment_a extends Fragment {
 
         Parse.initialize(getActivity(), "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
 
-        gettitles();
-
         a_title= res.getStringArray(R.array.wl_a_title);
         a_message= res.getStringArray(R.array.wl_a_message);
+
+        gettitles();
 
         View v = inflater.inflate(R.layout.fragment_a_wl, container, false);
 
         mListView = (ListView) v.findViewById(R.id.wl_a_listview);
 
-
         mListView = getListView();
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
 
-                Toast.makeText(getActivity(), "Positie "+i , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Positie "+i +"titel is" + a_title[i], Toast.LENGTH_SHORT).show();
+
+                //Intent intent;
+                //intent = new Intent(getActivity(),InfoPage.class);
+                //intent.putExtra(EXTRA_MESSAGE, a_title[i] );
+                //startActivity(intent);
 
                 /*
                 intent = new Intent(getActivity(),InfoPage.class);
@@ -146,10 +148,10 @@ public class WL_Fragment_a extends Fragment {
             }
         });
 
-        gettitles();
+        //createview();
+        //updateview();
 
-        myArrayAdaptera adapter = new myArrayAdaptera(getActivity().getApplicationContext(),a_title,a_images,a_message);
-        mListView.setAdapter(adapter);
+
 
         return v;
 
@@ -173,12 +175,13 @@ public class WL_Fragment_a extends Fragment {
 
                         ParseObject koppel = User.get(i);
                         a_title[i] = koppel.getString("Serie");
+
                         i++;
 
                     }
                     while (i < count);
 
-                    //Toast.makeText(getActivity(), test , Toast.LENGTH_SHORT).show();
+                    createview(a_title);
 
                 } else {
 
@@ -190,12 +193,28 @@ public class WL_Fragment_a extends Fragment {
             }
         });
 
+
+    }
+
+    public void createview(String[] a_title){
+
+        Log.i("MyActivity", "string is" + Arrays.toString(a_title));
+
+        myArrayAdaptera adapter = new myArrayAdaptera(getActivity().getApplicationContext(),a_title,a_images,a_message);
+        mListView.setAdapter(adapter);
+
+    }
+
+    public void updateview(){
+
+
     }
 
 
     public ListView getListView() {
         return mListView;
     }
+
 }
 
 class myArrayAdaptera extends ArrayAdapter<String>
@@ -205,12 +224,12 @@ class myArrayAdaptera extends ArrayAdapter<String>
     String[] titlearray;
     String[] messagearray;
 
-    myArrayAdaptera(Context a,String[] a_title,int img[],String[] mssg)
+    myArrayAdaptera(Context a,String[] wl_a_title,int img[],String[] mssg)
     {
-        super(a,R.layout.single_row_wl,R.id.wl_title,a_title);
+        super(a,R.layout.single_row_wl,R.id.wl_title,wl_a_title);
         this.mContext=a;
         this.imagesarray=img;
-        this.titlearray=a_title;
+        this.titlearray=wl_a_title;
         this.messagearray=mssg;
     }
 
