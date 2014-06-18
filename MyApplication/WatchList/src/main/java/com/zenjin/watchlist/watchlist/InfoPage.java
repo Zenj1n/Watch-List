@@ -40,6 +40,8 @@ public class InfoPage extends Activity {
     private static final String YOU_RATED = "You rated ";
     private static final String ADD_TO_YOUR_LIST_FIRST = "Add to your list first";
     private static final String RATING_REMOVED = "Rating removed";
+    private static final String TAG_SEASONS = "seasons";
+
     Button Baddto;
     Button Brate;
     TextView Title;
@@ -47,6 +49,7 @@ public class InfoPage extends Activity {
     TextView Tplot;
     TextView TStatus;
     ImageView Image;
+    JSONArray seasons = null;
 
 
     private static final String TAG_TITLE = "Title";
@@ -198,21 +201,25 @@ public class InfoPage extends Activity {
 
             Intent intent = getIntent();
             String message = intent.getStringExtra(SearchActivity.EXTRA_MESSAGE);
-            String message2 = intent.getStringExtra(SearchActivity.EXTRA_MESSAGE1);
+            String message2 = intent.getStringExtra("trakt");
+
 
 
             String url = "http://www.omdbapi.com/?t=" + message + "&plot=full";
             String urlTrakt = "http://api.trakt.tv/show/summary.json/390983740f2092270bc0fa267334db88/"+ message2;
+            String urlTraktSeasons = "http://api.trakt.tv/show/seasons.json/390983740f2092270bc0fa267334db88/"+ message2;
             ServiceHandler jParser = new ServiceHandler();
 
             // Getting JSON from URL
             JSONObject json = jParser.getJSONFromUrl(url);
             JSONObject jsonTrakt = jParser.getJSONFromUrl(urlTrakt);
+            JSONObject jsonSeasons = jParser.getJSONFromUrl(urlTraktSeasons);
 
             JSONArray jsonArray = new JSONArray();
 
             jsonArray.put(json);
             jsonArray.put(jsonTrakt);
+            jsonArray.put(jsonSeasons);
 
             return jsonArray;
 
@@ -231,9 +238,11 @@ public class InfoPage extends Activity {
             pDialog.dismiss();
             try {
 
-
+                //seasons = jsonArray.getJSONObject(2).getJSONArray(TAG_SEASONS);
+                //JSONObject allSeasons = seasons.getJSONObject(0);
 
                 // Storing  JSON item in a Variable
+                //int Seasons = allSeasons.getInt(TAG_SEASONS);
                 String TitleMovie = jsonArray.getJSONObject(0).getString(TAG_TITLE);
                 String PlotMovie = jsonArray.getJSONObject(0).getString(TAG_PLOT);
                 String GenreMovie = jsonArray.getJSONObject(0).getString(TAG_GENRE);
@@ -241,6 +250,7 @@ public class InfoPage extends Activity {
 
 
                 //Set JSON Data in TextView
+                //Title.setText(Seasons);
                 Title.setText(TitleMovie);
                 TGenres.setText(GenreMovie);
                 Tplot.setText(PlotMovie);
