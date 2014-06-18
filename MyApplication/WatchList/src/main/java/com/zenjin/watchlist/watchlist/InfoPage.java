@@ -26,6 +26,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -332,8 +333,9 @@ public class InfoPage extends ActionBarActivity {
             // Getting JSON from URL
             JSONObject json = jParser.getJSONFromUrl(url);
             JSONObject jsonTrakt = jParser.getJSONFromUrl(urlTrakt);
-
+            
             return json;
+
 
 
 
@@ -347,6 +349,7 @@ public class InfoPage extends ActionBarActivity {
         protected void onPostExecute(JSONObject json) {
             pDialog.dismiss();
             try {
+
 
 
                 // Storing  JSON item in a Variable
