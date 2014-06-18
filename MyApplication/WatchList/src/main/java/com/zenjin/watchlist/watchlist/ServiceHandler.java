@@ -23,6 +23,7 @@ import java.io.UnsupportedEncodingException;
 public class ServiceHandler {
 
 
+    public static final String ISO_8859_1 = "iso-8859-1";
     static InputStream is = null;
     static JSONObject jObj = null;
     static String json = "";
@@ -49,7 +50,7 @@ public class ServiceHandler {
         }
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(
-                    is, "iso-8859-1"), 8);
+                    is, ISO_8859_1), 8);
             StringBuilder sb = new StringBuilder();
             String line = null;
             while ((line = reader.readLine()) != null) {
