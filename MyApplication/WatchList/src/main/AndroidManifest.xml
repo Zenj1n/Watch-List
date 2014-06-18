@@ -14,11 +14,6 @@
         <activity
             android:name=".WatchlistActivity"
             android:label="@string/wl_title" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
@@ -42,6 +37,13 @@
         <activity
             android:name=".DispatchActivity"
             android:label="@string/title_activity_dispatch" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
         <activity
             android:name=".SignUpOrLoginInActivity"
