@@ -1,5 +1,6 @@
 package com.zenjin.watchlist.watchlist;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -11,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
-public class SearchActivity extends ActionBarActivity {
+public class SearchActivity extends Activity {
 
     private EditText searchET;
     public final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";

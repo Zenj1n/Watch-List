@@ -1,5 +1,6 @@
 package com.zenjin.watchlist.watchlist;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +14,7 @@ import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
-public class LoginActivity extends ActionBarActivity {
+public class LoginActivity extends Activity {
 
     // UI references.
     private EditText usernameView;

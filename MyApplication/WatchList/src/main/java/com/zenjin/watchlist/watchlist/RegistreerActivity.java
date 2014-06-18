@@ -19,7 +19,7 @@ import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 
-public class RegistreerActivity extends ActionBarActivity {
+public class RegistreerActivity extends Activity {
     private EditText usernameregister;
     private EditText passwordregister;
     private EditText passwordAgainView;

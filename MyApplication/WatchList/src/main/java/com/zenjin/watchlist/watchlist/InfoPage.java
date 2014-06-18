@@ -1,6 +1,7 @@
 package com.zenjin.watchlist.watchlist;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -33,7 +34,7 @@ import java.io.InputStream;
 import java.util.List;
 
 
-public class InfoPage extends ActionBarActivity {
+public class InfoPage extends Activity {
 
     Button Baddto;
     Button Brate;
