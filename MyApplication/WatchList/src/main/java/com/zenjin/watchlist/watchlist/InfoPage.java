@@ -333,16 +333,6 @@ public class InfoPage extends ActionBarActivity {
             JSONObject json = jParser.getJSONFromUrl(url);
             JSONObject jsonTrakt = jParser.getJSONFromUrl(urlTrakt);
 
-            try {
-
-            String Status = jsonTrakt.getString(TAG_STATUS);
-
-            TStatus.setText(Status);
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
             return json;
 
 
@@ -363,12 +353,14 @@ public class InfoPage extends ActionBarActivity {
                 String TitleMovie = json.getString(TAG_TITLE);
                 String PlotMovie = json.getString(TAG_PLOT);
                 String GenreMovie = json.getString(TAG_GENRE);
+                //String Status = jsonTrakt.getString(TAG_STATUS);
 
 
                 //Set JSON Data in TextView
                 Title.setText(TitleMovie);
                 TGenres.setText(GenreMovie);
                 Tplot.setText(PlotMovie);
+               // TStatus.setText(Status);
 
 
                 new DownloadImageTask((ImageView) findViewById(R.id.Image))
