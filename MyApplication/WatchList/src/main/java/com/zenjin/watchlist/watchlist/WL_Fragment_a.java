@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +23,6 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -37,10 +35,15 @@ public class WL_Fragment_a extends Fragment {
     public final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";
 
     ListView mListView;
+
     String[] a_title;
     ArrayList a_titlelist = new ArrayList();
+
     String[] a_message;
-    int[] a_images = {R.drawable.gameofthrones,R.drawable.thebigbangtheory,R.drawable.truebloodimage,R.drawable.ncis,R.drawable.criminalminds,R.drawable.prettylittleliars,R.drawable.fallingskies,R.drawable.familyguy,R.drawable.hannibal,R.drawable.bones,R.drawable.arrow};
+    ArrayList a_messagelist = new ArrayList();
+    ArrayList a_messageurl = new ArrayList();
+
+    int[] a_images = {R.drawable.gameofthrones,R.drawable.thebigbangtheory,R.drawable.thebigbangtheory,R.drawable.thebigbangtheory,R.drawable.thebigbangtheory};
 
 
     public WL_Fragment_a() {
@@ -67,7 +70,22 @@ public class WL_Fragment_a extends Fragment {
         //a_title= res.getStringArray(R.array.wl_a_title);
         a_message= res.getStringArray(R.array.wl_a_message);
 
-        gettitles();
+
+
+
+
+
+
+        getvalues();
+        //gettitles();
+        //getmessages();
+
+
+
+
+
+
+
 
         View v = inflater.inflate(R.layout.fragment_a_wl, container, false);
 
@@ -81,6 +99,7 @@ public class WL_Fragment_a extends Fragment {
 
                 Intent intent;
                 intent = new Intent(getActivity(),InfoPage.class);
+
                 String titleSerieRaw = (String) a_titlelist.get(i);
                 String titleSerie = java.net.URLEncoder.encode(titleSerieRaw);
 
@@ -91,69 +110,7 @@ public class WL_Fragment_a extends Fragment {
                 intent.putExtra(EXTRA_MESSAGE,titleSerie );
                 startActivity(intent);
 
-                /*
-                intent = new Intent(getActivity(),InfoPage.class);
 
-                switch(i) {
-
-                    case 0:
-                        intent.putExtra(EXTRA_MESSAGE, "Game+of+thrones");
-                        startActivity(intent);
-                        break;
-
-                    case 1:
-                        intent.putExtra(EXTRA_MESSAGE, "The+big+bang+theory");
-                        startActivity(intent);
-                        break;
-
-                    case 2:
-                        intent.putExtra(EXTRA_MESSAGE, "True+blood");
-                        startActivity(intent);
-                        break;
-
-                    case 3:
-                        intent.putExtra(EXTRA_MESSAGE, "NCIS");
-                        startActivity(intent);
-                        break;
-
-                    case 4:
-                        intent.putExtra(EXTRA_MESSAGE, "Criminal+minds");
-                        startActivity(intent);
-                        break;
-
-                    case 5:
-                        intent.putExtra(EXTRA_MESSAGE, "Pretty+little+liars");
-                        startActivity(intent);
-                        break;
-
-                    case 6:
-                        intent.putExtra(EXTRA_MESSAGE, "Falling+skies");
-                        startActivity(intent);
-                        break;
-
-                    case 7:
-                        intent.putExtra(EXTRA_MESSAGE, "Family+guy");
-                        startActivity(intent);
-                        break;
-
-                    case 8:
-                        intent.putExtra(EXTRA_MESSAGE, "Hannibal");
-                        startActivity(intent);
-                        break;
-
-                    case 9:
-                        intent.putExtra(EXTRA_MESSAGE, "Bones");
-                        startActivity(intent);
-                        break;
-
-                    case 10:
-                        intent.putExtra(EXTRA_MESSAGE, "Arrow");
-                        startActivity(intent);
-                        break;
-
-                }
-
-                */
 
             }
         });
@@ -163,10 +120,18 @@ public class WL_Fragment_a extends Fragment {
 
 
 
+
+
         return v;
 
     }
 
+
+    public void getvalues(){
+
+        gettitles();            // haal titels op.
+
+    }
 
     public void gettitles() {
 
@@ -206,7 +171,9 @@ public class WL_Fragment_a extends Fragment {
 
                     String[] a_title = (String[]) a_titlelist.toArray(new String[a_titlelist.size()]);
 
-                    createview(a_title);
+                    getmessages(a_title);
+
+                    //createview(a_title);
 
                 } else {
 
@@ -221,17 +188,57 @@ public class WL_Fragment_a extends Fragment {
 
     }
 
-    public void createview(String[] a_title){
+    public void getmessages(String[] a_title) {
 
-        Log.i("MyActivity", "string is" + Arrays.toString(a_title));
+
+        int count = a_titlelist.size();
+        int i = 0;
+        String check = (String) a_titlelist.get(0);
+
+        if (check == "No series added") {
+
+            a_messagelist.clear();
+            a_messagelist.add(i, "Search for a show to get started");
+
+        } else {
+
+
+                try {
+
+                    do {
+
+                        //String serie = (String) a_messagelist.get(i);
+                        a_messagelist.add(i, "//voeg ddeze tekst toe. positie is " + i + "serie is " );
+
+                        i++;
+
+                    }
+                    while (i < count);
+
+                } catch (Exception a) {
+
+                    a_messagelist.clear();
+                    a_messagelist.add(i, "An error occured. Cannot get serie messages");
+                    //Toast.makeText(getActivity(), "An error occured. Cannot get serie names" , Toast.LENGTH_SHORT).show();
+
+                }
+
+
+
+
+
+            }
+
+        String[] a_message = (String[]) a_messagelist.toArray(new String[a_messagelist.size()]);
+        createview(a_title, a_message);
+    }
+
+    public void createview(String[] a_title, String[] a_message){
+
+        //Log.i("MyActivity", "string is" + Arrays.toString(a_title));
 
         myArrayAdaptera adapter = new myArrayAdaptera(getActivity().getApplicationContext(),a_title,a_images,a_message);
         mListView.setAdapter(adapter);
-
-    }
-
-    public void updateview(){
-
 
     }
 
