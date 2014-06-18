@@ -81,7 +81,14 @@ public class WL_Fragment_a extends Fragment {
 
                 Intent intent;
                 intent = new Intent(getActivity(),InfoPage.class);
-                intent.putExtra(EXTRA_MESSAGE, (String) a_titlelist.get(i));
+                String titleSerieRaw = (String) a_titlelist.get(i);
+                String titleSerie = java.net.URLEncoder.encode(titleSerieRaw);
+
+                String word2 = (String) a_titlelist.get(i);
+                String traktWord = word2.replaceAll(" ","-");
+                intent.putExtra("trakt", traktWord);
+
+                intent.putExtra(EXTRA_MESSAGE,titleSerie );
                 startActivity(intent);
 
                 /*

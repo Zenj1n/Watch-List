@@ -44,11 +44,6 @@ public class SearchActivity extends Activity {
                 intent.putExtra(EXTRA_MESSAGE, word);
                 intent.putExtra("trakt", traktWord);
 
-
-                intent = new Intent(SearchActivity.this,InfoPage.class);
-                intent.putExtra(EXTRA_MESSAGE, word);
-                intent.putExtra("trakt", traktWord);
-
                 startActivity(intent);
             }
         });
