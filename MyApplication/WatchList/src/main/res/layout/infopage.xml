@@ -96,17 +96,33 @@
             android:id="@+id/TStatusW"
             android:text="@string/statusw"
             android:paddingLeft="20dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="45dp"
             android:textSize="20sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/TStatus"
-
             android:layout_toRightOf="@+id/TStatusW"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="55dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/TRatingW"
+            android:text="@+string/rating"
+            android:paddingLeft="20dp"
+            android:layout_marginTop="70dp"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/TRating"
+            android:layout_toRightOf="@+id/TRatingW"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="77dp"/>
 
     </RelativeLayout>
 
