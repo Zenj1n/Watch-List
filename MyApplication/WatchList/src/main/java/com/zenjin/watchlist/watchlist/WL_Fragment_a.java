@@ -182,15 +182,27 @@ public class WL_Fragment_a extends Fragment {
                     int i = 0;
                     a_titlelist.clear();
 
-                    do {
 
-                        ParseObject koppel = User.get(i);
-                        a_titlelist.add(i, koppel.getString("Serie"));
+                    try {
 
-                        i++;
+                        do {
+
+                            ParseObject koppel = User.get(i);
+                            a_titlelist.add(i, koppel.getString("Serie"));
+
+                            i++;
+
+                        }
+                        while (i < count);
+
+                    }catch (Exception a){
+
+                        a_titlelist.clear();
+                        a_titlelist.add(i, "No series added");
+                        //Toast.makeText(getActivity(), "An error occured. Cannot get serie names" , Toast.LENGTH_SHORT).show();
 
                     }
-                    while (i < count);
+
 
                     String[] a_title = (String[]) a_titlelist.toArray(new String[a_titlelist.size()]);
 
