@@ -1,5 +1,6 @@
 package com.zenjin.watchlist.watchlist;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,7 +18,7 @@ import com.parse.ParseAnalytics;
 import com.parse.ParseObject;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
     public String username = "test";
     public String password = "test123";

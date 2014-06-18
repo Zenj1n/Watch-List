@@ -3,6 +3,7 @@ package com.zenjin.watchlist.watchlist;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -23,6 +24,7 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
 
     ViewPager mViewPager;
     ActionBar mActionBar;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +95,10 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
+        }
+        if (id == R.id.action_search){
+            Intent intent = new Intent (WatchlistActivity.this,SearchActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

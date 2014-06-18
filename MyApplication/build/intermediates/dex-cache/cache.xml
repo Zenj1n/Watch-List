@@ -2,22 +2,22 @@
 <pre-dex-items>
 
     <item
-        dex="C:\Users\Rinesh\Documents\GitHub\Watch-List\MyApplication\WatchList\build\intermediates\pre-dexed\debug\classes-64fb19f53b741b576698df0a7db1ec80d88c6ee2.jar"
-        jar="C:\Users\Rinesh\Documents\GitHub\Watch-List\MyApplication\build\intermediates\exploded-aar\com.android.support\appcompat-v7\19.1.0\classes.jar"
+        dex="C:\Users\Fabian\Documents\GitHub\Watch-List\MyApplication\WatchList\build\intermediates\pre-dexed\debug\Parse-1.5.1-eb6de47e261fefbff2ec757b12e3bf03e2fc0af1.jar"
+        jar="C:\Users\Fabian\Documents\GitHub\Watch-List\MyApplication\WatchList\libs\Parse-1.5.1\Parse-1.5.1.jar"
         jumboMode="false"
         revision="19.1.0"
-        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28"/>
+        sha1="3d645417e7780d44f32e29a3ec6b729b75aef26c"/>
     <item
-        dex="C:\Users\Rinesh\Documents\GitHub\Watch-List\MyApplication\WatchList\build\intermediates\pre-dexed\debug\support-v4-19.1.0-7582865bcf2a21ac88c956626c8758d830b6d301.jar"
-        jar="C:\Dev\Program files\Android Studio\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        dex="C:\Users\Fabian\Documents\GitHub\Watch-List\MyApplication\WatchList\build\intermediates\pre-dexed\debug\support-v4-19.1.0-2c864f6adba546daee3b26660472b6caec896c1b.jar"
+        jar="E:\Program Files\Android Studio\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
         jumboMode="false"
         revision="19.1.0"
         sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>
     <item
-        dex="C:\Users\Rinesh\Documents\GitHub\Watch-List\MyApplication\WatchList\build\intermediates\pre-dexed\debug\Parse-1.5.1-776265a39d6401044525707779120191f3ac3148.jar"
-        jar="C:\Users\Rinesh\Documents\GitHub\Watch-List\MyApplication\WatchList\libs\Parse-1.5.1\Parse-1.5.1.jar"
+        dex="C:\Users\Fabian\Documents\GitHub\Watch-List\MyApplication\WatchList\build\intermediates\pre-dexed\debug\classes-ad48babd60658615c05eabb7d5f36b5374beb5ae.jar"
+        jar="C:\Users\Fabian\Documents\GitHub\Watch-List\MyApplication\build\intermediates\exploded-aar\com.android.support\appcompat-v7\19.1.0\classes.jar"
         jumboMode="false"
         revision="19.1.0"
-        sha1="3d645417e7780d44f32e29a3ec6b729b75aef26c"/>
+        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28"/>
 
 </pre-dex-items>

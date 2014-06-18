@@ -2,6 +2,7 @@ package com.zenjin.watchlist.watchlist;
 
 import java.util.ArrayList;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
@@ -14,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.parse.ParseUser;
 import com.zenjin.watchlist.watchlist.adapter.NavDrawerListAdapter;
@@ -32,19 +34,13 @@ public class MyWatchList extends BaseActivity {
     private TypedArray navMenuIcons;
     private ArrayList<NavDrawerItem> navDrawerItems;
     private NavDrawerListAdapter adapter;
+    //Context context = getApplicationContext();
 
-    public static final int MENU_ITEM_MYWATCHLST_POSITION = 0;
-
-    public static final int MENU_ITEM_BROWSE_POSITION = 1;
-
-    public static final int MENU_ITEM_NEWSFEED_POSITION = 2;
-
-    public static final int MENU_ITEM_LOGOUT_POSITION = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_main);
+        setContentView(R.layout.activity_nav_drawer);
 
         mTitle = mDrawerTitle = getTitle();
 
@@ -58,14 +54,18 @@ public class MyWatchList extends BaseActivity {
 
         navDrawerItems = new ArrayList<NavDrawerItem>();
 
-        // Home
+        // MyWatchList
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
-        // WatchList
+        // My Profile
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
-        // InfoPage
+        // News Feed
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
-        //Log Out
+        // Browse
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
+        // Settings
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
+        // Log Out
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
 
         navMenuIcons.recycle();
 
@@ -114,23 +114,40 @@ public class MyWatchList extends BaseActivity {
                     break;
 
                 case 1:
+                    /*launchIntent = new Intent(getApplicationContext(), ProfileActivity.class);
+                    launchIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);*/
+                    Toast.makeText(getApplicationContext(),"Feature not available yet",Toast.LENGTH_SHORT).show();
+                    mDrawerLayout.closeDrawer(mDrawerList);
+                    break;
+
+                case 2:
+                    /*launchIntent = new Intent(getApplicationContext(), NewsFeedActivity.class);
+                    launchIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);*/
+                        Toast.makeText(getApplicationContext(),"Feature not available yet",Toast.LENGTH_SHORT).show();
+                    mDrawerLayout.closeDrawer(mDrawerList);
+                    break;
+
+                case 3:
                     launchIntent = new Intent(getApplicationContext(), HomeActivity.class);
                     launchIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     mDrawerLayout.closeDrawer(mDrawerList);
                     break;
 
-                case 2:
-                    launchIntent = new Intent(getApplicationContext(), WatchlistActivity.class);
-                    launchIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+                case 4:
+                    /*launchIntent = new Intent(getApplicationContext(), SettingsActivity.class);
+                    launchIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);*/
+                    Toast.makeText(getApplicationContext(),"Feature not available yet",Toast.LENGTH_SHORT).show();
                     mDrawerLayout.closeDrawer(mDrawerList);
                     break;
 
-                case 3:
+                case 5:
                     ParseUser.logOut();
                     Intent intent3 = new Intent(MyWatchList.this, DispatchActivity.class);
                     intent3.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent3);
                     break;
+
 
             }
             if (launchIntent == null) {

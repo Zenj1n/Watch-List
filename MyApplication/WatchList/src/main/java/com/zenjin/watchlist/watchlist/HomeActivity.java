@@ -12,12 +12,18 @@ import android.widget.Button;
 
 public class HomeActivity extends MyWatchList {
 
-    Button BMyWatchList;
+    private Button BMyWatchList;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.replaceContentLayout(R.layout.hm_activity, R.id.frame_container);
 
+        if(BMyWatchList == null){
+            populate();
+        }
+    }
+
+    private void populate(){
         BMyWatchList = (Button) findViewById(R.id.BMyWatchList);
         BMyWatchList.setOnClickListener(new View.OnClickListener() {
 

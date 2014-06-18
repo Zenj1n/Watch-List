@@ -1,6 +1,7 @@
 package com.zenjin.watchlist.watchlist;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -26,6 +27,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -33,13 +35,17 @@ import java.io.InputStream;
 import java.util.List;
 
 
-public class InfoPage extends ActionBarActivity {
+public class InfoPage extends Activity {
 
+    private static final String YOU_RATED = "You rated ";
+    private static final String ADD_TO_YOUR_LIST_FIRST = "Add to your list first";
+    private static final String RATING_REMOVED = "Rating removed";
     Button Baddto;
     Button Brate;
     TextView Title;
     TextView TGenres;
     TextView Tplot;
+    TextView TStatus;
     ImageView Image;
 
 
@@ -48,6 +54,7 @@ public class InfoPage extends ActionBarActivity {
     private static final String TAG_PLOT = "Plot";
     private static final String TAG_IMAGE = "Poster";
 
+    private static final String TAG_STATUS = "status";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +72,7 @@ public class InfoPage extends ActionBarActivity {
         Baddto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 PopupMenu popup = new PopupMenu(InfoPage.this, Baddto);
                 MenuInflater inflater = popup.getMenuInflater();
                 inflater.inflate(R.menu.popup_menu, popup.getMenu());
@@ -75,7 +83,7 @@ public class InfoPage extends ActionBarActivity {
                         switch (menuItem.getItemId()) {
                             case R.id.watching:
                                 ParseQuery<ParseObject> watching_query = ParseQuery.getQuery("Koppel");
-                                watching_query.whereEqualTo("User", ParseUser.getCurrentUser().getUsername());
+                                watching_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
                                 watching_query.whereEqualTo("Serie", Title.getText());
                                 watching_query.findInBackground(new FindCallback<ParseObject>() {
                                     @Override
@@ -87,7 +95,7 @@ public class InfoPage extends ActionBarActivity {
                                                 koppel.saveInBackground();
                                             } catch (Exception e) {
                                                 ParseObject watching = new ParseObject("Koppel");
-                                                watching.put("User", ParseUser.getCurrentUser().getUsername());
+                                                watching.put(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
                                                 watching.put("Serie", Title.getText());
                                                 watching.put("Status", "Watching");
                                                 watching.saveInBackground();
@@ -149,6 +157,8 @@ public class InfoPage extends ActionBarActivity {
                     }
                 });
 
+
+              AddTo();
             }
         });
 
@@ -157,145 +167,12 @@ public class InfoPage extends ActionBarActivity {
         Brate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PopupMenu popup = new PopupMenu(InfoPage.this, Brate);
-                MenuInflater inflater = popup.getMenuInflater();
-                inflater.inflate(R.menu.rating, popup.getMenu());
-                popup.show();
-                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem menuItem) {
-                        switch (menuItem.getItemId()) {
-                            case R.id.Remove_rating:
-                                ParseQuery<ParseObject> remove_rating_query = ParseQuery.getQuery("Koppel");
-                                remove_rating_query.whereEqualTo("User", ParseUser.getCurrentUser().getUsername());
-                                remove_rating_query.whereEqualTo("Serie", Title.getText());
-                                remove_rating_query.findInBackground(new FindCallback<ParseObject>() {
-                                    @Override
-                                    public void done(List<ParseObject> User, com.parse.ParseException p) {
-                                        if (p == null) {
-                                            try {
-                                                ParseObject koppel = User.get(0);
-                                                koppel.remove("Rating");
-                                                koppel.saveInBackground();
-                                                Toast.makeText(InfoPage.this, "Rating removed", Toast.LENGTH_SHORT).show();
-                                            } catch (Exception e) {
-                                                Toast.makeText(InfoPage.this, "Add to your list first", Toast.LENGTH_SHORT).show();
-                                            }
-                                        }
-                                    }
-                                });
-                                return true;
-                            case R.id.Very_bad:
-                                ParseQuery<ParseObject> very_bad_query = ParseQuery.getQuery("Koppel");
-                                very_bad_query.whereEqualTo("User", ParseUser.getCurrentUser().getUsername());
-                                very_bad_query.whereEqualTo("Serie", Title.getText());
-                                very_bad_query.findInBackground(new FindCallback<ParseObject>() {
-                                    @Override
-                                    public void done(List<ParseObject> User, com.parse.ParseException p) {
-                                        if (p == null) {
-                                            try {
-                                                ParseObject koppel = User.get(0);
-                                                koppel.put("Rating", 1);
-                                                koppel.saveInBackground();
-                                                Toast.makeText(InfoPage.this, "You rated " + Title.getText(), Toast.LENGTH_SHORT).show();
-                                            } catch (Exception e) {
-                                                Toast.makeText(InfoPage.this, "Add to your list first ", Toast.LENGTH_SHORT).show();
-                                            }
-                                        }
-                                    }
-                                });
-                                return true;
-                            case R.id.Bad:
-                                ParseQuery<ParseObject> bad_query = ParseQuery.getQuery("Koppel");
-                                bad_query.whereEqualTo("User", ParseUser.getCurrentUser().getUsername());
-                                bad_query.whereEqualTo("Serie", Title.getText());
-                                bad_query.findInBackground(new FindCallback<ParseObject>() {
-                                    @Override
-                                    public void done(List<ParseObject> User, com.parse.ParseException p) {
-                                        if (p == null) {
-                                            try {
-                                                ParseObject koppel = User.get(0);
-                                                koppel.put("Rating", 2);
-                                                koppel.saveInBackground();
-                                                Toast.makeText(InfoPage.this, "You rated " + Title.getText(), Toast.LENGTH_SHORT).show();
-                                            } catch (Exception e) {
-                                                Toast.makeText(InfoPage.this, "Add to your list first", Toast.LENGTH_SHORT).show();
-                                            }
-                                        }
-                                    }
-                                });
-                                return true;
-                            case R.id.Average:
-                                ParseQuery<ParseObject> average_query = ParseQuery.getQuery("Koppel");
-                                average_query.whereEqualTo("User", ParseUser.getCurrentUser().getUsername());
-                                average_query.whereEqualTo("Serie", Title.getText());
-                                average_query.findInBackground(new FindCallback<ParseObject>() {
-                                    @Override
-                                    public void done(List<ParseObject> User, com.parse.ParseException p) {
-                                        if (p == null) {
-                                            try {
-                                                ParseObject koppel = User.get(0);
-                                                koppel.put("Rating", 3);
-                                                koppel.saveInBackground();
-                                                Toast.makeText(InfoPage.this, "You rated" + Title.getText(), Toast.LENGTH_SHORT).show();
-                                            } catch (Exception e) {
-                                                Toast.makeText(InfoPage.this, "Add to your list first", Toast.LENGTH_SHORT).show();
-                                            }
-                                        }
-                                    }
-                                });
-                                return true;
-                            case R.id.Good:
-                                ParseQuery<ParseObject> good_query = ParseQuery.getQuery("Koppel");
-                                good_query.whereEqualTo("User", ParseUser.getCurrentUser().getUsername());
-                                good_query.whereEqualTo("Serie", Title.getText());
-                                good_query.findInBackground(new FindCallback<ParseObject>() {
-                                    @Override
-                                    public void done(List<ParseObject> User, com.parse.ParseException p) {
-                                        if (p == null) {
-                                            try {
-                                                ParseObject koppel = User.get(0);
-                                                koppel.put("Rating", 4);
-                                                koppel.saveInBackground();
-                                                Toast.makeText(InfoPage.this, "You rated " + Title.getText(), Toast.LENGTH_SHORT).show();
-                                            } catch (Exception e) {
-                                                Toast.makeText(InfoPage.this, "Add to your list first", Toast.LENGTH_SHORT).show();
-                                            }
-                                        }
-                                    }
-                                });
-                                return true;
-                            case R.id.Great:
-                                ParseQuery<ParseObject> great_query = ParseQuery.getQuery("Koppel");
-                                great_query.whereEqualTo("User", ParseUser.getCurrentUser().getUsername());
-                                great_query.whereEqualTo("Serie", Title.getText());
-                                great_query.findInBackground(new FindCallback<ParseObject>() {
-                                    @Override
-                                    public void done(List<ParseObject> User, com.parse.ParseException p) {
-                                        if (p == null) {
-                                            try {
-                                                ParseObject koppel = User.get(0);
-                                                koppel.put("Rating", 5);
-                                                koppel.saveInBackground();
-                                                Toast.makeText(InfoPage.this, "You rated " + Title.getText(), Toast.LENGTH_SHORT).show();
-                                            } catch (Exception e) {
-                                                Toast.makeText(InfoPage.this, "Add to your list first", Toast.LENGTH_SHORT).show();
-                                            }
-                                        }
-                                    }
-                                });
-                                return true;
-                            default:
-                                return false;
-                        }
-
-                    }
-                });
+               Rate();
             }
         });
     }
 
-    private class JSONParse extends AsyncTask<String, String, JSONObject> {
+    private class JSONParse extends AsyncTask<String, String, JSONArray> {
         private ProgressDialog pDialog;
 
         @Override
@@ -305,6 +182,8 @@ public class InfoPage extends ActionBarActivity {
             TGenres = (TextView) findViewById(R.id.Tgenres);
             Tplot = (TextView) findViewById(R.id.plot);
             Image = (ImageView) findViewById(R.id.Image);
+            TStatus = (TextView)findViewById(R.id.TStatus);
+
 
             pDialog = new ProgressDialog(InfoPage.this);
             pDialog.setMessage("Getting Data ...");
@@ -314,39 +193,62 @@ public class InfoPage extends ActionBarActivity {
         }
 
         @Override
-        protected JSONObject doInBackground(String... args) {
+        protected JSONArray doInBackground(String... args) {
+
 
             Intent intent = getIntent();
-            String message = intent.getStringExtra(WL_Fragment_a.EXTRA_MESSAGE);
+            String message = intent.getStringExtra(SearchActivity.EXTRA_MESSAGE);
+            String message2 = intent.getStringExtra(SearchActivity.EXTRA_MESSAGE1);
+
 
             String url = "http://www.omdbapi.com/?t=" + message + "&plot=full";
+            String urlTrakt = "http://api.trakt.tv/show/summary.json/390983740f2092270bc0fa267334db88/"+ message2;
             ServiceHandler jParser = new ServiceHandler();
+
             // Getting JSON from URL
             JSONObject json = jParser.getJSONFromUrl(url);
+            JSONObject jsonTrakt = jParser.getJSONFromUrl(urlTrakt);
 
-            return json;
+            JSONArray jsonArray = new JSONArray();
+
+            jsonArray.put(json);
+            jsonArray.put(jsonTrakt);
+
+            return jsonArray;
+
+
+
+
+
+
 
         }
 
+
+
         @Override
-        protected void onPostExecute(JSONObject json) {
+        protected void onPostExecute(JSONArray jsonArray) {
             pDialog.dismiss();
             try {
 
 
+
                 // Storing  JSON item in a Variable
-                String TitleMovie = json.getString(TAG_TITLE);
-                String PlotMovie = json.getString(TAG_PLOT);
-                String GenreMovie = json.getString(TAG_GENRE);
+                String TitleMovie = jsonArray.getJSONObject(0).getString(TAG_TITLE);
+                String PlotMovie = jsonArray.getJSONObject(0).getString(TAG_PLOT);
+                String GenreMovie = jsonArray.getJSONObject(0).getString(TAG_GENRE);
+                String Status = jsonArray.getJSONObject(1).getString(TAG_STATUS);
 
 
                 //Set JSON Data in TextView
                 Title.setText(TitleMovie);
                 TGenres.setText(GenreMovie);
                 Tplot.setText(PlotMovie);
+                TStatus.setText(Status);
+
 
                 new DownloadImageTask((ImageView) findViewById(R.id.Image))
-                        .execute(json.getString(TAG_IMAGE));
+                        .execute(jsonArray.getJSONObject(0).getString(TAG_IMAGE));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -393,4 +295,230 @@ public class InfoPage extends ActionBarActivity {
         }
     }
 
+
+
+
+    private void AddTo(){
+        PopupMenu popup = new PopupMenu(InfoPage.this, Baddto);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.popup_menu, popup.getMenu());
+        popup.show();
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.watching:
+                        ParseQuery<ParseObject> watching_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
+                        watching_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+                        watching_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
+                        watching_query.findInBackground(new FindCallback<ParseObject>() {
+                            @Override
+                            public void done(List<ParseObject> User, com.parse.ParseException p) {
+                                if (p == null) {
+                                    try {
+                                        ParseObject koppel = User.get(0);
+                                        koppel.put(ParseUtil.STATUS, ParseUtil.WATCHING);
+                                        koppel.saveInBackground();
+                                    } catch (Exception e) {
+                                        ParseObject watching = new ParseObject(ParseUtil.KOPPEL);
+                                        watching.put(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+                                        watching.put(ParseUtil.SERIE, Title.getText());
+                                        watching.put(ParseUtil.STATUS, ParseUtil.WATCHING);
+                                        watching.saveInBackground();
+                                    }
+                                }
+                            }
+                        });
+                        return true;
+                    case R.id.plantowatch:
+                        ParseQuery<ParseObject> plan_to_watch_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
+                        plan_to_watch_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+                        plan_to_watch_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
+                        plan_to_watch_query.findInBackground(new FindCallback<ParseObject>() {
+                            @Override
+                            public void done(List<ParseObject> User, com.parse.ParseException p) {
+                                if (p == null) {
+                                    try {
+                                        ParseObject koppel = User.get(0);
+                                        koppel.put(ParseUtil.STATUS, ParseUtil.PLAN_TO_WATCH);
+                                        koppel.saveInBackground();
+                                    } catch (Exception e) {
+                                        ParseObject koppel = new ParseObject(ParseUtil.KOPPEL);
+                                        koppel.put(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+                                        koppel.put(ParseUtil.SERIE, Title.getText());
+                                        koppel.put(ParseUtil.STATUS, ParseUtil.PLAN_TO_WATCH);
+                                        koppel.saveInBackground();
+                                    }
+                                }
+                            }
+                        });
+                        return true;
+                    case R.id.completed:
+                        ParseQuery<ParseObject> completed_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
+                        completed_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+                        completed_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
+                        completed_query.findInBackground(new FindCallback<ParseObject>() {
+                            @Override
+                            public void done(List<ParseObject> User, com.parse.ParseException p) {
+                                if (p == null) {
+                                    try {
+                                        ParseObject koppel = User.get(0);
+                                        koppel.put(ParseUtil.STATUS, ParseUtil.COMPLETED);
+                                        koppel.saveInBackground();
+                                    } catch (Exception e) {
+                                        ParseObject koppel = new ParseObject(ParseUtil.KOPPEL);
+                                        koppel.put(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+                                        koppel.put(ParseUtil.SERIE, Title.getText());
+                                        koppel.put(ParseUtil.STATUS, ParseUtil.COMPLETED);
+                                        koppel.saveInBackground();
+                                    }
+                                }
+                            }
+                        });
+                        return true;
+                    default:
+                        return false;
+                }
+
+            }
+        });
+    }
+    private void Rate()
+    {
+        PopupMenu popup = new PopupMenu(InfoPage.this, Brate);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.rating, popup.getMenu());
+        popup.show();
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.Remove_rating:
+                        ParseQuery<ParseObject> remove_rating_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
+                        remove_rating_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+                        remove_rating_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
+                        remove_rating_query.findInBackground(new FindCallback<ParseObject>() {
+                            @Override
+                            public void done(List<ParseObject> User, com.parse.ParseException p) {
+                                if (p == null) {
+                                    try {
+                                        ParseObject koppel = User.get(0);
+                                        koppel.remove(ParseUtil.RATING);
+                                        koppel.saveInBackground();
+                                        Toast.makeText(InfoPage.this, RATING_REMOVED, Toast.LENGTH_SHORT).show();
+                                    } catch (Exception e) {
+                                        Toast.makeText(InfoPage.this, ADD_TO_YOUR_LIST_FIRST, Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }
+                        });
+                        return true;
+                    case R.id.Very_bad:
+                        ParseQuery<ParseObject> very_bad_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
+                        very_bad_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+                        very_bad_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
+                        very_bad_query.findInBackground(new FindCallback<ParseObject>() {
+                            @Override
+                            public void done(List<ParseObject> User, com.parse.ParseException p) {
+                                if (p == null) {
+                                    try {
+                                        ParseObject koppel = User.get(0);
+                                        koppel.put(ParseUtil.RATING, 1);
+                                        koppel.saveInBackground();
+                                        Toast.makeText(InfoPage.this, YOU_RATED + Title.getText(), Toast.LENGTH_SHORT).show();
+                                    } catch (Exception e) {
+                                        Toast.makeText(InfoPage.this, ADD_TO_YOUR_LIST_FIRST, Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }
+                        });
+                        return true;
+                    case R.id.Bad:
+                        ParseQuery<ParseObject> bad_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
+                        bad_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+                        bad_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
+                        bad_query.findInBackground(new FindCallback<ParseObject>() {
+                            @Override
+                            public void done(List<ParseObject> User, com.parse.ParseException p) {
+                                if (p == null) {
+                                    try {
+                                        ParseObject koppel = User.get(0);
+                                        koppel.put(ParseUtil.RATING, 2);
+                                        koppel.saveInBackground();
+                                        Toast.makeText(InfoPage.this, YOU_RATED + Title.getText(), Toast.LENGTH_SHORT).show();
+                                    } catch (Exception e) {
+                                        Toast.makeText(InfoPage.this, ADD_TO_YOUR_LIST_FIRST, Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }
+                        });
+                        return true;
+                    case R.id.Average:
+                        ParseQuery<ParseObject> average_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
+                        average_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+                        average_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
+                        average_query.findInBackground(new FindCallback<ParseObject>() {
+                            @Override
+                            public void done(List<ParseObject> User, com.parse.ParseException p) {
+                                if (p == null) {
+                                    try {
+                                        ParseObject koppel = User.get(0);
+                                        koppel.put(ParseUtil.RATING, 3);
+                                        koppel.saveInBackground();
+                                        Toast.makeText(InfoPage.this, YOU_RATED + Title.getText(), Toast.LENGTH_SHORT).show();
+                                    } catch (Exception e) {
+                                        Toast.makeText(InfoPage.this, ADD_TO_YOUR_LIST_FIRST, Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }
+                        });
+                        return true;
+                    case R.id.Good:
+                        ParseQuery<ParseObject> good_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
+                        good_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+                        good_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
+                        good_query.findInBackground(new FindCallback<ParseObject>() {
+                            @Override
+                            public void done(List<ParseObject> User, com.parse.ParseException p) {
+                                if (p == null) {
+                                    try {
+                                        ParseObject koppel = User.get(0);
+                                        koppel.put(ParseUtil.RATING, 4);
+                                        koppel.saveInBackground();
+                                        Toast.makeText(InfoPage.this, YOU_RATED + Title.getText(), Toast.LENGTH_SHORT).show();
+                                    } catch (Exception e) {
+                                        Toast.makeText(InfoPage.this, ADD_TO_YOUR_LIST_FIRST, Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }
+                        });
+                        return true;
+                    case R.id.Great:
+                        ParseQuery<ParseObject> great_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
+                        great_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+                        great_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
+                        great_query.findInBackground(new FindCallback<ParseObject>() {
+                            @Override
+                            public void done(List<ParseObject> User, com.parse.ParseException p) {
+                                if (p == null) {
+                                    try {
+                                        ParseObject koppel = User.get(0);
+                                        koppel.put(ParseUtil.RATING, 5);
+                                        koppel.saveInBackground();
+                                        Toast.makeText(InfoPage.this, YOU_RATED + Title.getText(), Toast.LENGTH_SHORT).show();
+                                    } catch (Exception e) {
+                                        Toast.makeText(InfoPage.this, ADD_TO_YOUR_LIST_FIRST, Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }
+                        });
+                        return true;
+                    default:
+                        return false;
+                }
+
+            }
+        });
+    }
 }
+
