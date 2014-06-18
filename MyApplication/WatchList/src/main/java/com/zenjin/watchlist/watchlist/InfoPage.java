@@ -32,6 +32,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -49,6 +50,7 @@ public class InfoPage extends Activity {
     TextView Tplot;
     TextView TStatus;
     ImageView Image;
+
     JSONArray seasons = null;
 
 
@@ -238,8 +240,19 @@ public class InfoPage extends Activity {
             pDialog.dismiss();
             try {
 
-                //seasons = jsonArray.getJSONObject(2).getJSONArray(TAG_SEASONS);
-                //JSONObject allSeasons = seasons.getJSONObject(0);
+                /*
+
+                seasons = jsonArray.getJSONArray(2);
+                for(int i=0;i<seasons.length();i++) {
+
+                    JSONObject e = seasons.getJSONObject(i);
+                    String test = e.getString("episodes");
+                    Log.i("MyActivity", "string is" + test);
+
+                    Title.setText(test);
+                }
+                */
+
 
                 // Storing  JSON item in a Variable
                 //int Seasons = allSeasons.getInt(TAG_SEASONS);
@@ -250,7 +263,6 @@ public class InfoPage extends Activity {
 
 
                 //Set JSON Data in TextView
-                //Title.setText(Seasons);
                 Title.setText(TitleMovie);
                 TGenres.setText(GenreMovie);
                 Tplot.setText(PlotMovie);
