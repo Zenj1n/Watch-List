@@ -16,7 +16,6 @@ public class SearchActivity extends Activity {
 
     private EditText searchET;
     public final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";
-    public final static String EXTRA_MESSAGE1 = "com.zenjin.watchlist.watchlist";
     Intent intent;
 
     @Override
@@ -39,10 +38,17 @@ public class SearchActivity extends Activity {
             public void performSearch() {
                 String word = java.net.URLEncoder.encode(searchET.getText().toString());
                 String word2 = searchET.getText().toString();
-                word2.replace(" ", "-");
+
+                String traktWord = word2.replaceAll(" ","-");
                 intent = new Intent(SearchActivity.this,InfoPage.class);
                 intent.putExtra(EXTRA_MESSAGE, word);
-                intent.putExtra("trakt", word2);
+                intent.putExtra("trakt", traktWord);
+
+
+                intent = new Intent(SearchActivity.this,InfoPage.class);
+                intent.putExtra(EXTRA_MESSAGE, word);
+                intent.putExtra("trakt", traktWord);
+
                 startActivity(intent);
             }
         });
