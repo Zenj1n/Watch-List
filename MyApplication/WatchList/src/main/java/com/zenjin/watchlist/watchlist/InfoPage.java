@@ -288,7 +288,7 @@ public class InfoPage extends ActionBarActivity {
     }
 
 
-}
+
 
     private void AddTo(){
         PopupMenu popup = new PopupMenu(InfoPage.this, Baddto);
@@ -301,7 +301,7 @@ public class InfoPage extends ActionBarActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.watching:
                         ParseQuery<ParseObject> watching_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
-                        watching_query.whereEqualTo(ParseUtil.USER, ParseUser.getCurrentUser().getUsername());
+                        watching_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
                         watching_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
                         watching_query.findInBackground(new FindCallback<ParseObject>() {
                             @Override
@@ -313,7 +313,7 @@ public class InfoPage extends ActionBarActivity {
                                         koppel.saveInBackground();
                                     } catch (Exception e) {
                                         ParseObject watching = new ParseObject(ParseUtil.KOPPEL);
-                                        watching.put(ParseUtil.USER, ParseUser.getCurrentUser().getUsername());
+                                        watching.put(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
                                         watching.put(ParseUtil.SERIE, Title.getText());
                                         watching.put(ParseUtil.STATUS, ParseUtil.WATCHING);
                                         watching.saveInBackground();
@@ -324,7 +324,7 @@ public class InfoPage extends ActionBarActivity {
                         return true;
                     case R.id.plantowatch:
                         ParseQuery<ParseObject> plan_to_watch_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
-                        plan_to_watch_query.whereEqualTo(ParseUtil.USER, ParseUser.getCurrentUser().getUsername());
+                        plan_to_watch_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
                         plan_to_watch_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
                         plan_to_watch_query.findInBackground(new FindCallback<ParseObject>() {
                             @Override
@@ -336,7 +336,7 @@ public class InfoPage extends ActionBarActivity {
                                         koppel.saveInBackground();
                                     } catch (Exception e) {
                                         ParseObject koppel = new ParseObject(ParseUtil.KOPPEL);
-                                        koppel.put(ParseUtil.USER, ParseUser.getCurrentUser().getUsername());
+                                        koppel.put(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
                                         koppel.put(ParseUtil.SERIE, Title.getText());
                                         koppel.put(ParseUtil.STATUS, ParseUtil.PLAN_TO_WATCH);
                                         koppel.saveInBackground();
@@ -347,7 +347,7 @@ public class InfoPage extends ActionBarActivity {
                         return true;
                     case R.id.completed:
                         ParseQuery<ParseObject> completed_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
-                        completed_query.whereEqualTo(ParseUtil.USER, ParseUser.getCurrentUser().getUsername());
+                        completed_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
                         completed_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
                         completed_query.findInBackground(new FindCallback<ParseObject>() {
                             @Override
@@ -359,7 +359,7 @@ public class InfoPage extends ActionBarActivity {
                                         koppel.saveInBackground();
                                     } catch (Exception e) {
                                         ParseObject koppel = new ParseObject(ParseUtil.KOPPEL);
-                                        koppel.put(ParseUtil.USER, ParseUser.getCurrentUser().getUsername());
+                                        koppel.put(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
                                         koppel.put(ParseUtil.SERIE, Title.getText());
                                         koppel.put(ParseUtil.STATUS, ParseUtil.COMPLETED);
                                         koppel.saveInBackground();
@@ -387,7 +387,7 @@ public class InfoPage extends ActionBarActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.Remove_rating:
                         ParseQuery<ParseObject> remove_rating_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
-                        remove_rating_query.whereEqualTo(ParseUtil.USER, ParseUser.getCurrentUser().getUsername());
+                        remove_rating_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
                         remove_rating_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
                         remove_rating_query.findInBackground(new FindCallback<ParseObject>() {
                             @Override
@@ -407,7 +407,7 @@ public class InfoPage extends ActionBarActivity {
                         return true;
                     case R.id.Very_bad:
                         ParseQuery<ParseObject> very_bad_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
-                        very_bad_query.whereEqualTo(ParseUtil.USER, ParseUser.getCurrentUser().getUsername());
+                        very_bad_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
                         very_bad_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
                         very_bad_query.findInBackground(new FindCallback<ParseObject>() {
                             @Override
@@ -427,7 +427,7 @@ public class InfoPage extends ActionBarActivity {
                         return true;
                     case R.id.Bad:
                         ParseQuery<ParseObject> bad_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
-                        bad_query.whereEqualTo(ParseUtil.USER, ParseUser.getCurrentUser().getUsername());
+                        bad_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
                         bad_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
                         bad_query.findInBackground(new FindCallback<ParseObject>() {
                             @Override
@@ -447,7 +447,7 @@ public class InfoPage extends ActionBarActivity {
                         return true;
                     case R.id.Average:
                         ParseQuery<ParseObject> average_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
-                        average_query.whereEqualTo(ParseUtil.USER, ParseUser.getCurrentUser().getUsername());
+                        average_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
                         average_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
                         average_query.findInBackground(new FindCallback<ParseObject>() {
                             @Override
@@ -467,7 +467,7 @@ public class InfoPage extends ActionBarActivity {
                         return true;
                     case R.id.Good:
                         ParseQuery<ParseObject> good_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
-                        good_query.whereEqualTo(ParseUtil.USER, ParseUser.getCurrentUser().getUsername());
+                        good_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
                         good_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
                         good_query.findInBackground(new FindCallback<ParseObject>() {
                             @Override
@@ -487,7 +487,7 @@ public class InfoPage extends ActionBarActivity {
                         return true;
                     case R.id.Great:
                         ParseQuery<ParseObject> great_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
-                        great_query.whereEqualTo(ParseUtil.USER, ParseUser.getCurrentUser().getUsername());
+                        great_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
                         great_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
                         great_query.findInBackground(new FindCallback<ParseObject>() {
                             @Override
