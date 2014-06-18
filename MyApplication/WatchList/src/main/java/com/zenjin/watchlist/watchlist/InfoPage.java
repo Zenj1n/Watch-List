@@ -238,11 +238,11 @@ public class InfoPage extends Activity {
             pDialog.dismiss();
             try {
 
-                seasons = jsonArray.getJSONObject(2).getJSONArray(TAG_SEASONS);
-                JSONObject allSeasons = seasons.getJSONObject(0);
+                //seasons = jsonArray.getJSONObject(2).getJSONArray(TAG_SEASONS);
+                //JSONObject allSeasons = seasons.getJSONObject(0);
 
                 // Storing  JSON item in a Variable
-                int Seasons = allSeasons.getInt(TAG_SEASONS);
+                //int Seasons = allSeasons.getInt(TAG_SEASONS);
                 String TitleMovie = jsonArray.getJSONObject(0).getString(TAG_TITLE);
                 String PlotMovie = jsonArray.getJSONObject(0).getString(TAG_PLOT);
                 String GenreMovie = jsonArray.getJSONObject(0).getString(TAG_GENRE);
@@ -250,8 +250,8 @@ public class InfoPage extends Activity {
 
 
                 //Set JSON Data in TextView
-                Title.setText(Seasons);
-                //Title.setText(TitleMovie);
+                //Title.setText(Seasons);
+                Title.setText(TitleMovie);
                 TGenres.setText(GenreMovie);
                 Tplot.setText(PlotMovie);
                 TStatus.setText(Status);
