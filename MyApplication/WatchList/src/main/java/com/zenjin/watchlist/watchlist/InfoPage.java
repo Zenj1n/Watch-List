@@ -197,7 +197,8 @@ public class InfoPage extends ActionBarActivity {
 
             Intent intent = getIntent();
             String message = intent.getStringExtra(SearchActivity.EXTRA_MESSAGE);
-            String message2 = intent.getStringExtra(SearchActivity.EXTRA_MESSAGE1);
+            String message2 = intent.getStringExtra("trakt");
+
 
 
             String url = "http://www.omdbapi.com/?t=" + message + "&plot=full";
