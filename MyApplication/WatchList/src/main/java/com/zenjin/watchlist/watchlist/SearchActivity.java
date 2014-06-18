@@ -15,6 +15,7 @@ public class SearchActivity extends ActionBarActivity {
 
     private EditText searchET;
     public final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";
+    public final static String EXTRA_MESSAGE1 = "com.zenjin.watchlist.watchlist";
     Intent intent;
 
     @Override
@@ -36,8 +37,11 @@ public class SearchActivity extends ActionBarActivity {
 
             public void performSearch() {
                 String word = java.net.URLEncoder.encode(searchET.getText().toString());
+                String word2 = (searchET.getText().toString());
+                word2.replace("", "-");
                 intent = new Intent(SearchActivity.this,InfoPage.class);
                 intent.putExtra(EXTRA_MESSAGE, word);
+                //intent.putExtra(EXTRA_MESSAGE1, word2);
                 startActivity(intent);
             }
         });

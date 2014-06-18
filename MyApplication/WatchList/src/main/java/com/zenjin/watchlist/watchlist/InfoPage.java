@@ -171,7 +171,7 @@ public class InfoPage extends ActionBarActivity {
         });
     }
 
-    private class JSONParse extends AsyncTask<String, String, JSONObject> {
+    private class JSONParse extends AsyncTask<String, String, JSONArray> {
         private ProgressDialog pDialog;
 
         @Override
@@ -192,22 +192,29 @@ public class InfoPage extends ActionBarActivity {
         }
 
         @Override
-        protected JSONObject doInBackground(String... args) {
+        protected JSONArray doInBackground(String... args) {
 
 
             Intent intent = getIntent();
             String message = intent.getStringExtra(SearchActivity.EXTRA_MESSAGE);
-            //String message = intent.getStringExtra(WL_Fragment_a.EXTRA_MESSAGE);
+            String message2 = intent.getStringExtra(SearchActivity.EXTRA_MESSAGE1);
+
 
             String url = "http://www.omdbapi.com/?t=" + message + "&plot=full";
-            String urlTrakt = "http://api.trakt.tv/show/summary.json/390983740f2092270bc0fa267334db88/"+ message;
+            String urlTrakt = "http://api.trakt.tv/show/summary.json/390983740f2092270bc0fa267334db88/"+ message2;
             ServiceHandler jParser = new ServiceHandler();
 
             // Getting JSON from URL
             JSONObject json = jParser.getJSONFromUrl(url);
             JSONObject jsonTrakt = jParser.getJSONFromUrl(urlTrakt);
-            
-            return json;
+
+            JSONArray jsonArray = new JSONArray();
+
+            jsonArray.put(json);
+            jsonArray.put(jsonTrakt);
+
+            return jsonArray;
+
 
 
 
@@ -219,28 +226,28 @@ public class InfoPage extends ActionBarActivity {
 
 
         @Override
-        protected void onPostExecute(JSONObject json) {
+        protected void onPostExecute(JSONArray jsonArray) {
             pDialog.dismiss();
             try {
 
 
 
                 // Storing  JSON item in a Variable
-                String TitleMovie = json.getString(TAG_TITLE);
-                String PlotMovie = json.getString(TAG_PLOT);
-                String GenreMovie = json.getString(TAG_GENRE);
-                //String Status = jsonTrakt.getString(TAG_STATUS);
+                String TitleMovie = jsonArray.getJSONObject(0).getString(TAG_TITLE);
+                String PlotMovie = jsonArray.getJSONObject(0).getString(TAG_PLOT);
+                String GenreMovie = jsonArray.getJSONObject(0).getString(TAG_GENRE);
+                String Status = jsonArray.getJSONObject(1).getString(TAG_STATUS);
 
 
                 //Set JSON Data in TextView
                 Title.setText(TitleMovie);
                 TGenres.setText(GenreMovie);
                 Tplot.setText(PlotMovie);
-               // TStatus.setText(Status);
+                TStatus.setText(Status);
 
 
                 new DownloadImageTask((ImageView) findViewById(R.id.Image))
-                        .execute(json.getString(TAG_IMAGE));
+                        .execute(jsonArray.getJSONObject(0).getString(TAG_IMAGE));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
