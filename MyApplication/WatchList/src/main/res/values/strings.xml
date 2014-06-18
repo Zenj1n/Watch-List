@@ -75,6 +75,7 @@
     <string name="genres">Action, Adventure, Crime</string>
     <string name="statusw">Status :</string>
     <string name="status">Airing </string>
+    <string name="rating">Rating    :</string>
     // strings for Watchlist. DO NOT CHANGE!                        <string name="wl_title">MyWatchlist</string>
     <string name="wl_tab1">Watching</string>
     <string name="wl_tab2">Completed</string>

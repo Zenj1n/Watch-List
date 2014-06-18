@@ -57,7 +57,8 @@
             android:name=".HomeActivity"
             android:label="home" >
         </activity>
-         <activity
+        <activity
+
             android:name=".SearchActivity"
             android:label="@string/title_activity_search" >
         </activity>
