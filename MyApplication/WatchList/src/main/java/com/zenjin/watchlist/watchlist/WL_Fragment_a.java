@@ -2,6 +2,7 @@ package com.zenjin.watchlist.watchlist;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,6 +23,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -36,6 +38,7 @@ public class WL_Fragment_a extends Fragment {
 
     ListView mListView;
     String[] a_title;
+    ArrayList a_titlelist = new ArrayList();
     String[] a_message;
     int[] a_images = {R.drawable.gameofthrones,R.drawable.thebigbangtheory,R.drawable.truebloodimage,R.drawable.ncis,R.drawable.criminalminds,R.drawable.prettylittleliars,R.drawable.fallingskies,R.drawable.familyguy,R.drawable.hannibal,R.drawable.bones,R.drawable.arrow};
 
@@ -61,7 +64,7 @@ public class WL_Fragment_a extends Fragment {
 
         Parse.initialize(getActivity(), "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
 
-        a_title= res.getStringArray(R.array.wl_a_title);
+        //a_title= res.getStringArray(R.array.wl_a_title);
         a_message= res.getStringArray(R.array.wl_a_message);
 
         gettitles();
@@ -74,12 +77,12 @@ public class WL_Fragment_a extends Fragment {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
 
-                Toast.makeText(getActivity(), "Positie "+i +"titel is" + a_title[i], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "Positie "+i +"titel is" + a_title[i], Toast.LENGTH_SHORT).show();
 
-                //Intent intent;
-                //intent = new Intent(getActivity(),InfoPage.class);
-                //intent.putExtra(EXTRA_MESSAGE, a_title[i] );
-                //startActivity(intent);
+                Intent intent;
+                intent = new Intent(getActivity(),InfoPage.class);
+                intent.putExtra(EXTRA_MESSAGE, (String) a_titlelist.get(i));
+                startActivity(intent);
 
                 /*
                 intent = new Intent(getActivity(),InfoPage.class);
@@ -170,16 +173,19 @@ public class WL_Fragment_a extends Fragment {
 
                     int count = User.size();                // aantal items op parse
                     int i = 0;
+                    a_titlelist.clear();
 
                     do {
 
                         ParseObject koppel = User.get(i);
-                        a_title[i] = koppel.getString("Serie");
+                        a_titlelist.add(i, koppel.getString("Serie"));
 
                         i++;
 
                     }
                     while (i < count);
+
+                    String[] a_title = (String[]) a_titlelist.toArray(new String[a_titlelist.size()]);
 
                     createview(a_title);
 
