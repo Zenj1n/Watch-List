@@ -15,9 +15,10 @@
             android:layout_height="wrap_content">
 
             <TextView
-                style="@style/TitleView"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
                 android:id="@+id/title"
-                android:layout_margin="0dp"
+                android:layout_margin="10dp"
                 android:paddingLeft="20dp"
                 android:textSize="30sp"/>
 

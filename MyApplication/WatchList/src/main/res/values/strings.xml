@@ -29,8 +29,14 @@
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
     //Home Screen                        <string name="Home_head">Home</string>
-    <string name="showSearch">Search for shows</string>
-    <string name="userSearch">Search for users</string>
+    //Tabs                               <string name="hm_overview_tab">Overview</string>
+    <string name="hm_discover_tab">Discover</string>
+    <string name="hm_agenda_tab">Agenda</string>
+    //Overview tab                        <string name="hm_overview">Overview</string>
+    //Discover tab                        <string name="hm_discover">Discover</string>
+    <string name="hm_discover_recommended">Recommended</string>
+    <string name="hm_discover_popular">Popular</string>
+    <string name="hm_discover_editor">Editors Choice</string>
 
     <string-array name="Hm_Titles">
         <item>Arrow</item>
