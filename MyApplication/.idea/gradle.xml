@@ -5,15 +5,9 @@
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="modules">
-          <set>
-            <option value="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication" />
-            <option value="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication\Mealspotting" />
-            <option value="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication\WatchList" />
-          </set>
-        </option>
       </GradleProjectSettings>
     </option>
+    <option name="serviceDirectoryPath" value="$USER_HOME$/.gradle" />
   </component>
 </project>
 

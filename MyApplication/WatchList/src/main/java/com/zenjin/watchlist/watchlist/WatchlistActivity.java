@@ -2,30 +2,34 @@ package com.zenjin.watchlist.watchlist;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 /**
  * Created by Rinesh Ramadhin on 16-05-2014 13:00.
  * com.zenjin.watchlist.watchlist
  * Watch List
  */
-public class WatchlistActivity extends FragmentActivity implements ActionBar.TabListener {
+public class WatchlistActivity extends MyWatchList implements ActionBar.TabListener {
 
     ViewPager mViewPager;
     ActionBar mActionBar;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_watchlist);
-
+        super.replaceContentLayout(R.layout.activity_watchlist, R.id.frame_container);
 
         mViewPager= (ViewPager) findViewById(R.id.wl_pager);
         mViewPager.setAdapter(new WL_myAdapter(getSupportFragmentManager()));
@@ -79,7 +83,7 @@ public class WatchlistActivity extends FragmentActivity implements ActionBar.Tab
     public boolean onCreateOptionsMenu(Menu menu) {
 
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.main_activity_actions, menu);
         return true;
     }
 
@@ -91,6 +95,10 @@ public class WatchlistActivity extends FragmentActivity implements ActionBar.Tab
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
+        }
+        if (id == R.id.action_search){
+            Intent intent = new Intent (WatchlistActivity.this,SearchActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

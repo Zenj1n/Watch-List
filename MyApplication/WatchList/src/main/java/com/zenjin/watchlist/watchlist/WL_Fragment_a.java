@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
+import com.parse.Parse;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
@@ -24,12 +35,10 @@ import android.widget.Toast;
 public class WL_Fragment_a extends Fragment {
 
     public final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";
-    Intent intent;
-
-
 
     ListView mListView;
     String[] a_title;
+    ArrayList a_titlelist = new ArrayList();
     String[] a_message;
     int[] a_images = {R.drawable.gameofthrones,R.drawable.thebigbangtheory,R.drawable.truebloodimage,R.drawable.ncis,R.drawable.criminalminds,R.drawable.prettylittleliars,R.drawable.fallingskies,R.drawable.familyguy,R.drawable.hannibal,R.drawable.bones,R.drawable.arrow};
 
@@ -48,35 +57,41 @@ public class WL_Fragment_a extends Fragment {
 
         Resources res = getResources();
 
-
-
         // TODO: build method to create int array "a_images"
         // TODO: build method to create string array and put it in "a_title"
         // TODO: build method to create string array and put it in "a_message"
-        
         // TODO: same things with fragment "b" and "c"
 
+        Parse.initialize(getActivity(), "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
 
-
-
-
-        a_title= res.getStringArray(R.array.wl_a_title);
+        //a_title= res.getStringArray(R.array.wl_a_title);
         a_message= res.getStringArray(R.array.wl_a_message);
+
+        gettitles();
 
         View v = inflater.inflate(R.layout.fragment_a_wl, container, false);
 
         mListView = (ListView) v.findViewById(R.id.wl_a_listview);
 
-
         mListView = getListView();
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
 
+                //Toast.makeText(getActivity(), "Positie "+i +"titel is" + a_title[i], Toast.LENGTH_SHORT).show();
 
-                Toast.makeText(getActivity(), "Positie "+i , Toast.LENGTH_SHORT).show();
+                Intent intent;
+                intent = new Intent(getActivity(),InfoPage.class);
+                String titleSerieRaw = (String) a_titlelist.get(i);
+                String titleSerie = java.net.URLEncoder.encode(titleSerieRaw);
 
+                String word2 = (String) a_titlelist.get(i);
+                String traktWord = word2.replaceAll(" ","-");
+                intent.putExtra("trakt", traktWord);
 
-                Toast.makeText(getActivity(), "Positie "+i , Toast.LENGTH_SHORT).show();
+                intent.putExtra(EXTRA_MESSAGE,titleSerie );
+                startActivity(intent);
+
+                /*
                 intent = new Intent(getActivity(),InfoPage.class);
 
                 switch(i) {
@@ -136,23 +151,95 @@ public class WL_Fragment_a extends Fragment {
                         startActivity(intent);
                         break;
 
-
                 }
+
+                */
 
             }
         });
 
-        myArrayAdaptera adapter = new myArrayAdaptera(getActivity().getApplicationContext(),a_title,a_images,a_message);
-        mListView.setAdapter(adapter);
+        //createview();
+        //updateview();
 
 
 
         return v;
+
     }
+
+
+    public void gettitles() {
+
+        ParseQuery<ParseObject> watching_query = ParseQuery.getQuery("Koppel");
+        watching_query.whereEqualTo("User", ParseUser.getCurrentUser().getUsername());
+        watching_query.whereEqualTo("Status", "Watching");
+        watching_query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> User, com.parse.ParseException e) {
+                if (e == null) {
+
+                    int count = User.size();                // aantal items op parse
+                    int i = 0;
+                    a_titlelist.clear();
+
+
+                    try {
+
+                        do {
+
+                            ParseObject koppel = User.get(i);
+                            a_titlelist.add(i, koppel.getString("Serie"));
+
+                            i++;
+
+                        }
+                        while (i < count);
+
+                    }catch (Exception a){
+
+                        a_titlelist.clear();
+                        a_titlelist.add(i, "No series added");
+                        //Toast.makeText(getActivity(), "An error occured. Cannot get serie names" , Toast.LENGTH_SHORT).show();
+
+                    }
+
+
+                    String[] a_title = (String[]) a_titlelist.toArray(new String[a_titlelist.size()]);
+
+                    createview(a_title);
+
+                } else {
+
+                    Toast.makeText(getActivity(), "An error occured. Cannot get serie names" , Toast.LENGTH_SHORT).show();
+
+                      //error
+
+                }
+            }
+        });
+
+
+    }
+
+    public void createview(String[] a_title){
+
+        Log.i("MyActivity", "string is" + Arrays.toString(a_title));
+
+        myArrayAdaptera adapter = new myArrayAdaptera(getActivity().getApplicationContext(),a_title,a_images,a_message);
+        mListView.setAdapter(adapter);
+
+    }
+
+    public void updateview(){
+
+
+    }
+
 
     public ListView getListView() {
         return mListView;
     }
+
 }
 
 class myArrayAdaptera extends ArrayAdapter<String>
