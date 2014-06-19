@@ -1,1 +1,1 @@
-include ':WatchList', ':Mealspotting'
+include ':WatchList', ':Mealspotting', ':app'
