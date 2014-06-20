@@ -32,6 +32,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class InfoPage extends Activity {
     private static final String YOU_RATED = "You rated ";
     private static final String ADD_TO_YOUR_LIST_FIRST = "Add to your list first";
     private static final String RATING_REMOVED = "Rating removed";
-    private static final String TAG_SEASONS = "seasons";
+    private static final String TAG_EPISODES = "episodes";
 
     Button Baddto;
     Button Brate;
@@ -51,15 +52,17 @@ public class InfoPage extends Activity {
     TextView TStatus;
     ImageView Image;
 
-    JSONArray seasons = null;
+
 
 
     private static final String TAG_TITLE = "Title";
     private static final String TAG_GENRE = "Genre";
     private static final String TAG_PLOT = "Plot";
     private static final String TAG_IMAGE = "Poster";
-
     private static final String TAG_STATUS = "status";
+
+    List<Integer> allEpisodes = new ArrayList<Integer>();
+    int sum = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -207,6 +210,7 @@ public class InfoPage extends Activity {
 
 
 
+
             String url = "http://www.omdbapi.com/?t=" + message + "&plot=full";
             String urlTrakt = "http://api.trakt.tv/show/summary.json/390983740f2092270bc0fa267334db88/"+ message2;
             String urlTraktSeasons = "http://api.trakt.tv/show/seasons.json/390983740f2092270bc0fa267334db88/"+ message2;
@@ -215,13 +219,13 @@ public class InfoPage extends Activity {
             // Getting JSON from URL
             JSONObject json = jParser.getJSONFromUrl(url);
             JSONObject jsonTrakt = jParser.getJSONFromUrl(urlTrakt);
-            JSONObject jsonSeasons = jParser.getJSONFromUrl(urlTraktSeasons);
+            JSONArray jsonEpisodes = jParser.getJsonArray(urlTraktSeasons);
 
             JSONArray jsonArray = new JSONArray();
 
             jsonArray.put(json);
             jsonArray.put(jsonTrakt);
-            jsonArray.put(jsonSeasons);
+            jsonArray.put(jsonEpisodes);
 
             return jsonArray;
 
@@ -240,18 +244,6 @@ public class InfoPage extends Activity {
             pDialog.dismiss();
             try {
 
-                /*
-
-                seasons = jsonArray.getJSONArray(2);
-                for(int i=0;i<seasons.length();i++) {
-
-                    JSONObject e = seasons.getJSONObject(i);
-                    String test = e.getString("episodes");
-                    Log.i("MyActivity", "string is" + test);
-
-                    Title.setText(test);
-                }
-                */
 
 
                 // Storing  JSON item in a Variable
@@ -260,7 +252,20 @@ public class InfoPage extends Activity {
                 String PlotMovie = jsonArray.getJSONObject(0).getString(TAG_PLOT);
                 String GenreMovie = jsonArray.getJSONObject(0).getString(TAG_GENRE);
                 String Status = jsonArray.getJSONObject(1).getString(TAG_STATUS);
+                JSONArray episodes = jsonArray.getJSONArray(2);
 
+
+                for(int i=0;i<episodes.length();i++){
+
+                    JSONObject e;
+                    e = episodes.getJSONObject(i);
+                    int test1 = e.getInt("episodes");
+                    allEpisodes.add(test1);
+                }
+
+
+                sumEpisodes();
+                
 
                 //Set JSON Data in TextView
                 Title.setText(TitleMovie);
@@ -277,6 +282,15 @@ public class InfoPage extends Activity {
         }
 
 
+    }
+
+    public void sumEpisodes() {
+
+        for (int a : allEpisodes) {
+            sum += a;
+        }
+
+        System.out.println(sum);
     }
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
@@ -305,6 +319,7 @@ public class InfoPage extends Activity {
         }
 
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -542,5 +557,7 @@ public class InfoPage extends Activity {
             }
         });
     }
+
+
 }
 
