@@ -215,7 +215,7 @@ pip-log.txt
 .mr.developer.cfg
 
 
-build/
+/build
 
 .idea
 #.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
