@@ -64,6 +64,7 @@ public class WL_Fragment_a extends Fragment {
         // TODO: build method to create string array and put it in "a_title"
         // TODO: build method to create string array and put it in "a_message"
         // TODO: same things with fragment "b" and "c"
+        // TODO: add values from toast and parse to strings file and parsestring file
 
         Parse.initialize(getActivity(), "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
 
