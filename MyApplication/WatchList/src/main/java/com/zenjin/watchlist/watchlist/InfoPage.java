@@ -55,13 +55,14 @@ public class InfoPage extends Activity {
 
 
 
-    private static final String TAG_TITLE = "Title";
-    private static final String TAG_GENRE = "Genre";
-    private static final String TAG_PLOT = "Plot";
+    private static final String TAG_TITLE = "title";
+    private static final String TAG_GENRE = "genres";
+    private static final String TAG_PLOT = "overview";
     private static final String TAG_IMAGE = "Poster";
     private static final String TAG_STATUS = "status";
 
     List<Integer> allEpisodes = new ArrayList<Integer>();
+    List<String> allGenres = new ArrayList<String>();
     int sum = 0;
 
     @Override
@@ -248,12 +249,11 @@ public class InfoPage extends Activity {
 
                 // Storing  JSON item in a Variable
                 //int Seasons = allSeasons.getInt(TAG_SEASONS);
-                String TitleMovie = jsonArray.getJSONObject(0).getString(TAG_TITLE);
-                String PlotMovie = jsonArray.getJSONObject(0).getString(TAG_PLOT);
-                String GenreMovie = jsonArray.getJSONObject(0).getString(TAG_GENRE);
+                String TitleMovie = jsonArray.getJSONObject(1).getString(TAG_TITLE);
+                String PlotMovie = jsonArray.getJSONObject(1).getString(TAG_PLOT);
+                String GenreMovie = jsonArray.getJSONObject(1).getString(TAG_GENRE);
                 String Status = jsonArray.getJSONObject(1).getString(TAG_STATUS);
                 JSONArray episodes = jsonArray.getJSONArray(2);
-
 
                 for(int i=0;i<episodes.length();i++){
 
@@ -263,13 +263,25 @@ public class InfoPage extends Activity {
                     allEpisodes.add(test1);
                 }
 
+                JSONArray genres = jsonArray.getJSONObject(1).getJSONArray(TAG_GENRE);
+
+                /*
+                for (int i=0; i<genres.length(); i++) {
+                    JSONObject genre = genres.getJSONObject(i);
+                    String name = genre.getString("genres");
+                    allGenres.add(name);
+                }
+                */
+
+                //System.out.println(allGenres);
+
+
 
                 sumEpisodes();
 
-
                 //Set JSON Data in TextView
                 Title.setText(TitleMovie);
-                TGenres.setText(GenreMovie);
+                TGenres.setText(genres);
                 Tplot.setText(PlotMovie);
                 TStatus.setText(Status);
 
