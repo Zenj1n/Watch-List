@@ -4,8 +4,10 @@ package com.zenjin.watchlist.watchlist;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +24,9 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -208,8 +213,17 @@ public class WL_Fragment_a extends Fragment {
 
                     do {
 
+                        String serie = (String) a_titlelist.get(i);
+
+                        new getNextEpisode().execute(serie);
+
+                        //getnextepisode(serie);
+                        //getnextepisode.execute((Runnable) a_titlelist);
                         //String serie = (String) a_messagelist.get(i);
-                        a_messagelist.add(i, "//voeg ddeze tekst toe. positie is " + i + "serie is " );
+
+
+
+                        a_messagelist.add(i, "//voeg ddeze tekst toe. positie is " + i + "serie is ");
 
                         i++;
 
@@ -233,6 +247,89 @@ public class WL_Fragment_a extends Fragment {
         String[] a_message = (String[]) a_messagelist.toArray(new String[a_messagelist.size()]);
         createview(a_title, a_message);
     }
+
+
+/*
+
+public void getnextepisode (String titel){
+
+    try {
+
+        String showurl = "http://services.tvrage.com/tools/quickinfo.php?show=" + titel;
+        URL tvrage = new URL(showurl);
+        BufferedReader in = new BufferedReader(new InputStreamReader(tvrage.openStream()));
+
+        String lijn;
+        String fullsite = "";
+
+        while ((lijn = in.readLine()) != null){
+
+            fullsite = fullsite + lijn;
+
+        }
+
+        Toast.makeText(getActivity(), lijn , Toast.LENGTH_SHORT).show();
+
+
+
+    }catch (Exception e){
+
+        //errors
+        //Toast.makeText(getActivity(), e , Toast.LENGTH_SHORT).show();
+        Log.e("ERROR 1", "exception", e);
+
+    }
+
+}
+
+*/
+
+   class getNextEpisode extends AsyncTask<String, Void, Void> {
+
+    //private Exception exception;
+
+       @Override
+       protected Void doInBackground(String... titel) {
+
+           try {
+
+
+               String showurl = "http://services.tvrage.com/tools/quickinfo.php?show=" + titel[0];
+               URL tvrage = new URL(showurl);
+               BufferedReader in = new BufferedReader(new InputStreamReader(tvrage.openStream()));
+
+               String lijn;
+               String fullsite = "";
+
+               while ((lijn = in.readLine()) != null){
+
+                   fullsite = fullsite + lijn;
+
+               }
+
+               fullsite = fullsite.substring(fullsite.indexOf("Next Episode@") + 1);
+               fullsite = fullsite.substring(0, fullsite.indexOf("Country"));
+
+               Log.i("data", fullsite);
+
+
+           } catch (Exception e) {
+
+               Log.e("ERROR 2", "exception", e);
+               return null;
+
+           }
+
+           return null;
+
+       }
+   }
+
+
+
+
+
+
 
     public void createview(String[] a_title, String[] a_message){
 
