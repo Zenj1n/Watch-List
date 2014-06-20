@@ -87,73 +87,10 @@ public class WL_Fragment_a extends Fragment {
                 String word2 = (String) a_titlelist.get(i);
                 String traktWord = word2.replaceAll(" ","-");
                 intent.putExtra("trakt", traktWord);
+                intent.putExtra("Titel", titleSerie);
 
                 intent.putExtra(EXTRA_MESSAGE,titleSerie );
                 startActivity(intent);
-
-                /*
-                intent = new Intent(getActivity(),InfoPage.class);
-
-                switch(i) {
-
-                    case 0:
-                        intent.putExtra(EXTRA_MESSAGE, "Game+of+thrones");
-                        startActivity(intent);
-                        break;
-
-                    case 1:
-                        intent.putExtra(EXTRA_MESSAGE, "The+big+bang+theory");
-                        startActivity(intent);
-                        break;
-
-                    case 2:
-                        intent.putExtra(EXTRA_MESSAGE, "True+blood");
-                        startActivity(intent);
-                        break;
-
-                    case 3:
-                        intent.putExtra(EXTRA_MESSAGE, "NCIS");
-                        startActivity(intent);
-                        break;
-
-                    case 4:
-                        intent.putExtra(EXTRA_MESSAGE, "Criminal+minds");
-                        startActivity(intent);
-                        break;
-
-                    case 5:
-                        intent.putExtra(EXTRA_MESSAGE, "Pretty+little+liars");
-                        startActivity(intent);
-                        break;
-
-                    case 6:
-                        intent.putExtra(EXTRA_MESSAGE, "Falling+skies");
-                        startActivity(intent);
-                        break;
-
-                    case 7:
-                        intent.putExtra(EXTRA_MESSAGE, "Family+guy");
-                        startActivity(intent);
-                        break;
-
-                    case 8:
-                        intent.putExtra(EXTRA_MESSAGE, "Hannibal");
-                        startActivity(intent);
-                        break;
-
-                    case 9:
-                        intent.putExtra(EXTRA_MESSAGE, "Bones");
-                        startActivity(intent);
-                        break;
-
-                    case 10:
-                        intent.putExtra(EXTRA_MESSAGE, "Arrow");
-                        startActivity(intent);
-                        break;
-
-                }
-
-                */
 
             }
         });

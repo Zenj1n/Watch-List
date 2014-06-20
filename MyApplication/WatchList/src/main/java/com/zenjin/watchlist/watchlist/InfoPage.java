@@ -1,16 +1,13 @@
 package com.zenjin.watchlist.watchlist;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -32,6 +29,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -58,6 +56,11 @@ public class InfoPage extends Activity {
     private static final String TAG_IMAGE = "Poster";
 
     private static final String TAG_STATUS = "status";
+    ArrayList<Integer> ratings = new ArrayList<Integer>();
+    double avgRating;
+    String stringRating;
+    Number test;
+    int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +72,8 @@ public class InfoPage extends Activity {
         Parse.initialize(this, "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
 
         new JSONParse().execute();
-
-
+        getRating();
+        Toast.makeText(InfoPage.this, Title.getText() , Toast.LENGTH_SHORT).show();
         Baddto = (Button) findViewById(R.id.Baddto);
         Baddto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,14 +91,19 @@ public class InfoPage extends Activity {
                Rate();
             }
         });
+
+
     }
 
     private class JSONParse extends AsyncTask<String, String, JSONArray> {
         private ProgressDialog pDialog;
+        Intent InfoTitel = getIntent();
+        String InfoTitle = InfoTitel.getStringExtra("Titel");
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            Log.i("tag" , "" + InfoTitle);
             Title = (TextView) findViewById(R.id.title);
             TGenres = (TextView) findViewById(R.id.Tgenres);
             Tplot = (TextView) findViewById(R.id.plot);
@@ -106,7 +114,7 @@ public class InfoPage extends Activity {
             pDialog = new ProgressDialog(InfoPage.this);
             pDialog.setMessage("Getting Data ...");
             pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
+            pDialog.setCancelable(false);
             pDialog.show();
         }
 
@@ -137,12 +145,6 @@ public class InfoPage extends Activity {
             jsonArray.put(jsonSeasons);
 
             return jsonArray;
-
-
-
-
-
-
 
         }
 
@@ -442,6 +444,38 @@ public class InfoPage extends Activity {
                         return false;
                 }
 
+            }
+        });
+    }
+    private void getRating(){
+        ParseQuery<ParseObject> rating_query = ParseQuery.getQuery("Koppel");
+        rating_query.whereEqualTo(ParseUtil.SERIE, Title);
+        rating_query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> User, com.parse.ParseException e) {
+                if (e == null) {
+                    count = User.size();
+                    int i = 0;
+                    double rating = 0;
+                    ratings.clear();
+                    try {
+                        while (i<count){
+                            ParseObject koppel = User.get(i);
+                            //test = koppel.getNumber(ParseUtil.RATING);
+                            ratings.add(i, koppel.getInt(ParseUtil.RATING));
+                            rating = rating + ratings.get(i);
+                            i++;
+                        }
+
+                    } catch (Exception a) {
+                        Toast.makeText(InfoPage.this, "An error occured. Cannot get serie names" , Toast.LENGTH_SHORT).show();
+                    }
+                    avgRating = rating/ratings.size();
+                    stringRating = Double.toString(avgRating);
+                    TextView ratingView = (TextView) findViewById(R.id.TRating);
+                    ratingView.setText(stringRating);
+
+                }
             }
         });
     }
