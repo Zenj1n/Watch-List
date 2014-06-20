@@ -214,8 +214,9 @@ public class WL_Fragment_a extends Fragment {
                     do {
 
                         String serie = (String) a_titlelist.get(i);
+                        String prep = serie.replaceAll(" ","%20");
 
-                        new getNextEpisode().execute(serie);
+                        String info = new getNextEpisode().execute(prep).get();
 
                         //getnextepisode(serie);
                         //getnextepisode.execute((Runnable) a_titlelist);
@@ -223,7 +224,7 @@ public class WL_Fragment_a extends Fragment {
 
 
 
-                        a_messagelist.add(i, "//voeg ddeze tekst toe. positie is " + i + "serie is ");
+                        a_messagelist.add(i, info);
 
                         i++;
 
@@ -284,12 +285,12 @@ public void getnextepisode (String titel){
 
 */
 
-   class getNextEpisode extends AsyncTask<String, Void, Void> {
+   class getNextEpisode extends AsyncTask<String, Void, String> {
 
     //private Exception exception;
 
        @Override
-       protected Void doInBackground(String... titel) {
+       protected String doInBackground(String... titel) {
 
            try {
 
@@ -300,6 +301,7 @@ public void getnextepisode (String titel){
 
                String lijn;
                String fullsite = "";
+               String nextepisode;
 
                while ((lijn = in.readLine()) != null){
 
@@ -307,20 +309,45 @@ public void getnextepisode (String titel){
 
                }
 
-               fullsite = fullsite.substring(fullsite.indexOf("Next Episode@") + 1);
-               fullsite = fullsite.substring(0, fullsite.indexOf("Country"));
 
-               Log.i("data", fullsite);
+               nextepisode = fullsite.substring(fullsite.indexOf("Next Episode@"),fullsite.indexOf("Country"));
+               nextepisode = nextepisode.substring(13);
+               try {
 
+                   nextepisode = nextepisode.substring(0,nextepisode.indexOf("RFC"));
+
+               }catch (Exception e){
+
+                   //nothing
+
+               }
+
+               try {
+
+                   nextepisode = nextepisode.substring(0,nextepisode.indexOf("GMT"));
+
+               }catch (Exception e){
+
+                   //nothing
+
+               }
+
+
+
+               Log.i("data", nextepisode);
+
+               return nextepisode;
 
            } catch (Exception e) {
 
+               String nonextepisode = "Next episode is not available or this show has been canceled";
                Log.e("ERROR 2", "exception", e);
-               return null;
+
+               return nonextepisode;
 
            }
 
-           return null;
+           //return null;
 
        }
    }
