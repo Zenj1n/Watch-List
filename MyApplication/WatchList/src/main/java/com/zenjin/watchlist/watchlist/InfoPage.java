@@ -265,7 +265,7 @@ public class InfoPage extends Activity {
 
 
                 sumEpisodes();
-                
+
 
                 //Set JSON Data in TextView
                 Title.setText(TitleMovie);
