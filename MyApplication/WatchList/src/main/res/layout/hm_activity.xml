@@ -262,10 +262,8 @@
                     <ImageView
                         android:id="@+id/image12"
                         style="@style/BrowseImageView"
-
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/gotham"
                         />
                     <TextView
                         android:layout_width="wrap_content"
@@ -284,7 +282,6 @@
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/constatine"
                         />
                     <TextView
                         android:layout_width="wrap_content"
@@ -301,10 +298,8 @@
                     <ImageView
                         android:id="@+id/image14"
                         style="@style/BrowseImageView"
-
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/black_ish"
                         />
                     <TextView
                         android:layout_width="wrap_content"
@@ -323,7 +318,6 @@
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/game_of_thrones"
                         />
                     <TextView
                         android:layout_width="wrap_content"
@@ -342,7 +336,6 @@
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/gracepoint"
                         />
                     <TextView
                         android:layout_width="wrap_content"
@@ -359,10 +352,8 @@
                     <ImageView
                         android:id="@+id/image17"
                         style="@style/BrowseImageView"
-
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/lost"
                         />
                     <TextView
                         android:layout_width="wrap_content"
@@ -381,7 +372,6 @@
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/arrow"
                         />
                     <TextView
                         android:layout_width="wrap_content"
@@ -398,10 +388,8 @@
                     <ImageView
                         android:id="@+id/image19"
                         style="@style/BrowseImageView"
-
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/the_flash"
                         />
                     <TextView
                         android:layout_width="wrap_content"
@@ -420,7 +408,6 @@
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/the_walking_dead"
                         />
                     <TextView
                         android:layout_width="wrap_content"

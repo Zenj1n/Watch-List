@@ -158,8 +158,6 @@ public class InfoPage extends Activity {
             pDialog.dismiss();
             try {
 
-
-
                 // Storing  JSON item in a Variable
                 //int Seasons = allSeasons.getInt(TAG_SEASONS);
                 String TitleMovie = jsonArray.getJSONObject(0).getString(TAG_TITLE);
@@ -177,16 +175,13 @@ public class InfoPage extends Activity {
                     allEpisodes.add(test1);
                 }
 
-
                 sumEpisodes();
-
 
                 //Set JSON Data in TextView
                 Title.setText(TitleMovie);
                 TGenres.setText(GenreMovie);
                 Tplot.setText(PlotMovie);
                 TStatus.setText(Status);
-
 
                 new DownloadImageTask((ImageView) findViewById(R.id.Image))
                         .execute(jsonArray.getJSONObject(0).getString(TAG_IMAGE));

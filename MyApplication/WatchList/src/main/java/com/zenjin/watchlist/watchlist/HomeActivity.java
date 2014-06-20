@@ -22,6 +22,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class HomeActivity extends MyWatchList {
@@ -29,6 +31,8 @@ public class HomeActivity extends MyWatchList {
     private Button BMyWatchList;
     private static final String TAG_TITLE = "title";
     private static final String TAG_IMAGE = "poster";
+
+    List<String>trendingTitles = new ArrayList<String>(10);
 
     TextView tTrendingTitle11;
     TextView tTrendingTitle12;
@@ -98,21 +102,59 @@ public class HomeActivity extends MyWatchList {
             String urlTraktTrending = "http://api.trakt.tv/shows/trending.json/390983740f2092270bc0fa267334db88/";
             ServiceHandler jParser = new ServiceHandler();
             // Getting JSON from URL
-            JSONObject jsonTrakt = jParser.getJSONFromUrl(urlTraktTrending);
-
-            JSONArray jsonArray = new JSONArray();
-            jsonArray.put(jsonTrakt);
-            return jsonArray;
+            JSONArray jsonTrakt = jParser.getJsonArray(urlTraktTrending);
+            return jsonTrakt;
         }
 
         @Override
-        protected void onPostExecute(JSONArray jsonArray) {
+        protected void onPostExecute(JSONArray jsonTrakt) {
             pDialog.dismiss();
             try {
-                String TrendingTitle = jsonArray.getJSONObject(0).getString(TAG_TITLE);
-                tTrendingTitle11.setText(TrendingTitle);
-                new DownloadImageTask((ImageView) findViewById(R.id.image11))
-                        .execute(jsonArray.getJSONObject(0).getString(TAG_IMAGE));
+
+                for(int i=0;i<jsonTrakt.length();i++){
+
+                    JSONObject e;
+                    e = jsonTrakt.getJSONObject(i);
+                    String name = e.getString("title");
+                    trendingTitles.add(name);
+                }
+
+                System.out.println(trendingTitles);
+
+
+                tTrendingTitle11.setText(trendingTitles.get(0));
+                tTrendingTitle12.setText(trendingTitles.get(1));
+                tTrendingTitle13.setText(trendingTitles.get(2));
+                tTrendingTitle14.setText(trendingTitles.get(3));
+                tTrendingTitle15.setText(trendingTitles.get(4));
+                tTrendingTitle16.setText(trendingTitles.get(5));
+                tTrendingTitle17.setText(trendingTitles.get(6));
+                tTrendingTitle18.setText(trendingTitles.get(7));
+                tTrendingTitle19.setText(trendingTitles.get(8));
+                tTrendingTitle20.setText(trendingTitles.get(9));
+
+               new DownloadImageTask((ImageView) findViewById(R.id.image11))
+                        .execute(jsonTrakt.getJSONObject(0).getString(TAG_IMAGE));
+               new DownloadImageTask((ImageView) findViewById(R.id.image12))
+                        .execute(jsonTrakt.getJSONObject(1).getString(TAG_IMAGE));
+               new DownloadImageTask((ImageView) findViewById(R.id.image13))
+                        .execute(jsonTrakt.getJSONObject(2).getString(TAG_IMAGE));
+               new DownloadImageTask((ImageView) findViewById(R.id.image14))
+                        .execute(jsonTrakt.getJSONObject(3).getString(TAG_IMAGE));
+               new DownloadImageTask((ImageView) findViewById(R.id.image15))
+                        .execute(jsonTrakt.getJSONObject(4).getString(TAG_IMAGE));
+               new DownloadImageTask((ImageView) findViewById(R.id.image16))
+                        .execute(jsonTrakt.getJSONObject(5).getString(TAG_IMAGE));
+               new DownloadImageTask((ImageView) findViewById(R.id.image17))
+                        .execute(jsonTrakt.getJSONObject(6).getString(TAG_IMAGE));
+               new DownloadImageTask((ImageView) findViewById(R.id.image18))
+                        .execute(jsonTrakt.getJSONObject(7).getString(TAG_IMAGE));
+               new DownloadImageTask((ImageView) findViewById(R.id.image19))
+                        .execute(jsonTrakt.getJSONObject(8).getString(TAG_IMAGE));
+               new DownloadImageTask((ImageView) findViewById(R.id.image20))
+                        .execute(jsonTrakt.getJSONObject(9).getString(TAG_IMAGE));
+
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
