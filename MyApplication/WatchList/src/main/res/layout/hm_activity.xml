@@ -34,7 +34,6 @@
                 <ImageView
                     android:id="@+id/image1"
                     style="@style/BrowseImageView"
-
                     android:scaleType="centerCrop"
                     android:layout_margin="10dp"
                     android:src="@drawable/arrow"
@@ -247,14 +246,14 @@
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/arrow"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/image11"
                         android:layout_centerHorizontal="true"
-                        android:text="Arrow"/>
+                        android:id="@+id/trending11"
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -273,7 +272,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/image12"
                         android:layout_centerHorizontal="true"
-                        android:text="Gotham"/>
+                        android:id="@+id/trending12"
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -291,7 +291,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/image13"
                         android:layout_centerHorizontal="true"
-                        android:text="Constantine"/>
+                        android:id="@+id/trending13"
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -310,7 +311,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/image14"
                         android:layout_centerHorizontal="true"
-                        android:text="Black_ish"/>
+                        android:id="@+id/trending14"
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -328,7 +330,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/image15"
                         android:layout_centerHorizontal="true"
-                        android:text="Game of Thrones"/>
+                        android:id="@+id/trending15"
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -346,7 +349,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/image16"
                         android:layout_centerHorizontal="true"
-                        android:text="Gracepoint"/>
+                        android:id="@+id/trending16"
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -365,7 +369,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/image17"
                         android:layout_centerHorizontal="true"
-                        android:text="Lost"/>
+                        android:id="@+id/trending17"
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -383,7 +388,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/image18"
                         android:layout_centerHorizontal="true"
-                        android:text="Arrow"/>
+                        android:id="@+id/trending18"
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -402,7 +408,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/image19"
                         android:layout_centerHorizontal="true"
-                        android:text="The Flash"/>
+                        android:id="@+id/trending19"
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -420,7 +427,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/image20"
                         android:layout_centerHorizontal="true"
-                        android:text="The Walking Dead"/>
+                        android:id="@+id/trending20"
+                        />
                 </RelativeLayout>
             </LinearLayout>
         </HorizontalScrollView>
