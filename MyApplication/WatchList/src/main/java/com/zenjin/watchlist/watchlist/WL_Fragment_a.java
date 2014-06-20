@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -115,6 +116,7 @@ public class WL_Fragment_a extends Fragment {
 
                 intent.putExtra(EXTRA_MESSAGE,titleSerie );
                 startActivity(intent);
+                getActivity().overridePendingTransition (R.anim.shrink_and_rotate_entrance, R.anim.shrink_and_rotate_exit);
 
 
 
@@ -247,6 +249,10 @@ public class WL_Fragment_a extends Fragment {
 
         String[] a_message = (String[]) a_messagelist.toArray(new String[a_messagelist.size()]);
         createview(a_title, a_message);
+
+        ProgressBar progressBar = (ProgressBar) getActivity().findViewById(R.id.progressBarA);
+        progressBar.setVisibility(View.INVISIBLE);
+
     }
 
 

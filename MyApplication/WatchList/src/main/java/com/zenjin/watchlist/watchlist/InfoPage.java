@@ -1,16 +1,13 @@
 package com.zenjin.watchlist.watchlist;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -174,6 +171,23 @@ public class InfoPage extends Activity {
             }
         });
     }
+
+
+
+
+    // CODE VOOR ANIMATIE VAN WATCHLIST
+
+
+    @Override
+    public void onBackPressed() {
+        // TODO Auto-generated method stub
+        super.onBackPressed();
+        overridePendingTransition (R.anim.shrink_and_rotate_entrance, R.anim.shrink_and_rotate_exit);
+    }
+
+
+
+
 
     private class JSONParse extends AsyncTask<String, String, JSONArray> {
         private ProgressDialog pDialog;
