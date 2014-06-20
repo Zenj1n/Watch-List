@@ -18,7 +18,7 @@ public class HomeActivity extends MyWatchList {
         super.onCreate(savedInstanceState);
         super.replaceContentLayout(R.layout.hm_activity, R.id.frame_container);
 
-        if(BMyWatchList == null){
+   /*     if(BMyWatchList == null){
             populate();
         }
     }
@@ -32,7 +32,7 @@ public class HomeActivity extends MyWatchList {
                 Intent intent = new Intent(HomeActivity.this, WatchlistActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 
     @Override

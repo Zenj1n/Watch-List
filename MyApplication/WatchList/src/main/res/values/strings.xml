@@ -29,14 +29,8 @@
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
     //Home Screen                        <string name="Home_head">Home</string>
-    //Tabs                               <string name="hm_overview_tab">Overview</string>
-    <string name="hm_discover_tab">Discover</string>
-    <string name="hm_agenda_tab">Agenda</string>
-    //Overview tab                        <string name="hm_overview">Overview</string>
-    //Discover tab                        <string name="hm_discover">Discover</string>
-    <string name="hm_discover_recommended">Recommended</string>
-    <string name="hm_discover_popular">Popular</string>
-    <string name="hm_discover_editor">Editors Choice</string>
+    <string name="showSearch">Search for shows</string>
+    <string name="userSearch">Search for users</string>
 
     <string-array name="Hm_Titles">
         <item>Arrow</item>
@@ -130,7 +124,6 @@
     </string-array>
 
     <string name="title_activity_main_main">MyWatchList</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_base">BaseActivity</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_login1">Sign in</string>
@@ -153,9 +146,9 @@
     <string name="error_mismatched_passwords">enter the same password twice</string>
     <string name="error_join">", and "</string>
     <string name="error_end">.</string>
-    <string name="title_activity_dispatch">DispatchActivity</string>
+    <string name="title_activity_dispatch">MyWatchList</string>
     <string name="title_activity_signup_or_login">SignupOrLogin</string>
-    <string name="title_activity_sign_up_or_log_in">SignUpOrLogInActivity</string>
+    <string name="title_activity_sign_up_or_log_in">Sign Up Or LogIn</string>
     <string name="log_in">Log in</string>
     <string name="sign_up">Sign up</string>
     <string name="powered_by">Powered by</string>
@@ -169,9 +162,6 @@
     <string name="log_out">Log out of Anywall</string>
     <string name="post">Post</string>
     <string name="post_out_of_range">Can\'t view post! Get closer.</string>
-    <string name="title_activity_sign_up_or_login_in">SignUpOrLoginInActivity</string>
-    <string name="title_activity_test">TestActivity</string>
-    <string name="title_activity_test_activity2">TestActivity2</string>
-    <string name="title_activity_search">SearchActivity</string>
+    <string name="title_activity_search">Search</string>
 
 </resources>

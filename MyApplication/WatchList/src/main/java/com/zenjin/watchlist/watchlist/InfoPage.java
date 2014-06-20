@@ -75,7 +75,6 @@ public class InfoPage extends Activity {
         Baddto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
               AddTo();
             }
         });
