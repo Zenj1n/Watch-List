@@ -2,7 +2,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+    android:background="@android:color/white">
 
     <ListView
         android:layout_width="wrap_content"
@@ -15,12 +15,12 @@
         android:dividerHeight="1dip"
         />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageViewFragmentA"
-        android:src="@drawable/gettingshows"
+    <WebView
+        android:layout_width="128dp"
+        android:layout_height="16dp"
+        android:id="@+id/webViewA"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/transparent"/>
 
 </RelativeLayout>

@@ -11,12 +11,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.Parse;
@@ -78,8 +78,6 @@ public class WL_Fragment_a extends Fragment {
 
 
 
-        // create loading aniation
-
 
 
 
@@ -98,6 +96,16 @@ public class WL_Fragment_a extends Fragment {
         View v = inflater.inflate(R.layout.fragment_a_wl, container, false);
 
         mListView = (ListView) v.findViewById(R.id.wl_a_listview);
+
+        // create loading aniation
+
+
+        WebView webview = (WebView) v.findViewById(R.id.webViewA);
+        webview.loadUrl("file:///android_asset/loadingshows.gif");
+
+        //ProgressBar progressbar = (ProgressBar) v.findViewById(R.id.progressBarA);
+        //progressbar.getIndeterminateDrawable().setColorFilter(Color.BLUE, android.graphics.PorterDuff.Mode.MULTIPLY);
+
 
         mListView = getListView();
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -186,7 +194,13 @@ public class WL_Fragment_a extends Fragment {
 
                 } else {
 
-                    Toast.makeText(getActivity(), "An error occured. Cannot get serie names" , Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), "An error occured. Cannot get serie names" , Toast.LENGTH_SHORT).show();
+                    a_titlelist.clear();
+                    a_titlelist.add(0, "No internet connection");
+
+                    String[] a_title = (String[]) a_titlelist.toArray(new String[a_titlelist.size()]);
+
+                    getmessages(a_title);
 
                       //error
 
@@ -209,7 +223,13 @@ public class WL_Fragment_a extends Fragment {
             a_messagelist.clear();
             a_messagelist.add(i, "Search for a show to get started");
 
-        } else {
+        } else if (check == "No internet connection")
+        {
+
+            a_messagelist.clear();
+            a_messagelist.add(i, "Please connect to the internet to get started");
+
+        }else {
 
 
                 try {
@@ -252,13 +272,13 @@ public class WL_Fragment_a extends Fragment {
         createview(a_title, a_message);
 
 
-        ImageView imageview = (ImageView) getActivity().findViewById(R.id.imageViewFragmentA);
-        imageview.setVisibility(View.INVISIBLE);
+        //ImageView imageview = (ImageView) getActivity().findViewById(R.id.imageViewFragmentA);
+        //imageview.setVisibility(View.INVISIBLE);
         //ProgressBar progressBar = (ProgressBar) getActivity().findViewById(R.id.progressBarA);
         //progressBar.setVisibility(View.INVISIBLE);
 
-        //WebView webview = (WebView) getActivity().findViewById(R.id.webViewA);
-        //webview.setVisibility(View.INVISIBLE);
+        WebView webview = (WebView) getActivity().findViewById(R.id.webViewA);
+        webview.setVisibility(View.GONE);
 
     }
 
@@ -324,6 +344,7 @@ public void getnextepisode (String titel){
 
 
                nextepisode = fullsite.substring(fullsite.indexOf("Next Episode@"),fullsite.indexOf("Country"));
+               //nextepisode = nextepisode.replaceAll("^","  ");
                nextepisode = nextepisode.substring(13);
                try {
 
@@ -354,7 +375,7 @@ public void getnextepisode (String titel){
            } catch (Exception e) {
 
                String nonextepisode = "Next episode is not available or this show has been canceled";
-               Log.e("ERROR 2", "exception", e);
+               //Log.e("ERROR 2", "exception", e);
 
                return nonextepisode;
 
