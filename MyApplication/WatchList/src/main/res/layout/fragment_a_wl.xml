@@ -15,11 +15,12 @@
         android:dividerHeight="1dip"
         />
 
-    <ProgressBar
-        style="?android:attr/progressBarStyleLarge"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/progressBarA"
+        android:id="@+id/imageViewFragmentA"
+        android:src="@drawable/gettingshows"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>

@@ -15,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,6 +77,8 @@ public class WL_Fragment_a extends Fragment {
         a_message= res.getStringArray(R.array.wl_a_message);
 
 
+
+        // create loading aniation
 
 
 
@@ -250,8 +251,14 @@ public class WL_Fragment_a extends Fragment {
         String[] a_message = (String[]) a_messagelist.toArray(new String[a_messagelist.size()]);
         createview(a_title, a_message);
 
-        ProgressBar progressBar = (ProgressBar) getActivity().findViewById(R.id.progressBarA);
-        progressBar.setVisibility(View.INVISIBLE);
+
+        ImageView imageview = (ImageView) getActivity().findViewById(R.id.imageViewFragmentA);
+        imageview.setVisibility(View.INVISIBLE);
+        //ProgressBar progressBar = (ProgressBar) getActivity().findViewById(R.id.progressBarA);
+        //progressBar.setVisibility(View.INVISIBLE);
+
+        //WebView webview = (WebView) getActivity().findViewById(R.id.webViewA);
+        //webview.setVisibility(View.INVISIBLE);
 
     }
 
