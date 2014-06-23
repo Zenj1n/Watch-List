@@ -2,7 +2,6 @@ package com.zenjin.watchlist.watchlist;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -36,9 +35,10 @@ public class SearchActivity extends Activity {
             }
 
             public void performSearch() {
+
                 String word = java.net.URLEncoder.encode(searchET.getText().toString());
                 String word2 = searchET.getText().toString();
-
+                InfoPage.infoTitle = word;
                 String traktWord = word2.replaceAll(" ","-");
                 intent = new Intent(SearchActivity.this,InfoPage.class);
                 intent.putExtra(EXTRA_MESSAGE, word);

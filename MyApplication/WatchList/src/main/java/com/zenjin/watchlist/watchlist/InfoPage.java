@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -57,10 +58,14 @@ public class InfoPage extends Activity {
 
     private static final String TAG_STATUS = "status";
     ArrayList<Integer> ratings = new ArrayList<Integer>();
+    ArrayList<Integer> legitRatings = new ArrayList<Integer>();
     double avgRating;
     String stringRating;
     Number test;
     int count;
+    private int i;
+    int ratings_size;
+    public static String infoTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,12 +73,10 @@ public class InfoPage extends Activity {
         setContentView(R.layout.infopage);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
-
         Parse.initialize(this, "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
 
         new JSONParse().execute();
         getRating();
-        Toast.makeText(InfoPage.this, Title.getText() , Toast.LENGTH_SHORT).show();
         Baddto = (Button) findViewById(R.id.Baddto);
         Baddto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,13 +100,11 @@ public class InfoPage extends Activity {
 
     private class JSONParse extends AsyncTask<String, String, JSONArray> {
         private ProgressDialog pDialog;
-        Intent InfoTitel = getIntent();
-        String InfoTitle = InfoTitel.getStringExtra("Titel");
+
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Log.i("tag" , "" + InfoTitle);
             Title = (TextView) findViewById(R.id.title);
             TGenres = (TextView) findViewById(R.id.Tgenres);
             Tplot = (TextView) findViewById(R.id.plot);
@@ -449,13 +450,13 @@ public class InfoPage extends Activity {
     }
     private void getRating(){
         ParseQuery<ParseObject> rating_query = ParseQuery.getQuery("Koppel");
-        rating_query.whereEqualTo(ParseUtil.SERIE, Title);
+        rating_query.whereEqualTo(ParseUtil.SERIE, infoTitle);
         rating_query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> User, com.parse.ParseException e) {
                 if (e == null) {
                     count = User.size();
-                    int i = 0;
+                    i = 0;
                     double rating = 0;
                     ratings.clear();
                     try {
@@ -470,8 +471,28 @@ public class InfoPage extends Activity {
                     } catch (Exception a) {
                         Toast.makeText(InfoPage.this, "An error occured. Cannot get serie names" , Toast.LENGTH_SHORT).show();
                     }
+
+                   i = 0;
+                   ratings_size = ratings.size();
+                   while (i<ratings.size()) {
+                       Log.i("", " "+ratings + i);
+                        if (ratings.get(i)== 0) {
+                            ratings.remove(i);
+                        }
+                       else{
+                            i++;
+                        }
+                    }
+
                     avgRating = rating/ratings.size();
-                    stringRating = Double.toString(avgRating);
+                    TextView rating_view = (TextView) findViewById(R.id.TRating);
+                    if(Double.isNaN(avgRating)){
+                        stringRating = "No rating available";
+                        rating_view.setFilters(new InputFilter[] {new InputFilter.LengthFilter(19)});
+                    }
+                    else {
+                        stringRating = Double.toString(avgRating);
+                    }
                     TextView ratingView = (TextView) findViewById(R.id.TRating);
                     ratingView.setText(stringRating);
 

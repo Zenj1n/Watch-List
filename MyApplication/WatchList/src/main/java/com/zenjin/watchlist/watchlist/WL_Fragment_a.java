@@ -41,7 +41,7 @@ public class WL_Fragment_a extends Fragment {
     ArrayList a_titlelist = new ArrayList();
     String[] a_message;
     int[] a_images = {R.drawable.gameofthrones,R.drawable.thebigbangtheory,R.drawable.truebloodimage,R.drawable.ncis,R.drawable.criminalminds,R.drawable.prettylittleliars,R.drawable.fallingskies,R.drawable.familyguy,R.drawable.hannibal,R.drawable.bones,R.drawable.arrow};
-
+    public static String infoTitel;
 
     public WL_Fragment_a() {
         // Required empty public constructor
@@ -82,6 +82,7 @@ public class WL_Fragment_a extends Fragment {
                 Intent intent;
                 intent = new Intent(getActivity(),InfoPage.class);
                 String titleSerieRaw = (String) a_titlelist.get(i);
+                InfoPage.infoTitle = titleSerieRaw;
                 String titleSerie = java.net.URLEncoder.encode(titleSerieRaw);
 
                 String word2 = (String) a_titlelist.get(i);
