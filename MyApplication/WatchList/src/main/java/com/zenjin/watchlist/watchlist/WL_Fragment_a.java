@@ -616,8 +616,18 @@ public void getnextepisode (String titel){
                 //String noimage = "https://www.google.com/images/srpr/logo11w.png";
                 //Log.e("ERROR 2", "exception", e);
 
+
+                ArrayList<Bitmap> images = new ArrayList<Bitmap>();
+
+                Bitmap icon = BitmapFactory.decodeResource(getActivity().getResources(),
+                        R.drawable.ic_launcher);
+
+                images.add(0,icon);
+
+                return images;
+
                 //return noimage;
-                return null;
+
 
             }
 
@@ -625,7 +635,7 @@ public void getnextepisode (String titel){
         }
     }
 
-
+    /*
 
     public ArrayList<Bitmap> imagetoarray(String[] imageurl) {
 
@@ -674,7 +684,7 @@ public void getnextepisode (String titel){
 
     }
 
-
+        */
 
 
     public void createview(String[] a_title, String[] a_message,ArrayList<Bitmap> a_images){
