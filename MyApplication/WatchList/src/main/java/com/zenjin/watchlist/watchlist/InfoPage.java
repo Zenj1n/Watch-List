@@ -272,9 +272,10 @@ public class InfoPage extends Activity {
 
                 sumEpisodes();
                 String test3 = GenreMovie.replaceAll("[\"\\[\\]]", "");
+                String test4 = test3.replaceAll(",(\\d|\\w)",", $1");
                 //Set JSON Data in TextView
                 Title.setText(TitleMovie);
-                TGenres.setText(test3);
+                TGenres.setText(test4);
                 Tplot.setText(PlotMovie);
                 TStatus.setText(Status);
 

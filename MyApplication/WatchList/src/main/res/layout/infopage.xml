@@ -80,7 +80,7 @@
             android:text="@string/genre"
             android:paddingLeft="20dp"
             android:paddingTop="20dp"
-            android:textSize="20sp"/>
+            android:textSize="18sp"/>
 
 
         <TextView
@@ -97,7 +97,7 @@
             android:text="@string/statusw"
             android:paddingLeft="20dp"
             android:layout_marginTop="45dp"
-            android:textSize="20sp"/>
+            android:textSize="18sp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -111,10 +111,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/TRatingW"
-            android:text="@+string/rating"
+            android:text="@string/rating"
             android:paddingLeft="20dp"
             android:layout_marginTop="70dp"
-            android:textSize="20sp"
+            android:textSize="18sp"
             />
 
         <TextView
