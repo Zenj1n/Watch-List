@@ -36,12 +36,10 @@ public class SearchActivity extends Activity {
             }
 
             public void performSearch() {
-                String word = java.net.URLEncoder.encode(searchET.getText().toString());
-                String word2 = searchET.getText().toString();
 
+                String word2 = searchET.getText().toString();
                 String traktWord = word2.replaceAll(" ","-");
                 intent = new Intent(SearchActivity.this,InfoPage.class);
-                intent.putExtra(EXTRA_MESSAGE, word);
                 intent.putExtra("trakt", traktWord);
 
                 startActivity(intent);

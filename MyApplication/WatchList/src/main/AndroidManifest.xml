@@ -3,7 +3,7 @@
     package="com.zenjin.watchlist.watchlist" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="19"
         android:targetSdkVersion="19" />
 
     <application

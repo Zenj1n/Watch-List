@@ -81,15 +81,17 @@
             android:text="@string/genre"
             android:paddingLeft="20dp"
             android:paddingTop="20dp"
-            android:textSize="20sp"/>
+            android:textSize="18sp"/>
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/Tgenres"
+
             android:layout_toRightOf="@+id/Tgenre"
-            android:layout_margin="25dp"/>
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="25dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -98,24 +100,25 @@
             android:text="@string/statusw"
             android:paddingLeft="20dp"
             android:layout_marginTop="45dp"
-            android:textSize="20sp"/>
+            android:textSize="18sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/TStatus"
             android:layout_toRightOf="@+id/TStatusW"
-            android:layout_marginLeft="25dp"
+
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="50dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/TRatingW"
-            android:text="@+string/rating"
+            android:text="@string/rating"
             android:paddingLeft="20dp"
             android:layout_marginTop="70dp"
-            android:textSize="20sp"
+            android:textSize="18sp"
             />
 
         <TextView
@@ -123,8 +126,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/TRating"
             android:layout_toRightOf="@+id/TRatingW"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="77dp"/>
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="77dp"
+            />
 
     </RelativeLayout>
 
