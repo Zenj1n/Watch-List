@@ -1,21 +1,19 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:padding="10dp">
+        android:padding="5dp">
 
         <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            style="@style/TitleView"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Popular"
+            android:text=" Popular"
             android:id="@+id/textView"
-            android:textColor="#FFF"
-            android:background="#595957"
+
             />
 
 
@@ -35,8 +33,8 @@
                     android:layout_height="wrap_content">
                 <ImageView
                     android:id="@+id/image1"
-                    android:layout_width="125dp"
-                    android:layout_height="125dp"
+                    style="@style/BrowseImageView"
+
                     android:scaleType="centerCrop"
                     android:layout_margin="10dp"
                     android:src="@drawable/arrow"
@@ -54,8 +52,8 @@
                     android:layout_height="wrap_content">
                     <ImageView
                         android:id="@+id/image2"
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
+                        style="@style/BrowseImageView"
+
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         android:src="@drawable/gotham"
@@ -73,8 +71,8 @@
                     android:layout_height="wrap_content">
                     <ImageView
                         android:id="@+id/image3"
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
+                        style="@style/BrowseImageView"
+
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         android:src="@drawable/constatine"
@@ -92,8 +90,8 @@
                     android:layout_height="wrap_content">
                     <ImageView
                         android:id="@+id/image4"
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
+                        style="@style/BrowseImageView"
+
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         android:src="@drawable/black_ish"
@@ -111,8 +109,8 @@
                     android:layout_height="wrap_content">
                     <ImageView
                         android:id="@+id/image5"
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
+                        style="@style/BrowseImageView"
+
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         android:src="@drawable/game_of_thrones"
@@ -130,8 +128,8 @@
                     android:layout_height="wrap_content">
                     <ImageView
                         android:id="@+id/image6"
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
+                        style="@style/BrowseImageView"
+
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         android:src="@drawable/gracepoint"
@@ -149,8 +147,8 @@
                     android:layout_height="wrap_content">
                     <ImageView
                         android:id="@+id/image7"
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
+                        style="@style/BrowseImageView"
+
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         android:src="@drawable/lost"
@@ -168,8 +166,8 @@
                     android:layout_height="wrap_content">
                     <ImageView
                         android:id="@+id/image8"
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
+                        style="@style/BrowseImageView"
+
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         android:src="@drawable/arrow"
@@ -187,8 +185,8 @@
                     android:layout_height="wrap_content">
                     <ImageView
                         android:id="@+id/image9"
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
+                        style="@style/BrowseImageView"
+
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         android:src="@drawable/the_flash"
@@ -206,8 +204,7 @@
                     android:layout_height="wrap_content">
                     <ImageView
                         android:id="@+id/image10"
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
+                        style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         android:src="@drawable/the_walking_dead"
@@ -224,13 +221,12 @@
         </HorizontalScrollView>
 
         <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            style="@style/TitleView"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Today"
+            android:text=" Today"
             android:id="@+id/todayTextView"
-            android:background="#595957"
-            android:textColor="#FFF"
+            android:layout_marginTop="20dp"
+
             />
         <HorizontalScrollView
             android:layout_width="wrap_content"
@@ -248,8 +244,7 @@
                     android:layout_height="wrap_content">
                     <ImageView
                         android:id="@+id/image11"
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
+                        style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         android:src="@drawable/arrow"
@@ -267,8 +262,8 @@
                     android:layout_height="wrap_content">
                     <ImageView
                         android:id="@+id/image12"
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
+                        style="@style/BrowseImageView"
+
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         android:src="@drawable/gotham"
@@ -286,8 +281,7 @@
                     android:layout_height="wrap_content">
                     <ImageView
                         android:id="@+id/image13"
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
+                        style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         android:src="@drawable/constatine"
@@ -305,8 +299,8 @@
                     android:layout_height="wrap_content">
                     <ImageView
                         android:id="@+id/image14"
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
+                        style="@style/BrowseImageView"
+
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         android:src="@drawable/black_ish"
@@ -324,8 +318,7 @@
                     android:layout_height="wrap_content">
                     <ImageView
                         android:id="@+id/image15"
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
+                        style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         android:src="@drawable/game_of_thrones"
@@ -343,8 +336,7 @@
                     android:layout_height="wrap_content">
                     <ImageView
                         android:id="@+id/image16"
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
+                        style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         android:src="@drawable/gracepoint"
@@ -362,8 +354,8 @@
                     android:layout_height="wrap_content">
                     <ImageView
                         android:id="@+id/image17"
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
+                        style="@style/BrowseImageView"
+
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         android:src="@drawable/lost"
@@ -381,8 +373,7 @@
                     android:layout_height="wrap_content">
                     <ImageView
                         android:id="@+id/image18"
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
+                        style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         android:src="@drawable/arrow"
@@ -400,8 +391,8 @@
                     android:layout_height="wrap_content">
                     <ImageView
                         android:id="@+id/image19"
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
+                        style="@style/BrowseImageView"
+
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         android:src="@drawable/the_flash"
@@ -419,8 +410,7 @@
                     android:layout_height="wrap_content">
                     <ImageView
                         android:id="@+id/image20"
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
+                        style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         android:src="@drawable/the_walking_dead"
@@ -434,20 +424,6 @@
                 </RelativeLayout>
             </LinearLayout>
         </HorizontalScrollView>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="MyWatchList"
-            android:id="@+id/BMyWatchList" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="News Feed"
-            android:id="@+id/BNewsFeed"
-            android:layout_gravity="center_horizontal" />
-
 
     </LinearLayout>
 </ScrollView>
