@@ -4,6 +4,8 @@ package com.zenjin.watchlist.watchlist;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -25,11 +27,13 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.concurrent.ExecutionException;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
@@ -41,14 +45,16 @@ public class WL_Fragment_a extends Fragment {
 
     ListView mListView;
 
-    String[] a_title;
+    //String[] a_title;
     ArrayList a_titlelist = new ArrayList();
 
-    String[] a_message;
+    //String[] a_message;
     ArrayList a_messagelist = new ArrayList();
-    ArrayList a_messageurl = new ArrayList();
+    //ArrayList a_messageurl = new ArrayList();
 
-    int[] a_images = {R.drawable.gameofthrones,R.drawable.thebigbangtheory,R.drawable.thebigbangtheory,R.drawable.thebigbangtheory,R.drawable.thebigbangtheory};
+    ArrayList a_imageurl = new ArrayList();
+
+    //int[] a_images = {R.drawable.gameofthrones,R.drawable.thebigbangtheory,R.drawable.thebigbangtheory,R.drawable.thebigbangtheory,R.drawable.thebigbangtheory};
 
 
     public WL_Fragment_a() {
@@ -74,7 +80,7 @@ public class WL_Fragment_a extends Fragment {
         Parse.initialize(getActivity(), "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
 
         //a_title= res.getStringArray(R.array.wl_a_title);
-        a_message= res.getStringArray(R.array.wl_a_message);
+        //a_message= res.getStringArray(R.array.wl_a_message);
 
 
 
@@ -269,7 +275,11 @@ public class WL_Fragment_a extends Fragment {
             }
 
         String[] a_message = (String[]) a_messagelist.toArray(new String[a_messagelist.size()]);
-        createview(a_title, a_message);
+
+        //createview(a_title, a_message);
+
+        getimages(a_title,a_message);
+
 
 
         //ImageView imageview = (ImageView) getActivity().findViewById(R.id.imageViewFragmentA);
@@ -277,8 +287,101 @@ public class WL_Fragment_a extends Fragment {
         //ProgressBar progressBar = (ProgressBar) getActivity().findViewById(R.id.progressBarA);
         //progressBar.setVisibility(View.INVISIBLE);
 
+        //WebView webview = (WebView) getActivity().findViewById(R.id.webViewA);
+        //webview.setVisibility(View.GONE);
+
+    }
+
+
+    public void getimages(String[] a_title, String[] a_message){
+
+        int count = a_titlelist.size();
+        int i = 0;
+        String check = (String) a_titlelist.get(0);
+
+        if (check == "No series added") {
+
+            a_imageurl.clear();
+            a_imageurl.add(i, "https://www.google.com/images/srpr/logo11w.png");
+
+        } else if (check == "No internet connection")
+        {
+
+            a_imageurl.clear();
+            a_imageurl.add(i, "https://www.google.com/images/srpr/logo11w.png");
+
+        }else {
+
+
+            try {
+
+                do {
+
+                    String serie = (String) a_titlelist.get(i);
+                    String prep = serie.replaceAll(" ","%20");
+
+                    String url;
+                    url = new getimagesonline().execute(prep).get();
+
+                    //getnextepisode(serie);
+                    //getnextepisode.execute((Runnable) a_titlelist);
+                    //String serie = (String) a_messagelist.get(i);
+
+
+
+                    a_imageurl.add(i, url);
+
+                    i++;
+
+                }
+                while (i < count);
+
+            } catch (Exception a) {
+
+                a_imageurl.clear();
+                a_imageurl.add(i, "https://www.google.com/images/srpr/logo11w.png");
+                //Toast.makeText(getActivity(), "An error occured. Cannot get serie names" , Toast.LENGTH_SHORT).show();
+
+            }
+
+
+
+
+
+        }
+
+        String[] a_images_for_method = (String[]) a_imageurl.toArray(new String[a_imageurl.size()]);
+
+        ArrayList<Bitmap> a_images = null;
+
+        try {
+            a_images = new imagetoarray().execute(a_images_for_method).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+
+        //ArrayList<Bitmap> a_images = imagetoarray(a_images_for_method);
+
+        createview(a_title, a_message,a_images);
+
+        //getimages(a_title,a_message);
+
+
+
+        //ImageView imageview = (ImageView) getActivity().findViewById(R.id.imageViewFragmentA);
+        //imageview.setVisibility(View.INVISIBLE);
+        //ProgressBar progressBar = (ProgressBar) getActivity().findViewById(R.id.progressBarA);
+        //progressBar.setVisibility(View.INVISIBLE);
+
+        //WebView webview = (WebView) getActivity().findViewById(R.id.webViewA);
+        //webview.setVisibility(View.GONE);
+
         WebView webview = (WebView) getActivity().findViewById(R.id.webViewA);
         webview.setVisibility(View.GONE);
+
 
     }
 
@@ -344,7 +447,8 @@ public void getnextepisode (String titel){
 
 
                nextepisode = fullsite.substring(fullsite.indexOf("Next Episode@"),fullsite.indexOf("Country"));
-               //nextepisode = nextepisode.replaceAll("^","  ");
+               //nextepisode = nextepisode.replaceAll("","  ");
+               nextepisode = nextepisode.replace("^","   ");
                nextepisode = nextepisode.substring(13);
                try {
 
@@ -368,7 +472,7 @@ public void getnextepisode (String titel){
 
 
 
-               Log.i("data", nextepisode);
+               //Log.i("data", nextepisode);
 
                return nextepisode;
 
@@ -389,10 +493,191 @@ public void getnextepisode (String titel){
 
 
 
+    class getimagesonline extends AsyncTask<String, Void, String> {
+
+        //private Exception exception;
+
+        @Override
+        protected String doInBackground(String... titel) {
+
+            try {
+
+
+                String omdbapi = "http://www.omdbapi.com/?t=" + titel[0];
+                //JSONObject(html).getString("name");
 
 
 
-    public void createview(String[] a_title, String[] a_message){
+
+                URL omdb = new URL(omdbapi);
+                BufferedReader in = new BufferedReader(new InputStreamReader(omdb.openStream()));
+
+                String lijn;
+                String fullsite = "";
+                String imageurl;
+
+                while ((lijn = in.readLine()) != null){
+
+                    fullsite = fullsite + lijn;
+
+                }
+
+
+                imageurl = fullsite.substring(fullsite.indexOf("http://"),fullsite.indexOf("\",\"Metascore"));
+
+                //nextepisode = nextepisode.replaceAll("^","  ");
+                //imageurl = imageurl.substring(13);
+
+
+
+                //Log.i("data1", fullsite);
+
+                //Log.i("data2", imageurl);
+
+                return imageurl;
+
+
+
+
+            } catch (Exception e) {
+
+                String noimage = "https://www.google.com/images/srpr/logo11w.png";
+                //Log.e("ERROR 2", "exception", e);
+
+                return noimage;
+
+            }
+
+            //return null;
+
+        }
+    }
+
+
+    class imagetoarray extends AsyncTask<String, Void, ArrayList<Bitmap>> {
+
+        //private Exception exception;
+
+        @Override
+        protected ArrayList<Bitmap> doInBackground(String... imageurl) {
+
+            try {
+
+
+                ArrayList<Bitmap> images = new ArrayList<Bitmap>();
+                int i = 0;
+                int count = imageurl.length;
+
+                do {
+
+
+
+                    Bitmap bitmap;
+                    URL imageURL = null;
+
+                    try {
+                        imageURL = new URL(imageurl[i]);
+                    }
+
+                    catch (Exception e) {
+                        Log.e("ERROR 1", "exception", e);
+                    }
+
+                    try {
+                        HttpURLConnection connection= (HttpURLConnection)imageURL.openConnection();
+                        connection.setDoInput(true);
+                        connection.connect();
+                        InputStream inputStream = connection.getInputStream();
+
+                        bitmap = BitmapFactory.decodeStream(inputStream);//Convert to bitmap
+                        images.add(i,bitmap);
+                    }
+                    catch (Exception e) {
+
+                        Log.e("ERROR 2", "exception", e);
+                    }
+
+                    i++;
+
+                }
+                while (i < count);
+
+
+                return images;
+
+
+
+
+
+
+            } catch (Exception e) {
+
+
+                //String noimage = "https://www.google.com/images/srpr/logo11w.png";
+                //Log.e("ERROR 2", "exception", e);
+
+                //return noimage;
+                return null;
+
+            }
+
+
+        }
+    }
+
+
+
+    public ArrayList<Bitmap> imagetoarray(String[] imageurl) {
+
+
+        ArrayList<Bitmap> images = new ArrayList<Bitmap>();
+        int i = 0;
+        int count = imageurl.length;
+
+        do {
+
+
+
+            Bitmap bitmap;
+            URL imageURL = null;
+
+            try {
+                imageURL = new URL(imageurl[i]);
+            }
+
+            catch (Exception e) {
+                Log.e("ERROR 1", "exception", e);
+            }
+
+            try {
+                HttpURLConnection connection= (HttpURLConnection)imageURL.openConnection();
+                connection.setDoInput(true);
+                connection.connect();
+                InputStream inputStream = connection.getInputStream();
+
+                bitmap = BitmapFactory.decodeStream(inputStream);//Convert to bitmap
+               images.add(i,bitmap);
+            }
+            catch (Exception e) {
+
+                Log.e("ERROR 2", "exception", e);
+            }
+
+            i++;
+
+        }
+        while (i < count);
+
+
+        return images;
+
+
+    }
+
+
+
+
+    public void createview(String[] a_title, String[] a_message,ArrayList<Bitmap> a_images){
 
         //Log.i("MyActivity", "string is" + Arrays.toString(a_title));
 
@@ -411,11 +696,11 @@ public void getnextepisode (String titel){
 class myArrayAdaptera extends ArrayAdapter<String>
 {
     Context mContext;
-    int[] imagesarray;
+    ArrayList<Bitmap> imagesarray;
     String[] titlearray;
     String[] messagearray;
 
-    myArrayAdaptera(Context a,String[] wl_a_title,int img[],String[] mssg)
+    myArrayAdaptera(Context a,String[] wl_a_title,ArrayList<Bitmap> img,String[] mssg)
     {
         super(a,R.layout.single_row_wl,R.id.wl_title,wl_a_title);
         this.mContext=a;
@@ -436,7 +721,7 @@ class myArrayAdaptera extends ArrayAdapter<String>
         TextView titlea = (TextView) row.findViewById(R.id.wl_title);
         TextView messagea = (TextView) row.findViewById(R.id.wl_message);
 
-        imagea.setImageResource(imagesarray[position]);
+        imagea.setImageBitmap(imagesarray.get(position));
         titlea.setText(titlearray[position]);
         messagea.setText(messagearray[position]);
 
