@@ -36,11 +36,11 @@ public class WL_Fragment_a extends Fragment {
 
 
 
-    ListView mListView;
-    String[] a_title;
-    ArrayList a_titlelist = new ArrayList();
-    String[] a_message;
-    int[] a_images = {R.drawable.gameofthrones,R.drawable.thebigbangtheory,R.drawable.truebloodimage,R.drawable.ncis,R.drawable.criminalminds,R.drawable.prettylittleliars,R.drawable.fallingskies,R.drawable.familyguy,R.drawable.hannibal,R.drawable.bones,R.drawable.arrow};
+    private ListView mListView;
+    private String[] a_title;
+    private ArrayList a_titlelist = new ArrayList();
+    private String[] a_message;
+    private int[] a_images = {R.drawable.gameofthrones,R.drawable.thebigbangtheory,R.drawable.truebloodimage,R.drawable.ncis,R.drawable.criminalminds,R.drawable.prettylittleliars,R.drawable.fallingskies,R.drawable.familyguy,R.drawable.hannibal,R.drawable.bones,R.drawable.arrow};
 
 
     public WL_Fragment_a() {
