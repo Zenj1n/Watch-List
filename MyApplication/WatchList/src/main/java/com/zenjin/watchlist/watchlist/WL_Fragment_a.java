@@ -34,7 +34,7 @@ import java.util.List;
  */
 public class WL_Fragment_a extends Fragment {
 
-    public final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";
+
 
     ListView mListView;
     String[] a_title;
@@ -81,14 +81,11 @@ public class WL_Fragment_a extends Fragment {
 
                 Intent intent;
                 intent = new Intent(getActivity(),InfoPage.class);
-                String titleSerieRaw = (String) a_titlelist.get(i);
-                String titleSerie = java.net.URLEncoder.encode(titleSerieRaw);
+
 
                 String word2 = (String) a_titlelist.get(i);
                 String traktWord = word2.replaceAll(" ","-");
                 intent.putExtra("trakt", traktWord);
-
-                intent.putExtra(EXTRA_MESSAGE,titleSerie );
                 startActivity(intent);
 
                 /*
