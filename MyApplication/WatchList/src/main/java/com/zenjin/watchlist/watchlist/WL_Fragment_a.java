@@ -302,7 +302,7 @@ public class WL_Fragment_a extends Fragment {
         if (check == "No series added") {
 
             a_imageurl.clear();
-            a_imageurl.add(i, "https://www.google.com/images/srpr/logo11w.png");
+            a_imageurl.add(i, "http://i.imgur.com/EwgfZTv.png");
 
         } else if (check == "No internet connection")
         {
@@ -448,7 +448,7 @@ public void getnextepisode (String titel){
 
                nextepisode = fullsite.substring(fullsite.indexOf("Next Episode@"),fullsite.indexOf("Country"));
                //nextepisode = nextepisode.replaceAll("","  ");
-               nextepisode = nextepisode.replace("^","   ");
+               nextepisode = nextepisode.replace("^","    ");
                nextepisode = nextepisode.substring(13);
                try {
 
