@@ -595,6 +595,16 @@ public void getnextepisode (String titel){
                     catch (Exception e) {
 
                         Log.e("ERROR 2", "exception", e);
+                        images = new ArrayList<Bitmap>();
+
+                        Bitmap icon = BitmapFactory.decodeResource(getActivity().getResources(),
+                                R.drawable.ic_launcher);
+
+                        images.add(0,icon);
+
+                        return images;
+
+
                     }
 
                     i++;
