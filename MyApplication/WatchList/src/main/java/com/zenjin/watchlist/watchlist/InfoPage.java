@@ -152,31 +152,40 @@ public class InfoPage extends Activity {
             pDialog.dismiss();
             try {
 
-                // Storing  JSON item in a Variable
-                //int Seasons = allSeasons.getInt(TAG_SEASONS);
-                String TitleMovie = jsonArray.getJSONObject(0).getString(TAG_TITLE);
-                String PlotMovie = jsonArray.getJSONObject(0).getString(TAG_PLOT);
-                String GenreMovie = jsonArray.getJSONObject(0).getString(TAG_GENRE);
-                String Status = jsonArray.getJSONObject(1).getString(TAG_STATUS);
-                JSONArray episodes = jsonArray.getJSONArray(2);
+                if(jsonArray != null){
 
-                for(int i=0;i<episodes.length();i++){
-                    JSONObject e;
-                    e = episodes.getJSONObject(i);
-                    int test1 = e.getInt("episodes");
-                    allEpisodes.add(test1);
+                    // Storing  JSON item in a Variable
+                    //int Seasons = allSeasons.getInt(TAG_SEASONS);
+                    String TitleMovie = jsonArray.getJSONObject(0).getString(TAG_TITLE);
+                    String PlotMovie = jsonArray.getJSONObject(0).getString(TAG_PLOT);
+                    String GenreMovie = jsonArray.getJSONObject(0).getString(TAG_GENRE);
+                    String Status = jsonArray.getJSONObject(1).getString(TAG_STATUS);
+                    JSONArray episodes = jsonArray.getJSONArray(2);
+
+                    for(int i=0;i<episodes.length();i++){
+                        JSONObject e;
+                        e = episodes.getJSONObject(i);
+                        int test1 = e.getInt("episodes");
+                        allEpisodes.add(test1);
+                    }
+
+                    sumEpisodes();
+
+                    //Set JSON Data in TextView
+                    Title.setText(TitleMovie);
+                    TGenres.setText(GenreMovie);
+                    Tplot.setText(PlotMovie);
+                    TStatus.setText(Status);
+
+                    new DownloadImageTask((ImageView) findViewById(R.id.Image))
+                            .execute(jsonArray.getJSONObject(0).getString(TAG_IMAGE));
+
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "geen informatie beschikbaar", Toast.LENGTH_SHORT);
                 }
 
-                sumEpisodes();
 
-                //Set JSON Data in TextView
-                Title.setText(TitleMovie);
-                TGenres.setText(GenreMovie);
-                Tplot.setText(PlotMovie);
-                TStatus.setText(Status);
-
-                new DownloadImageTask((ImageView) findViewById(R.id.Image))
-                        .execute(jsonArray.getJSONObject(0).getString(TAG_IMAGE));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
