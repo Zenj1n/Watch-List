@@ -22,7 +22,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -32,7 +34,8 @@ public class HomeActivity extends MyWatchList {
     private static final String TAG_TITLE = "title";
     private static final String TAG_IMAGE = "poster";
 
-    List<String>trendingTitles = new ArrayList<String>(10);
+    List<String>trendingTitles = new ArrayList<String>();
+    List<String>todayTitles = new ArrayList<String>();
 
     TextView tTrendingTitle11;
     TextView tTrendingTitle12;
@@ -44,9 +47,6 @@ public class HomeActivity extends MyWatchList {
     TextView tTrendingTitle18;
     TextView tTrendingTitle19;
     TextView tTrendingTitle20;
-
-    ImageView Image11;
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +76,7 @@ public class HomeActivity extends MyWatchList {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+
             tTrendingTitle11 = (TextView) findViewById(R.id.trending11);
             tTrendingTitle12 = (TextView) findViewById(R.id.trending12);
             tTrendingTitle13 = (TextView) findViewById(R.id.trending13);
@@ -87,9 +88,6 @@ public class HomeActivity extends MyWatchList {
             tTrendingTitle19 = (TextView) findViewById(R.id.trending19);
             tTrendingTitle20 = (TextView) findViewById(R.id.trending20);
 
-            Image11 = (ImageView) findViewById(R.id.image11);
-
-
             pDialog = new ProgressDialog(HomeActivity.this);
             pDialog.setMessage("Getting Data ...");
             pDialog.setIndeterminate(false);
@@ -99,17 +97,41 @@ public class HomeActivity extends MyWatchList {
 
         @Override
         protected JSONArray doInBackground(String... args) {
+            Calendar c = Calendar.getInstance();
+            System.out.println("Current time => " + c.getTime());
+            SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
+            String formattedDate = df.format(c.getTime());
+            System.out.println(formattedDate);
+
             String urlTraktTrending = "http://api.trakt.tv/shows/trending.json/390983740f2092270bc0fa267334db88/";
+
+            String urlToday    = "http://api.trakt.tv/calendar/shows.json/390983740f2092270bc0fa267334db88/"+formattedDate;
             ServiceHandler jParser = new ServiceHandler();
+
+            System.out.println(urlToday);
+
             // Getting JSON from URL
             JSONArray jsonTrakt = jParser.getJsonArray(urlTraktTrending);
-            return jsonTrakt;
+            JSONArray jsonTraktToday = jParser.getJsonArray(urlToday);
+
+
+            JSONArray jsonArray = new JSONArray();
+
+            jsonArray.put(jsonTraktToday);
+            jsonArray.put(jsonTrakt);
+
+            return jsonArray;
+
+
+
         }
 
         @Override
-        protected void onPostExecute(JSONArray jsonTrakt) {
+        protected void onPostExecute(JSONArray jsonArray) {
             pDialog.dismiss();
             try {
+                JSONArray jsonTrakt = jsonArray.getJSONArray(1);
+                JSONArray jsonTraktToday = jsonArray.getJSONArray(0);
 
                 for(int i=0;i<jsonTrakt.length();i++){
 
@@ -119,19 +141,37 @@ public class HomeActivity extends MyWatchList {
                     trendingTitles.add(name);
                 }
 
-                System.out.println(trendingTitles);
+
+                /*for(int i=0;i<jsonTraktToday.length();i++){
+
+                    JSONObject e;
+                    e = jsonTraktToday.getJSONObject(i);
+                    String name = e.getString("title");
+                    todayTitles.add(name);
+                }*/
 
 
-                tTrendingTitle11.setText(trendingTitles.get(0));
-                tTrendingTitle12.setText(trendingTitles.get(1));
-                tTrendingTitle13.setText(trendingTitles.get(2));
-                tTrendingTitle14.setText(trendingTitles.get(3));
-                tTrendingTitle15.setText(trendingTitles.get(4));
-                tTrendingTitle16.setText(trendingTitles.get(5));
-                tTrendingTitle17.setText(trendingTitles.get(6));
-                tTrendingTitle18.setText(trendingTitles.get(7));
-                tTrendingTitle19.setText(trendingTitles.get(8));
-                tTrendingTitle20.setText(trendingTitles.get(9));
+
+                System.out.println("trending"+trendingTitles);
+
+                System.out.println("today"+todayTitles);
+
+
+                TextView [] tvTrendTitles = new TextView[10];
+                tvTrendTitles[0]=(TextView)findViewById(R.id.trending11);
+                tvTrendTitles[1]=(TextView)findViewById(R.id.trending12);
+                tvTrendTitles[2]=(TextView)findViewById(R.id.trending13);
+                tvTrendTitles[3]=(TextView)findViewById(R.id.trending14);
+                tvTrendTitles[4]=(TextView)findViewById(R.id.trending15);
+                tvTrendTitles[5]=(TextView)findViewById(R.id.trending16);
+                tvTrendTitles[6]=(TextView)findViewById(R.id.trending17);
+                tvTrendTitles[7]=(TextView)findViewById(R.id.trending18);
+                tvTrendTitles[8]=(TextView)findViewById(R.id.trending19);
+                tvTrendTitles[9]=(TextView)findViewById(R.id.trending20);
+
+                for(int i=0;i<10;i++){
+                   tvTrendTitles[i].setText(trendingTitles.get(i));
+                }
 
                new DownloadImageTask((ImageView) findViewById(R.id.image11))
                         .execute(jsonTrakt.getJSONObject(0).getString(TAG_IMAGE));

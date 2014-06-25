@@ -143,12 +143,6 @@ public class InfoPage extends Activity {
 
             return jsonArray;
 
-
-
-
-
-
-
         }
 
 
