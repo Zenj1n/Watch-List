@@ -35,12 +35,12 @@ import java.util.List;
 public class WL_Fragment_a extends Fragment {
 
 
-
-    private ListView mListView;
-    private String[] a_title;
-    private ArrayList a_titlelist = new ArrayList();
-    private String[] a_message;
-    private int[] a_images = {R.drawable.gameofthrones,R.drawable.thebigbangtheory,R.drawable.truebloodimage,R.drawable.ncis,R.drawable.criminalminds,R.drawable.prettylittleliars,R.drawable.fallingskies,R.drawable.familyguy,R.drawable.hannibal,R.drawable.bones,R.drawable.arrow};
+    ListView mListView;
+    String[] a_title;
+    ArrayList a_titlelist = new ArrayList();
+    String[] a_message;
+    int[] a_images = {R.drawable.gameofthrones,R.drawable.thebigbangtheory,R.drawable.truebloodimage,R.drawable.ncis,R.drawable.criminalminds,R.drawable.prettylittleliars,R.drawable.fallingskies,R.drawable.familyguy,R.drawable.hannibal,R.drawable.bones,R.drawable.arrow};
+    public static String infoTitel;
 
 
     public WL_Fragment_a() {
@@ -82,76 +82,34 @@ public class WL_Fragment_a extends Fragment {
                 Intent intent;
                 intent = new Intent(getActivity(),InfoPage.class);
 
+                String titleSerieRaw = (String) a_titlelist.get(i);
+                InfoPage.infoTitle = titleSerieRaw;
+
+                String titleSerie = java.net.URLEncoder.encode(titleSerieRaw);
+
 
                 String word2 = (String) a_titlelist.get(i);
                 String traktWord = word2.replaceAll(" ","-");
                 intent.putExtra("trakt", traktWord);
+                intent.putExtra("Titel", titleSerie);
+
                 startActivity(intent);
 
-                /*
-                intent = new Intent(getActivity(),InfoPage.class);
+                ParseQuery<ParseObject> watching_query = ParseQuery.getQuery("Koppel");
+                watching_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+                watching_query.whereEqualTo(ParseUtil.SERIE, titleSerieRaw);
+                watching_query.findInBackground(new FindCallback<ParseObject>() {
+                    @Override
+                    public void done(List<ParseObject> User, com.parse.ParseException e) {
+                        if (e == null) {
+                            ParseObject koppel = User.get(0);
+                           InfoPage.progress = koppel.getInt(ParseUtil.PROGRESS);
+                        } else {
 
-                switch(i) {
 
-                    case 0:
-                        intent.putExtra(EXTRA_MESSAGE, "Game+of+thrones");
-                        startActivity(intent);
-                        break;
-
-                    case 1:
-                        intent.putExtra(EXTRA_MESSAGE, "The+big+bang+theory");
-                        startActivity(intent);
-                        break;
-
-                    case 2:
-                        intent.putExtra(EXTRA_MESSAGE, "True+blood");
-                        startActivity(intent);
-                        break;
-
-                    case 3:
-                        intent.putExtra(EXTRA_MESSAGE, "NCIS");
-                        startActivity(intent);
-                        break;
-
-                    case 4:
-                        intent.putExtra(EXTRA_MESSAGE, "Criminal+minds");
-                        startActivity(intent);
-                        break;
-
-                    case 5:
-                        intent.putExtra(EXTRA_MESSAGE, "Pretty+little+liars");
-                        startActivity(intent);
-                        break;
-
-                    case 6:
-                        intent.putExtra(EXTRA_MESSAGE, "Falling+skies");
-                        startActivity(intent);
-                        break;
-
-                    case 7:
-                        intent.putExtra(EXTRA_MESSAGE, "Family+guy");
-                        startActivity(intent);
-                        break;
-
-                    case 8:
-                        intent.putExtra(EXTRA_MESSAGE, "Hannibal");
-                        startActivity(intent);
-                        break;
-
-                    case 9:
-                        intent.putExtra(EXTRA_MESSAGE, "Bones");
-                        startActivity(intent);
-                        break;
-
-                    case 10:
-                        intent.putExtra(EXTRA_MESSAGE, "Arrow");
-                        startActivity(intent);
-                        break;
-
-                }
-
-                */
-
+                        }
+                    }
+                });
             }
         });
 

@@ -1,18 +1,24 @@
 package com.zenjin.watchlist.watchlist;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+
+import android.text.InputFilter;
+
 import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -42,6 +48,7 @@ public class InfoPage extends Activity {
 
     Button Baddto;
     Button Brate;
+    Button Bepisode;
     TextView Title;
     TextView TGenres;
     TextView Tplot;
@@ -56,6 +63,14 @@ public class InfoPage extends Activity {
     private static final String TAG_PLOT = "overview";
     private static final String TAG_IMAGE = "poster";
     private static final String TAG_STATUS = "status";
+    ArrayList<Integer> ratings = new ArrayList<Integer>();
+    double avgRating;
+    String stringRating;
+    int count;
+    private int i;
+    int ratings_size;
+    public static String infoTitle;
+    public static int progress;
 
     List<Integer> allEpisodes = new ArrayList<Integer>();
     List<String> allGenres = new ArrayList<String>();
@@ -67,12 +82,10 @@ public class InfoPage extends Activity {
         setContentView(R.layout.activity_infopage);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
-
         Parse.initialize(this, "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
 
         new JSONParse().execute();
-
-
+        getRating();
         Baddto = (Button) findViewById(R.id.Baddto);
         Baddto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,10 +102,21 @@ public class InfoPage extends Activity {
                Rate();
             }
         });
+
+        Bepisode = (Button) findViewById(R.id.addepisode);
+        Bepisode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addepisode();
+            }
+        });
+
+
     }
 
     private class JSONParse extends AsyncTask<String, String, JSONArray> {
         private ProgressDialog pDialog;
+
 
         @Override
         protected void onPreExecute() {
@@ -107,7 +131,7 @@ public class InfoPage extends Activity {
             pDialog = new ProgressDialog(InfoPage.this);
             pDialog.setMessage("Getting Data ...");
             pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
+            pDialog.setCancelable(false);
             pDialog.show();
         }
 
@@ -139,12 +163,6 @@ public class InfoPage extends Activity {
             jsonArray.put(jsonEpisodes);
 
             return jsonArray;
-
-
-
-
-
-
 
         }
 
@@ -474,6 +492,143 @@ public class InfoPage extends Activity {
         });
     }
 
+    private void getRating(){
+        ParseQuery<ParseObject> rating_query = ParseQuery.getQuery("Koppel");
+        rating_query.whereEqualTo(ParseUtil.SERIE, infoTitle);
+        rating_query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> User, com.parse.ParseException e) {
+                if (e == null) {
+                    count = User.size();
+                    i = 0;
+                    double rating = 0;
+                    ratings.clear();
+                    try {
+                        while (i<count){
+                            ParseObject koppel = User.get(i);
+                            ratings.add(i, koppel.getInt(ParseUtil.RATING));
+                            rating = rating + ratings.get(i);
+                            i++;
+                        }
+
+                    } catch (Exception a) {
+                        Toast.makeText(InfoPage.this, "An error occured. Cannot get serie names" , Toast.LENGTH_SHORT).show();
+                    }
+
+                    i = 0;
+                    ratings_size = ratings.size();
+                    while (i<ratings.size()) {
+                        Log.i("", " "+ratings + i);
+                        if (ratings.get(i)== 0) {
+                            ratings.remove(i);
+                        }
+                        else{
+                            i++;
+                        }
+                    }
+
+                    avgRating = rating/ratings.size();
+                    TextView rating_view = (TextView) findViewById(R.id.TRating);
+                    if(Double.isNaN(avgRating)){
+                        stringRating = "No rating available";
+                        rating_view.setFilters(new InputFilter[] {new InputFilter.LengthFilter(19)});
+                    }
+                    else {
+                        stringRating = Double.toString(avgRating);
+                    }
+                    TextView ratingView = (TextView) findViewById(R.id.TRating);
+                    ratingView.setText(stringRating);
+
+                }
+            }
+        });
+    }
+    private void addepisode(){
+        final AlertDialog.Builder errorBuilder = new AlertDialog.Builder(this);
+        errorBuilder.setTitle("wrong episode");
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Episode");
+        final EditText input = new EditText(this);
+        input.setSingleLine();
+        input.setText(Integer.toString(progress));
+        helpBuilder.setView(input);
+        helpBuilder.setNeutralButton("Save", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                    ParseQuery<ParseObject> rating_query = ParseQuery.getQuery("Koppel");
+                    rating_query.whereEqualTo(ParseUtil.SERIE, infoTitle);
+                    rating_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+                    rating_query.findInBackground(new FindCallback<ParseObject>() {
+                         @Override
+                         public void done(List<ParseObject> User, com.parse.ParseException e) {
+                         if (e == null) {
+                             try {
+                                 ParseObject koppel = User.get(0);
+                                 koppel.put(ParseUtil.PROGRESS, Integer.parseInt(input.getText().toString()));
+                                 koppel.saveInBackground();
+                                 progress = Integer.parseInt(input.getText().toString());
+                             }
+                             catch(Exception d){
+                                 AlertDialog helpDialog = errorBuilder.create();
+                                 helpDialog.show();
+
+                             }
+                        }
+                    }
+                });
+
+
+
+            }
+        });
+        helpBuilder.setPositiveButton("+",
+                new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                progress =progress+1;
+                input.setText(Integer.toString(progress));
+                ParseQuery<ParseObject> rating_query = ParseQuery.getQuery("Koppel");
+                rating_query.whereEqualTo(ParseUtil.SERIE, infoTitle);
+                rating_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+                rating_query.findInBackground(new FindCallback<ParseObject>() {
+                    @Override
+                    public void done(List<ParseObject> User, com.parse.ParseException e) {
+                        if (e == null) {
+
+                                ParseObject koppel = User.get(0);
+                                koppel.put(ParseUtil.PROGRESS, progress);
+                                koppel.saveInBackground();
+
+                        }
+                    }
+                });
+            }
+        });
+        helpBuilder.setNegativeButton("-", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                progress =progress-1;
+                input.setText(Integer.toString(progress));
+                ParseQuery<ParseObject> rating_query = ParseQuery.getQuery("Koppel");
+                rating_query.whereEqualTo(ParseUtil.SERIE, infoTitle);
+                rating_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+                rating_query.findInBackground(new FindCallback<ParseObject>() {
+                    @Override
+                    public void done(List<ParseObject> User, com.parse.ParseException e) {
+                        if (e == null) {
+
+                            ParseObject koppel = User.get(0);
+                            koppel.put(ParseUtil.PROGRESS, progress);
+                            koppel.saveInBackground();
+
+                        }
+                    }
+                });
+            }
+        });
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
 
 }
 

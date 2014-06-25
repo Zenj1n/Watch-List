@@ -2,7 +2,6 @@ package com.zenjin.watchlist.watchlist;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -10,6 +9,8 @@ import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.parse.Parse;
 
 
 public class SearchActivity extends Activity {
@@ -22,6 +23,8 @@ public class SearchActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        Parse.initialize(this, "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
 
         searchET = (EditText) findViewById(R.id.SearchET);
 
@@ -37,7 +40,10 @@ public class SearchActivity extends Activity {
 
             public void performSearch() {
 
+                String word = java.net.URLEncoder.encode(searchET.getText().toString());
                 String word2 = searchET.getText().toString();
+                InfoPage.infoTitle = word;
+
                 String traktWord = word2.replaceAll(" ","-");
                 intent = new Intent(SearchActivity.this,InfoPage.class);
                 intent.putExtra("trakt", traktWord);
