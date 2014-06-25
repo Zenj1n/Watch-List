@@ -160,9 +160,7 @@ public class InfoPage extends Activity {
                 String Status = jsonArray.getJSONObject(1).getString(TAG_STATUS);
                 JSONArray episodes = jsonArray.getJSONArray(2);
 
-
                 for(int i=0;i<episodes.length();i++){
-
                     JSONObject e;
                     e = episodes.getJSONObject(i);
                     int test1 = e.getInt("episodes");

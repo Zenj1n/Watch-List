@@ -133,8 +133,8 @@ public class HomeActivity extends MyWatchList {
                 JSONArray jsonTrakt = jsonArray.getJSONArray(1);
                 JSONArray jsonTraktToday = jsonArray.getJSONArray(0);
 
-                for(int i=0;i<jsonTrakt.length();i++){
 
+                for(int i=0;i<jsonTrakt.length();i++){
                     JSONObject e;
                     e = jsonTrakt.getJSONObject(i);
                     String name = e.getString("title");
@@ -142,19 +142,18 @@ public class HomeActivity extends MyWatchList {
                 }
 
 
-                /*for(int i=0;i<jsonTraktToday.length();i++){
-
+                for(int i=0;i<jsonTraktToday.length();i++){
                     JSONObject e;
                     e = jsonTraktToday.getJSONObject(i);
-                    String name = e.getString("title");
-                    todayTitles.add(name);
-                }*/
+                    JSONArray shows = e.getJSONArray("episodes");
+                    String Allshows =  shows.getJSONObject(i).getJSONObject("show").getString("title");
+                    todayTitles.add(Allshows);
+                }
 
 
 
                 System.out.println("trending"+trendingTitles);
-
-                System.out.println("today"+todayTitles);
+                System.out.println("today"+ todayTitles);
 
 
                 TextView [] tvTrendTitles = new TextView[10];
