@@ -2,7 +2,6 @@ package com.zenjin.watchlist.watchlist;
 
 import java.util.ArrayList;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
@@ -143,7 +142,7 @@ public class MyWatchList extends BaseActivity {
 
                 case 5:
                     ParseUser.logOut();
-                    Intent intent3 = new Intent(MyWatchList.this, DispatchActivity.class);
+                    Intent intent3 = new Intent(MyWatchList.this, MainActivity.class);
                     intent3.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent3);
                     break;
