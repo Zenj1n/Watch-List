@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Trace;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -158,6 +159,8 @@ public class WL_Fragment_a extends Fragment {
 
     public void gettitles() {
 
+        Trace.beginSection("begin titels");
+
         ParseQuery<ParseObject> watching_query = ParseQuery.getQuery("Koppel");
         watching_query.whereEqualTo("User", ParseUser.getCurrentUser().getUsername());
         watching_query.whereEqualTo("Status", "Watching");
@@ -206,6 +209,8 @@ public class WL_Fragment_a extends Fragment {
 
                     String[] a_title = (String[]) a_titlelist.toArray(new String[a_titlelist.size()]);
 
+                    Trace.endSection();
+
                     getmessages(a_title);
 
                       //error
@@ -219,6 +224,8 @@ public class WL_Fragment_a extends Fragment {
 
     public void getmessages(String[] a_title) {
 
+
+        Trace.beginSection("begin messages");
 
         int count = a_titlelist.size();
         int i = 0;
@@ -278,6 +285,8 @@ public class WL_Fragment_a extends Fragment {
 
         //createview(a_title, a_message);
 
+        Trace.endSection();
+
         getimages(a_title,a_message);
 
 
@@ -294,6 +303,8 @@ public class WL_Fragment_a extends Fragment {
 
 
     public void getimages(String[] a_title, String[] a_message){
+
+        Trace.beginSection("begin plaatjes");
 
         int count = a_titlelist.size();
         int i = 0;
@@ -365,6 +376,9 @@ public class WL_Fragment_a extends Fragment {
 
         //ArrayList<Bitmap> a_images = imagetoarray(a_images_for_method);
 
+
+        Trace.endSection();
+
         createview(a_title, a_message,a_images);
 
         //getimages(a_title,a_message);
@@ -429,6 +443,7 @@ public void getnextepisode (String titel){
        protected String doInBackground(String... titel) {
 
            try {
+
 
 
                String showurl = "http://services.tvrage.com/tools/quickinfo.php?show=" + titel[0];
