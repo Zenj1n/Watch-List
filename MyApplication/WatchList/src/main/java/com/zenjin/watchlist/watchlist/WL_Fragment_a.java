@@ -83,6 +83,7 @@ public class WL_Fragment_a extends Fragment {
                 intent = new Intent(getActivity(),InfoPage.class);
                 String titleSerieRaw = (String) a_titlelist.get(i);
                 InfoPage.infoTitle = titleSerieRaw;
+
                 String titleSerie = java.net.URLEncoder.encode(titleSerieRaw);
 
                 String word2 = (String) a_titlelist.get(i);
@@ -93,6 +94,21 @@ public class WL_Fragment_a extends Fragment {
                 intent.putExtra(EXTRA_MESSAGE,titleSerie );
                 startActivity(intent);
 
+                ParseQuery<ParseObject> watching_query = ParseQuery.getQuery("Koppel");
+                watching_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+                watching_query.whereEqualTo(ParseUtil.SERIE, titleSerieRaw);
+                watching_query.findInBackground(new FindCallback<ParseObject>() {
+                    @Override
+                    public void done(List<ParseObject> User, com.parse.ParseException e) {
+                        if (e == null) {
+                            ParseObject koppel = User.get(0);
+                           InfoPage.progress = koppel.getInt(ParseUtil.PROGRESS);
+                        } else {
+
+
+                        }
+                    }
+                });
             }
         });
 

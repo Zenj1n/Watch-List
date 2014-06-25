@@ -1,7 +1,9 @@
 package com.zenjin.watchlist.watchlist;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -43,6 +46,7 @@ public class InfoPage extends Activity {
 
     Button Baddto;
     Button Brate;
+    Button Bepisode;
     TextView Title;
     TextView TGenres;
     TextView Tplot;
@@ -58,14 +62,13 @@ public class InfoPage extends Activity {
 
     private static final String TAG_STATUS = "status";
     ArrayList<Integer> ratings = new ArrayList<Integer>();
-    ArrayList<Integer> legitRatings = new ArrayList<Integer>();
     double avgRating;
     String stringRating;
-    Number test;
     int count;
     private int i;
     int ratings_size;
     public static String infoTitle;
+    public static int progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +95,14 @@ public class InfoPage extends Activity {
             @Override
             public void onClick(View view) {
                Rate();
+            }
+        });
+
+        Bepisode = (Button) findViewById(R.id.addepisode);
+        Bepisode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addepisode();
             }
         });
 
@@ -462,7 +473,6 @@ public class InfoPage extends Activity {
                     try {
                         while (i<count){
                             ParseObject koppel = User.get(i);
-                            //test = koppel.getNumber(ParseUtil.RATING);
                             ratings.add(i, koppel.getInt(ParseUtil.RATING));
                             rating = rating + ratings.get(i);
                             i++;
@@ -472,14 +482,14 @@ public class InfoPage extends Activity {
                         Toast.makeText(InfoPage.this, "An error occured. Cannot get serie names" , Toast.LENGTH_SHORT).show();
                     }
 
-                   i = 0;
-                   ratings_size = ratings.size();
-                   while (i<ratings.size()) {
-                       Log.i("", " "+ratings + i);
+                    i = 0;
+                    ratings_size = ratings.size();
+                    while (i<ratings.size()) {
+                        Log.i("", " "+ratings + i);
                         if (ratings.get(i)== 0) {
                             ratings.remove(i);
                         }
-                       else{
+                        else{
                             i++;
                         }
                     }
@@ -499,6 +509,92 @@ public class InfoPage extends Activity {
                 }
             }
         });
+    }
+    private void addepisode(){
+        final AlertDialog.Builder errorBuilder = new AlertDialog.Builder(this);
+        errorBuilder.setTitle("wrong episode");
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Episode");
+        final EditText input = new EditText(this);
+        input.setSingleLine();
+        input.setText(Integer.toString(progress));
+        helpBuilder.setView(input);
+        helpBuilder.setNeutralButton("Save", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                    ParseQuery<ParseObject> rating_query = ParseQuery.getQuery("Koppel");
+                    rating_query.whereEqualTo(ParseUtil.SERIE, infoTitle);
+                    rating_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+                    rating_query.findInBackground(new FindCallback<ParseObject>() {
+                         @Override
+                         public void done(List<ParseObject> User, com.parse.ParseException e) {
+                         if (e == null) {
+                             try {
+                                 ParseObject koppel = User.get(0);
+                                 koppel.put(ParseUtil.PROGRESS, Integer.parseInt(input.getText().toString()));
+                                 koppel.saveInBackground();
+                                 progress = Integer.parseInt(input.getText().toString());
+                             }
+                             catch(Exception d){
+                                 AlertDialog helpDialog = errorBuilder.create();
+                                 helpDialog.show();
+
+                             }
+                        }
+                    }
+                });
+
+
+
+            }
+        });
+        helpBuilder.setPositiveButton("+",
+                new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                progress =progress+1;
+                input.setText(Integer.toString(progress));
+                ParseQuery<ParseObject> rating_query = ParseQuery.getQuery("Koppel");
+                rating_query.whereEqualTo(ParseUtil.SERIE, infoTitle);
+                rating_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+                rating_query.findInBackground(new FindCallback<ParseObject>() {
+                    @Override
+                    public void done(List<ParseObject> User, com.parse.ParseException e) {
+                        if (e == null) {
+
+                                ParseObject koppel = User.get(0);
+                                koppel.put(ParseUtil.PROGRESS, progress);
+                                koppel.saveInBackground();
+
+                        }
+                    }
+                });
+            }
+        });
+        helpBuilder.setNegativeButton("-", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                progress =progress-1;
+                input.setText(Integer.toString(progress));
+                ParseQuery<ParseObject> rating_query = ParseQuery.getQuery("Koppel");
+                rating_query.whereEqualTo(ParseUtil.SERIE, infoTitle);
+                rating_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+                rating_query.findInBackground(new FindCallback<ParseObject>() {
+                    @Override
+                    public void done(List<ParseObject> User, com.parse.ParseException e) {
+                        if (e == null) {
+
+                            ParseObject koppel = User.get(0);
+                            koppel.put(ParseUtil.PROGRESS, progress);
+                            koppel.saveInBackground();
+
+                        }
+                    }
+                });
+            }
+        });
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
     }
 }
 

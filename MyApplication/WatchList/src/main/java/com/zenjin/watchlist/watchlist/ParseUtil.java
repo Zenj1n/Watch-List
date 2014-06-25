@@ -10,4 +10,5 @@ public class ParseUtil {
     public static final String COMPLETED = "Completed";
     public static final String PLAN_TO_WATCH = "Plan to watch";
     public static final String WATCHING = "Watching";
+    public static final String PROGRESS = "Progress";
 }
