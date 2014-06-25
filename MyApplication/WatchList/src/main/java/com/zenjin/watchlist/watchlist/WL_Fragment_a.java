@@ -110,7 +110,7 @@ public class WL_Fragment_a extends Fragment {
                 intent = new Intent(getActivity(),InfoPage.class);
 
                 String titleSerieRaw = (String) a_titlelist.get(i);
-                InfoPage.infoTitle = titleSerieRaw;
+                InfoPage.INFOTITLE = titleSerieRaw;
 
                 String titleSerie = java.net.URLEncoder.encode(titleSerieRaw);
 
@@ -132,7 +132,7 @@ public class WL_Fragment_a extends Fragment {
                     public void done(List<ParseObject> User, com.parse.ParseException e) {
                         if (e == null) {
                             ParseObject koppel = User.get(0);
-                           InfoPage.progress = koppel.getInt(ParseUtil.PROGRESS);
+                           InfoPage.PROGRESS = koppel.getInt(ParseUtil.PROGRESS);
                         } else {
                         }
                     }

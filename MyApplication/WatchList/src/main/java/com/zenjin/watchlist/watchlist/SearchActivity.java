@@ -42,7 +42,7 @@ public class SearchActivity extends Activity {
 
                 String word = java.net.URLEncoder.encode(searchET.getText().toString());
                 String word2 = searchET.getText().toString();
-                InfoPage.infoTitle = word;
+                InfoPage.INFOTITLE = word;
 
                 String traktWord = word2.replaceAll(" ","-");
                 intent = new Intent(SearchActivity.this,InfoPage.class);

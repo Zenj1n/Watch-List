@@ -74,7 +74,7 @@ public class RegistreerActivity extends Activity {
                     return;
                 }
 
-                // Set up a progress dialog
+                // Set up a PROGRESS dialog
                 final ProgressDialog dlg = new ProgressDialog(RegistreerActivity.this);
                 dlg.setTitle("Please wait.");
                 dlg.setMessage("Signing up.  Please wait.");
