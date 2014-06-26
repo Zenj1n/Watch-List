@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -89,6 +90,11 @@ public class WL_Fragment_a extends Fragment {
                     startActivity(intent);
                     getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
 
+                }else if (a_titlelist.get(0) == "No internet connection"){
+
+                    startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+                    getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
+
                 }else {
 
                     Intent intent;
@@ -106,8 +112,6 @@ public class WL_Fragment_a extends Fragment {
                     //getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
 
                 }
-
-
 
             }
         });
@@ -439,8 +443,16 @@ public class WL_Fragment_a extends Fragment {
 
     public void createview(String[] a_title, String[] a_message, ArrayList<Bitmap> a_images) {
 
-        WebView webview = (WebView) getActivity().findViewById(R.id.webViewA);
-        webview.setVisibility(View.GONE);
+        try {
+
+            WebView webview = (WebView) getActivity().findViewById(R.id.webViewA);
+            webview.setVisibility(View.GONE);
+
+        } catch (Exception e) {
+
+            // nothing
+
+        }
 
         myArrayAdaptera adapter = new myArrayAdaptera(getActivity().getApplicationContext(), a_title, a_images, a_message);
         mListView.setAdapter(adapter);

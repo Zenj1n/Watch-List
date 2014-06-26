@@ -76,58 +76,25 @@
     <string name="statusw">Status :</string>
     <string name="status">Airing </string>
     <string name="rating">Rating    :</string>
-    // strings for Watchlist. DO NOT CHANGE!                        <string name="wl_title">MyWatchlist</string>
+
+
+    // strings for My Watchlist (list). DO NOT CHANGE!
+
+    <string name="wl_title">My Watchlist</string>
+    <string name="wl_message">Welcome to My Watchlist</string>
+    <string name="wl_imageurl">http://i.imgur.com/ZNt7DXU.png</string>
+
     <string name="wl_tab1">Watching</string>
     <string name="wl_tab2">Completed</string>
-    <string name="wl_tab3">On hold</string>
-    <string name="wl_example_text"> Random text message </string>
+    <string name="wl_tab3">Plan to watch</string>
 
-    <string-array name="wl_a_title">
-        <item>Game of Thrones</item>
-        <item>The Big Bang Theory</item>
-        <item>True Blood</item>
-        <item>NCIS</item>
-        <item>Criminal Minds</item>
-        <item>Pretty Little Liars</item>
-        <item>Falling Skies</item>
-        <item>Family Guy</item>
-        <item>Hannibal</item>
-        <item>Bones</item>
-        <item>Arrow</item>
-    </string-array>
-    <string-array name="wl_a_message">
-        <item>Episode 7 "Mockingbird" airs today</item>
-        <item>Next Episode is not available</item>
-        <item>Episode 1 "Jesus Gonna Be Here" airs in 1 months and 5 days</item>
-        <item>Next Episode is not available</item>
-        <item>Next Episode is not available</item>
-        <item>Episode 1 "EscApe From New York" airs in 23 days</item>
-        <item>Episode 1 "Ghost in the Machine" airs in 1 months and 5 days</item>
-        <item>Episode 21 "Chap Stewie" airs in 9 hours</item>
-        <item>Episode 13 "Mizumono" airs in 5 days</item>
-        <item>Episode 24 "The Recluse in the Recliner" airs in tomorrow</item>
-        <item>Next Episode is not available</item>
-    </string-array>
-    <string-array name="wl_b_title">
-        <item>Game of Thrones</item>
-        <item>The Big Bang Theory</item>
-        <item>NCIS</item>
-    </string-array>
-    <string-array name="wl_b_message">
-        <item>Episode 7 "Mockingbird" airs today</item>
-        <item>Next Episode is not available</item>
-        <item>Next Episode is not available</item>
-    </string-array>
-    <string-array name="wl_c_title">
-        <item>Family Guy</item>
-        <item>Hannibal</item>
-        <item>Bones</item>
-    </string-array>
-    <string-array name="wl_c_message">
-        <item>Episode 21 "Chap Stewie" airs in 9 hours</item>
-        <item>Episode 13 "Mizumono" airs in 5 days</item>
-        <item>Episode 24 "The Recluse in the Recliner" airs in tomorrow</item>
-    </string-array>
+    // END strings for My Watchlist (list)
+
+
+
+
+
+
 
     <string name="title_activity_main_main">MyWatchList</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
