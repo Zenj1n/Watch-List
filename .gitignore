@@ -215,7 +215,10 @@ pip-log.txt
 .mr.developer.cfg
 
 
+<<<<<<< HEAD
 build/
+=======
+>>>>>>> origin/hoye4
 /build
 
 .idea

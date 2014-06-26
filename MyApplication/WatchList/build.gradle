@@ -8,6 +8,7 @@ android {
 
         minSdkVersion 14
 
+
         targetSdkVersion 19
         versionCode 1
         versionName "1.0"
@@ -31,7 +32,6 @@ dependencies {
 
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile files('libs/Parse-1.5.1/Parse-1.5.1.jar')
-    compile 'com.android.support:support-v4:+'
     compile 'com.android.support:appcompat-v7:19.+'
 }
 

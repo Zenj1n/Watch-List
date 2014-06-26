@@ -57,6 +57,7 @@ public class InfoPage extends Activity {
     private static final String TAG_GENRE = "genres";
     private static final String TAG_PLOT = "overview";
     private static final String TAG_IMAGE = "poster";
+
     private static final String TAG_STATUS = "status";
 
     private ArrayList<Integer> ratings = new ArrayList<Integer>();
@@ -145,7 +146,16 @@ public class InfoPage extends Activity {
 
 
             Intent intent = getIntent();
+
+            String message = intent.getStringExtra(SearchActivity.EXTRA_MESSAGE);
             String message2 = intent.getStringExtra("trakt");
+
+            if (message == null){
+                message = intent.getStringExtra(HomeActivity.EXTRA_MESSAGE);
+            }
+
+            System.out.println("message="+message);
+
             String urlTrakt = "http://api.trakt.tv/show/summary.json/390983740f2092270bc0fa267334db88/"+ message2;
             String urlTraktSeasons = "http://api.trakt.tv/show/seasons.json/390983740f2092270bc0fa267334db88/"+ message2;
             ServiceHandler jParser = new ServiceHandler();
@@ -159,10 +169,7 @@ public class InfoPage extends Activity {
             jsonArray.put(jsonEpisodes);
 
             return jsonArray;
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
         }
 
         @Override
@@ -177,13 +184,17 @@ public class InfoPage extends Activity {
                 String Status = jsonArray.getJSONObject(0).getString(TAG_STATUS);
                 JSONArray episodes = jsonArray.getJSONArray(1);
 
-                for(int i=0;i<episodes.length();i++){
+                if(jsonArray != null){
 
-                    JSONObject e;
-                    e = episodes.getJSONObject(i);
-                    int test1 = e.getInt("episodes");
-                    allEpisodes.add(test1);
-                }
+
+
+                    for(int i=0;i<episodes.length();i++){
+                        JSONObject e;
+                        e = episodes.getJSONObject(i);
+                        int test1 = e.getInt("episodes");
+                        allEpisodes.add(test1);
+                    }
+
 
                 sumEpisodes();
                 String test3 = GenreMovie.replaceAll("[\"\\[\\]]", "");
@@ -194,12 +205,15 @@ public class InfoPage extends Activity {
                 TGenres.setText(test4);
                 Tplot.setText(PlotMovie);
                 TStatus.setText(Status);
-<<<<<<< HEAD
+                    new DownloadImageTask((ImageView) findViewById(R.id.Image))
+                            .execute(jsonArray.getJSONObject(0).getString(TAG_IMAGE));
 
-=======
->>>>>>> origin/master
-                new DownloadImageTask((ImageView) findViewById(R.id.Image))
-                        .execute(jsonArray.getJSONObject(0).getString(TAG_IMAGE));
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "geen informatie beschikbaar", Toast.LENGTH_SHORT);
+                }
+
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
