@@ -2,27 +2,21 @@ package com.zenjin.watchlist.watchlist;
 
 
 
-import android.app.Activity;
+
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
-
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -48,27 +42,27 @@ public class HomeActivity extends MyWatchList {
         super.replaceContentLayout(R.layout.hm_activity, R.id.frame_container);
         new JSONParse().execute();
 
-        ImageView todayImage1 = (ImageView) findViewById(R.id.image1);
-        ImageView todayImage2 = (ImageView) findViewById(R.id.image2);
-        ImageView todayImage3 = (ImageView) findViewById(R.id.image3);
-        ImageView todayImage4 = (ImageView) findViewById(R.id.image4);
-        ImageView todayImage5 = (ImageView) findViewById(R.id.image5);
-        ImageView todayImage6 = (ImageView) findViewById(R.id.image6);
-        ImageView todayImage7 = (ImageView) findViewById(R.id.image7);
-        ImageView todayImage8 = (ImageView) findViewById(R.id.image8);
-        ImageView todayImage9 = (ImageView) findViewById(R.id.image9);
-        ImageView todayImage10 = (ImageView) findViewById(R.id.image10);
+        ImageView todayImage1 = (ImageView) findViewById(R.id.todayImage1);
+        ImageView todayImage2 = (ImageView) findViewById(R.id.todayImage2);
+        ImageView todayImage3 = (ImageView) findViewById(R.id.todayImage3);
+        ImageView todayImage4 = (ImageView) findViewById(R.id.todayImage4);
+        ImageView todayImage5 = (ImageView) findViewById(R.id.todayImage5);
+        ImageView todayImage6 = (ImageView) findViewById(R.id.todayImage6);
+        ImageView todayImage7 = (ImageView) findViewById(R.id.todayImage7);
+        ImageView todayImage8 = (ImageView) findViewById(R.id.todayImage8);
+        ImageView todayImage9 = (ImageView) findViewById(R.id.todayImage9);
+        ImageView todayImage10 = (ImageView) findViewById(R.id.todayImage10);
 
-        ImageView trendingImage1 = (ImageView) findViewById(R.id.image11);
-        ImageView trendingImage2 = (ImageView) findViewById(R.id.image12);
-        ImageView trendingImage3 = (ImageView) findViewById(R.id.image13);
-        ImageView trendingImage4 = (ImageView) findViewById(R.id.image14);
-        ImageView trendingImage5 = (ImageView) findViewById(R.id.image15);
-        ImageView trendingImage6 = (ImageView) findViewById(R.id.image16);
-        ImageView trendingImage7 = (ImageView) findViewById(R.id.image17);
-        ImageView trendingImage8 = (ImageView) findViewById(R.id.image18);
-        ImageView trendingImage9 = (ImageView) findViewById(R.id.image19);
-        ImageView trendingImage10 = (ImageView) findViewById(R.id.image20);
+        ImageView trendingImage1 = (ImageView) findViewById(R.id.trendingImage1);
+        ImageView trendingImage2 = (ImageView) findViewById(R.id.trendingImage2);
+        ImageView trendingImage3 = (ImageView) findViewById(R.id.trendingImage3);
+        ImageView trendingImage4 = (ImageView) findViewById(R.id.trendingImage4);
+        ImageView trendingImage5 = (ImageView) findViewById(R.id.trendingImage5);
+        ImageView trendingImage6 = (ImageView) findViewById(R.id.trendingImage6);
+        ImageView trendingImage7 = (ImageView) findViewById(R.id.trendingImage7);
+        ImageView trendingImage8 = (ImageView) findViewById(R.id.trendingImage8);
+        ImageView trendingImage9 = (ImageView) findViewById(R.id.trendingImage9);
+        ImageView trendingImage10 = (ImageView) findViewById(R.id.trendingImage10);
 
         todayImage1.setOnClickListener(onClickListener);
         todayImage2.setOnClickListener(onClickListener);
@@ -97,122 +91,123 @@ public class HomeActivity extends MyWatchList {
         @Override
         public void onClick(View v) {
             // TODO Auto-generated method stub
+
             switch (v.getId()) {
-                case R.id.image1:
+                case R.id.todayImage1:
                     String word1 = java.net.URLEncoder.encode(todayTitles.get(0));
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra(EXTRA_MESSAGE, word1);
                     startActivity(intent);
                     break;
-                case R.id.image2:
+                case R.id.todayImage2:
                     String word2 = java.net.URLEncoder.encode(todayTitles.get(1));
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra(EXTRA_MESSAGE, word2);
                     startActivity(intent);
                     break;
-                case R.id.image3:
+                case R.id.todayImage3:
                     String word3 = java.net.URLEncoder.encode(todayTitles.get(2));
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra(EXTRA_MESSAGE, word3);
                     startActivity(intent);
                     break;
-                case R.id.image4:
+                case R.id.todayImage4:
                     String word4 = java.net.URLEncoder.encode(todayTitles.get(3));
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra(EXTRA_MESSAGE, word4);
                     startActivity(intent);
                     break;
-                case R.id.image5:
+                case R.id.todayImage5:
                     String word5 = java.net.URLEncoder.encode(todayTitles.get(4));
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra(EXTRA_MESSAGE, word5);
                     startActivity(intent);
                     break;
-                case R.id.image6:
+                case R.id.todayImage6:
                     String word6 = java.net.URLEncoder.encode(todayTitles.get(5));
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra(EXTRA_MESSAGE, word6);
                     startActivity(intent);
                     break;
-                case R.id.image7:
+                case R.id.todayImage7:
                     String word7 = java.net.URLEncoder.encode(todayTitles.get(6));
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra(EXTRA_MESSAGE, word7);
                     startActivity(intent);
                     break;
-                case R.id.image8:
+                case R.id.todayImage8:
                     String word8 = java.net.URLEncoder.encode(todayTitles.get(7));
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra(EXTRA_MESSAGE, word8);
                     startActivity(intent);
                     break;
-                case R.id.image9:
+                case R.id.todayImage9:
                     String word9 = java.net.URLEncoder.encode(todayTitles.get(8));
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra(EXTRA_MESSAGE, word9);
                     startActivity(intent);
                     break;
-                case R.id.image10:
+                case R.id.todayImage10:
                     String word10 = java.net.URLEncoder.encode(todayTitles.get(9));
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra(EXTRA_MESSAGE, word10);
                     startActivity(intent);
                     break;
-                case R.id.image11:
+                case R.id.trendingImage1:
                     String word11 = java.net.URLEncoder.encode(trendingTitles.get(0));
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra(EXTRA_MESSAGE, word11);
                     startActivity(intent);
                     break;
-                case R.id.image12:
+                case R.id.trendingImage2:
                     String word12 = java.net.URLEncoder.encode(trendingTitles.get(1));
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra(EXTRA_MESSAGE, word12);
                     startActivity(intent);
                     break;
-                case R.id.image13:
+                case R.id.trendingImage3:
                     String word13 = java.net.URLEncoder.encode(trendingTitles.get(2));
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra(EXTRA_MESSAGE, word13);
                     startActivity(intent);
                     break;
-                case R.id.image14:
+                case R.id.trendingImage4:
                     String word14 = java.net.URLEncoder.encode(trendingTitles.get(3));
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra(EXTRA_MESSAGE, word14);
                     startActivity(intent);
                     break;
-                case R.id.image15:
+                case R.id.trendingImage5:
                     String word15 = java.net.URLEncoder.encode(trendingTitles.get(4));
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra(EXTRA_MESSAGE, word15);
                     startActivity(intent);
                     break;
-                case R.id.image16:
+                case R.id.trendingImage6:
                     String word16 = java.net.URLEncoder.encode(trendingTitles.get(5));
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra(EXTRA_MESSAGE, word16);
                     startActivity(intent);
                     break;
-                case R.id.image17:
+                case R.id.trendingImage7:
                     String word17 = java.net.URLEncoder.encode(trendingTitles.get(6));
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra(EXTRA_MESSAGE, word17);
                     startActivity(intent);
                     break;
-                case R.id.image18:
+                case R.id.trendingImage8:
                     String word18 = java.net.URLEncoder.encode(trendingTitles.get(7));
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra(EXTRA_MESSAGE, word18);
                     startActivity(intent);
                     break;
-                case R.id.image19:
+                case R.id.trendingImage9:
                     String word19 = java.net.URLEncoder.encode(trendingTitles.get(8));
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra(EXTRA_MESSAGE, word19);
                     startActivity(intent);
                     break;
-                case R.id.image20:
+                case R.id.trendingImage10:
                     String word20 = java.net.URLEncoder.encode(trendingTitles.get(9));
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra(EXTRA_MESSAGE, word20);
@@ -305,16 +300,16 @@ public class HomeActivity extends MyWatchList {
                 tvTodayTitles[9] = (TextView) findViewById(R.id.todayTextView10);
 
                 TextView [] tvTrendTitles = new TextView[10];
-                tvTrendTitles[0]=(TextView)findViewById(R.id.trending11);
-                tvTrendTitles[1]=(TextView)findViewById(R.id.trending12);
-                tvTrendTitles[2]=(TextView)findViewById(R.id.trending13);
-                tvTrendTitles[3]=(TextView)findViewById(R.id.trending14);
-                tvTrendTitles[4]=(TextView)findViewById(R.id.trending15);
-                tvTrendTitles[5]=(TextView)findViewById(R.id.trending16);
-                tvTrendTitles[6]=(TextView)findViewById(R.id.trending17);
-                tvTrendTitles[7]=(TextView)findViewById(R.id.trending18);
-                tvTrendTitles[8]=(TextView)findViewById(R.id.trending19);
-                tvTrendTitles[9]=(TextView)findViewById(R.id.trending20);
+                tvTrendTitles[0]=(TextView)findViewById(R.id.trendingText1);
+                tvTrendTitles[1]=(TextView)findViewById(R.id.trendingText2);
+                tvTrendTitles[2]=(TextView)findViewById(R.id.trendingText3);
+                tvTrendTitles[3]=(TextView)findViewById(R.id.trendingText4);
+                tvTrendTitles[4]=(TextView)findViewById(R.id.trendingText5);
+                tvTrendTitles[5]=(TextView)findViewById(R.id.trendingText6);
+                tvTrendTitles[6]=(TextView)findViewById(R.id.trendingText7);
+                tvTrendTitles[7]=(TextView)findViewById(R.id.trendingText8);
+                tvTrendTitles[8]=(TextView)findViewById(R.id.trendingText9);
+                tvTrendTitles[9]=(TextView)findViewById(R.id.trendingText10);
 
                 for(int i=0;i<10;i++){
                    tvTrendTitles[i].setText(trendingTitles.get(i));
@@ -324,28 +319,28 @@ public class HomeActivity extends MyWatchList {
                 }
 
                 ImageView [] tvTrendImages = new ImageView[10];
-                tvTrendImages[0]=(ImageView)findViewById(R.id.image11);
-                tvTrendImages[1]=(ImageView)findViewById(R.id.image12);
-                tvTrendImages[2]=(ImageView)findViewById(R.id.image13);
-                tvTrendImages[3]=(ImageView)findViewById(R.id.image14);
-                tvTrendImages[4]=(ImageView)findViewById(R.id.image15);
-                tvTrendImages[5]=(ImageView)findViewById(R.id.image16);
-                tvTrendImages[6]=(ImageView)findViewById(R.id.image17);
-                tvTrendImages[7]=(ImageView)findViewById(R.id.image18);
-                tvTrendImages[8]=(ImageView)findViewById(R.id.image19);
-                tvTrendImages[9]=(ImageView)findViewById(R.id.image20);
+                tvTrendImages[0]=(ImageView)findViewById(R.id.trendingImage1);
+                tvTrendImages[1]=(ImageView)findViewById(R.id.trendingImage2);
+                tvTrendImages[2]=(ImageView)findViewById(R.id.trendingImage3);
+                tvTrendImages[3]=(ImageView)findViewById(R.id.trendingImage4);
+                tvTrendImages[4]=(ImageView)findViewById(R.id.trendingImage5);
+                tvTrendImages[5]=(ImageView)findViewById(R.id.trendingImage6);
+                tvTrendImages[6]=(ImageView)findViewById(R.id.trendingImage7);
+                tvTrendImages[7]=(ImageView)findViewById(R.id.trendingImage8);
+                tvTrendImages[8]=(ImageView)findViewById(R.id.trendingImage9);
+                tvTrendImages[9]=(ImageView)findViewById(R.id.trendingImage10);
 
                 ImageView [] tvTodayImages = new ImageView[10];
-                tvTodayImages[0]=(ImageView)findViewById(R.id.image1);
-                tvTodayImages[1]=(ImageView)findViewById(R.id.image2);
-                tvTodayImages[2]=(ImageView)findViewById(R.id.image3);
-                tvTodayImages[3]=(ImageView)findViewById(R.id.image4);
-                tvTodayImages[4]=(ImageView)findViewById(R.id.image5);
-                tvTodayImages[5]=(ImageView)findViewById(R.id.image6);
-                tvTodayImages[6]=(ImageView)findViewById(R.id.image7);
-                tvTodayImages[7]=(ImageView)findViewById(R.id.image8);
-                tvTodayImages[8]=(ImageView)findViewById(R.id.image9);
-                tvTodayImages[9]=(ImageView)findViewById(R.id.image10);
+                tvTodayImages[0]=(ImageView)findViewById(R.id.todayImage1);
+                tvTodayImages[1]=(ImageView)findViewById(R.id.todayImage2);
+                tvTodayImages[2]=(ImageView)findViewById(R.id.todayImage3);
+                tvTodayImages[3]=(ImageView)findViewById(R.id.todayImage4);
+                tvTodayImages[4]=(ImageView)findViewById(R.id.todayImage5);
+                tvTodayImages[5]=(ImageView)findViewById(R.id.todayImage6);
+                tvTodayImages[6]=(ImageView)findViewById(R.id.todayImage7);
+                tvTodayImages[7]=(ImageView)findViewById(R.id.todayImage8);
+                tvTodayImages[8]=(ImageView)findViewById(R.id.todayImage9);
+                tvTodayImages[9]=(ImageView)findViewById(R.id.todayImage10);
 
                 for (int i=0;i<10;i++){
                     JSONObject e ;

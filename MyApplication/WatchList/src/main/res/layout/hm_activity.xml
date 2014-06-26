@@ -9,14 +9,14 @@
         android:orientation="vertical"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:padding="5dp">
+        android:padding="0dp">
 
         <TextView
             style="@style/TitleView"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text=" Today"
-            android:id="@+id/textView"
-
+            android:id="@+id/todayTitleTextView"
+            android:layout_margin="10dp"
             />
 
 
@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="0dp"
+            android:layout_margin="10dp"
             android:background="#FFFFFF"
             >
 
@@ -37,14 +37,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 <ImageView
-                    android:id="@+id/image1"
+                    android:id="@+id/todayImage1"
                     style="@style/BrowseImageView"
                     android:scaleType="centerCrop"
                     android:layout_margin="10dp"
                     />
                 <TextView
                     style="@style/BrowseTextView"
-                    android:layout_below="@id/image1"
+                    android:layout_below="@id/todayImage1"
                     android:id="@+id/todayTextView1"
                     />
                 </RelativeLayout>
@@ -53,7 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image2"
+                        android:id="@+id/todayImage2"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
@@ -61,7 +61,7 @@
                     <TextView
                         android:id="@+id/todayTextView2"
                         style="@style/BrowseTextView"
-                        android:layout_below="@id/image2"
+                        android:layout_below="@id/todayImage2"
                         />
                 </RelativeLayout>
 
@@ -69,7 +69,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image3"
+                        android:id="@+id/todayImage3"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
@@ -77,7 +77,7 @@
                     <TextView
                         android:id="@+id/todayTextView3"
                         style="@style/BrowseTextView"
-                        android:layout_below="@id/image3"
+                        android:layout_below="@id/todayImage3"
                         />
                 </RelativeLayout>
 
@@ -85,7 +85,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image4"
+                        android:id="@+id/todayImage4"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
@@ -93,7 +93,7 @@
                     <TextView
                         android:id="@+id/todayTextView4"
                         style="@style/BrowseTextView"
-                        android:layout_below="@id/image4"
+                        android:layout_below="@id/todayImage4"
                         />
                 </RelativeLayout>
 
@@ -101,7 +101,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image5"
+                        android:id="@+id/todayImage5"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
@@ -109,7 +109,7 @@
                     <TextView
                         style="@style/BrowseTextView"
                         android:id="@+id/todayTextView5"
-                        android:layout_below="@id/image5"
+                        android:layout_below="@id/todayImage5"
                         />
                 </RelativeLayout>
 
@@ -117,7 +117,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image6"
+                        android:id="@+id/todayImage6"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
@@ -125,7 +125,7 @@
                     <TextView
                         style="@style/BrowseTextView"
                         android:id="@+id/todayTextView6"
-                        android:layout_below="@id/image6"
+                        android:layout_below="@id/todayImage6"
                         />
                 </RelativeLayout>
 
@@ -133,7 +133,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image7"
+                        android:id="@+id/todayImage7"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
@@ -141,7 +141,7 @@
                     <TextView
                         android:id="@+id/todayTextView7"
                         style="@style/BrowseTextView"
-                        android:layout_below="@id/image7"
+                        android:layout_below="@id/todayImage7"
                         />
                 </RelativeLayout>
 
@@ -149,7 +149,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image8"
+                        android:id="@+id/todayImage8"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
@@ -157,7 +157,7 @@
                     <TextView
                         android:id="@+id/todayTextView8"
                         style="@style/BrowseTextView"
-                        android:layout_below="@id/image8"
+                        android:layout_below="@id/todayImage8"
                         />
                 </RelativeLayout>
 
@@ -165,7 +165,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image9"
+                        android:id="@+id/todayImage9"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
@@ -173,7 +173,7 @@
                     <TextView
                         style="@style/BrowseTextView"
                         android:id="@+id/todayTextView9"
-                        android:layout_below="@id/image9"
+                        android:layout_below="@id/todayImage9"
                         />
                 </RelativeLayout>
 
@@ -181,7 +181,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image10"
+                        android:id="@+id/todayImage10"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
@@ -190,7 +190,7 @@
                     <TextView
                         style="@style/BrowseTextView"
                         android:id="@+id/todayTextView10"
-                        android:layout_below="@id/image10"
+                        android:layout_below="@id/todayImage10"
                         />
                 </RelativeLayout>
 
@@ -201,15 +201,15 @@
             style="@style/TitleView"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text=" Trending"
-            android:id="@+id/todayTextView"
-            android:layout_marginTop="20dp"
+            android:id="@+id/trendingTitleTextView"
+            android:layout_margin="10dp"
 
             />
         <HorizontalScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="0dp"
+            android:layout_margin="10dp"
             android:background="#FFFFFF"
             >
 
@@ -222,15 +222,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image11"
+                        android:id="@+id/trendingImage1"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         />
                     <TextView
                         style="@style/BrowseTextView"
-                        android:layout_below="@id/image11"
-                        android:id="@+id/trending11"
+                        android:layout_below="@id/trendingImage1"
+                        android:id="@+id/trendingText1"
                         />
                 </RelativeLayout>
 
@@ -238,15 +238,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image12"
+                        android:id="@+id/trendingImage2"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         />
                     <TextView
                         style="@style/BrowseTextView"
-                        android:layout_below="@id/image12"
-                        android:id="@+id/trending12"
+                        android:layout_below="@id/trendingImage2"
+                        android:id="@+id/trendingText2"
                         />
                 </RelativeLayout>
 
@@ -254,15 +254,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image13"
+                        android:id="@+id/trendingImage3"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         />
                     <TextView
                         style="@style/BrowseTextView"
-                        android:layout_below="@id/image13"
-                        android:id="@+id/trending13"
+                        android:layout_below="@id/trendingImage3"
+                        android:id="@+id/trendingText3"
                         />
                 </RelativeLayout>
 
@@ -270,15 +270,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image14"
+                        android:id="@+id/trendingImage4"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         />
                     <TextView
                         style="@style/BrowseTextView"
-                        android:layout_below="@id/image14"
-                        android:id="@+id/trending14"
+                        android:layout_below="@id/trendingImage4"
+                        android:id="@+id/trendingText4"
                         />
                 </RelativeLayout>
 
@@ -286,15 +286,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image15"
+                        android:id="@+id/trendingImage5"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         />
                     <TextView
                         style="@style/BrowseTextView"
-                        android:layout_below="@id/image15"
-                        android:id="@+id/trending15"
+                        android:layout_below="@id/trendingImage5"
+                        android:id="@+id/trendingText5"
                         />
                 </RelativeLayout>
 
@@ -302,15 +302,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image16"
+                        android:id="@+id/trendingImage6"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         />
                     <TextView
                         style="@style/BrowseTextView"
-                        android:layout_below="@id/image16"
-                        android:id="@+id/trending16"
+                        android:layout_below="@id/trendingImage6"
+                        android:id="@+id/trendingText6"
                         />
                 </RelativeLayout>
 
@@ -318,15 +318,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image17"
+                        android:id="@+id/trendingImage7"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         />
                     <TextView
                         style="@style/BrowseTextView"
-                        android:layout_below="@id/image17"
-                        android:id="@+id/trending17"
+                        android:layout_below="@id/trendingImage7"
+                        android:id="@+id/trendingText7"
                         />
                 </RelativeLayout>
 
@@ -334,15 +334,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image18"
+                        android:id="@+id/trendingImage8"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         />
                     <TextView
                         style="@style/BrowseTextView"
-                        android:layout_below="@id/image18"
-                        android:id="@+id/trending18"
+                        android:layout_below="@id/trendingImage8"
+                        android:id="@+id/trendingText8"
                         />
                 </RelativeLayout>
 
@@ -350,15 +350,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image19"
+                        android:id="@+id/trendingImage9"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         />
                     <TextView
                         style="@style/BrowseTextView"
-                        android:layout_below="@id/image19"
-                        android:id="@+id/trending19"
+                        android:layout_below="@id/trendingImage9"
+                        android:id="@+id/trendingText9"
                         />
                 </RelativeLayout>
 
@@ -366,15 +366,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image20"
+                        android:id="@+id/trendingImage10"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
                         />
                     <TextView
                         style="@style/BrowseTextView"
-                        android:layout_below="@id/image20"
-                        android:id="@+id/trending20"
+                        android:layout_below="@id/trendingImage10"
+                        android:id="@+id/trendingText10"
                         />
                 </RelativeLayout>
             </LinearLayout>

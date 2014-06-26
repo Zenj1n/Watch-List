@@ -13,8 +13,8 @@
     </style>
 
     <style name="BrowseImageView">
-        <item name="android:layout_width">125dp</item>
-        <item name="android:layout_height">200dp</item>
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">150dp</item>
     </style>
 
     <style name="InfoButton">
