@@ -116,13 +116,7 @@ public class InfoPage extends Activity {
 
 
             Intent intent = getIntent();
-
             String message2 = intent.getStringExtra("trakt");
-
-
-
-
-
             String urlTrakt = "http://api.trakt.tv/show/summary.json/390983740f2092270bc0fa267334db88/"+ message2;
             String urlTraktSeasons = "http://api.trakt.tv/show/seasons.json/390983740f2092270bc0fa267334db88/"+ message2;
             ServiceHandler jParser = new ServiceHandler();
@@ -133,19 +127,10 @@ public class InfoPage extends Activity {
             JSONArray jsonEpisodes = jParser.getJsonArray(urlTraktSeasons);
 
             JSONArray jsonArray = new JSONArray();
-
-
             jsonArray.put(jsonTrakt);
             jsonArray.put(jsonEpisodes);
 
             return jsonArray;
-
-
-
-
-
-
-
         }
 
 
@@ -154,9 +139,6 @@ public class InfoPage extends Activity {
         protected void onPostExecute(JSONArray jsonArray) {
             pDialog.dismiss();
             try {
-
-
-
                 // Storing  JSON item in a Variable
                 //int Seasons = allSeasons.getInt(TAG_SEASONS);
                 String TitleMovie = jsonArray.getJSONObject(0).getString(TAG_TITLE);
@@ -173,13 +155,6 @@ public class InfoPage extends Activity {
                     allEpisodes.add(test1);
                 }
 
-
-
-
-                //System.out.println(allGenres);
-
-
-
                 sumEpisodes();
                 String test3 = GenreMovie.replaceAll("[\"\\[\\]]", "");
                 String test4 = test3.replaceAll(",(\\d|\\w)",", $1");
@@ -188,7 +163,6 @@ public class InfoPage extends Activity {
                 TGenres.setText(test4);
                 Tplot.setText(PlotMovie);
                 TStatus.setText(Status);
-
 
                 new DownloadImageTask((ImageView) findViewById(R.id.Image))
                         .execute(jsonArray.getJSONObject(0).getString(TAG_IMAGE));
