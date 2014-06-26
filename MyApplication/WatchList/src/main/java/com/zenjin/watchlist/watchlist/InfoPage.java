@@ -52,9 +52,6 @@ public class InfoPage extends Activity {
     TextView TStatus;
     ImageView Image;
 
-
-
-
     private static final String TAG_TITLE = "Title";
     private static final String TAG_GENRE = "Genre";
     private static final String TAG_PLOT = "Plot";
@@ -119,11 +116,15 @@ public class InfoPage extends Activity {
 
 
             Intent intent = getIntent();
+
             String message = intent.getStringExtra(SearchActivity.EXTRA_MESSAGE);
             String message2 = intent.getStringExtra("trakt");
 
+            if (message == null){
+                message = intent.getStringExtra(HomeActivity.EXTRA_MESSAGE);
+            }
 
-
+            System.out.println("message="+message);
 
             String url = "http://www.omdbapi.com/?t=" + message + "&plot=full";
             String urlTrakt = "http://api.trakt.tv/show/summary.json/390983740f2092270bc0fa267334db88/"+ message2;

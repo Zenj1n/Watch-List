@@ -14,7 +14,7 @@
         <TextView
             style="@style/TitleView"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text=" Popular"
+            android:text=" Today"
             android:id="@+id/textView"
 
             />
@@ -41,12 +41,12 @@
                     style="@style/BrowseImageView"
                     android:scaleType="centerCrop"
                     android:layout_margin="10dp"
-                    android:src="@drawable/arrow"
                     />
                 <TextView
                     style="@style/BrowseTextView"
                     android:layout_below="@id/image1"
-                    android:text="Arrow"/>
+                    android:id="@+id/todayTextView1"
+                    />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -55,15 +55,14 @@
                     <ImageView
                         android:id="@+id/image2"
                         style="@style/BrowseImageView"
-
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/gotham"
                         />
                     <TextView
+                        android:id="@+id/todayTextView2"
                         style="@style/BrowseTextView"
                         android:layout_below="@id/image2"
-                        android:text="Gotham"/>
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -72,15 +71,14 @@
                     <ImageView
                         android:id="@+id/image3"
                         style="@style/BrowseImageView"
-
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/constatine"
                         />
                     <TextView
+                        android:id="@+id/todayTextView3"
                         style="@style/BrowseTextView"
                         android:layout_below="@id/image3"
-                        android:text="Constantine"/>
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -91,12 +89,12 @@
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/black_ish"
                         />
                     <TextView
+                        android:id="@+id/todayTextView4"
                         style="@style/BrowseTextView"
                         android:layout_below="@id/image4"
-                        android:text="Black_ish"/>
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -105,15 +103,14 @@
                     <ImageView
                         android:id="@+id/image5"
                         style="@style/BrowseImageView"
-
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/game_of_thrones"
                         />
                     <TextView
                         style="@style/BrowseTextView"
+                        android:id="@+id/todayTextView5"
                         android:layout_below="@id/image5"
-                        android:text="Game of Thrones"/>
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -122,15 +119,14 @@
                     <ImageView
                         android:id="@+id/image6"
                         style="@style/BrowseImageView"
-
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/gracepoint"
                         />
                     <TextView
                         style="@style/BrowseTextView"
+                        android:id="@+id/todayTextView6"
                         android:layout_below="@id/image6"
-                        android:text="Gracepoint"/>
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -139,15 +135,14 @@
                     <ImageView
                         android:id="@+id/image7"
                         style="@style/BrowseImageView"
-
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/lost"
                         />
                     <TextView
+                        android:id="@+id/todayTextView7"
                         style="@style/BrowseTextView"
                         android:layout_below="@id/image7"
-                        android:text="Lost"/>
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -158,12 +153,12 @@
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/arrow"
                         />
                     <TextView
+                        android:id="@+id/todayTextView8"
                         style="@style/BrowseTextView"
                         android:layout_below="@id/image8"
-                        android:text="Arrow"/>
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -172,15 +167,14 @@
                     <ImageView
                         android:id="@+id/image9"
                         style="@style/BrowseImageView"
-
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/the_flash"
                         />
                     <TextView
                         style="@style/BrowseTextView"
+                        android:id="@+id/todayTextView9"
                         android:layout_below="@id/image9"
-                        android:text="The Flash"/>
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -191,12 +185,13 @@
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/the_walking_dead"
+
                         />
                     <TextView
                         style="@style/BrowseTextView"
+                        android:id="@+id/todayTextView10"
                         android:layout_below="@id/image10"
-                        android:text="The Walking Dead"/>
+                        />
                 </RelativeLayout>
 
             </LinearLayout>
