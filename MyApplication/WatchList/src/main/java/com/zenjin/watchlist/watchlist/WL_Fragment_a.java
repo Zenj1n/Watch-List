@@ -82,19 +82,32 @@ public class WL_Fragment_a extends Fragment {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
 
-                Intent intent;
-                intent = new Intent(getActivity(), InfoPage.class);
+                if (a_titlelist.get(0) == "No series added"){
 
-                String titleSerieRaw = (String) a_titlelist.get(i);
-                String titleSerie = java.net.URLEncoder.encode(titleSerieRaw);
+                    Intent intent;
+                    intent = new Intent(getActivity(), SearchActivity.class);
+                    startActivity(intent);
+                    getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
 
-                String word2 = (String) a_titlelist.get(i);
-                String traktWord = word2.replaceAll(" ", "-");
-                intent.putExtra("trakt", traktWord);
+                }else {
 
-                intent.putExtra(EXTRA_MESSAGE, titleSerie);
-                startActivity(intent);
-                getActivity().overridePendingTransition(R.anim.shrink_and_rotate_entrance, R.anim.shrink_and_rotate_exit);
+                    Intent intent;
+                    intent = new Intent(getActivity(), InfoPage.class);
+
+                    String titleSerieRaw = (String) a_titlelist.get(i);
+                    String titleSerie = java.net.URLEncoder.encode(titleSerieRaw);
+
+                    String word2 = (String) a_titlelist.get(i);
+                    String traktWord = word2.replaceAll(" ", "-");
+                    intent.putExtra("trakt", traktWord);
+
+                    intent.putExtra(EXTRA_MESSAGE, titleSerie);
+                    startActivity(intent);
+                    //getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
+
+                }
+
+
 
             }
         });
