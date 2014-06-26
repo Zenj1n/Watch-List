@@ -16,7 +16,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text=" Today"
             android:id="@+id/todayTitleTextView"
-            android:layout_margin="10dp"
+            android:layout_margin="0dp"
             />
 
 
@@ -202,7 +202,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text=" Trending"
             android:id="@+id/trendingTitleTextView"
-            android:layout_margin="10dp"
+            android:layout_margin="0dp"
 
             />
         <HorizontalScrollView

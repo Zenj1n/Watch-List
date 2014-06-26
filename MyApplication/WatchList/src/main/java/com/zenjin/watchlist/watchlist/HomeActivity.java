@@ -240,7 +240,6 @@ public class HomeActivity extends MyWatchList {
             System.out.println(formattedDate);
 
             String urlTraktTrending = "http://api.trakt.tv/shows/trending.json/390983740f2092270bc0fa267334db88/";
-
             String urlToday    = "http://api.trakt.tv/calendar/shows.json/390983740f2092270bc0fa267334db88/"+formattedDate;
             ServiceHandler jParser = new ServiceHandler();
 
@@ -272,8 +271,6 @@ public class HomeActivity extends MyWatchList {
                     String name = e.getString("title");
                     trendingTitles.add(name);
                 }
-
-
 
                 for(int i=0;i<10;i++){
                     JSONObject e ;
