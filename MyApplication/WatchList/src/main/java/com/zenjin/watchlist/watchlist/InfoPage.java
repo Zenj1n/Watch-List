@@ -43,7 +43,15 @@ public class InfoPage extends Activity {
     private static final String ADD_TO_YOUR_LIST_FIRST = "Add to your list first";
     private static final String RATING_REMOVED = "Rating removed";
     private static final String TAG_EPISODES = "episodes";
-
+    private static final String TAG_TITLE = "title";
+    private static final String TAG_GENRE = "genres";
+    private static final String TAG_PLOT = "overview";
+    private static final String TAG_IMAGE = "poster";
+    private static final String TAG_STATUS = "status";
+    public static String INFOTITLE;
+    public static int PROGRESS;
+    List<Integer> allEpisodes = new ArrayList<Integer>();
+    int sum = 0;
     private Button Baddto;
     private Button Brate;
     private Button Bepisode;
@@ -52,24 +60,12 @@ public class InfoPage extends Activity {
     private TextView Tplot;
     private TextView TStatus;
     private ImageView Image;
-
-    private static final String TAG_TITLE = "title";
-    private static final String TAG_GENRE = "genres";
-    private static final String TAG_PLOT = "overview";
-    private static final String TAG_IMAGE = "poster";
-    private static final String TAG_STATUS = "status";
-
     private ArrayList<Integer> ratings = new ArrayList<Integer>();
     private double avgRating;
     private String stringRating;
     private int count;
     private int i;
     private int ratings_size;
-    public static String INFOTITLE;
-    public static int PROGRESS;
-
-    List<Integer> allEpisodes = new ArrayList<Integer>();
-    int sum = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,124 +116,12 @@ public class InfoPage extends Activity {
 
 */
 
-    private class JSONParse extends AsyncTask<String, String, JSONArray> {
-        private ProgressDialog pDialog;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            Title = (TextView) findViewById(R.id.title);
-            TGenres = (TextView) findViewById(R.id.Tgenres);
-            Tplot = (TextView) findViewById(R.id.plot);
-            Image = (ImageView) findViewById(R.id.Image);
-            TStatus = (TextView)findViewById(R.id.TStatus);
-
-
-            pDialog = new ProgressDialog(InfoPage.this);
-            pDialog.setMessage("Getting Data ...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(false);
-            pDialog.show();
-        }
-
-        @Override
-        protected JSONArray doInBackground(String... args) {
-
-
-            Intent intent = getIntent();
-            String message2 = intent.getStringExtra("trakt");
-            String urlTrakt = "http://api.trakt.tv/show/summary.json/390983740f2092270bc0fa267334db88/"+ message2;
-            String urlTraktSeasons = "http://api.trakt.tv/show/seasons.json/390983740f2092270bc0fa267334db88/"+ message2;
-            ServiceHandler jParser = new ServiceHandler();
-
-            // Getting JSON from URL
-
-            JSONObject jsonTrakt = jParser.getJSONFromUrl(urlTrakt);
-            JSONArray jsonEpisodes = jParser.getJsonArray(urlTraktSeasons);
-            JSONArray jsonArray = new JSONArray();
-            jsonArray.put(jsonTrakt);
-            jsonArray.put(jsonEpisodes);
-
-            return jsonArray;
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
-        }
-
-        @Override
-        protected void onPostExecute(JSONArray jsonArray) {
-            pDialog.dismiss();
-            try {
-                // Storing  JSON item in a Variable
-                //int Seasons = allSeasons.getInt(TAG_SEASONS);
-                String TitleMovie = jsonArray.getJSONObject(0).getString(TAG_TITLE);
-                String PlotMovie = jsonArray.getJSONObject(0).getString(TAG_PLOT);
-                String GenreMovie = jsonArray.getJSONObject(0).getString(TAG_GENRE);
-                String Status = jsonArray.getJSONObject(0).getString(TAG_STATUS);
-                JSONArray episodes = jsonArray.getJSONArray(1);
-
-                for(int i=0;i<episodes.length();i++){
-
-                    JSONObject e;
-                    e = episodes.getJSONObject(i);
-                    int test1 = e.getInt("episodes");
-                    allEpisodes.add(test1);
-                }
-
-                sumEpisodes();
-                String test3 = GenreMovie.replaceAll("[\"\\[\\]]", "");
-                String test4 = test3.replaceAll(",(\\d|\\w)",", $1");
-
-                //Set JSON Data in TextView
-                Title.setText(TitleMovie);
-                TGenres.setText(test4);
-                Tplot.setText(PlotMovie);
-                TStatus.setText(Status);
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
-                new DownloadImageTask((ImageView) findViewById(R.id.Image))
-                        .execute(jsonArray.getJSONObject(0).getString(TAG_IMAGE));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     public void sumEpisodes() {
 
         for (int a : allEpisodes) {
             sum += a;
         }
         System.out.println(sum);
-    }
-
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
-
-        public DownloadImageTask(ImageView bmImage) {
-            this.bmImage = bmImage;
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap mIcon11 = null;
-            try {
-
-                InputStream in = new java.net.URL(urldisplay).openStream();
-                mIcon11 = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
-            return mIcon11;
-        }
-
-        protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
-        }
     }
 
    @Override
@@ -336,6 +220,7 @@ public class InfoPage extends Activity {
             }
         });
     }
+
     private void Rate()
     {
         PopupMenu popup = new PopupMenu(InfoPage.this, Brate);
@@ -525,6 +410,7 @@ public class InfoPage extends Activity {
             }
         });
     }
+
     private void addepisode(){
         final AlertDialog.Builder errorBuilder = new AlertDialog.Builder(this);
         errorBuilder.setTitle("wrong episode");
@@ -610,6 +496,112 @@ public class InfoPage extends Activity {
         });
         AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
+    }
+
+    private class JSONParse extends AsyncTask<String, String, JSONArray> {
+        private ProgressDialog pDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Title = (TextView) findViewById(R.id.title);
+            TGenres = (TextView) findViewById(R.id.Tgenres);
+            Tplot = (TextView) findViewById(R.id.plot);
+            Image = (ImageView) findViewById(R.id.Image);
+            TStatus = (TextView)findViewById(R.id.TStatus);
+
+
+            pDialog = new ProgressDialog(InfoPage.this);
+            pDialog.setMessage("Getting Data ...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(false);
+            pDialog.show();
+        }
+
+        @Override
+        protected JSONArray doInBackground(String... args) {
+
+
+            Intent intent = getIntent();
+            String message2 = intent.getStringExtra("trakt");
+            String urlTrakt = "http://api.trakt.tv/show/summary.json/390983740f2092270bc0fa267334db88/"+ message2;
+            String urlTraktSeasons = "http://api.trakt.tv/show/seasons.json/390983740f2092270bc0fa267334db88/"+ message2;
+            ServiceHandler jParser = new ServiceHandler();
+
+            // Getting JSON from URL
+
+            JSONObject jsonTrakt = jParser.getJSONFromUrl(urlTrakt);
+            JSONArray jsonEpisodes = jParser.getJsonArray(urlTraktSeasons);
+            JSONArray jsonArray = new JSONArray();
+            jsonArray.put(jsonTrakt);
+            jsonArray.put(jsonEpisodes);
+
+            return jsonArray;
+
+        }
+
+        @Override
+        protected void onPostExecute(JSONArray jsonArray) {
+            pDialog.dismiss();
+            try {
+                // Storing  JSON item in a Variable
+                //int Seasons = allSeasons.getInt(TAG_SEASONS);
+                String TitleMovie = jsonArray.getJSONObject(0).getString(TAG_TITLE);
+                String PlotMovie = jsonArray.getJSONObject(0).getString(TAG_PLOT);
+                String GenreMovie = jsonArray.getJSONObject(0).getString(TAG_GENRE);
+                String Status = jsonArray.getJSONObject(0).getString(TAG_STATUS);
+                JSONArray episodes = jsonArray.getJSONArray(1);
+
+                for(int i=0;i<episodes.length();i++){
+
+                    JSONObject e;
+                    e = episodes.getJSONObject(i);
+                    int test1 = e.getInt("episodes");
+                    allEpisodes.add(test1);
+                }
+
+                sumEpisodes();
+                String test3 = GenreMovie.replaceAll("[\"\\[\\]]", "");
+                String test4 = test3.replaceAll(",(\\d|\\w)",", $1");
+
+                //Set JSON Data in TextView
+                Title.setText(TitleMovie);
+                TGenres.setText(test4);
+                Tplot.setText(PlotMovie);
+                TStatus.setText(Status);
+
+                new DownloadImageTask((ImageView) findViewById(R.id.Image))
+                        .execute(jsonArray.getJSONObject(0).getString(TAG_IMAGE));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
+        }
     }
 
 }
