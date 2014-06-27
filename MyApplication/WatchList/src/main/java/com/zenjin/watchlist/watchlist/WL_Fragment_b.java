@@ -42,11 +42,8 @@ public class WL_Fragment_b extends Fragment {
 
     private final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";
     private ListView mListView;
-    String[] b_title;
-    String[] b_message;
-    
 
-    private ArrayList b_titlelist = new ArrayList();                    // empty arrays for titels, massages and images
+    private ArrayList b_titlelist = new ArrayList();
     private ArrayList b_messagelist = new ArrayList();
     private ArrayList b_imageurl = new ArrayList();
 
@@ -55,7 +52,6 @@ public class WL_Fragment_b extends Fragment {
         public String[] title;
         public ArrayList<Bitmap> b_images;
     }
-
 
     public WL_Fragment_b() {
         // Required empty public constructor
@@ -92,14 +88,11 @@ public class WL_Fragment_b extends Fragment {
                     intent = new Intent(getActivity(), SearchActivity.class);
                     startActivity(intent);
                     getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
-
                 }else if (b_titlelist.get(0) == "No internet connection"){
 
                     startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
                     getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
-
                 }else {
-
                     Intent intent;
                     intent = new Intent(getActivity(), InfoPage.class);
 
@@ -112,34 +105,25 @@ public class WL_Fragment_b extends Fragment {
 
                     intent.putExtra(EXTRA_MESSAGE, titleSerie);
                     startActivity(intent);
-                    //getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
-
                 }
 
             }
         });
-
         return v;
-
     }
 
 
     public ListView getListView() {
-
         return mListView;
-
     }
 
 
     public void getvalues() {
-
-        gettitles();            // get titels from Parse
-
+        gettitles();            // get titels from Pa
     }
 
 
     public void gettitles() {
-
         ParseQuery<ParseObject> watching_query = ParseQuery.getQuery("Koppel");
         watching_query.whereEqualTo("User", ParseUser.getCurrentUser().getUsername());
         watching_query.whereEqualTo("Status", "Completed");
@@ -153,71 +137,50 @@ public class WL_Fragment_b extends Fragment {
                     b_titlelist.clear();
 
                     try {
-
                         do {
-
                             ParseObject koppel = User.get(i);
                             b_titlelist.add(i, koppel.getString("Serie"));
                             i++;
-
                         }
                         while (i < count);
-
                     } catch (Exception a) {
-
                         b_titlelist.clear();
                         b_titlelist.add(i, "No series added");
-
                     }
-
                     String[] b_title = (String[]) b_titlelist.toArray(new String[b_titlelist.size()]);
                     new getmessages().execute(b_title);     // get messages from API
-
-
                 } else {
-
                     b_titlelist.clear();
                     b_titlelist.add(0, "No internet connection");
                     String[] b_title = (String[]) b_titlelist.toArray(new String[b_titlelist.size()]);
                     new getmessages().execute(b_title);     // get messages from API
-
                 }
             }
         });
-
-
     }
 
 
     private class getmessages extends AsyncTask<String, Void, Pair> {
         @Override
         protected Pair doInBackground(String... b_title) {
-
-
             int count = b_titlelist.size();
             int i = 0;
             String check = (String) b_titlelist.get(0);
 
             if (check == "No series added") {
-
                 b_messagelist.clear();
                 b_messagelist.add(i, "Search for a show to get started");
 
             } else if (check == "No internet connection") {
-
                 b_messagelist.clear();
                 b_messagelist.add(i, "Please connect to the internet to get started");
 
             } else {
-
                 try {
-
                     do {
-
                         String serie = (String) b_titlelist.get(i);
                         String prep = serie.replaceAll(" ", "%20");
                         String info = "Next episode is not available or this show has been canceled";
-
                         try {
 
                             String showurl = "http://services.tvrage.com/tools/quickinfo.php?show=" + prep;
@@ -228,71 +191,47 @@ public class WL_Fragment_b extends Fragment {
                             String nextepisode;
 
                             while ((lijn = in.readLine()) != null) {
-
                                 fullsite = fullsite + lijn;
-
                             }
-
                             nextepisode = fullsite.substring(fullsite.indexOf("Next Episode@"), fullsite.indexOf("Country"));
                             nextepisode = nextepisode.replace("^", "    ");
                             nextepisode = nextepisode.substring(13);
 
                             try {
-
                                 nextepisode = nextepisode.substring(0, nextepisode.indexOf("RFC"));
-
                             } catch (Exception e) {
-
-                                // nothing
-
                             }
 
                             try {
-
                                 nextepisode = nextepisode.substring(0, nextepisode.indexOf("GMT"));
-
                             } catch (Exception e) {
-
-                                // nothing
-
                             }
-
                             info = nextepisode;
 
                         } catch (Exception e) {
-
                             String nonextepisode = "Next episode is not available or this show has been canceled";
                             info = nonextepisode;
-
                         }
-
                         b_messagelist.add(i, info);
                         i++;
-
                     }
                     while (i < count);
 
                 } catch (Exception a) {
-
                     b_messagelist.clear();
                     b_messagelist.add(i, "An error occured. Cannot get serie messages");
-
                 }
             }
-
             String[] b_message = (String[]) b_messagelist.toArray(new String[b_messagelist.size()]);
             Pair p = new Pair();
             p.message = b_message;
             p.title = b_title;
             return p;
-
         }
         protected void onPostExecute(Pair p) {
-
             String[] b_message = p.message;
             String[] b_title = p.title;
             new getimages().execute(b_title, b_message);
-
         }
     }
 
@@ -300,7 +239,6 @@ public class WL_Fragment_b extends Fragment {
     private class getimages extends AsyncTask<Object, Void, Pair> {
         @Override
         protected Pair doInBackground(Object... object) {
-
             String[] b_title = (String[]) object[0];
             String[] b_message = (String[]) object[1];
             int count = b_titlelist.size();
@@ -308,61 +246,42 @@ public class WL_Fragment_b extends Fragment {
             String check = (String) b_titlelist.get(0);
 
             if (check == "No series added") {
-
                 b_imageurl.clear();
                 b_imageurl.add(i, "http://i.imgur.com/ZNt7DXU.png");
-
             } else if (check == "No internet connection") {
-
                 b_imageurl.clear();
                 b_imageurl.add(i, "http://i.imgur.com/ZNt7DXU.png");
-
             } else {
-
                 try {
-
                     do {
 
                         String serie = (String) b_titlelist.get(i);
                         String prep = serie.replaceAll(" ", "%20");
                         String url;
-
                         try {
-
                             String omdbapi = "http://www.omdbapi.com/?t=" + prep;
                             URL omdb = new URL(omdbapi);
                             BufferedReader in = new BufferedReader(new InputStreamReader(omdb.openStream()));
                             String lijn;
                             String fullsite = "";
                             String imageurl;
-
                             while ((lijn = in.readLine()) != null) {
-
                                 fullsite = fullsite + lijn;
-
                             }
-
                             imageurl = fullsite.substring(fullsite.indexOf("http://"), fullsite.indexOf("\",\"Metascore"));
                             url = imageurl;
-
                         } catch (Exception e) {
-
                             String noimage = "http://i.imgur.com/ZNt7DXU.png";
                             url = noimage;
-
                         }
-
                         b_imageurl.add(i, url);
                         i++;
-
                     }
                     while (i < count);
 
                 } catch (Exception a) {
-
                     b_imageurl.clear();
                     b_imageurl.add(i, "https://www.google.com/images/srpr/logo11w.png");
-
                 }
             }
 
@@ -370,23 +289,16 @@ public class WL_Fragment_b extends Fragment {
             ArrayList<Bitmap> b_images = null;
 
             try {
-
                 ArrayList<Bitmap> images = new ArrayList<Bitmap>();
                 i = 0;
                 count = b_images_for_method.length;
-
                 do {
-
                     Bitmap bitmap;
                     URL imageURL = null;
                     try {
-
                         imageURL = new URL(b_images_for_method[i]);
 
                     } catch (Exception e) {
-
-                        // nothing
-
                     }
 
                     try {
@@ -397,31 +309,24 @@ public class WL_Fragment_b extends Fragment {
                         InputStream inputStream = connection.getInputStream();
                         bitmap = BitmapFactory.decodeStream(inputStream);//Convert to bitmap
                         images.add(i, bitmap);
-
                     } catch (Exception e) {
 
                         images = new ArrayList<Bitmap>();
                         Bitmap icon = BitmapFactory.decodeResource(getActivity().getResources(),
                                 R.drawable.ic_launcher);
                         images.add(0, icon);
-
                     }
-
                     i++;
-
                 }
                 while (i < count);
-
                 b_images = images;
 
             } catch (Exception e) {
-
                 ArrayList<Bitmap> images = new ArrayList<Bitmap>();
                 Bitmap icon = BitmapFactory.decodeResource(getActivity().getResources(),
                         R.drawable.ic_launcher);
                 images.add(0, icon);
                 b_images = images;
-
             }
 
             Pair p = new Pair();
@@ -433,13 +338,10 @@ public class WL_Fragment_b extends Fragment {
         }
 
         protected void onPostExecute(Pair p) {
-
             String[] a_message = p.message;
             String[] a_title = p.title;
             ArrayList<Bitmap> a_images = p.b_images;
-
             createview(a_title, a_message, a_images);
-
         }
     }
 
@@ -447,23 +349,14 @@ public class WL_Fragment_b extends Fragment {
     public void createview(String[] b_title, String[] b_message, ArrayList<Bitmap> b_images) {
 
         try {
-
             WebView webview = (WebView) getActivity().findViewById(R.id.webViewB);
             webview.setVisibility(View.GONE);
-
         } catch (Exception e) {
-
-            // nothing
-
         }
-
         myArrayAdapterb adapter = new myArrayAdapterb(getActivity().getApplicationContext(), b_title, b_images, b_message);
         mListView.setAdapter(adapter);
-
     }
-
 }
-
 
 class myArrayAdapterb extends ArrayAdapter<String> {
     private Context mContext;
