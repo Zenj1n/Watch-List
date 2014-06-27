@@ -47,6 +47,8 @@ public class WL_Fragment_a extends Fragment {
     ArrayList a_messagelist = new ArrayList();
     ArrayList a_imageurl = new ArrayList();
 
+    //SharedPreferences sharedpreferences = getActivity().getSharedPreferences("com.zenjin.watchlist.watchlist.sharedpref", Context.MODE_PRIVATE);
+
     public class Pair {
         public String[] message;
         public String[] title;
@@ -266,6 +268,7 @@ public class WL_Fragment_a extends Fragment {
                         a_messagelist.add(i, info);
                         i++;
 
+
                     }
                     while (i < count);
 
@@ -297,6 +300,8 @@ public class WL_Fragment_a extends Fragment {
     private class getimages extends AsyncTask<Object, Void, Pair> {
         @Override
         protected Pair doInBackground(Object... object) {
+
+
 
             String[] a_title = (String[]) object[0];
             String[] a_message = (String[]) object[1];
@@ -425,7 +430,12 @@ public class WL_Fragment_a extends Fragment {
             p.message = a_message;
             p.title = a_title;
             p.a_images = a_images;
+
+
+
             return p;
+
+
 
         }
 
@@ -457,10 +467,12 @@ public class WL_Fragment_a extends Fragment {
         myArrayAdaptera adapter = new myArrayAdaptera(getActivity().getApplicationContext(), a_title, a_images, a_message);
         mListView.setAdapter(adapter);
 
+
+
+
     }
 
 }
-
 
 class myArrayAdaptera extends ArrayAdapter<String> {
     Context mContext;
