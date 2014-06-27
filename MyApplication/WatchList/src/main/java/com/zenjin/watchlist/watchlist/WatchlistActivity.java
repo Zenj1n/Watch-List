@@ -33,19 +33,15 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
 
             @Override
             public void onPageSelected(int position) {
-
                 mActionBar.setSelectedNavigationItem(position);
-
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
 
@@ -53,8 +49,6 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
 
         mActionBar = getActionBar();
         mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
-
 
         ActionBar.Tab tab1 = mActionBar.newTab();
         tab1.setText(R.string.wl_tab1);
@@ -67,28 +61,21 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
         ActionBar.Tab tab3 = mActionBar.newTab();
         tab3.setText(R.string.wl_tab3);
         tab3.setTabListener(this);
-
         mActionBar.addTab(tab1);
         mActionBar.addTab(tab2);
         mActionBar.addTab(tab3);
-
 
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.mywatchlist_activity, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
@@ -100,8 +87,6 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
         if (id == R.id.action_refresh){
 
             int x = mViewPager.getCurrentItem();
-            //Log.i("DATAA", String.valueOf(x));
-
             switch (x){
                 case 0: // this;
                     break;
@@ -117,37 +102,28 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-
         mViewPager.setCurrentItem(tab.getPosition());
-
     }
 
     @Override
     public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-
-        // do something
 
     }
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 
-        // do something
-
     }
 }
 
 class WL_myAdapter extends FragmentPagerAdapter
 {
-
     public WL_myAdapter(FragmentManager fm) {
         super(fm);
     }
-
     @Override
     public Fragment getItem(int fragment_position) {
         Fragment fragment = null;
-
         switch (fragment_position){
             case 0: fragment = new WL_Fragment_a();
                 break;
@@ -156,9 +132,6 @@ class WL_myAdapter extends FragmentPagerAdapter
             case 2: fragment = new WL_Fragment_c();
                 break;
         }
-
-
-
         return fragment;
     }
 
