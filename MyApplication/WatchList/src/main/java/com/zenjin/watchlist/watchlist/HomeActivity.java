@@ -15,6 +15,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.parse.FindCallback;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -92,13 +98,13 @@ public class HomeActivity extends MyWatchList {
         @Override
         public void onClick(View v) {
             // TODO Auto-generated method stub
-
             switch (v.getId()) {
                 case R.id.todayImage1:
                     String todayTitle1 = todayTitles.get(0).replaceAll(" ","-");
                     String todayTitle2 = todayTitle1.replaceAll("'","");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", todayTitle2);
+                    intent.putExtra("trakt", todayTitles.get(0));
+                    InfoPage.INFOTITLE = todayTitle2;
                     startActivity(intent);
                     break;
                 case R.id.todayImage2:
@@ -106,6 +112,8 @@ public class HomeActivity extends MyWatchList {
                     String todayTitle4 = todayTitle3.replaceAll("'","");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra("trakt", todayTitle4);
+                    InfoPage.INFOTITLE = todayTitles.get(1);
+
                     startActivity(intent);
                     break;
                 case R.id.todayImage3:
@@ -113,6 +121,8 @@ public class HomeActivity extends MyWatchList {
                     String todayTitle6 = todayTitle5.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra("trakt", todayTitle6);
+                    InfoPage.INFOTITLE = todayTitles.get(2);
+
                     startActivity(intent);
                     break;
                 case R.id.todayImage4:
@@ -120,6 +130,8 @@ public class HomeActivity extends MyWatchList {
                     String todayTitle8 = todayTitle7.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra("trakt", todayTitle8);
+                    InfoPage.INFOTITLE = todayTitles.get(3);
+
                     startActivity(intent);
                     break;
                 case R.id.todayImage5:
@@ -127,6 +139,8 @@ public class HomeActivity extends MyWatchList {
                     String todayTitle10 = todayTitle9.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra("trakt", todayTitle10);
+                    InfoPage.INFOTITLE = todayTitles.get(4);
+
                     startActivity(intent);
                     break;
                 case R.id.todayImage6:
@@ -134,6 +148,8 @@ public class HomeActivity extends MyWatchList {
                     String todayTitle12 = todayTitle11.replaceAll("'","");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra("trakt", todayTitle12);
+                    InfoPage.INFOTITLE = todayTitles.get(5);
+
                     startActivity(intent);
                     break;
                 case R.id.todayImage7:
@@ -141,6 +157,8 @@ public class HomeActivity extends MyWatchList {
                     String todayTitle14 = todayTitle13.replaceAll("'","");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra("trakt", todayTitle14);
+                    InfoPage.INFOTITLE = todayTitles.get(6);
+
                     startActivity(intent);
                     break;
                 case R.id.todayImage8:
@@ -148,6 +166,8 @@ public class HomeActivity extends MyWatchList {
                     String todayTitle16 = todayTitle15.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra("trakt", todayTitle16);
+                    InfoPage.INFOTITLE = todayTitles.get(7);
+
                     startActivity(intent);
                     break;
                 case R.id.todayImage9:
@@ -155,13 +175,17 @@ public class HomeActivity extends MyWatchList {
                     String todayTitle18 = todayTitle17.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra("trakt", todayTitle18);
+                    InfoPage.INFOTITLE = todayTitles.get(8);
+
                     startActivity(intent);
                     break;
                 case R.id.todayImage10:
                     String todayTitle19 = todayTitles.get(9).replaceAll(" ","-");
                     String todayTitle20 = todayTitle19.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", todayTitle20);
+                    intent.putExtra("trakt", todayTitles.get(9));
+                    InfoPage.INFOTITLE = todayTitle20;
+
                     startActivity(intent);
                     break;
                 case R.id.trendingImage1:
@@ -169,6 +193,8 @@ public class HomeActivity extends MyWatchList {
                     String trendingTitle2 = trendingTitle1.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra("trakt", trendingTitle2);
+                    InfoPage.INFOTITLE = trendingTitles.get(0);
+
                     startActivity(intent);
                     break;
                 case R.id.trendingImage2:
@@ -176,6 +202,8 @@ public class HomeActivity extends MyWatchList {
                     String trendingTitle4 = trendingTitle3.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra("trakt", trendingTitle4);
+                    InfoPage.INFOTITLE = trendingTitles.get(1);
+
                     startActivity(intent);
                     break;
                 case R.id.trendingImage3:
@@ -183,6 +211,8 @@ public class HomeActivity extends MyWatchList {
                     String trendingTitle6 = trendingTitle5.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra("trakt", trendingTitle6);
+                    InfoPage.INFOTITLE =trendingTitles.get(2);
+
                     startActivity(intent);
                     break;
                 case R.id.trendingImage4:
@@ -190,6 +220,8 @@ public class HomeActivity extends MyWatchList {
                     String trendingTitle8 = trendingTitle7.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra("trakt", trendingTitle8);
+                    InfoPage.INFOTITLE = trendingTitles.get(3);
+
                     startActivity(intent);
                     break;
                 case R.id.trendingImage5:
@@ -197,6 +229,8 @@ public class HomeActivity extends MyWatchList {
                     String trendingTitle10 = trendingTitle9.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra("trakt", trendingTitle10);
+                    InfoPage.INFOTITLE = trendingTitles.get(4);
+
                     startActivity(intent);
                     break;
                 case R.id.trendingImage6:
@@ -204,6 +238,8 @@ public class HomeActivity extends MyWatchList {
                     String trendingTitle12 = trendingTitle11.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra("trakt", trendingTitle12);
+                    InfoPage.INFOTITLE =trendingTitles.get(5);
+
                     startActivity(intent);
                     break;
                 case R.id.trendingImage7:
@@ -211,6 +247,8 @@ public class HomeActivity extends MyWatchList {
                     String trendingTitle14 = trendingTitle13.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra("trakt", trendingTitle14);
+                    InfoPage.INFOTITLE =  trendingTitles.get(6);
+
                     startActivity(intent);
                     break;
                 case R.id.trendingImage8:
@@ -218,6 +256,8 @@ public class HomeActivity extends MyWatchList {
                     String trendingTitle16 = trendingTitle15.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra("trakt", trendingTitle16);
+                    InfoPage.INFOTITLE = trendingTitles.get(7);
+
                     startActivity(intent);
                     break;
                 case R.id.trendingImage9:
@@ -225,6 +265,8 @@ public class HomeActivity extends MyWatchList {
                     String trendingTitle18 = trendingTitle17.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra("trakt", trendingTitle18);
+                    InfoPage.INFOTITLE =trendingTitles.get(8);
+
                     startActivity(intent);
                     break;
                 case R.id.trendingImage10:
@@ -232,6 +274,8 @@ public class HomeActivity extends MyWatchList {
                     String trendingTitle20 = trendingTitle19.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
                     intent.putExtra("trakt", trendingTitle20);
+                    InfoPage.INFOTITLE = trendingTitles.get(9);
+
                     startActivity(intent);
                     break;
             }

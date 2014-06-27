@@ -67,7 +67,7 @@ public class InfoPage extends Activity {
     private int i;
     private int ratings_size;
     public static String INFOTITLE;
-    public static int PROGRESS;
+    public static int PROGRESS = 0;
 
     List<Integer> allEpisodes = new ArrayList<Integer>();
     int sum = 0;
@@ -110,6 +110,7 @@ public class InfoPage extends Activity {
 
     }
 
+
     /*
     // CODE VOOR ANIMATIE VAN WATCHLIST
     @Override
@@ -140,6 +141,8 @@ public class InfoPage extends Activity {
             pDialog.setCancelable(false);
             pDialog.show();
         }
+
+
 
         @Override
         protected JSONArray doInBackground(String... args) {
@@ -316,6 +319,7 @@ public class InfoPage extends Activity {
                         });
                         return true;
                     case R.id.completed:
+                        final TextView progress = (TextView) findViewById(R.id.TProgress);
                         ParseQuery<ParseObject> completed_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
                         completed_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
                         completed_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
@@ -326,12 +330,16 @@ public class InfoPage extends Activity {
                                     try {
                                         ParseObject koppel = User.get(0);
                                         koppel.put(ParseUtil.STATUS, ParseUtil.COMPLETED);
+                                        koppel.put(ParseUtil.PROGRESS, sum);
+                                        progress.setText(sum + "/" + sum);
                                         koppel.saveInBackground();
                                     } catch (Exception e) {
                                         ParseObject koppel = new ParseObject(ParseUtil.KOPPEL);
                                         koppel.put(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
                                         koppel.put(ParseUtil.SERIE, Title.getText());
                                         koppel.put(ParseUtil.STATUS, ParseUtil.COMPLETED);
+                                        koppel.put(ParseUtil.PROGRESS, sum);
+                                        progress.setText(sum + "/" + sum);
                                         koppel.saveInBackground();
                                     }
                                 }
@@ -600,9 +608,13 @@ public class InfoPage extends Activity {
         rating_query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> User, com.parse.ParseException e) {
-                if (e == null) {
-                    ParseObject koppel = User.get(0);
-                    progress.setText(koppel.getInt(ParseUtil.PROGRESS) + "/" + sum);
+                try {
+                    if (e == null) {
+                        ParseObject koppel = User.get(0);
+                        progress.setText(koppel.getInt(ParseUtil.PROGRESS) + "/" + sum);
+                    }
+                }catch (Exception c){
+                    c.printStackTrace();
                 }
             }
         });

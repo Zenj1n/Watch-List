@@ -13,7 +13,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
 import com.parse.Parse;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
+import java.util.List;
 
 
 public class SearchActivity extends Activity {
@@ -47,7 +53,26 @@ public class SearchActivity extends Activity {
 
                 String word = java.net.URLEncoder.encode(searchET.getText().toString());
                 String word2 = searchET.getText().toString();
-                InfoPage.INFOTITLE = word;
+                InfoPage.INFOTITLE = word2;
+                ParseQuery<ParseObject> watching_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
+                watching_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+                watching_query.whereEqualTo(ParseUtil.SERIE, word2);
+                watching_query.findInBackground(new FindCallback<ParseObject>() {
+                    @Override
+                    public void done(List<ParseObject> User, com.parse.ParseException e) {
+                        if (e == null) {
+                            try {
+                                ParseObject koppel = User.get(0);
+                                InfoPage.PROGRESS = koppel.getInt(ParseUtil.PROGRESS);
+                            }
+                            catch (Exception d){
+                                d.printStackTrace();
+                            }
+                        }
+                    }
+                });
+
+
 
                 String traktWord = word2.replaceAll(" ","-");
                 intent = new Intent(SearchActivity.this,InfoPage.class);

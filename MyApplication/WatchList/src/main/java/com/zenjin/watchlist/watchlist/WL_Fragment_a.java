@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,11 +42,6 @@ import java.util.List;
 public class WL_Fragment_a extends Fragment {
 
 
-
-
-
-    public static String infoTitel;
-
     public final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";
     ListView mListView;
 
@@ -55,17 +51,9 @@ public class WL_Fragment_a extends Fragment {
 
     //SharedPreferences sharedpreferences = getActivity().getSharedPreferences("com.zenjin.watchlist.watchlist.sharedpref", Context.MODE_PRIVATE);
 
-    public class Pair {
-        public String[] message;
-        public String[] title;
-        public ArrayList<Bitmap> a_images;
-    }
-
-
     public WL_Fragment_a() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -76,10 +64,6 @@ public class WL_Fragment_a extends Fragment {
 
         // initialiseer Parse
         Parse.initialize(getActivity(), "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
-
-
-
-
         // get values for titels, massages and images
         getvalues();
 
@@ -97,12 +81,15 @@ public class WL_Fragment_a extends Fragment {
 
                 if (a_titlelist.get(0) == "No series added"){
 
+
                     Intent intent;
                     intent = new Intent(getActivity(), SearchActivity.class);
                     startActivity(intent);
                     getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
 
                 }else if (a_titlelist.get(0) == "No internet connection"){
+
+
 
                     startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
                     getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
@@ -113,20 +100,16 @@ public class WL_Fragment_a extends Fragment {
                     intent = new Intent(getActivity(), InfoPage.class);
 
                     String titleSerieRaw = (String) a_titlelist.get(i);
-                    String titleSerie = java.net.URLEncoder.encode(titleSerieRaw);
-
                     String word2 = (String) a_titlelist.get(i);
                     String traktWord = word2.replaceAll(" ", "-");
                     intent.putExtra("trakt", traktWord);
 
-                    intent.putExtra(EXTRA_MESSAGE, titleSerie);
                     startActivity(intent);
 
-                    InfoPage.INFOTITLE = titleSerieRaw;
-                    //getActivity().overridePendingTransition (R.anim.shrink_and_rotate_entrance, R.anim.shrink_and_rotate_exit);
+                    InfoPage.INFOTITLE = word2;
                     ParseQuery<ParseObject> watching_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
                     watching_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
-                    watching_query.whereEqualTo(ParseUtil.SERIE, titleSerieRaw);
+                    watching_query.whereEqualTo(ParseUtil.SERIE, word2);
                     watching_query.findInBackground(new FindCallback<ParseObject>() {
                         @Override
                         public void done(List<ParseObject> User, com.parse.ParseException e) {
@@ -139,7 +122,6 @@ public class WL_Fragment_a extends Fragment {
                     });
 
                 }
-                    startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
                     getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
 
             }
@@ -149,20 +131,17 @@ public class WL_Fragment_a extends Fragment {
 
     }
 
-
     public ListView getListView() {
 
         return mListView;
 
     }
 
-
     public void getvalues() {
 
         gettitles();            // get titels from Parse
 
     }
-
 
     public void gettitles() {
 
@@ -183,12 +162,7 @@ public class WL_Fragment_a extends Fragment {
                         do {
 
                             ParseObject koppel = User.get(i);
-
                             a_titlelist.add(i, koppel.getString(ParseUtil.SERIE));
-
-
-                            a_titlelist.add(i, koppel.getString("Serie"));
-
                             i++;
 
                         }
@@ -219,11 +193,33 @@ public class WL_Fragment_a extends Fragment {
 
     }
 
+    public void createview(String[] a_title, String[] a_message, ArrayList<Bitmap> a_images) {
+
+        try {
+
+            WebView webview = (WebView) getActivity().findViewById(R.id.webViewA);
+            webview.setVisibility(View.GONE);
+
+        } catch (Exception e) {
+
+            // nothing
+
+        }
+
+        myArrayAdaptera adapter = new myArrayAdaptera(getActivity().getApplicationContext(), a_title, a_images, a_message);
+        mListView.setAdapter(adapter);
+    }
+
+    public class Pair {
+        public String[] message;
+        public String[] title;
+        public ArrayList<Bitmap> a_images;
+    }
 
     private class getmessages extends AsyncTask<String, Void, Pair> {
         @Override
         protected Pair doInBackground(String... a_title) {
-
+            Log.i("einde800", "");
 
             int count = a_titlelist.size();
             int i = 0;
@@ -316,6 +312,7 @@ public class WL_Fragment_a extends Fragment {
             Pair p = new Pair();
             p.message = a_message;
             p.title = a_title;
+            Log.i("einde800", "");
             return p;
 
         }
@@ -328,13 +325,11 @@ public class WL_Fragment_a extends Fragment {
         }
     }
 
-
     private class getimages extends AsyncTask<Object, Void, Pair> {
         @Override
         protected Pair doInBackground(Object... object) {
 
-
-
+            Log.i("start800", "");
             String[] a_title = (String[]) object[0];
             String[] a_message = (String[]) object[1];
             int count = a_titlelist.size();
@@ -424,21 +419,17 @@ public class WL_Fragment_a extends Fragment {
                     }
 
                     try {
-
                         HttpURLConnection connection = (HttpURLConnection) imageURL.openConnection();
                         connection.setDoInput(true);
                         connection.connect();
                         InputStream inputStream = connection.getInputStream();
                         bitmap = BitmapFactory.decodeStream(inputStream);//Convert to bitmap
                         images.add(i, bitmap);
-
                     } catch (Exception e) {
-
                         images = new ArrayList<Bitmap>();
                         Bitmap icon = BitmapFactory.decodeResource(getActivity().getResources(),
                                 R.drawable.ic_launcher);
                         images.add(0, icon);
-
                     }
 
                     i++;
@@ -464,7 +455,7 @@ public class WL_Fragment_a extends Fragment {
             p.a_images = a_images;
 
 
-
+            Log.i("start800", "");
             return p;
 
 
@@ -480,28 +471,6 @@ public class WL_Fragment_a extends Fragment {
             createview(a_title, a_message, a_images);
 
         }
-    }
-
-
-    public void createview(String[] a_title, String[] a_message, ArrayList<Bitmap> a_images) {
-
-        try {
-
-            WebView webview = (WebView) getActivity().findViewById(R.id.webViewA);
-            webview.setVisibility(View.GONE);
-
-        } catch (Exception e) {
-
-            // nothing
-
-        }
-
-        myArrayAdaptera adapter = new myArrayAdaptera(getActivity().getApplicationContext(), a_title, a_images, a_message);
-        mListView.setAdapter(adapter);
-
-
-
-
     }
 
 }
