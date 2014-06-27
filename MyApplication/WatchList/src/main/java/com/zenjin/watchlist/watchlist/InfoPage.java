@@ -3,6 +3,7 @@ package com.zenjin.watchlist.watchlist;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -22,6 +23,9 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseObject;
@@ -69,6 +73,8 @@ public class InfoPage extends Activity {
     private List<Integer> allEpisodes = new ArrayList<Integer>();
     private int sum = 0;
 
+    protected ImageLoader imageLoader = ImageLoader.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +82,7 @@ public class InfoPage extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         Parse.initialize(this, "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
+        imageLoader.init(ImageLoaderConfiguration.createDefault(getBaseContext()));
 
         new JSONParse().execute();
 
@@ -200,8 +207,14 @@ public class InfoPage extends Activity {
                     TGenres.setText(test4);
                     Tplot.setText(PlotMovie);
                     TStatus.setText(Status);
-                    new DownloadImageTask((ImageView) findViewById(R.id.Image))
+
+                    /*new DownloadImageTask((ImageView) findViewById(R.id.Image))
                             .execute(jsonArray.getJSONObject(0).getString(TAG_IMAGE));
+                            */
+                    DisplayImageOptions options = new DisplayImageOptions.Builder()
+                    .cacheOnDisk(true)
+                     .build();
+                    imageLoader.displayImage(jsonArray.getJSONObject(0).getString(TAG_IMAGE), (ImageView) findViewById(R.id.Image), options);
 
                 }
                 else{

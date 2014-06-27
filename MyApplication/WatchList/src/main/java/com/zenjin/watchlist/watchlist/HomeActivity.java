@@ -14,6 +14,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,8 +31,10 @@ import java.util.List;
 
 public class HomeActivity extends MyWatchList {
 
+    protected ImageLoader imageLoader = ImageLoader.getInstance();
     public final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";
     private static final String TAG_IMAGE = "poster";
+
     Intent intent;
     public View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
@@ -185,6 +191,8 @@ public class HomeActivity extends MyWatchList {
         super.onCreate(savedInstanceState);
         super.replaceContentLayout(R.layout.hm_activity);
         new JSONParse().execute();
+        imageLoader.init(ImageLoaderConfiguration.createDefault(getBaseContext()));
+
 
         //Veel te laat om in een array te stoppen / te weining tijd
         ImageView todayImage1 = (ImageView) findViewById(R.id.todayImage1);
@@ -369,11 +377,19 @@ public class HomeActivity extends MyWatchList {
                     JSONObject e ;
                     e = jsonTraktToday.getJSONObject(0);
                     JSONArray shows = e.getJSONArray("episodes");
-                    new DownloadImageTask(tvTodayImages[i]).execute(shows.getJSONObject(i).getJSONObject("show").getJSONObject("images").getString(TAG_IMAGE));
+                    //new DownloadImageTask(tvTodayImages[i]).execute(shows.getJSONObject(i).getJSONObject("show").getJSONObject("images").getString(TAG_IMAGE));
+                    DisplayImageOptions options = new DisplayImageOptions.Builder()
+                            .cacheOnDisk(true)
+                            .build();
+                    imageLoader.displayImage(shows.getJSONObject(i).getJSONObject("show").getJSONObject("images").getString(TAG_IMAGE), tvTodayImages[i], options);
                 }
 
                 for (int i=0;i<10;i++){
-                    new DownloadImageTask(tvTrendImages[i]).execute(jsonTrakt.getJSONObject(i).getString(TAG_IMAGE));
+                    //new DownloadImageTask(tvTrendImages[i]).execute(jsonTrakt.getJSONObject(i).getString(TAG_IMAGE));
+                    DisplayImageOptions options = new DisplayImageOptions.Builder()
+                            .cacheOnDisk(true)
+                            .build();
+                    imageLoader.displayImage(jsonTrakt.getJSONObject(i).getString(TAG_IMAGE), tvTrendImages[i], options);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
