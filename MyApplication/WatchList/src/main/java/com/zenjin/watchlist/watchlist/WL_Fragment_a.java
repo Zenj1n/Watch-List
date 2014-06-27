@@ -174,7 +174,6 @@ public class WL_Fragment_a extends Fragment {
     private class getmessages extends AsyncTask<String, Void, Pair> {
         @Override
         protected Pair doInBackground(String... a_title) {
-            Log.i("einde800", "");
             int count = a_titlelist.size();
             int i = 0;
             String check = (String) a_titlelist.get(0);

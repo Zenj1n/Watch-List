@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.utils.MemoryCacheUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,7 +46,7 @@ public class HomeActivity extends MyWatchList {
                     String todayTitle1 = todayTitles.get(0).replaceAll(" ","-");
                     String todayTitle2 = todayTitle1.replaceAll("'","");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", todayTitles.get(0));
+                    intent.putExtra("trakt", todayTitle2);
                     startActivity(intent);
                     break;
                 case R.id.todayImage2:
@@ -108,7 +109,7 @@ public class HomeActivity extends MyWatchList {
                     String todayTitle19 = todayTitles.get(9).replaceAll(" ","-");
                     String todayTitle20 = todayTitle19.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", todayTitles.get(9));
+                    intent.putExtra("trakt", todayTitle20);
                     startActivity(intent);
                     break;
                 case R.id.trendingImage1:
@@ -192,7 +193,6 @@ public class HomeActivity extends MyWatchList {
         super.replaceContentLayout(R.layout.hm_activity);
         new JSONParse().execute();
         imageLoader.init(ImageLoaderConfiguration.createDefault(getBaseContext()));
-
 
         //Veel te laat om in een array te stoppen / te weining tijd
         ImageView todayImage1 = (ImageView) findViewById(R.id.todayImage1);
@@ -288,6 +288,7 @@ public class HomeActivity extends MyWatchList {
             String urlToday    = "http://api.trakt.tv/calendar/shows.json/390983740f2092270bc0fa267334db88/"+formattedDate;
             ServiceHandler jParser = new ServiceHandler();
 
+
             JSONArray jsonTrakt = jParser.getJsonArray(urlTraktTrending);
             JSONArray jsonTraktToday = jParser.getJsonArray(urlToday);
             JSONArray jsonArray = new JSONArray();
@@ -300,6 +301,11 @@ public class HomeActivity extends MyWatchList {
         @Override
         protected void onPostExecute(JSONArray jsonArray) {
             pDialog.dismiss();
+            DisplayImageOptions options = new DisplayImageOptions.Builder()
+                    .cacheOnDisk(true)
+                    .cacheInMemory(true)
+                    .build();
+
             try {
                 JSONArray jsonTrakt = jsonArray.getJSONArray(1);
                 JSONArray jsonTraktToday = jsonArray.getJSONArray(0);
@@ -377,49 +383,19 @@ public class HomeActivity extends MyWatchList {
                     JSONObject e ;
                     e = jsonTraktToday.getJSONObject(0);
                     JSONArray shows = e.getJSONArray("episodes");
-                    //new DownloadImageTask(tvTodayImages[i]).execute(shows.getJSONObject(i).getJSONObject("show").getJSONObject("images").getString(TAG_IMAGE));
-                    DisplayImageOptions options = new DisplayImageOptions.Builder()
-                            .cacheOnDisk(true)
-                            .build();
                     imageLoader.displayImage(shows.getJSONObject(i).getJSONObject("show").getJSONObject("images").getString(TAG_IMAGE), tvTodayImages[i], options);
                 }
 
                 for (int i=0;i<10;i++){
-                    //new DownloadImageTask(tvTrendImages[i]).execute(jsonTrakt.getJSONObject(i).getString(TAG_IMAGE));
-                    DisplayImageOptions options = new DisplayImageOptions.Builder()
-                            .cacheOnDisk(true)
-                            .build();
                     imageLoader.displayImage(jsonTrakt.getJSONObject(i).getString(TAG_IMAGE), tvTrendImages[i], options);
                 }
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
-        public DownloadImageTask(ImageView bmImage) {
-            this.bmImage = bmImage;
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap mIcon11 = null;
-            try {
-                InputStream in = new java.net.URL(urldisplay).openStream();
-                mIcon11 = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
-            return mIcon11;
-        }
-
-        protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
-        }
-    }
 }
 
 
