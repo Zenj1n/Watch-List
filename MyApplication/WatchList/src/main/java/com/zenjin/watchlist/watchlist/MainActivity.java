@@ -21,6 +21,7 @@ import com.parse.ParseUser;
             if (ParseUser.getCurrentUser() != null) {
                 // Start an intent for the logged in activity
                 startActivity(new Intent(this, WatchlistActivity.class));
+                finish();
             } else {
                 // Start and intent for the logged out activity
                 startActivity(new Intent(this, SignUpOrLoginInActivity.class));
