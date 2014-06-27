@@ -87,6 +87,7 @@ public class WL_Fragment_a extends Fragment {
         View v = inflater.inflate(R.layout.fragment_a_wl, container, false);
         mListView = (ListView) v.findViewById(R.id.wl_a_listview);
 
+
         // create loading animation
         WebView webview = (WebView) v.findViewById(R.id.webViewA);
         webview.loadUrl("file:///android_asset/loadingshows.gif");
@@ -94,11 +95,13 @@ public class WL_Fragment_a extends Fragment {
         mListView = getListView();
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
+                Intent intent;
+                intent = new Intent(getActivity(), SearchActivity.class);
 
                 if (a_titlelist.get(0) == "No series added"){
 
-                    Intent intent;
-                    intent = new Intent(getActivity(), SearchActivity.class);
+
+
                     startActivity(intent);
                     getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
 
@@ -139,7 +142,7 @@ public class WL_Fragment_a extends Fragment {
 
                 }else {
 
-                    Intent intent;
+                    
                     intent = new Intent(getActivity(), InfoPage.class);
 
                     String titleSerieRaw = (String) a_titlelist.get(i);
