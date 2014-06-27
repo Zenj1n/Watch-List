@@ -1,1 +1,1 @@
-include ':WatchList', ':app', ':app2', ':Teken', ':app3'
+include ':WatchList', ':app'
