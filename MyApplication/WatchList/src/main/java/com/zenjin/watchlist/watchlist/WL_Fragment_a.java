@@ -43,11 +43,11 @@ public class WL_Fragment_a extends Fragment {
 
 
     public final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";
-    ListView mListView;
+    private ListView mListView;
 
-    ArrayList a_titlelist = new ArrayList();                    // empty arrays for titels, massages and images
-    ArrayList a_messagelist = new ArrayList();
-    ArrayList a_imageurl = new ArrayList();
+    private ArrayList a_titlelist = new ArrayList();                    // empty arrays for titels, massages and images
+    private ArrayList a_messagelist = new ArrayList();
+    private ArrayList a_imageurl = new ArrayList();
 
     //SharedPreferences sharedpreferences = getActivity().getSharedPreferences("com.zenjin.watchlist.watchlist.sharedpref", Context.MODE_PRIVATE);
 
@@ -106,7 +106,6 @@ public class WL_Fragment_a extends Fragment {
 
                     startActivity(intent);
 
-                    InfoPage.INFOTITLE = word2;
                     ParseQuery<ParseObject> watching_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
                     watching_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
                     watching_query.whereEqualTo(ParseUtil.SERIE, word2);
@@ -476,10 +475,10 @@ public class WL_Fragment_a extends Fragment {
 }
 
 class myArrayAdaptera extends ArrayAdapter<String> {
-    Context mContext;
-    ArrayList<Bitmap> imagesarray;
-    String[] titlearray;
-    String[] messagearray;
+    private Context mContext;
+    private ArrayList<Bitmap> imagesarray;
+    private String[] titlearray;
+    private String[] messagearray;
 
     myArrayAdaptera(Context a, String[] wl_a_title, ArrayList<Bitmap> img, String[] mssg) {
         super(a, R.layout.single_row_wl, R.id.wl_title, wl_a_title);

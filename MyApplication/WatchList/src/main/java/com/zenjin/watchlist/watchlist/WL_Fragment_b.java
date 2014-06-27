@@ -40,15 +40,15 @@ import java.util.List;
  */
 public class WL_Fragment_b extends Fragment {
 
-    public final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";
-    ListView mListView;
+    private final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";
+    private ListView mListView;
     String[] b_title;
     String[] b_message;
     
 
-    ArrayList b_titlelist = new ArrayList();                    // empty arrays for titels, massages and images
-    ArrayList b_messagelist = new ArrayList();
-    ArrayList b_imageurl = new ArrayList();
+    private ArrayList b_titlelist = new ArrayList();                    // empty arrays for titels, massages and images
+    private ArrayList b_messagelist = new ArrayList();
+    private ArrayList b_imageurl = new ArrayList();
 
     public class Pair {
         public String[] message;
@@ -466,10 +466,10 @@ public class WL_Fragment_b extends Fragment {
 
 
 class myArrayAdapterb extends ArrayAdapter<String> {
-    Context mContext;
-    ArrayList<Bitmap> imagesarray;
-    String[] titlearray;
-    String[] messagearray;
+    private Context mContext;
+    private ArrayList<Bitmap> imagesarray;
+    private String[] titlearray;
+    private String[] messagearray;
 
     myArrayAdapterb(Context b, String[] wl_b_title, ArrayList<Bitmap> img, String[] mssg) {
         super(b, R.layout.single_row_wl, R.id.wl_title, wl_b_title);

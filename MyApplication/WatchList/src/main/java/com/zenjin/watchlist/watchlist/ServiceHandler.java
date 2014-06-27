@@ -9,7 +9,6 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.BasicHttpParams;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,13 +22,13 @@ import java.io.UnsupportedEncodingException;
 /**
  * Created by Fabian on 27-5-2014.
  */
-public class ServiceHandler {
+class ServiceHandler {
 
 
-    public static final String ISO_8859_1 = "iso-8859-1";
-    static InputStream is = null;
-    static JSONObject jObj = null;
-    static String json = "";
+    private static final String ISO_8859_1 = "iso-8859-1";
+    private static InputStream is = null;
+    private static JSONObject jObj = null;
+    private static String json = "";
     JSONArray jArray = null;
 
     // constructor
@@ -58,7 +57,7 @@ public class ServiceHandler {
             StringBuilder sb = new StringBuilder();
             String line = null;
             while ((line = reader.readLine()) != null) {
-                sb.append(line + "n");
+                sb.append(line).append("n");
             }
             is.close();
             json = sb.toString();
@@ -102,7 +101,7 @@ public class ServiceHandler {
             StringBuilder sb = new StringBuilder();
             String line = null;
             while ((line = reader.readLine()) != null) {
-                sb.append(line + "\n");
+                sb.append(line).append("\n");
             }
             is.close();
             result=sb.toString();

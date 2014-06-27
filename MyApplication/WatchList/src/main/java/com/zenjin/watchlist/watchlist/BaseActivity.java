@@ -19,16 +19,12 @@ public class BaseActivity extends FragmentActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main_activity_actions, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
@@ -36,8 +32,8 @@ public class BaseActivity extends FragmentActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    protected void replaceContentLayout(int sourceId, int destinationId) {
-        View contentLayout = findViewById(destinationId);
+    protected void replaceContentLayout(int sourceId) {
+        View contentLayout = findViewById(R.id.frame_container);
 
         ViewGroup parent = (ViewGroup) contentLayout.getParent();
         int index = parent.indexOfChild(contentLayout);

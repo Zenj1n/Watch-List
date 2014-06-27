@@ -3,27 +3,27 @@
 
     <item
         android:id="@+id/Remove_rating"
-        android:title="Remove rating"
+        android:title="@string/remove_rating"
         />
 
     <item
         android:id="@+id/Very_bad"
-        android:title="1 - Very bad"
+        android:title="@string/very_bad"
         />
 
     <item
         android:id="@+id/Bad"
-        android:title="2 - Bad"/>
+        android:title="@string/bad"/>
 
     <item
          android:id="@+id/Average"
-         android:title="3 - Average"/>
+         android:title="@string/average"/>
 
     <item
         android:id="@+id/Good"
-        android:title="4 - Good"/>
+        android:title="@string/good"/>
     <item
         android:id="@+id/Great"
-        android:title="5 - Great"/>
+        android:title="@string/great"/>
 
 </menu>  

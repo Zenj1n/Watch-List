@@ -42,16 +42,13 @@ public class InfoPage extends Activity {
     private static final String YOU_RATED = "You rated ";
     private static final String ADD_TO_YOUR_LIST_FIRST = "Add to your list first";
     private static final String RATING_REMOVED = "Rating removed";
-    private static final String TAG_EPISODES = "episodes";
 
     private Button Baddto;
     private Button Brate;
-    private Button Bepisode;
     private TextView Title;
     private TextView TGenres;
     private TextView Tplot;
     private TextView TStatus;
-    private ImageView Image;
 
     private static final String TAG_TITLE = "title";
     private static final String TAG_GENRE = "genres";
@@ -66,11 +63,11 @@ public class InfoPage extends Activity {
     private int count;
     private int i;
     private int ratings_size;
-    public static String INFOTITLE;
+    private static String INFOTITLE;
     public static int PROGRESS = 0;
 
-    List<Integer> allEpisodes = new ArrayList<Integer>();
-    int sum = 0;
+    private List<Integer> allEpisodes = new ArrayList<Integer>();
+    private int sum = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +78,7 @@ public class InfoPage extends Activity {
         Parse.initialize(this, "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
 
         new JSONParse().execute();
-        getRating();
+
         Baddto = (Button) findViewById(R.id.Baddto);
         Baddto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,12 +92,12 @@ public class InfoPage extends Activity {
         Brate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Rate();
+                Rate();
             }
         });
 
-        Bepisode = (Button) findViewById(R.id.addepisode);
-        Bepisode.setOnClickListener(new View.OnClickListener() {
+        Button bepisode = (Button) findViewById(R.id.addepisode);
+        bepisode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 addepisode();
@@ -131,7 +128,7 @@ public class InfoPage extends Activity {
             Title = (TextView) findViewById(R.id.title);
             TGenres = (TextView) findViewById(R.id.Tgenres);
             Tplot = (TextView) findViewById(R.id.plot);
-            Image = (ImageView) findViewById(R.id.Image);
+            ImageView image = (ImageView) findViewById(R.id.Image);
             TStatus = (TextView)findViewById(R.id.TStatus);
 
 
@@ -179,6 +176,7 @@ public class InfoPage extends Activity {
                 String PlotMovie = jsonArray.getJSONObject(0).getString(TAG_PLOT);
                 String GenreMovie = jsonArray.getJSONObject(0).getString(TAG_GENRE);
                 String Status = jsonArray.getJSONObject(0).getString(TAG_STATUS);
+                INFOTITLE = TitleMovie;
                 JSONArray episodes = jsonArray.getJSONArray(1);
 
                 if(jsonArray != null){
@@ -193,21 +191,22 @@ public class InfoPage extends Activity {
                     }
 
 
-                sumEpisodes();
-                String test3 = GenreMovie.replaceAll("[\"\\[\\]]", "");
-                String test4 = test3.replaceAll(",(\\d|\\w)",", $1");
+                    sumEpisodes();
+                    String test3 = GenreMovie.replaceAll("[\"\\[\\]]", "");
+                    String test4 = test3.replaceAll(",(\\d|\\w)",", $1");
 
-                //Set JSON Data in TextView
-                Title.setText(TitleMovie);
-                TGenres.setText(test4);
-                Tplot.setText(PlotMovie);
-                TStatus.setText(Status);
+                    //Set JSON Data in TextView
+                    Title.setText(TitleMovie);
+                    TGenres.setText(test4);
+                    Tplot.setText(PlotMovie);
+                    TStatus.setText(Status);
                     new DownloadImageTask((ImageView) findViewById(R.id.Image))
                             .execute(jsonArray.getJSONObject(0).getString(TAG_IMAGE));
 
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), "geen informatie beschikbaar", Toast.LENGTH_SHORT);
+                    Toast.makeText(getApplicationContext(), "No Information Available", Toast.LENGTH_SHORT).show();
+
                 }
 
 
@@ -222,6 +221,8 @@ public class InfoPage extends Activity {
         for (int a : allEpisodes) {
             sum += a;
             getProgress();
+            getRating();
+
         }
         System.out.println(sum);
     }
@@ -252,7 +253,7 @@ public class InfoPage extends Activity {
         }
     }
 
-   @Override
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -556,41 +557,41 @@ public class InfoPage extends Activity {
         helpBuilder.setNeutralButton("Save", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-            try{
-            if(Integer.parseInt(input.getText().toString()) > sum || Integer.parseInt(input.getText().toString()) < 0 ){
-            AlertDialog helpDialog = errorBuilder.create();
-            helpDialog.show();
-            }
+                try{
+                    if(Integer.parseInt(input.getText().toString()) > sum || Integer.parseInt(input.getText().toString()) < 0 ){
+                        AlertDialog helpDialog = errorBuilder.create();
+                        helpDialog.show();
+                    }
 
 
 
-             else{
-                    progress.setText(input.getText() + "/" + sum);
-                    ParseQuery<ParseObject> rating_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
-                    rating_query.whereEqualTo(ParseUtil.SERIE, INFOTITLE);
-                    rating_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
-                    rating_query.findInBackground(new FindCallback<ParseObject>() {
-                        @Override
-                        public void done(List<ParseObject> User, com.parse.ParseException e) {
-                            if (e == null) {
-                                try {
-                                    ParseObject koppel = User.get(0);
-                                    koppel.put(ParseUtil.PROGRESS, Integer.parseInt(input.getText().toString()));
-                                    koppel.saveInBackground();
-                                    PROGRESS = Integer.parseInt(input.getText().toString());
-                                } catch (Exception d) {
-                                    AlertDialog helpDialog = errorBuilder.create();
-                                    helpDialog.show();
+                    else{
+                        progress.setText(input.getText() + "/" + sum);
+                        ParseQuery<ParseObject> rating_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
+                        rating_query.whereEqualTo(ParseUtil.SERIE, INFOTITLE);
+                        rating_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+                        rating_query.findInBackground(new FindCallback<ParseObject>() {
+                            @Override
+                            public void done(List<ParseObject> User, com.parse.ParseException e) {
+                                if (e == null) {
+                                    try {
+                                        ParseObject koppel = User.get(0);
+                                        koppel.put(ParseUtil.PROGRESS, Integer.parseInt(input.getText().toString()));
+                                        koppel.saveInBackground();
+                                        PROGRESS = Integer.parseInt(input.getText().toString());
+                                    } catch (Exception d) {
+                                        AlertDialog helpDialog = errorBuilder.create();
+                                        helpDialog.show();
 
+                                    }
                                 }
                             }
-                        }
-                    });
-            }}
-            catch(Exception e){
-                AlertDialog helpDialog = errorBuilder.create();
-                helpDialog.show();
-            }
+                        });
+                    }}
+                catch(Exception e){
+                    AlertDialog helpDialog = errorBuilder.create();
+                    helpDialog.show();
+                }
 
 
 
@@ -619,6 +620,6 @@ public class InfoPage extends Activity {
             }
         });
     }
- }
+}
 
 

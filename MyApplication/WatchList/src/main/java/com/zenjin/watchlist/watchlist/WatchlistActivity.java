@@ -25,7 +25,7 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.replaceContentLayout(R.layout.activity_watchlist, R.id.frame_container);
+        super.replaceContentLayout(R.layout.activity_watchlist);
 
         mViewPager= (ViewPager) findViewById(R.id.wl_pager);
         mViewPager.setOffscreenPageLimit(3);

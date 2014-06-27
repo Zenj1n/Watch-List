@@ -1,8 +1,6 @@
 package com.zenjin.watchlist.watchlist;
 
 
-
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -16,14 +14,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.parse.FindCallback;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
-import com.parse.ParseUser;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,22 +27,166 @@ import java.util.List;
 
 public class HomeActivity extends MyWatchList {
 
-
-    private static final String TAG_IMAGE = "poster";
-
-    List<String>trendingTitles = new ArrayList<String>();
-    List<String>todayTitles = new ArrayList<String>();
-
-    Intent intent;
     public final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";
-
-
+    private static final String TAG_IMAGE = "poster";
+    Intent intent;
+    public View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            //Wij hadden te weining tijd om dit te wijzigen naar een loop
+            switch (v.getId()) {
+                case R.id.todayImage1:
+                    String todayTitle1 = todayTitles.get(0).replaceAll(" ","-");
+                    String todayTitle2 = todayTitle1.replaceAll("'","");
+                    intent = new Intent(HomeActivity.this,InfoPage.class);
+                    intent.putExtra("trakt", todayTitles.get(0));
+                    startActivity(intent);
+                    break;
+                case R.id.todayImage2:
+                    String todayTitle3 = todayTitles.get(1).replaceAll(" ", "-");
+                    String todayTitle4 = todayTitle3.replaceAll("'","");
+                    intent = new Intent(HomeActivity.this,InfoPage.class);
+                    intent.putExtra("trakt", todayTitle4);
+                    startActivity(intent);
+                    break;
+                case R.id.todayImage3:
+                    String todayTitle5 = todayTitles.get(2).replaceAll(" ","-");
+                    String todayTitle6 = todayTitle5.replaceAll("'", "");
+                    intent = new Intent(HomeActivity.this,InfoPage.class);
+                    intent.putExtra("trakt", todayTitle6);
+                    startActivity(intent);
+                    break;
+                case R.id.todayImage4:
+                    String todayTitle7 = todayTitles.get(3).replaceAll(" ","-");
+                    String todayTitle8 = todayTitle7.replaceAll("'", "");
+                    intent = new Intent(HomeActivity.this,InfoPage.class);
+                    intent.putExtra("trakt", todayTitle8);
+                    startActivity(intent);
+                    break;
+                case R.id.todayImage5:
+                    String todayTitle9 = todayTitles.get(4).replaceAll(" ","-");
+                    String todayTitle10 = todayTitle9.replaceAll("'", "");
+                    intent = new Intent(HomeActivity.this,InfoPage.class);
+                    intent.putExtra("trakt", todayTitle10);
+                    startActivity(intent);
+                    break;
+                case R.id.todayImage6:
+                    String todayTitle11 = todayTitles.get(5).replaceAll(" ", "-");
+                    String todayTitle12 = todayTitle11.replaceAll("'","");
+                    intent = new Intent(HomeActivity.this,InfoPage.class);
+                    intent.putExtra("trakt", todayTitle12);
+                    startActivity(intent);
+                    break;
+                case R.id.todayImage7:
+                    String todayTitle13 = todayTitles.get(6).replaceAll(" ", "-");
+                    String todayTitle14 = todayTitle13.replaceAll("'","");
+                    intent = new Intent(HomeActivity.this,InfoPage.class);
+                    intent.putExtra("trakt", todayTitle14);
+                    startActivity(intent);
+                    break;
+                case R.id.todayImage8:
+                    String todayTitle15 = todayTitles.get(7).replaceAll(" ","-");
+                    String todayTitle16 = todayTitle15.replaceAll("'", "");
+                    intent = new Intent(HomeActivity.this,InfoPage.class);
+                    intent.putExtra("trakt", todayTitle16);
+                    startActivity(intent);
+                    break;
+                case R.id.todayImage9:
+                    String todayTitle17 = todayTitles.get(8).replaceAll(" ","-");
+                    String todayTitle18 = todayTitle17.replaceAll("'", "");
+                    intent = new Intent(HomeActivity.this,InfoPage.class);
+                    intent.putExtra("trakt", todayTitle18);
+                    startActivity(intent);
+                    break;
+                case R.id.todayImage10:
+                    String todayTitle19 = todayTitles.get(9).replaceAll(" ","-");
+                    String todayTitle20 = todayTitle19.replaceAll("'", "");
+                    intent = new Intent(HomeActivity.this,InfoPage.class);
+                    intent.putExtra("trakt", todayTitles.get(9));
+                    startActivity(intent);
+                    break;
+                case R.id.trendingImage1:
+                    String trendingTitle1 = trendingTitles.get(0).replaceAll(" ","-");
+                    String trendingTitle2 = trendingTitle1.replaceAll("'", "");
+                    intent = new Intent(HomeActivity.this,InfoPage.class);
+                    intent.putExtra("trakt", trendingTitle2);
+                    startActivity(intent);
+                    break;
+                case R.id.trendingImage2:
+                    String trendingTitle3 = trendingTitles.get(1).replaceAll(" ","-");
+                    String trendingTitle4 = trendingTitle3.replaceAll("'", "");
+                    intent = new Intent(HomeActivity.this,InfoPage.class);
+                    intent.putExtra("trakt", trendingTitle4);
+                    startActivity(intent);
+                    break;
+                case R.id.trendingImage3:
+                    String trendingTitle5 = trendingTitles.get(2).replaceAll(" ","-");
+                    String trendingTitle6 = trendingTitle5.replaceAll("'", "");
+                    intent = new Intent(HomeActivity.this,InfoPage.class);
+                    intent.putExtra("trakt", trendingTitle6);
+                    startActivity(intent);
+                    break;
+                case R.id.trendingImage4:
+                    String trendingTitle7 = trendingTitles.get(3).replaceAll(" ","-");
+                    String trendingTitle8 = trendingTitle7.replaceAll("'", "");
+                    intent = new Intent(HomeActivity.this,InfoPage.class);
+                    intent.putExtra("trakt", trendingTitle8);
+                    startActivity(intent);
+                    break;
+                case R.id.trendingImage5:
+                    String trendingTitle9 = trendingTitles.get(4).replaceAll(" ","-");
+                    String trendingTitle10 = trendingTitle9.replaceAll("'", "");
+                    intent = new Intent(HomeActivity.this,InfoPage.class);
+                    intent.putExtra("trakt", trendingTitle10);
+                    startActivity(intent);
+                    break;
+                case R.id.trendingImage6:
+                    String trendingTitle11 = trendingTitles.get(5).replaceAll(" ","-");
+                    String trendingTitle12 = trendingTitle11.replaceAll("'", "");
+                    intent = new Intent(HomeActivity.this,InfoPage.class);
+                    intent.putExtra("trakt", trendingTitle12);
+                    startActivity(intent);
+                    break;
+                case R.id.trendingImage7:
+                    String trendingTitle13 = trendingTitles.get(6).replaceAll(" ","-");
+                    String trendingTitle14 = trendingTitle13.replaceAll("'", "");
+                    intent = new Intent(HomeActivity.this,InfoPage.class);
+                    intent.putExtra("trakt", trendingTitle14);
+                    startActivity(intent);
+                    break;
+                case R.id.trendingImage8:
+                    String trendingTitle15 = trendingTitles.get(7).replaceAll(" ","-");
+                    String trendingTitle16 = trendingTitle15.replaceAll("'", "");
+                    intent = new Intent(HomeActivity.this,InfoPage.class);
+                    intent.putExtra("trakt", trendingTitle16);
+                    startActivity(intent);
+                    break;
+                case R.id.trendingImage9:
+                    String trendingTitle17 = trendingTitles.get(8).replaceAll(" ","-");
+                    String trendingTitle18 = trendingTitle17.replaceAll("'", "");
+                    intent = new Intent(HomeActivity.this,InfoPage.class);
+                    intent.putExtra("trakt", trendingTitle18);
+                    startActivity(intent);
+                    break;
+                case R.id.trendingImage10:
+                    String trendingTitle19 = trendingTitles.get(9).replaceAll(" ","-");
+                    String trendingTitle20 = trendingTitle19.replaceAll("'", "");
+                    intent = new Intent(HomeActivity.this,InfoPage.class);
+                    intent.putExtra("trakt", trendingTitle20);
+                    startActivity(intent);
+                    break;
+            }
+        }
+    };
+    private List<String>trendingTitles = new ArrayList<String>();
+    private List<String>todayTitles = new ArrayList<String>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.replaceContentLayout(R.layout.hm_activity, R.id.frame_container);
+        super.replaceContentLayout(R.layout.hm_activity);
         new JSONParse().execute();
 
+        //Veel te laat om in een array te stoppen / te weining tijd
         ImageView todayImage1 = (ImageView) findViewById(R.id.todayImage1);
         ImageView todayImage2 = (ImageView) findViewById(R.id.todayImage2);
         ImageView todayImage3 = (ImageView) findViewById(R.id.todayImage3);
@@ -94,200 +232,36 @@ public class HomeActivity extends MyWatchList {
         trendingImage10.setOnClickListener(onClickListener);
     }
 
-    public View.OnClickListener onClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            // TODO Auto-generated method stub
-            switch (v.getId()) {
-                case R.id.todayImage1:
-                    String todayTitle1 = todayTitles.get(0).replaceAll(" ","-");
-                    String todayTitle2 = todayTitle1.replaceAll("'","");
-                    intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", todayTitles.get(0));
-                    InfoPage.INFOTITLE = todayTitle2;
-                    startActivity(intent);
-                    break;
-                case R.id.todayImage2:
-                    String todayTitle3 = todayTitles.get(1).replaceAll(" ", "-");
-                    String todayTitle4 = todayTitle3.replaceAll("'","");
-                    intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", todayTitle4);
-                    InfoPage.INFOTITLE = todayTitles.get(1);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
 
-                    startActivity(intent);
-                    break;
-                case R.id.todayImage3:
-                    String todayTitle5 = todayTitles.get(2).replaceAll(" ","-");
-                    String todayTitle6 = todayTitle5.replaceAll("'", "");
-                    intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", todayTitle6);
-                    InfoPage.INFOTITLE = todayTitles.get(2);
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main_activity_actions, menu);
+        return true;
+    }
 
-                    startActivity(intent);
-                    break;
-                case R.id.todayImage4:
-                    String todayTitle7 = todayTitles.get(3).replaceAll(" ","-");
-                    String todayTitle8 = todayTitle7.replaceAll("'", "");
-                    intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", todayTitle8);
-                    InfoPage.INFOTITLE = todayTitles.get(3);
-
-                    startActivity(intent);
-                    break;
-                case R.id.todayImage5:
-                    String todayTitle9 = todayTitles.get(4).replaceAll(" ","-");
-                    String todayTitle10 = todayTitle9.replaceAll("'", "");
-                    intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", todayTitle10);
-                    InfoPage.INFOTITLE = todayTitles.get(4);
-
-                    startActivity(intent);
-                    break;
-                case R.id.todayImage6:
-                    String todayTitle11 = todayTitles.get(5).replaceAll(" ", "-");
-                    String todayTitle12 = todayTitle11.replaceAll("'","");
-                    intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", todayTitle12);
-                    InfoPage.INFOTITLE = todayTitles.get(5);
-
-                    startActivity(intent);
-                    break;
-                case R.id.todayImage7:
-                    String todayTitle13 = todayTitles.get(6).replaceAll(" ", "-");
-                    String todayTitle14 = todayTitle13.replaceAll("'","");
-                    intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", todayTitle14);
-                    InfoPage.INFOTITLE = todayTitles.get(6);
-
-                    startActivity(intent);
-                    break;
-                case R.id.todayImage8:
-                    String todayTitle15 = todayTitles.get(7).replaceAll(" ","-");
-                    String todayTitle16 = todayTitle15.replaceAll("'", "");
-                    intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", todayTitle16);
-                    InfoPage.INFOTITLE = todayTitles.get(7);
-
-                    startActivity(intent);
-                    break;
-                case R.id.todayImage9:
-                    String todayTitle17 = todayTitles.get(8).replaceAll(" ","-");
-                    String todayTitle18 = todayTitle17.replaceAll("'", "");
-                    intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", todayTitle18);
-                    InfoPage.INFOTITLE = todayTitles.get(8);
-
-                    startActivity(intent);
-                    break;
-                case R.id.todayImage10:
-                    String todayTitle19 = todayTitles.get(9).replaceAll(" ","-");
-                    String todayTitle20 = todayTitle19.replaceAll("'", "");
-                    intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", todayTitles.get(9));
-                    InfoPage.INFOTITLE = todayTitle20;
-
-                    startActivity(intent);
-                    break;
-                case R.id.trendingImage1:
-                    String trendingTitle1 = trendingTitles.get(0).replaceAll(" ","-");
-                    String trendingTitle2 = trendingTitle1.replaceAll("'", "");
-                    intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", trendingTitle2);
-                    InfoPage.INFOTITLE = trendingTitles.get(0);
-
-                    startActivity(intent);
-                    break;
-                case R.id.trendingImage2:
-                    String trendingTitle3 = trendingTitles.get(1).replaceAll(" ","-");
-                    String trendingTitle4 = trendingTitle3.replaceAll("'", "");
-                    intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", trendingTitle4);
-                    InfoPage.INFOTITLE = trendingTitles.get(1);
-
-                    startActivity(intent);
-                    break;
-                case R.id.trendingImage3:
-                    String trendingTitle5 = trendingTitles.get(2).replaceAll(" ","-");
-                    String trendingTitle6 = trendingTitle5.replaceAll("'", "");
-                    intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", trendingTitle6);
-                    InfoPage.INFOTITLE =trendingTitles.get(2);
-
-                    startActivity(intent);
-                    break;
-                case R.id.trendingImage4:
-                    String trendingTitle7 = trendingTitles.get(3).replaceAll(" ","-");
-                    String trendingTitle8 = trendingTitle7.replaceAll("'", "");
-                    intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", trendingTitle8);
-                    InfoPage.INFOTITLE = trendingTitles.get(3);
-
-                    startActivity(intent);
-                    break;
-                case R.id.trendingImage5:
-                    String trendingTitle9 = trendingTitles.get(4).replaceAll(" ","-");
-                    String trendingTitle10 = trendingTitle9.replaceAll("'", "");
-                    intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", trendingTitle10);
-                    InfoPage.INFOTITLE = trendingTitles.get(4);
-
-                    startActivity(intent);
-                    break;
-                case R.id.trendingImage6:
-                    String trendingTitle11 = trendingTitles.get(5).replaceAll(" ","-");
-                    String trendingTitle12 = trendingTitle11.replaceAll("'", "");
-                    intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", trendingTitle12);
-                    InfoPage.INFOTITLE =trendingTitles.get(5);
-
-                    startActivity(intent);
-                    break;
-                case R.id.trendingImage7:
-                    String trendingTitle13 = trendingTitles.get(6).replaceAll(" ","-");
-                    String trendingTitle14 = trendingTitle13.replaceAll("'", "");
-                    intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", trendingTitle14);
-                    InfoPage.INFOTITLE =  trendingTitles.get(6);
-
-                    startActivity(intent);
-                    break;
-                case R.id.trendingImage8:
-                    String trendingTitle15 = trendingTitles.get(7).replaceAll(" ","-");
-                    String trendingTitle16 = trendingTitle15.replaceAll("'", "");
-                    intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", trendingTitle16);
-                    InfoPage.INFOTITLE = trendingTitles.get(7);
-
-                    startActivity(intent);
-                    break;
-                case R.id.trendingImage9:
-                    String trendingTitle17 = trendingTitles.get(8).replaceAll(" ","-");
-                    String trendingTitle18 = trendingTitle17.replaceAll("'", "");
-                    intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", trendingTitle18);
-                    InfoPage.INFOTITLE =trendingTitles.get(8);
-
-                    startActivity(intent);
-                    break;
-                case R.id.trendingImage10:
-                    String trendingTitle19 = trendingTitles.get(9).replaceAll(" ","-");
-                    String trendingTitle20 = trendingTitle19.replaceAll("'", "");
-                    intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", trendingTitle20);
-                    InfoPage.INFOTITLE = trendingTitles.get(9);
-
-                    startActivity(intent);
-                    break;
-            }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
         }
-    };
+        if (id == R.id.action_search){
+            Intent intent = new Intent (HomeActivity.this,SearchActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private class JSONParse extends AsyncTask<String, String, JSONArray> {
         private ProgressDialog pDialog;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
             pDialog = new ProgressDialog(HomeActivity.this);
             pDialog.setMessage("Getting Data ...");
             pDialog.setIndeterminate(false);
@@ -302,20 +276,13 @@ public class HomeActivity extends MyWatchList {
             System.out.println("Current time => " + c.getTime());
             SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
             String formattedDate = df.format(c.getTime());
-            System.out.println(formattedDate);
-
             String urlTraktTrending = "http://api.trakt.tv/shows/trending.json/390983740f2092270bc0fa267334db88/";
             String urlToday    = "http://api.trakt.tv/calendar/shows.json/390983740f2092270bc0fa267334db88/"+formattedDate;
             ServiceHandler jParser = new ServiceHandler();
 
-            System.out.println(urlToday);
-
-            // Getting JSON from URL
             JSONArray jsonTrakt = jParser.getJsonArray(urlTraktTrending);
             JSONArray jsonTraktToday = jParser.getJsonArray(urlToday);
-
             JSONArray jsonArray = new JSONArray();
-
             jsonArray.put(jsonTraktToday);
             jsonArray.put(jsonTrakt);
 
@@ -329,14 +296,12 @@ public class HomeActivity extends MyWatchList {
                 JSONArray jsonTrakt = jsonArray.getJSONArray(1);
                 JSONArray jsonTraktToday = jsonArray.getJSONArray(0);
 
-
                 for(int i=0;i<jsonTrakt.length();i++){
                     JSONObject e;
                     e = jsonTrakt.getJSONObject(i);
                     String name = e.getString("title");
                     trendingTitles.add(name);
                 }
-
                 for(int i=0;i<10;i++){
                     JSONObject e ;
                     e = jsonTraktToday.getJSONObject(0);
@@ -344,10 +309,6 @@ public class HomeActivity extends MyWatchList {
                     String todayShows =  shows.getJSONObject(i).getJSONObject("show").getString("title");
                     todayTitles.add(todayShows);
                 }
-
-
-                System.out.println("trending"+trendingTitles);
-                System.out.println("today"+ todayTitles);
 
                 TextView [] tvTodayTitles = new TextView[10];
                 tvTodayTitles[0] = (TextView) findViewById(R.id.todayTextView1);
@@ -374,7 +335,7 @@ public class HomeActivity extends MyWatchList {
                 tvTrendTitles[9]=(TextView)findViewById(R.id.trendingText10);
 
                 for(int i=0;i<10;i++){
-                   tvTrendTitles[i].setText(trendingTitles.get(i));
+                    tvTrendTitles[i].setText(trendingTitles.get(i));
                 }
                 for(int i=0;i<todayTitles.size();i++){
                     tvTodayTitles[i].setText(todayTitles.get(i));
@@ -411,11 +372,9 @@ public class HomeActivity extends MyWatchList {
                     new DownloadImageTask(tvTodayImages[i]).execute(shows.getJSONObject(i).getJSONObject("show").getJSONObject("images").getString(TAG_IMAGE));
                 }
 
-               for (int i=0;i<10;i++){
-                   new DownloadImageTask(tvTrendImages[i]).execute(jsonTrakt.getJSONObject(i).getString(TAG_IMAGE));
-               }
-
-
+                for (int i=0;i<10;i++){
+                    new DownloadImageTask(tvTrendImages[i]).execute(jsonTrakt.getJSONObject(i).getString(TAG_IMAGE));
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -424,7 +383,6 @@ public class HomeActivity extends MyWatchList {
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
-
         public DownloadImageTask(ImageView bmImage) {
             this.bmImage = bmImage;
         }
@@ -445,32 +403,6 @@ public class HomeActivity extends MyWatchList {
         protected void onPostExecute(Bitmap result) {
             bmImage.setImageBitmap(result);
         }
-
-    }
-
-
-        @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_activity_actions, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        if (id == R.id.action_search){
-            Intent intent = new Intent (HomeActivity.this,SearchActivity.class);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
     }
 }
 

@@ -2,14 +2,10 @@ package com.zenjin.watchlist.watchlist;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.parse.Parse;
 import com.parse.ParseUser;
-import com.zenjin.watchlist.watchlist.R;
 
     /**
      * Activity which starts an intent for either the logged in (MainActivity) or logged out

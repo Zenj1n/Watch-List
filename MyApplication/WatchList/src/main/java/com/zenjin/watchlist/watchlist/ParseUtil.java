@@ -1,7 +1,7 @@
 package com.zenjin.watchlist.watchlist;
 
 
-public class ParseUtil {
+class ParseUtil {
     public static final String PARSE_USER = "User";
     public static final String RATING = "Rating";
     public static final String COMPLETED = "Completed";
