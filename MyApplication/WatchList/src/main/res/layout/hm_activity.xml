@@ -1,238 +1,30 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content"
+    android:background="#5BC0EB"
+
+    >
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:padding="5dp">
+        android:padding="0dp">
 
         <TextView
             style="@style/TitleView"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text=" Popular"
-            android:id="@+id/textView"
-
-            />
-
-
-        <HorizontalScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="0dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/image1"
-                    style="@style/BrowseImageView"
-
-                    android:scaleType="centerCrop"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/arrow"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/image1"
-                    android:layout_centerHorizontal="true"
-                    android:text="Arrow"/>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:id="@+id/image2"
-                        style="@style/BrowseImageView"
-
-                        android:scaleType="centerCrop"
-                        android:layout_margin="10dp"
-                        android:src="@drawable/gotham"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/image2"
-                        android:layout_centerHorizontal="true"
-                        android:text="Gotham"/>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:id="@+id/image3"
-                        style="@style/BrowseImageView"
-
-                        android:scaleType="centerCrop"
-                        android:layout_margin="10dp"
-                        android:src="@drawable/constatine"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/image3"
-                        android:layout_centerHorizontal="true"
-                        android:text="Constantine"/>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:id="@+id/image4"
-                        style="@style/BrowseImageView"
-
-                        android:scaleType="centerCrop"
-                        android:layout_margin="10dp"
-                        android:src="@drawable/black_ish"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/image4"
-                        android:layout_centerHorizontal="true"
-                        android:text="Black_ish"/>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:id="@+id/image5"
-                        style="@style/BrowseImageView"
-
-                        android:scaleType="centerCrop"
-                        android:layout_margin="10dp"
-                        android:src="@drawable/game_of_thrones"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/image5"
-                        android:layout_centerHorizontal="true"
-                        android:text="Game of Thrones"/>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:id="@+id/image6"
-                        style="@style/BrowseImageView"
-
-                        android:scaleType="centerCrop"
-                        android:layout_margin="10dp"
-                        android:src="@drawable/gracepoint"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/image6"
-                        android:layout_centerHorizontal="true"
-                        android:text="Gracepoint"/>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:id="@+id/image7"
-                        style="@style/BrowseImageView"
-
-                        android:scaleType="centerCrop"
-                        android:layout_margin="10dp"
-                        android:src="@drawable/lost"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/image7"
-                        android:layout_centerHorizontal="true"
-                        android:text="Lost"/>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:id="@+id/image8"
-                        style="@style/BrowseImageView"
-
-                        android:scaleType="centerCrop"
-                        android:layout_margin="10dp"
-                        android:src="@drawable/arrow"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/image8"
-                        android:layout_centerHorizontal="true"
-                        android:text="Arrow"/>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:id="@+id/image9"
-                        style="@style/BrowseImageView"
-
-                        android:scaleType="centerCrop"
-                        android:layout_margin="10dp"
-                        android:src="@drawable/the_flash"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/image9"
-                        android:layout_centerHorizontal="true"
-                        android:text="The Flash"/>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:id="@+id/image10"
-                        style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
-                        android:layout_margin="10dp"
-                        android:src="@drawable/the_walking_dead"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/image10"
-                        android:layout_centerHorizontal="true"
-                        android:text="The Walking Dead"/>
-                </RelativeLayout>
-
-            </LinearLayout>
-        </HorizontalScrollView>
-
-        <TextView
-            style="@style/TitleView"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text=" Today"
-            android:id="@+id/todayTextView"
-            android:layout_marginTop="20dp"
-
+            android:text="@string/trendingTitle"
+            android:id="@+id/todayTitleTextView"
+            android:layout_margin="0dp"
             />
         <HorizontalScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="0dp">
+            android:layout_margin="10dp"
+            android:background="#FFFFFF"
+            >
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -243,185 +35,350 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image11"
+                        android:id="@+id/trendingImage1"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/arrow"
                         />
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/image11"
-                        android:layout_centerHorizontal="true"
-                        android:text="Arrow"/>
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/trendingImage1"
+                        android:id="@+id/trendingText1"
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image12"
+                        android:id="@+id/trendingImage2"
                         style="@style/BrowseImageView"
-
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/gotham"
                         />
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/image12"
-                        android:layout_centerHorizontal="true"
-                        android:text="Gotham"/>
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/trendingImage2"
+                        android:id="@+id/trendingText2"
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image13"
+                        android:id="@+id/trendingImage3"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/constatine"
                         />
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/image13"
-                        android:layout_centerHorizontal="true"
-                        android:text="Constantine"/>
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/trendingImage3"
+                        android:id="@+id/trendingText3"
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image14"
+                        android:id="@+id/trendingImage4"
                         style="@style/BrowseImageView"
-
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/black_ish"
                         />
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/image14"
-                        android:layout_centerHorizontal="true"
-                        android:text="Black_ish"/>
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/trendingImage4"
+                        android:id="@+id/trendingText4"
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image15"
+                        android:id="@+id/trendingImage5"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/game_of_thrones"
                         />
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/image15"
-                        android:layout_centerHorizontal="true"
-                        android:text="Game of Thrones"/>
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/trendingImage5"
+                        android:id="@+id/trendingText5"
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image16"
+                        android:id="@+id/trendingImage6"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/gracepoint"
                         />
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/image16"
-                        android:layout_centerHorizontal="true"
-                        android:text="Gracepoint"/>
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/trendingImage6"
+                        android:id="@+id/trendingText6"
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image17"
+                        android:id="@+id/trendingImage7"
                         style="@style/BrowseImageView"
-
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/lost"
                         />
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/image17"
-                        android:layout_centerHorizontal="true"
-                        android:text="Lost"/>
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/trendingImage7"
+                        android:id="@+id/trendingText7"
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image18"
+                        android:id="@+id/trendingImage8"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/arrow"
                         />
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/image18"
-                        android:layout_centerHorizontal="true"
-                        android:text="Arrow"/>
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/trendingImage8"
+                        android:id="@+id/trendingText8"
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image19"
+                        android:id="@+id/trendingImage9"
                         style="@style/BrowseImageView"
-
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/the_flash"
                         />
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/image19"
-                        android:layout_centerHorizontal="true"
-                        android:text="The Flash"/>
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/trendingImage9"
+                        android:id="@+id/trendingText9"
+                        />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/image20"
+                        android:id="@+id/trendingImage10"
                         style="@style/BrowseImageView"
                         android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        android:src="@drawable/the_walking_dead"
                         />
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/image20"
-                        android:layout_centerHorizontal="true"
-                        android:text="The Walking Dead"/>
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/trendingImage10"
+                        android:id="@+id/trendingText10"
+                        />
                 </RelativeLayout>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+
+
+        <TextView
+            style="@style/TitleView"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/todayTitle"
+            android:id="@+id/trendingTitleTextView"
+            android:layout_margin="0dp"
+
+            />
+
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="#FFFFFF"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/todayImage1"
+                        style="@style/BrowseImageView"
+                        android:scaleType="centerCrop"
+                        android:layout_margin="10dp"
+                        />
+                    <TextView
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/todayImage1"
+                        android:id="@+id/todayTextView1"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/todayImage2"
+                        style="@style/BrowseImageView"
+                        android:scaleType="centerCrop"
+                        android:layout_margin="10dp"
+                        />
+                    <TextView
+                        android:id="@+id/todayTextView2"
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/todayImage2"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/todayImage3"
+                        style="@style/BrowseImageView"
+                        android:scaleType="centerCrop"
+                        android:layout_margin="10dp"
+                        />
+                    <TextView
+                        android:id="@+id/todayTextView3"
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/todayImage3"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/todayImage4"
+                        style="@style/BrowseImageView"
+                        android:scaleType="centerCrop"
+                        android:layout_margin="10dp"
+                        />
+                    <TextView
+                        android:id="@+id/todayTextView4"
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/todayImage4"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/todayImage5"
+                        style="@style/BrowseImageView"
+                        android:scaleType="centerCrop"
+                        android:layout_margin="10dp"
+                        />
+                    <TextView
+                        style="@style/BrowseTextView"
+                        android:id="@+id/todayTextView5"
+                        android:layout_below="@id/todayImage5"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/todayImage6"
+                        style="@style/BrowseImageView"
+                        android:scaleType="centerCrop"
+                        android:layout_margin="10dp"
+                        />
+                    <TextView
+                        style="@style/BrowseTextView"
+                        android:id="@+id/todayTextView6"
+                        android:layout_below="@id/todayImage6"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/todayImage7"
+                        style="@style/BrowseImageView"
+                        android:scaleType="centerCrop"
+                        android:layout_margin="10dp"
+                        />
+                    <TextView
+                        android:id="@+id/todayTextView7"
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/todayImage7"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/todayImage8"
+                        style="@style/BrowseImageView"
+                        android:scaleType="centerCrop"
+                        android:layout_margin="10dp"
+                        />
+                    <TextView
+                        android:id="@+id/todayTextView8"
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/todayImage8"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/todayImage9"
+                        style="@style/BrowseImageView"
+                        android:scaleType="centerCrop"
+                        android:layout_margin="10dp"
+                        />
+                    <TextView
+                        style="@style/BrowseTextView"
+                        android:id="@+id/todayTextView9"
+                        android:layout_below="@id/todayImage9"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/todayImage10"
+                        style="@style/BrowseImageView"
+                        android:scaleType="centerCrop"
+                        android:layout_margin="10dp"
+
+                        />
+                    <TextView
+                        style="@style/BrowseTextView"
+                        android:id="@+id/todayTextView10"
+                        android:layout_below="@id/todayImage10"
+                        />
+                </RelativeLayout>
+
             </LinearLayout>
         </HorizontalScrollView>
 
