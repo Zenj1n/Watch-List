@@ -147,14 +147,8 @@ public class InfoPage extends Activity {
 
             Intent intent = getIntent();
 
-            String message = intent.getStringExtra(SearchActivity.EXTRA_MESSAGE);
             String message2 = intent.getStringExtra("trakt");
 
-            if (message == null){
-                message = intent.getStringExtra(HomeActivity.EXTRA_MESSAGE);
-            }
-
-            System.out.println("message="+message);
 
             String urlTrakt = "http://api.trakt.tv/show/summary.json/390983740f2092270bc0fa267334db88/"+ message2;
             String urlTraktSeasons = "http://api.trakt.tv/show/seasons.json/390983740f2092270bc0fa267334db88/"+ message2;

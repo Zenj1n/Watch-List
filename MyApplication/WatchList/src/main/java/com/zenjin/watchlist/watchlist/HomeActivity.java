@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -94,123 +95,143 @@ public class HomeActivity extends MyWatchList {
 
             switch (v.getId()) {
                 case R.id.todayImage1:
-                    String word1 = java.net.URLEncoder.encode(todayTitles.get(0));
+                    String todayTitle1 = todayTitles.get(0).replaceAll(" ","-");
+                    String todayTitle2 = todayTitle1.replaceAll("'","");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra(EXTRA_MESSAGE, word1);
+                    intent.putExtra("trakt", todayTitle2);
                     startActivity(intent);
                     break;
                 case R.id.todayImage2:
-                    String word2 = java.net.URLEncoder.encode(todayTitles.get(1));
+                    String todayTitle3 = todayTitles.get(1).replaceAll(" ", "-");
+                    String todayTitle4 = todayTitle3.replaceAll("'","");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra(EXTRA_MESSAGE, word2);
+                    intent.putExtra("trakt", todayTitle4);
                     startActivity(intent);
                     break;
                 case R.id.todayImage3:
-                    String word3 = java.net.URLEncoder.encode(todayTitles.get(2));
+                    String todayTitle5 = todayTitles.get(2).replaceAll(" ","-");
+                    String todayTitle6 = todayTitle5.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra(EXTRA_MESSAGE, word3);
+                    intent.putExtra("trakt", todayTitle6);
                     startActivity(intent);
                     break;
                 case R.id.todayImage4:
-                    String word4 = java.net.URLEncoder.encode(todayTitles.get(3));
+                    String todayTitle7 = todayTitles.get(3).replaceAll(" ","-");
+                    String todayTitle8 = todayTitle7.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra(EXTRA_MESSAGE, word4);
+                    intent.putExtra("trakt", todayTitle8);
                     startActivity(intent);
                     break;
                 case R.id.todayImage5:
-                    String word5 = java.net.URLEncoder.encode(todayTitles.get(4));
+                    String todayTitle9 = todayTitles.get(4).replaceAll(" ","-");
+                    String todayTitle10 = todayTitle9.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra(EXTRA_MESSAGE, word5);
+                    intent.putExtra("trakt", todayTitle10);
                     startActivity(intent);
                     break;
                 case R.id.todayImage6:
-                    String word6 = java.net.URLEncoder.encode(todayTitles.get(5));
+                    String todayTitle11 = todayTitles.get(5).replaceAll(" ", "-");
+                    String todayTitle12 = todayTitle11.replaceAll("'","");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra(EXTRA_MESSAGE, word6);
+                    intent.putExtra("trakt", todayTitle12);
                     startActivity(intent);
                     break;
                 case R.id.todayImage7:
-                    String word7 = java.net.URLEncoder.encode(todayTitles.get(6));
+                    String todayTitle13 = todayTitles.get(6).replaceAll(" ", "-");
+                    String todayTitle14 = todayTitle13.replaceAll("'","");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra(EXTRA_MESSAGE, word7);
+                    intent.putExtra("trakt", todayTitle14);
                     startActivity(intent);
                     break;
                 case R.id.todayImage8:
-                    String word8 = java.net.URLEncoder.encode(todayTitles.get(7));
+                    String todayTitle15 = todayTitles.get(7).replaceAll(" ","-");
+                    String todayTitle16 = todayTitle15.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra(EXTRA_MESSAGE, word8);
+                    intent.putExtra("trakt", todayTitle16);
                     startActivity(intent);
                     break;
                 case R.id.todayImage9:
-                    String word9 = java.net.URLEncoder.encode(todayTitles.get(8));
+                    String todayTitle17 = todayTitles.get(8).replaceAll(" ","-");
+                    String todayTitle18 = todayTitle17.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra(EXTRA_MESSAGE, word9);
+                    intent.putExtra("trakt", todayTitle18);
                     startActivity(intent);
                     break;
                 case R.id.todayImage10:
-                    String word10 = java.net.URLEncoder.encode(todayTitles.get(9));
+                    String todayTitle19 = todayTitles.get(9).replaceAll(" ","-");
+                    String todayTitle20 = todayTitle19.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra(EXTRA_MESSAGE, word10);
+                    intent.putExtra("trakt", todayTitle20);
                     startActivity(intent);
                     break;
                 case R.id.trendingImage1:
-                    String word11 = java.net.URLEncoder.encode(trendingTitles.get(0));
+                    String trendingTitle1 = trendingTitles.get(0).replaceAll(" ","-");
+                    String trendingTitle2 = trendingTitle1.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra(EXTRA_MESSAGE, word11);
+                    intent.putExtra("trakt", trendingTitle2);
                     startActivity(intent);
                     break;
                 case R.id.trendingImage2:
-                    String word12 = java.net.URLEncoder.encode(trendingTitles.get(1));
+                    String trendingTitle3 = trendingTitles.get(1).replaceAll(" ","-");
+                    String trendingTitle4 = trendingTitle3.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra(EXTRA_MESSAGE, word12);
+                    intent.putExtra("trakt", trendingTitle4);
                     startActivity(intent);
                     break;
                 case R.id.trendingImage3:
-                    String word13 = java.net.URLEncoder.encode(trendingTitles.get(2));
+                    String trendingTitle5 = trendingTitles.get(2).replaceAll(" ","-");
+                    String trendingTitle6 = trendingTitle5.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra(EXTRA_MESSAGE, word13);
+                    intent.putExtra("trakt", trendingTitle6);
                     startActivity(intent);
                     break;
                 case R.id.trendingImage4:
-                    String word14 = java.net.URLEncoder.encode(trendingTitles.get(3));
+                    String trendingTitle7 = trendingTitles.get(3).replaceAll(" ","-");
+                    String trendingTitle8 = trendingTitle7.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra(EXTRA_MESSAGE, word14);
+                    intent.putExtra("trakt", trendingTitle8);
                     startActivity(intent);
                     break;
                 case R.id.trendingImage5:
-                    String word15 = java.net.URLEncoder.encode(trendingTitles.get(4));
+                    String trendingTitle9 = trendingTitles.get(4).replaceAll(" ","-");
+                    String trendingTitle10 = trendingTitle9.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra(EXTRA_MESSAGE, word15);
+                    intent.putExtra("trakt", trendingTitle10);
                     startActivity(intent);
                     break;
                 case R.id.trendingImage6:
-                    String word16 = java.net.URLEncoder.encode(trendingTitles.get(5));
+                    String trendingTitle11 = trendingTitles.get(5).replaceAll(" ","-");
+                    String trendingTitle12 = trendingTitle11.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra(EXTRA_MESSAGE, word16);
+                    intent.putExtra("trakt", trendingTitle12);
                     startActivity(intent);
                     break;
                 case R.id.trendingImage7:
-                    String word17 = java.net.URLEncoder.encode(trendingTitles.get(6));
+                    String trendingTitle13 = trendingTitles.get(6).replaceAll(" ","-");
+                    String trendingTitle14 = trendingTitle13.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra(EXTRA_MESSAGE, word17);
+                    intent.putExtra("trakt", trendingTitle14);
                     startActivity(intent);
                     break;
                 case R.id.trendingImage8:
-                    String word18 = java.net.URLEncoder.encode(trendingTitles.get(7));
+                    String trendingTitle15 = trendingTitles.get(7).replaceAll(" ","-");
+                    String trendingTitle16 = trendingTitle15.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra(EXTRA_MESSAGE, word18);
+                    intent.putExtra("trakt", trendingTitle16);
                     startActivity(intent);
                     break;
                 case R.id.trendingImage9:
-                    String word19 = java.net.URLEncoder.encode(trendingTitles.get(8));
+                    String trendingTitle17 = trendingTitles.get(8).replaceAll(" ","-");
+                    String trendingTitle18 = trendingTitle17.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra(EXTRA_MESSAGE, word19);
+                    intent.putExtra("trakt", trendingTitle18);
                     startActivity(intent);
                     break;
                 case R.id.trendingImage10:
-                    String word20 = java.net.URLEncoder.encode(trendingTitles.get(9));
+                    String trendingTitle19 = trendingTitles.get(9).replaceAll(" ","-");
+                    String trendingTitle20 = trendingTitle19.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra(EXTRA_MESSAGE, word20);
+                    intent.putExtra("trakt", trendingTitle20);
                     startActivity(intent);
                     break;
             }
@@ -390,6 +411,22 @@ public class HomeActivity extends MyWatchList {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main_activity_actions, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        if (id == R.id.action_search){
+            Intent intent = new Intent (HomeActivity.this,SearchActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
 

@@ -14,196 +14,9 @@
         <TextView
             style="@style/TitleView"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text=" Today"
+            android:text="@string/trendingTitle"
             android:id="@+id/todayTitleTextView"
             android:layout_margin="0dp"
-            />
-
-
-        <HorizontalScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:background="#FFFFFF"
-            >
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/todayImage1"
-                    style="@style/BrowseImageView"
-                    android:scaleType="centerCrop"
-                    android:layout_margin="10dp"
-                    />
-                <TextView
-                    style="@style/BrowseTextView"
-                    android:layout_below="@id/todayImage1"
-                    android:id="@+id/todayTextView1"
-                    />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:id="@+id/todayImage2"
-                        style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
-                        android:layout_margin="10dp"
-                        />
-                    <TextView
-                        android:id="@+id/todayTextView2"
-                        style="@style/BrowseTextView"
-                        android:layout_below="@id/todayImage2"
-                        />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:id="@+id/todayImage3"
-                        style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
-                        android:layout_margin="10dp"
-                        />
-                    <TextView
-                        android:id="@+id/todayTextView3"
-                        style="@style/BrowseTextView"
-                        android:layout_below="@id/todayImage3"
-                        />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:id="@+id/todayImage4"
-                        style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
-                        android:layout_margin="10dp"
-                        />
-                    <TextView
-                        android:id="@+id/todayTextView4"
-                        style="@style/BrowseTextView"
-                        android:layout_below="@id/todayImage4"
-                        />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:id="@+id/todayImage5"
-                        style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
-                        android:layout_margin="10dp"
-                        />
-                    <TextView
-                        style="@style/BrowseTextView"
-                        android:id="@+id/todayTextView5"
-                        android:layout_below="@id/todayImage5"
-                        />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:id="@+id/todayImage6"
-                        style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
-                        android:layout_margin="10dp"
-                        />
-                    <TextView
-                        style="@style/BrowseTextView"
-                        android:id="@+id/todayTextView6"
-                        android:layout_below="@id/todayImage6"
-                        />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:id="@+id/todayImage7"
-                        style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
-                        android:layout_margin="10dp"
-                        />
-                    <TextView
-                        android:id="@+id/todayTextView7"
-                        style="@style/BrowseTextView"
-                        android:layout_below="@id/todayImage7"
-                        />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:id="@+id/todayImage8"
-                        style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
-                        android:layout_margin="10dp"
-                        />
-                    <TextView
-                        android:id="@+id/todayTextView8"
-                        style="@style/BrowseTextView"
-                        android:layout_below="@id/todayImage8"
-                        />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:id="@+id/todayImage9"
-                        style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
-                        android:layout_margin="10dp"
-                        />
-                    <TextView
-                        style="@style/BrowseTextView"
-                        android:id="@+id/todayTextView9"
-                        android:layout_below="@id/todayImage9"
-                        />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:id="@+id/todayImage10"
-                        style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
-                        android:layout_margin="10dp"
-
-                        />
-                    <TextView
-                        style="@style/BrowseTextView"
-                        android:id="@+id/todayTextView10"
-                        android:layout_below="@id/todayImage10"
-                        />
-                </RelativeLayout>
-
-            </LinearLayout>
-        </HorizontalScrollView>
-
-        <TextView
-            style="@style/TitleView"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text=" Trending"
-            android:id="@+id/trendingTitleTextView"
-            android:layout_margin="0dp"
-
             />
         <HorizontalScrollView
             android:layout_width="wrap_content"
@@ -377,6 +190,195 @@
                         android:id="@+id/trendingText10"
                         />
                 </RelativeLayout>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+
+
+        <TextView
+            style="@style/TitleView"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/todayTitle"
+            android:id="@+id/trendingTitleTextView"
+            android:layout_margin="0dp"
+
+            />
+
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="#FFFFFF"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/todayImage1"
+                        style="@style/BrowseImageView"
+                        android:scaleType="centerCrop"
+                        android:layout_margin="10dp"
+                        />
+                    <TextView
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/todayImage1"
+                        android:id="@+id/todayTextView1"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/todayImage2"
+                        style="@style/BrowseImageView"
+                        android:scaleType="centerCrop"
+                        android:layout_margin="10dp"
+                        />
+                    <TextView
+                        android:id="@+id/todayTextView2"
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/todayImage2"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/todayImage3"
+                        style="@style/BrowseImageView"
+                        android:scaleType="centerCrop"
+                        android:layout_margin="10dp"
+                        />
+                    <TextView
+                        android:id="@+id/todayTextView3"
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/todayImage3"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/todayImage4"
+                        style="@style/BrowseImageView"
+                        android:scaleType="centerCrop"
+                        android:layout_margin="10dp"
+                        />
+                    <TextView
+                        android:id="@+id/todayTextView4"
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/todayImage4"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/todayImage5"
+                        style="@style/BrowseImageView"
+                        android:scaleType="centerCrop"
+                        android:layout_margin="10dp"
+                        />
+                    <TextView
+                        style="@style/BrowseTextView"
+                        android:id="@+id/todayTextView5"
+                        android:layout_below="@id/todayImage5"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/todayImage6"
+                        style="@style/BrowseImageView"
+                        android:scaleType="centerCrop"
+                        android:layout_margin="10dp"
+                        />
+                    <TextView
+                        style="@style/BrowseTextView"
+                        android:id="@+id/todayTextView6"
+                        android:layout_below="@id/todayImage6"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/todayImage7"
+                        style="@style/BrowseImageView"
+                        android:scaleType="centerCrop"
+                        android:layout_margin="10dp"
+                        />
+                    <TextView
+                        android:id="@+id/todayTextView7"
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/todayImage7"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/todayImage8"
+                        style="@style/BrowseImageView"
+                        android:scaleType="centerCrop"
+                        android:layout_margin="10dp"
+                        />
+                    <TextView
+                        android:id="@+id/todayTextView8"
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/todayImage8"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/todayImage9"
+                        style="@style/BrowseImageView"
+                        android:scaleType="centerCrop"
+                        android:layout_margin="10dp"
+                        />
+                    <TextView
+                        style="@style/BrowseTextView"
+                        android:id="@+id/todayTextView9"
+                        android:layout_below="@id/todayImage9"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/todayImage10"
+                        style="@style/BrowseImageView"
+                        android:scaleType="centerCrop"
+                        android:layout_margin="10dp"
+
+                        />
+                    <TextView
+                        style="@style/BrowseTextView"
+                        android:id="@+id/todayTextView10"
+                        android:layout_below="@id/todayImage10"
+                        />
+                </RelativeLayout>
+
             </LinearLayout>
         </HorizontalScrollView>
 

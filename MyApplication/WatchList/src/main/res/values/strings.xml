@@ -21,16 +21,17 @@
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
-        <item>@drawable/ic_home</item>
-        <item>@drawable/ic_people</item>
-        <item>@drawable/ic_photos</item>
+
     </array>
 
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
-    //Home Screen                        <string name="Home_head">Home</string>
+    //Home Screen
+    <string name="Home_head">Browse</string>
     <string name="showSearch">Search for shows</string>
     <string name="userSearch">Search for users</string>
+    <string name="todayTitle">  Today</string>
+    <string name="trendingTitle">  Trending</string>
 
     <string-array name="Hm_Titles">
         <item>Arrow</item>
@@ -127,6 +128,7 @@
     <string name="title_activity_base">BaseActivity</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_login1">Sign in</string>
+    <string name="title_activity_browse">Browse</string>
 
     <!-- Strings related to login -->
     <string name="prompt_username">Username</string>
