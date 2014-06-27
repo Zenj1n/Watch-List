@@ -87,7 +87,6 @@ public class WL_Fragment_a extends Fragment {
         View v = inflater.inflate(R.layout.fragment_a_wl, container, false);
         mListView = (ListView) v.findViewById(R.id.wl_a_listview);
 
-
         // create loading animation
         WebView webview = (WebView) v.findViewById(R.id.webViewA);
         webview.loadUrl("file:///android_asset/loadingshows.gif");
@@ -95,54 +94,22 @@ public class WL_Fragment_a extends Fragment {
         mListView = getListView();
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
-                Intent intent;
-                intent = new Intent(getActivity(), SearchActivity.class);
 
                 if (a_titlelist.get(0) == "No series added"){
 
-
-
+                    Intent intent;
+                    intent = new Intent(getActivity(), SearchActivity.class);
                     startActivity(intent);
                     getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
 
                 }else if (a_titlelist.get(0) == "No internet connection"){
-
-
-                String titleSerieRaw = (String) a_titlelist.get(i);
-                InfoPage.INFOTITLE = titleSerieRaw;
-
-                String titleSerie = java.net.URLEncoder.encode(titleSerieRaw);
-
-
-                String word2 = (String) a_titlelist.get(i);
-                String traktWord = word2.replaceAll(" ","-");
-                intent.putExtra("trakt", traktWord);
-                intent.putExtra("Titel", titleSerie);
-
-                startActivity(intent);
-                //getActivity().overridePendingTransition (R.anim.shrink_and_rotate_entrance, R.anim.shrink_and_rotate_exit);
-
-
-                ParseQuery<ParseObject> watching_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
-                watching_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
-                watching_query.whereEqualTo(ParseUtil.SERIE, titleSerieRaw);
-                watching_query.findInBackground(new FindCallback<ParseObject>() {
-                    @Override
-                    public void done(List<ParseObject> User, com.parse.ParseException e) {
-                        if (e == null) {
-                            ParseObject koppel = User.get(0);
-                           InfoPage.PROGRESS = koppel.getInt(ParseUtil.PROGRESS);
-                        } else {
-                        }
-                    }
-                });
 
                     startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
                     getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
 
                 }else {
 
-                    
+                    Intent intent;
                     intent = new Intent(getActivity(), InfoPage.class);
 
                     String titleSerieRaw = (String) a_titlelist.get(i);
@@ -154,10 +121,26 @@ public class WL_Fragment_a extends Fragment {
 
                     intent.putExtra(EXTRA_MESSAGE, titleSerie);
                     startActivity(intent);
-                    //getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
+
+                    InfoPage.INFOTITLE = titleSerieRaw;
+                    //getActivity().overridePendingTransition (R.anim.shrink_and_rotate_entrance, R.anim.shrink_and_rotate_exit);
+                    ParseQuery<ParseObject> watching_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
+                    watching_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+                    watching_query.whereEqualTo(ParseUtil.SERIE, titleSerieRaw);
+                    watching_query.findInBackground(new FindCallback<ParseObject>() {
+                        @Override
+                        public void done(List<ParseObject> User, com.parse.ParseException e) {
+                            if (e == null) {
+                                ParseObject koppel = User.get(0);
+                                InfoPage.PROGRESS = koppel.getInt(ParseUtil.PROGRESS);
+                            } else {
+                            }
+                        }
+                    });
 
                 }
-
+                    startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+                    getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
 
             }
         });
