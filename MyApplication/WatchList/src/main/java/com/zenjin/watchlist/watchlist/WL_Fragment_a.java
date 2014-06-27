@@ -124,7 +124,7 @@ public class WL_Fragment_a extends Fragment {
                 //getActivity().overridePendingTransition (R.anim.shrink_and_rotate_entrance, R.anim.shrink_and_rotate_exit);
 
 
-                ParseQuery<ParseObject> watching_query = ParseQuery.getQuery("Koppel");
+                ParseQuery<ParseObject> watching_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
                 watching_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
                 watching_query.whereEqualTo(ParseUtil.SERIE, titleSerieRaw);
                 watching_query.findInBackground(new FindCallback<ParseObject>() {
@@ -160,9 +160,9 @@ public class WL_Fragment_a extends Fragment {
 
     public void gettitles() {
 
-        ParseQuery<ParseObject> watching_query = ParseQuery.getQuery("Koppel");
-        watching_query.whereEqualTo("User", ParseUser.getCurrentUser().getUsername());
-        watching_query.whereEqualTo("Status", "Watching");
+        ParseQuery<ParseObject> watching_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
+        watching_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+        watching_query.whereEqualTo(ParseUtil.STATUS, ParseUtil.WATCHING);
         watching_query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> User, com.parse.ParseException e) {
@@ -178,7 +178,7 @@ public class WL_Fragment_a extends Fragment {
                         do {
 
                             ParseObject koppel = User.get(i);
-                            a_titlelist.add(i, koppel.getString("Serie"));
+                            a_titlelist.add(i, koppel.getString(ParseUtil.SERIE));
 
                             i++;
 

@@ -47,7 +47,7 @@
                 android:onClick="showPopup"
                 android:text="@string/addto"
                 android:layout_toRightOf="@+id/Image"
-                android:layout_marginLeft="50dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="65dp"
                 android:layout_marginBottom="50dp"
 
@@ -60,17 +60,17 @@
                 android:text="@string/rate"
                 android:layout_below="@+id/Baddto"
                 android:layout_toRightOf="@+id/Image"
-                android:layout_marginLeft="50dp"
-                android:layout_marginBottom="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="30dp"
                 />
 
             <Button
                 style="@style/InfoButton"
                 android:id="@+id/addepisode"
-                android:text="@string/addepisode"
+                android:text="@string/bprogress"
                 android:layout_toRightOf="@+id/Image"
                 android:layout_below="@+id/Brate"
-                android:layout_marginLeft="50dp"
+                android:layout_marginLeft="20dp"
                 />
 
         </RelativeLayout>
@@ -136,6 +136,25 @@
             android:layout_toRightOf="@+id/TRatingW"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="77dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/TProgressW"
+            android:text="@string/progress"
+            android:paddingLeft="20dp"
+            android:layout_marginTop="93dp"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/TProgress"
+            android:layout_toRightOf="@+id/TProgressW"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="98dp"
             />
 
     </RelativeLayout>
