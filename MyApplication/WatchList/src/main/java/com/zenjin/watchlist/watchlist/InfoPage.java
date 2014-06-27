@@ -86,7 +86,7 @@ public class InfoPage extends Activity {
         Baddto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              AddTo();
+                AddTo()        ;
             }
         });
 
@@ -224,6 +224,7 @@ public class InfoPage extends Activity {
 
         for (int a : allEpisodes) {
             sum += a;
+            getProgress();
         }
         System.out.println(sum);
     }
@@ -541,90 +542,77 @@ public class InfoPage extends Activity {
     }
     private void addepisode(){
         final AlertDialog.Builder errorBuilder = new AlertDialog.Builder(this);
-        errorBuilder.setTitle("wrong episode");
-        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
-        helpBuilder.setTitle("Episode");
+        errorBuilder.setTitle("Invalid Episode!");
+        final AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        final TextView progress = (TextView) findViewById(R.id.TProgress);
+        helpBuilder.setTitle("Episode " + progress.getText());
         final EditText input = new EditText(this);
         input.setSingleLine();
+        helpBuilder.setCancelable(false);
         input.setText(Integer.toString(PROGRESS));
         helpBuilder.setView(input);
         helpBuilder.setNeutralButton("Save", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+            try{
+            if(Integer.parseInt(input.getText().toString()) > sum || Integer.parseInt(input.getText().toString()) < 0 ){
+            AlertDialog helpDialog = errorBuilder.create();
+            helpDialog.show();
+            }
 
-                    ParseQuery<ParseObject> rating_query = ParseQuery.getQuery("Koppel");
+
+
+             else{
+                    progress.setText(input.getText() + "/" + sum);
+                    ParseQuery<ParseObject> rating_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
                     rating_query.whereEqualTo(ParseUtil.SERIE, INFOTITLE);
                     rating_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
                     rating_query.findInBackground(new FindCallback<ParseObject>() {
-                         @Override
-                         public void done(List<ParseObject> User, com.parse.ParseException e) {
-                         if (e == null) {
-                             try {
-                                 ParseObject koppel = User.get(0);
-                                 koppel.put(ParseUtil.PROGRESS, Integer.parseInt(input.getText().toString()));
-                                 koppel.saveInBackground();
-                                 PROGRESS = Integer.parseInt(input.getText().toString());
-                             }
-                             catch(Exception d){
-                                 AlertDialog helpDialog = errorBuilder.create();
-                                 helpDialog.show();
+                        @Override
+                        public void done(List<ParseObject> User, com.parse.ParseException e) {
+                            if (e == null) {
+                                try {
+                                    ParseObject koppel = User.get(0);
+                                    koppel.put(ParseUtil.PROGRESS, Integer.parseInt(input.getText().toString()));
+                                    koppel.saveInBackground();
+                                    PROGRESS = Integer.parseInt(input.getText().toString());
+                                } catch (Exception d) {
+                                    AlertDialog helpDialog = errorBuilder.create();
+                                    helpDialog.show();
 
-                             }
+                                }
+                            }
                         }
-                    }
-                });
-
-
-
+                    });
+            }}
+            catch(Exception e){
+                AlertDialog helpDialog = errorBuilder.create();
+                helpDialog.show();
             }
-        });
-        helpBuilder.setPositiveButton("+",
-                new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                PROGRESS = PROGRESS +1;
-                input.setText(Integer.toString(PROGRESS));
-                ParseQuery<ParseObject> rating_query = ParseQuery.getQuery("Koppel");
-                rating_query.whereEqualTo(ParseUtil.SERIE, INFOTITLE);
-                rating_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
-                rating_query.findInBackground(new FindCallback<ParseObject>() {
-                    @Override
-                    public void done(List<ParseObject> User, com.parse.ParseException e) {
-                        if (e == null) {
 
-                                ParseObject koppel = User.get(0);
-                                koppel.put(ParseUtil.PROGRESS, PROGRESS);
-                                koppel.saveInBackground();
 
-                        }
-                    }
-                });
-            }
-        });
-        helpBuilder.setNegativeButton("-", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                PROGRESS = PROGRESS -1;
-                input.setText(Integer.toString(PROGRESS));
-                ParseQuery<ParseObject> rating_query = ParseQuery.getQuery("Koppel");
-                rating_query.whereEqualTo(ParseUtil.SERIE, INFOTITLE);
-                rating_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
-                rating_query.findInBackground(new FindCallback<ParseObject>() {
-                    @Override
-                    public void done(List<ParseObject> User, com.parse.ParseException e) {
-                        if (e == null) {
 
-                            ParseObject koppel = User.get(0);
-                            koppel.put(ParseUtil.PROGRESS, PROGRESS);
-                            koppel.saveInBackground();
-
-                        }
-                    }
-                });
             }
         });
         AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
     }
+    private void getProgress()
+    {
+        final TextView progress = (TextView) findViewById(R.id.TProgress);
+        ParseQuery<ParseObject> rating_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
+        rating_query.whereEqualTo(ParseUtil.SERIE, INFOTITLE);
+        rating_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
+        rating_query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> User, com.parse.ParseException e) {
+                if (e == null) {
+                    ParseObject koppel = User.get(0);
+                    progress.setText(koppel.getInt(ParseUtil.PROGRESS) + "/" + sum);
+                }
+            }
+        });
+    }
+ }
 
-}
 
