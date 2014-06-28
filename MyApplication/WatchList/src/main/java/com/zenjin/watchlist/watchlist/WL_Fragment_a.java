@@ -1,6 +1,7 @@
 package com.zenjin.watchlist.watchlist;
 
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -20,7 +21,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.parse.FindCallback;
@@ -29,6 +32,10 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -36,6 +43,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
@@ -44,13 +52,11 @@ import java.util.List;
 public class WL_Fragment_a extends Fragment {
 
 
-    public final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";
+
     private ListView mListView;
     private ArrayList a_titlelist = new ArrayList();                    // empty arrays for titels, massages and images
     private ArrayList a_messagelist = new ArrayList();
     private ArrayList a_imageurl = new ArrayList();
-
-    protected ImageLoader imageLoader = ImageLoader.getInstance();
 
     public WL_Fragment_a() {
         // Required empty public constructor
@@ -77,16 +83,16 @@ public class WL_Fragment_a extends Fragment {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
 
-                if (a_titlelist.get(0) == "No series added"){
+                if (a_titlelist.get(0) == "No series added") {
                     Intent intent;
                     intent = new Intent(getActivity(), SearchActivity.class);
                     startActivity(intent);
                     getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
 
-                }else if (a_titlelist.get(0) == "No internet connection"){
+                } else if (a_titlelist.get(0) == "No internet connection") {
                     startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
                     getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
-                }else {
+                } else {
                     Intent intent;
                     intent = new Intent(getActivity(), InfoPage.class);
                     String word2 = (String) a_titlelist.get(i);
@@ -246,6 +252,7 @@ public class WL_Fragment_a extends Fragment {
             Log.i("einde800", "");
             return p;
         }
+
         protected void onPostExecute(Pair p) {
 
             String[] a_message = p.message;
@@ -327,7 +334,7 @@ public class WL_Fragment_a extends Fragment {
                         connection.setDoInput(true);
                         connection.connect();
                         InputStream inputStream = connection.getInputStream();
-                        bitmap = BitmapFactory.decodeStream(inputStream);//Convert to bitmap
+                        bitmap = BitmapFactory.decodeStream(inputStream);
                         images.add(i, bitmap);
                     } catch (Exception e) {
                         images = new ArrayList<Bitmap>();
@@ -366,6 +373,14 @@ public class WL_Fragment_a extends Fragment {
     }
 
 }
+
+
+
+
+
+
+
+
 
 class myArrayAdaptera extends ArrayAdapter<String> {
     private Context mContext;

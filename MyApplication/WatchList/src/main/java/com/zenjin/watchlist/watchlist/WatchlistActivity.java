@@ -2,14 +2,18 @@ package com.zenjin.watchlist.watchlist;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SearchView;
 
 /**
  * Created by Rinesh Ramadhin on 16-05-2014 13:00.
@@ -71,6 +75,13 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.mywatchlist_activity, menu);
+
+        SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView =
+                (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getComponentName()));
         return true;
     }
 
@@ -81,8 +92,9 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
             return true;
         }
         if (id == R.id.action_search){
-            Intent intent = new Intent (WatchlistActivity.this,SearchActivity.class);
-            startActivity(intent);
+            onSearchRequested();
+            //Intent intent = new Intent (WatchlistActivity.this,SearchActivity.class);
+            //startActivity(intent);
         }
         if (id == R.id.action_refresh){
 

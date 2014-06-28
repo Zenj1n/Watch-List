@@ -189,13 +189,11 @@ public class InfoPage extends Activity {
                 String PlotMovie = jsonArray.getJSONObject(0).getString(TAG_PLOT);
                 String GenreMovie = jsonArray.getJSONObject(0).getString(TAG_GENRE);
                 String Status = jsonArray.getJSONObject(0).getString(TAG_STATUS);
+                String Image = jsonArray.getJSONObject(0).getString(TAG_IMAGE);
                 INFOTITLE = TitleMovie;
                 JSONArray episodes = jsonArray.getJSONArray(1);
 
                 if(jsonArray != null){
-
-
-
                     for(int i=0;i<episodes.length();i++){
                         JSONObject e;
                         e = episodes.getJSONObject(i);
@@ -218,7 +216,7 @@ public class InfoPage extends Activity {
                             .execute(jsonArray.getJSONObject(0).getString(TAG_IMAGE));
                             */
 
-                    imageLoader.displayImage(jsonArray.getJSONObject(0).getString(TAG_IMAGE), (ImageView) findViewById(R.id.Image), options);
+                    imageLoader.displayImage(Image, (ImageView) findViewById(R.id.Image), options);
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "No Information Available", Toast.LENGTH_SHORT).show();
@@ -243,31 +241,6 @@ public class InfoPage extends Activity {
         System.out.println(sum);
     }
 
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
-
-        public DownloadImageTask(ImageView bmImage) {
-            this.bmImage = bmImage;
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap mIcon11 = null;
-            try {
-
-                InputStream in = new java.net.URL(urldisplay).openStream();
-                mIcon11 = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
-            return mIcon11;
-        }
-
-        protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
-        }
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
