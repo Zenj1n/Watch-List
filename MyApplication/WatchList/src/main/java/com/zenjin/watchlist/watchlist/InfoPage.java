@@ -3,7 +3,6 @@ package com.zenjin.watchlist.watchlist;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -26,7 +25,6 @@ import android.widget.Toast;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.utils.MemoryCacheUtils;
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseObject;
@@ -181,6 +179,10 @@ public class InfoPage extends Activity {
         protected void onPostExecute(JSONArray jsonArray) {
             pDialog.dismiss();
             try {
+                DisplayImageOptions options = new DisplayImageOptions.Builder()
+                        .cacheOnDisk(true)
+                        .cacheInMemory(true)
+                        .build();
                 // Storing  JSON item in a Variable
                 //int Seasons = allSeasons.getInt(TAG_SEASONS);
                 String TitleMovie = jsonArray.getJSONObject(0).getString(TAG_TITLE);
@@ -215,11 +217,8 @@ public class InfoPage extends Activity {
                     /*new DownloadImageTask((ImageView) findViewById(R.id.Image))
                             .execute(jsonArray.getJSONObject(0).getString(TAG_IMAGE));
                             */
-                    DisplayImageOptions options = new DisplayImageOptions.Builder()
-                    .cacheOnDisk(true)
-                     .build();
-                    imageLoader.displayImage(jsonArray.getJSONObject(0).getString(TAG_IMAGE), (ImageView) findViewById(R.id.Image), options);
 
+                    imageLoader.displayImage(jsonArray.getJSONObject(0).getString(TAG_IMAGE), (ImageView) findViewById(R.id.Image), options);
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "No Information Available", Toast.LENGTH_SHORT).show();

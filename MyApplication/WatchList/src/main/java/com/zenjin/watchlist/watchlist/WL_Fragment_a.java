@@ -21,6 +21,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseObject;
@@ -48,6 +50,8 @@ public class WL_Fragment_a extends Fragment {
     private ArrayList a_messagelist = new ArrayList();
     private ArrayList a_imageurl = new ArrayList();
 
+    protected ImageLoader imageLoader = ImageLoader.getInstance();
+
     public WL_Fragment_a() {
         // Required empty public constructor
     }
@@ -57,6 +61,8 @@ public class WL_Fragment_a extends Fragment {
                              Bundle savedInstanceState) {
 
         Resources res = getResources();
+
+
 
         Parse.initialize(getActivity(), "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
         getvalues();
