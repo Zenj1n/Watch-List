@@ -13,13 +13,11 @@
 
         <activity
             android:name=".WatchlistActivity"
-            android:label="@string/wl_title">
-        </activity>
+            android:label="@string/wl_title"></activity>
         <activity
             android:name=".MyWatchList"
             android:hardwareAccelerated="true"
-            android:label="@string/title_activity_main_main">
-        </activity>
+            android:label="@string/title_activity_main_main"></activity>
         <activity
             android:name=".InfoPage"
             android:label="@string/title_activity_info_page">
@@ -29,9 +27,7 @@
         </activity>
         <activity
             android:name=".RegistreerActivity"
-            android:label="@string/title_activity_login">
-
-            </activity>
+            android:label="@string/title_activity_login"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_dispatch">
@@ -42,19 +38,13 @@
         </activity>
         <activity
             android:name=".SignUpOrLoginInActivity"
-            android:label="@string/title_activity_signup_or_login">
-
-            </activity>
+            android:label="@string/title_activity_signup_or_login"></activity>
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login">
-
-            </activity>
+            android:label="@string/title_activity_login"></activity>
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_browse">
-
-            </activity>
+            android:label="@string/title_activity_browse"></activity>
         <activity
             android:name=".SearchActivity"
             android:label="@string/title_activity_search">
