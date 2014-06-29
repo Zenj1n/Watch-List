@@ -27,7 +27,6 @@ import java.util.List;
 
 public class HomeActivity extends MyWatchList {
 
-    public final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";
     private static final String TAG_IMAGE = "poster";
     Intent intent;
     public View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -39,7 +38,7 @@ public class HomeActivity extends MyWatchList {
                     String todayTitle1 = todayTitles.get(0).replaceAll(" ","-");
                     String todayTitle2 = todayTitle1.replaceAll("'","");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", todayTitles.get(0));
+                    intent.putExtra("trakt", todayTitle2);
                     startActivity(intent);
                     break;
                 case R.id.todayImage2:
@@ -102,7 +101,7 @@ public class HomeActivity extends MyWatchList {
                     String todayTitle19 = todayTitles.get(9).replaceAll(" ","-");
                     String todayTitle20 = todayTitle19.replaceAll("'", "");
                     intent = new Intent(HomeActivity.this,InfoPage.class);
-                    intent.putExtra("trakt", todayTitles.get(9));
+                    intent.putExtra("trakt", todayTitle20);
                     startActivity(intent);
                     break;
                 case R.id.trendingImage1:

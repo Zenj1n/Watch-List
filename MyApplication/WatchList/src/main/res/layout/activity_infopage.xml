@@ -25,10 +25,9 @@
             <TextView
                 style="@style/TitleView"
                 android:gravity="left"
-                android:layout_marginLeft="30dp"
                 android:id="@+id/title"
+                android:paddingLeft="20dp"
                 android:textSize="30sp"
-
                 />
 
             <ImageView
