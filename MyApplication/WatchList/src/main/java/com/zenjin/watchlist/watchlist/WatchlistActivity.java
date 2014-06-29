@@ -78,14 +78,6 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.mywatchlist_activity, menu);
-
-       // Associate searchable configuration with the SearchView
-        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView = (SearchView) menu.findItem(R.id.search)
-                .getActionView();
-        searchView.setSearchableInfo(searchManager
-                .getSearchableInfo(getComponentName()));
-
         return true;
     }
 
@@ -96,9 +88,8 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
             return true;
         }
         if (id == R.id.action_search) {
-        }
-        if (id == R.id.action_refresh) {
-
+            Intent intent = new Intent(WatchlistActivity.this, SearchActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
