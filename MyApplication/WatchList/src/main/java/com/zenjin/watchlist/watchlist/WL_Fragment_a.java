@@ -42,7 +42,7 @@ import java.util.List;
 public class WL_Fragment_a extends Fragment {
 
 
-    public final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";
+
     private ListView mListView;
     private ArrayList a_titlelist = new ArrayList();                    // empty arrays for titels, massages and images
     private ArrayList a_messagelist = new ArrayList();
@@ -58,6 +58,8 @@ public class WL_Fragment_a extends Fragment {
 
         Resources res = getResources();
 
+
+
         Parse.initialize(getActivity(), "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
         getvalues();
 
@@ -71,16 +73,16 @@ public class WL_Fragment_a extends Fragment {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
 
-                if (a_titlelist.get(0) == "No series added"){
+                if (a_titlelist.get(0) == "No series added") {
                     Intent intent;
                     intent = new Intent(getActivity(), SearchActivity.class);
                     startActivity(intent);
                     getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
 
-                }else if (a_titlelist.get(0) == "No internet connection"){
+                } else if (a_titlelist.get(0) == "No internet connection") {
                     startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
                     getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
-                }else {
+                } else {
                     Intent intent;
                     intent = new Intent(getActivity(), InfoPage.class);
                     String word2 = (String) a_titlelist.get(i);
@@ -174,7 +176,6 @@ public class WL_Fragment_a extends Fragment {
     private class getmessages extends AsyncTask<String, Void, Pair> {
         @Override
         protected Pair doInBackground(String... a_title) {
-            Log.i("einde800", "");
             int count = a_titlelist.size();
             int i = 0;
             String check = (String) a_titlelist.get(0);
@@ -241,6 +242,7 @@ public class WL_Fragment_a extends Fragment {
             Log.i("einde800", "");
             return p;
         }
+
         protected void onPostExecute(Pair p) {
 
             String[] a_message = p.message;
@@ -322,7 +324,7 @@ public class WL_Fragment_a extends Fragment {
                         connection.setDoInput(true);
                         connection.connect();
                         InputStream inputStream = connection.getInputStream();
-                        bitmap = BitmapFactory.decodeStream(inputStream);//Convert to bitmap
+                        bitmap = BitmapFactory.decodeStream(inputStream);
                         images.add(i, bitmap);
                     } catch (Exception e) {
                         images = new ArrayList<Bitmap>();
@@ -361,6 +363,14 @@ public class WL_Fragment_a extends Fragment {
     }
 
 }
+
+
+
+
+
+
+
+
 
 class myArrayAdaptera extends ArrayAdapter<String> {
     private Context mContext;

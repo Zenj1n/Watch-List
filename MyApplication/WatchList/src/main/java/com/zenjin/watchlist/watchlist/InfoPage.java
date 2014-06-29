@@ -5,8 +5,6 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -22,6 +20,9 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseObject;
@@ -32,7 +33,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,13 +69,19 @@ public class InfoPage extends Activity {
     private List<Integer> allEpisodes = new ArrayList<Integer>();
     private int sum = 0;
 
+    protected ImageLoader imageLoader = ImageLoader.getInstance();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_infopage);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+
         Parse.initialize(this, "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
+        imageLoader.init(ImageLoaderConfiguration.createDefault(getBaseContext()));
 
         new JSONParse().execute();
 
@@ -170,19 +176,21 @@ public class InfoPage extends Activity {
         protected void onPostExecute(JSONArray jsonArray) {
             pDialog.dismiss();
             try {
+                DisplayImageOptions options = new DisplayImageOptions.Builder()
+                        .cacheOnDisk(true)
+                        .cacheInMemory(true)
+                        .build();
                 // Storing  JSON item in a Variable
                 //int Seasons = allSeasons.getInt(TAG_SEASONS);
                 String TitleMovie = jsonArray.getJSONObject(0).getString(TAG_TITLE);
                 String PlotMovie = jsonArray.getJSONObject(0).getString(TAG_PLOT);
                 String GenreMovie = jsonArray.getJSONObject(0).getString(TAG_GENRE);
                 String Status = jsonArray.getJSONObject(0).getString(TAG_STATUS);
+                String Image = jsonArray.getJSONObject(0).getString(TAG_IMAGE);
                 INFOTITLE = TitleMovie;
                 JSONArray episodes = jsonArray.getJSONArray(1);
 
                 if(jsonArray != null){
-
-
-
                     for(int i=0;i<episodes.length();i++){
                         JSONObject e;
                         e = episodes.getJSONObject(i);
@@ -200,9 +208,12 @@ public class InfoPage extends Activity {
                     TGenres.setText(test4);
                     Tplot.setText(PlotMovie);
                     TStatus.setText(Status);
-                    new DownloadImageTask((ImageView) findViewById(R.id.Image))
-                            .execute(jsonArray.getJSONObject(0).getString(TAG_IMAGE));
 
+                    /*new DownloadImageTask((ImageView) findViewById(R.id.Image))
+                            .execute(jsonArray.getJSONObject(0).getString(TAG_IMAGE));
+                            */
+
+                    imageLoader.displayImage(Image, (ImageView) findViewById(R.id.Image), options);
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "No Information Available", Toast.LENGTH_SHORT).show();
@@ -227,31 +238,6 @@ public class InfoPage extends Activity {
         System.out.println(sum);
     }
 
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
-
-        public DownloadImageTask(ImageView bmImage) {
-            this.bmImage = bmImage;
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap mIcon11 = null;
-            try {
-
-                InputStream in = new java.net.URL(urldisplay).openStream();
-                mIcon11 = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
-            return mIcon11;
-        }
-
-        protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
-        }
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

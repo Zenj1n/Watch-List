@@ -3,22 +3,19 @@ package com.zenjin.watchlist.watchlist;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -27,7 +24,9 @@ import java.util.List;
 
 public class HomeActivity extends MyWatchList {
 
+    protected ImageLoader imageLoader = ImageLoader.getInstance();
     private static final String TAG_IMAGE = "poster";
+
     Intent intent;
     public View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
@@ -184,6 +183,7 @@ public class HomeActivity extends MyWatchList {
         super.onCreate(savedInstanceState);
         super.replaceContentLayout(R.layout.hm_activity);
         new JSONParse().execute();
+        imageLoader.init(ImageLoaderConfiguration.createDefault(getBaseContext()));
 
         //Veel te laat om in een array te stoppen / te weining tijd
         ImageView todayImage1 = (ImageView) findViewById(R.id.todayImage1);
@@ -279,6 +279,7 @@ public class HomeActivity extends MyWatchList {
             String urlToday    = "http://api.trakt.tv/calendar/shows.json/390983740f2092270bc0fa267334db88/"+formattedDate;
             ServiceHandler jParser = new ServiceHandler();
 
+
             JSONArray jsonTrakt = jParser.getJsonArray(urlTraktTrending);
             JSONArray jsonTraktToday = jParser.getJsonArray(urlToday);
             JSONArray jsonArray = new JSONArray();
@@ -291,6 +292,11 @@ public class HomeActivity extends MyWatchList {
         @Override
         protected void onPostExecute(JSONArray jsonArray) {
             pDialog.dismiss();
+            DisplayImageOptions options = new DisplayImageOptions.Builder()
+                    .cacheOnDisk(true)
+                    .cacheInMemory(true)
+                    .build();
+
             try {
                 JSONArray jsonTrakt = jsonArray.getJSONArray(1);
                 JSONArray jsonTraktToday = jsonArray.getJSONArray(0);
@@ -368,41 +374,19 @@ public class HomeActivity extends MyWatchList {
                     JSONObject e ;
                     e = jsonTraktToday.getJSONObject(0);
                     JSONArray shows = e.getJSONArray("episodes");
-                    new DownloadImageTask(tvTodayImages[i]).execute(shows.getJSONObject(i).getJSONObject("show").getJSONObject("images").getString(TAG_IMAGE));
+                    imageLoader.displayImage(shows.getJSONObject(i).getJSONObject("show").getJSONObject("images").getString(TAG_IMAGE), tvTodayImages[i], options);
                 }
 
                 for (int i=0;i<10;i++){
-                    new DownloadImageTask(tvTrendImages[i]).execute(jsonTrakt.getJSONObject(i).getString(TAG_IMAGE));
+                    imageLoader.displayImage(jsonTrakt.getJSONObject(i).getString(TAG_IMAGE), tvTrendImages[i], options);
                 }
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
-        public DownloadImageTask(ImageView bmImage) {
-            this.bmImage = bmImage;
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap mIcon11 = null;
-            try {
-                InputStream in = new java.net.URL(urldisplay).openStream();
-                mIcon11 = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
-            return mIcon11;
-        }
-
-        protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
-        }
-    }
 }
 
 

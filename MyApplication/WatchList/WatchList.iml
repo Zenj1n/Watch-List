@@ -64,6 +64,7 @@
     <orderEntry type="library" exported="" name="Parse-1.5.1" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-19.1.0" level="project" />
     <orderEntry type="library" exported="" name="support-v4-19.1.0" level="project" />
+    <orderEntry type="library" exported="" name="universal-image-loader-1.9.2-with-sources" level="project" />
   </component>
 </module>
 
