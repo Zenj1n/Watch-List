@@ -33,7 +33,8 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_dispatch" >
+            android:label="@string/title_activity_dispatch"
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -49,14 +50,16 @@
         </activity>
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_browse" >
+            android:label="@string/title_activity_browse"
+            android:configChanges="orientation|screenSize">
         </activity>
         <activity
             android:name=".SearchActivity"
-            android:label="@string/title_activity_search">
-
-            <meta-data android:name="android.app.searchable"
-                android:resource="@xml/searcheable"/>
+            android:label="@string/title_activity_search"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zenjin.watchlist.watchlist.WatchlistActivity" />
         </activity>
     </application>
 

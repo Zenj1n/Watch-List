@@ -272,7 +272,6 @@ public class HomeActivity extends MyWatchList {
         protected JSONArray doInBackground(String... args) {
 
             Calendar c = Calendar.getInstance();
-            System.out.println("Current time => " + c.getTime());
             SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
             String formattedDate = df.format(c.getTime());
             String urlTraktTrending = "http://api.trakt.tv/shows/trending.json/390983740f2092270bc0fa267334db88/";

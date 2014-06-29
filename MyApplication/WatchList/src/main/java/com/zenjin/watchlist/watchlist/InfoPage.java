@@ -66,6 +66,7 @@ public class InfoPage extends Activity {
     private static String INFOTITLE;
     public static int PROGRESS = 0;
 
+
     private List<Integer> allEpisodes = new ArrayList<Integer>();
     private int sum = 0;
 

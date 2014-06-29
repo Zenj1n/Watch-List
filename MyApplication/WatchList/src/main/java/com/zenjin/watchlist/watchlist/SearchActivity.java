@@ -2,6 +2,7 @@ package com.zenjin.watchlist.watchlist;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -18,12 +19,20 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class SearchActivity extends Activity {
@@ -35,7 +44,7 @@ public class SearchActivity extends Activity {
     Button Btngetdata;
     EditText searchShowET;
     ArrayList<HashMap<String, String>> searchlist = new ArrayList<HashMap<String, String>>();
-    private static String url = "http://api.trakt.tv/search/shows/390983740f2092270bc0fa267334db88/20140627/the+arrow";
+
 
     private static final String TAG_TITLE = "title";
     private static final String TAG_OVERVIEW = "overview";
@@ -48,6 +57,8 @@ public class SearchActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         searchlist = new ArrayList<HashMap<String, String>>();
+
+        Parse.initialize(this, "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
 
         searchShowET = (EditText) findViewById(R.id.searchShowET);
         searchShowET.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -80,6 +91,9 @@ public class SearchActivity extends Activity {
 
         protected JSONArray doInBackground(String... args) {
             ServiceHandler jParser = new ServiceHandler();
+            String searchword = searchShowET.getText().toString();
+            String searchword2 = searchword.replaceAll(" ","+");
+            String url = "http://api.trakt.tv/search/shows/390983740f2092270bc0fa267334db88/20140627/"+searchword2;
             JSONArray jsonSearch = jParser.getJsonArray(url);
             JSONArray jsonArray = new JSONArray();
             jsonArray.put(jsonSearch);
@@ -111,8 +125,13 @@ public class SearchActivity extends Activity {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view,
                                                 int position, long id) {
-                            Toast.makeText(SearchActivity.this, "You Clicked at " + searchlist.get(+position).get("name"), Toast.LENGTH_SHORT).show();
+                            Intent intent;
+                            intent = new Intent(SearchActivity.this, InfoPage.class);
+                            String word2 = searchlist.get(+position).get("title");
+                            String traktWord = word2.replaceAll(" ", "-");
+                            intent.putExtra("trakt", traktWord);
 
+                            startActivity(intent);
                         }
                     });
                 }
