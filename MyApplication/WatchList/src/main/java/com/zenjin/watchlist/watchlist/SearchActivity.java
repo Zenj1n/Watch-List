@@ -139,7 +139,7 @@ public class SearchActivity extends Activity {
                             startActivity(intent);
                         }
                     });
-                  
+
                 }
 
             } catch (JSONException e) {

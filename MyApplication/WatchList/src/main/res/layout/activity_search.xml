@@ -22,7 +22,9 @@
         android:id="@+id/searchShowET"
         android:layout_below="@+id/searchShowTitleTextView"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_marginRight="20dp"
+        android:voiceSearchMode="showVoiceSearchButton"
+        />
 
     <View
         android:layout_width="match_parent"
