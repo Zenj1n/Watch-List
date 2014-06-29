@@ -312,9 +312,9 @@ public class WL_Fragment_a extends Fragment {
                 count = a_images_for_method.length;
                 do {
                     Bitmap bmp;
-                    Bitmap bmp2;
                     try {
-                        bmp = imageLoader.loadImageSync(a_images_for_method[i], options);
+                        bmp = imageLoader.loadImageSync(a_images_for_method[i]);
+                        Log.d("wtf","waarom voegt hij niks toe");
                         images.add(i, bmp);
                     } catch (Exception e) {
                         images = new ArrayList<Bitmap>();
@@ -327,7 +327,6 @@ public class WL_Fragment_a extends Fragment {
                 while (i < count);
                 a_images = images;
             } catch (Exception e) {
-
                 ArrayList<Bitmap> images = new ArrayList<Bitmap>();
                 Bitmap icon = BitmapFactory.decodeResource(getActivity().getResources(),
                         R.drawable.ic_launcher);
@@ -352,7 +351,13 @@ public class WL_Fragment_a extends Fragment {
         }
     }
 
+    public void test(){
+
+    }
+
 }
+
+
 
 
 class myArrayAdaptera extends ArrayAdapter<String> {
