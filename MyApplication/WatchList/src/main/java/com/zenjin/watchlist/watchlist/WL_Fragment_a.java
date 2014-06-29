@@ -65,6 +65,7 @@ public class WL_Fragment_a extends Fragment {
         Resources res = getResources();
 
 
+
         Parse.initialize(getActivity(), "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
         getvalues();
 
@@ -313,25 +314,11 @@ public class WL_Fragment_a extends Fragment {
                 i = 0;
                 count = a_images_for_method.length;
                 do {
-                    Log.d("hallo2","begin");
                     Bitmap bmp;
-                    URL imageURL = null;
                     try {
-                        imageURL = new URL(a_images_for_method[i]);
-                    } catch (Exception e) {
-                    }
-                    try {
-                        Log.d("hallo3","begin");
-                        HttpURLConnection connection = (HttpURLConnection) imageURL.openConnection();
-                        connection.setDoInput(true);
-                        connection.connect();
-                        InputStream inputStream = connection.getInputStream();
-                        bmp = BitmapFactory.decodeStream(inputStream);
-                        //bmp = imageLoader.getInstance().loadImageSync(a_images_for_method[1], options);
-                        Log.d("wtf","waarom voegt hij niks toe");
+                        bmp = imageLoader.loadImageSync(a_images_for_method[i], options);
                         images.add(i, bmp);
                     } catch (Exception e) {
-                        Log.d("hallo4","begin");
                         images = new ArrayList<Bitmap>();
                         Bitmap icon = BitmapFactory.decodeResource(getActivity().getResources(),
                                 R.drawable.ic_launcher);

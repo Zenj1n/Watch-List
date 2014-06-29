@@ -14,6 +14,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SearchView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
 /**
  * Created by Rinesh Ramadhin on 16-05-2014 13:00.
  * com.zenjin.watchlist.watchlist
@@ -24,11 +27,13 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
     ViewPager mViewPager;
     ActionBar mActionBar;
     Intent intent;
+    protected ImageLoader imageLoader = ImageLoader.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.replaceContentLayout(R.layout.activity_watchlist);
+        imageLoader.init(ImageLoaderConfiguration.createDefault(getBaseContext()));
 
         mViewPager = (ViewPager) findViewById(R.id.wl_pager);
         mViewPager.setOffscreenPageLimit(3);

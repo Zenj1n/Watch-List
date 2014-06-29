@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.parse.FindCallback;
 import com.parse.Parse;
@@ -257,6 +258,11 @@ public class WL_Fragment_b extends Fragment {
             String check = (String) b_titlelist.get(0);
             ServiceHandler jParser = new ServiceHandler();
 
+            DisplayImageOptions options = new DisplayImageOptions.Builder()
+                    .cacheOnDisk(true)
+                    .cacheInMemory(true)
+                    .build();
+
             if (check == "No series added") {
                 b_imageurl.clear();
                 b_imageurl.add(i, "http://i.imgur.com/ZNt7DXU.png");
@@ -300,7 +306,7 @@ public class WL_Fragment_b extends Fragment {
                 do {
                     Bitmap bmp;
                     try {
-                        bmp = imageLoader.loadImageSync(b_images_for_method[i]);
+                        bmp = imageLoader.loadImageSync(b_images_for_method[i], options);
                         images.add(i, bmp);
                     } catch (Exception e) {
                         images = new ArrayList<Bitmap>();
@@ -362,7 +368,7 @@ class myArrayAdapterb extends ArrayAdapter<String> {
         TextView titleb = (TextView) row.findViewById(R.id.wl_title);
         TextView messageb = (TextView) row.findViewById(R.id.wl_message);
 
-        //imageb.setImageBitmap(imagesarray.get(position));
+        imageb.setImageBitmap(imagesarray.get(position));
         titleb.setText(titlearray[position]);
         messageb.setText(messagearray[position]);
 
