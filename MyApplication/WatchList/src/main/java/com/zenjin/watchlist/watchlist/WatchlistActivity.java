@@ -3,7 +3,6 @@ package com.zenjin.watchlist.watchlist;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.app.SearchManager;
-import android.app.SearchableInfo;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -77,9 +76,12 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.mywatchlist_activity, menu);
 
-        MenuItem searchItem = menu.findItem(R.id.search);
-
-
+        // Associate searchable configuration with the SearchView
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.search)
+                .getActionView();
+        searchView.setSearchableInfo(searchManager
+                .getSearchableInfo(getComponentName()));
 
         return true;
     }
@@ -91,22 +93,9 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
             return true;
         }
         if (id == R.id.action_search){
-            onSearchRequested();
-            Intent intent = new Intent (WatchlistActivity.this,SearchActivity.class);
-            startActivity(intent);
         }
         if (id == R.id.action_refresh){
-
-            int x = mViewPager.getCurrentItem();
-            switch (x){
-                case 0: // this;
-                    break;
-                case 1: // this;
-                    break;
-                case 2: // this;
-                    break;
-            }
-
+            
         }
         return super.onOptionsItemSelected(item);
     }

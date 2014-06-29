@@ -1,5 +1,6 @@
 package com.zenjin.watchlist.watchlist;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.app.SearchManager;
@@ -14,7 +15,6 @@ import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +26,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -41,6 +42,11 @@ public class SearchActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        ActionBar actionBar = getActionBar();
+
+        // Enabling Back navigation on Action Bar icon
+        actionBar.setDisplayHomeAsUpEnabled(true);
         handleIntent(getIntent());
 
         Parse.initialize(this, "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
@@ -93,7 +99,8 @@ public class SearchActivity extends Activity {
 
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
-            //use the query to search your data somehow
+            Log.d("hallo", query);
+            new JSONParse().execute(query);
         }
     }
 
@@ -114,13 +121,14 @@ public class SearchActivity extends Activity {
 
 
         @Override
-        protected JSONArray doInBackground(String... args) {
+        protected JSONArray doInBackground(String... query) {
 
 
-            String word2 = searchET.getText().toString();
-            String searchWord = word2.replaceAll(" ", "+");
-
-            String urlSearch = "http://api.trakt.tv/search/shows.json/2c0bdfbdb92cb55e844c997757180341?query="+ searchWord;
+            //String word2 = searchET.getText().toString();
+            //String searchWord = word2.replaceAll(" ", "+");
+            String query1 =  Arrays.toString(query);
+            String querySearch = query1.replace("[","");
+            String urlSearch = "http://api.trakt.tv/search/shows.json/2c0bdfbdb92cb55e844c997757180341?query="+ querySearch;
             ServiceHandler jParser = new ServiceHandler();
 
             // Getting JSON from URL
@@ -157,6 +165,8 @@ public class SearchActivity extends Activity {
                 e.printStackTrace();
             }
         }
+
+
     }
 
 
