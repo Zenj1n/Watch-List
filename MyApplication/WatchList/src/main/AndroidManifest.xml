@@ -59,7 +59,8 @@
             </activity>
         <activity
             android:name=".SearchActivity"
-            android:label="@string/title_activity_search">
+            android:label="@string/title_activity_search"
+            android:parentActivityName="com.zenjin.watchlist.watchlist.WatchlistActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.zenjin.watchlist.watchlist.WatchlistActivity" />
