@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.parse.FindCallback;
@@ -258,6 +259,11 @@ public class WL_Fragment_a extends Fragment {
         @Override
         protected Pair doInBackground(Object... object) {
 
+            DisplayImageOptions options = new DisplayImageOptions.Builder()
+                    .cacheOnDisk(true)
+                    .cacheInMemory(true)
+                    .build();
+
             String[] a_title = (String[]) object[0];
             String[] a_message = (String[]) object[1];
             int count = a_titlelist.size();
@@ -306,8 +312,9 @@ public class WL_Fragment_a extends Fragment {
                 count = a_images_for_method.length;
                 do {
                     Bitmap bmp;
+                    Bitmap bmp2;
                     try {
-                        bmp = imageLoader.loadImageSync(a_images_for_method[i]);
+                        bmp = imageLoader.loadImageSync(a_images_for_method[i], options);
                         images.add(i, bmp);
                     } catch (Exception e) {
                         images = new ArrayList<Bitmap>();
@@ -372,7 +379,7 @@ class myArrayAdaptera extends ArrayAdapter<String> {
         TextView titlea = (TextView) row.findViewById(R.id.wl_title);
         TextView messagea = (TextView) row.findViewById(R.id.wl_message);
 
-        imagea.setImageBitmap(imagesarray.get(position));
+        //imagea.setImageBitmap(imagesarray.get(position));
         titlea.setText(titlearray[position]);
         messagea.setText(messagearray[position]);
 
