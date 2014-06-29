@@ -10,15 +10,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -28,6 +25,8 @@ import java.util.List;
 public class HomeActivity extends MyWatchList {
 
     public final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";
+
+
     private static final String TAG_IMAGE = "poster";
     protected ImageLoader imageLoader = ImageLoader.getInstance();
     Intent intent;

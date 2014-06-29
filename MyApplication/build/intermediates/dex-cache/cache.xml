@@ -2,8 +2,10 @@
 <pre-dex-items>
 
     <item
+
         dex="E:\Git Hub Repositories\Watch-List\MyApplication\WatchList\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.2-with-sources-5dd7bcdad8259579b4f484976392a6234edcbe76.jar"
         jar="E:\Git Hub Repositories\Watch-List\MyApplication\WatchList\libs\universal-image-loader-1.9.2-with-sources.jar"
         jumboMode="false" revision="19.1.0" sha1="111169c43b8a601f571585f75d998e6027e48ff4" />
+
 
 </pre-dex-items>
