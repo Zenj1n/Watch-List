@@ -87,7 +87,7 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
         if (id == R.id.action_settings) {
             return true;
         }
-        if (id == R.id.action_search) {
+        if (id == R.id.search) {
             Intent intent = new Intent(WatchlistActivity.this, SearchActivity.class);
             startActivity(intent);
         }
