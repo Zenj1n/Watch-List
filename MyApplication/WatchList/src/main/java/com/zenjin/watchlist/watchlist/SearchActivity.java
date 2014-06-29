@@ -1,137 +1,148 @@
 package com.zenjin.watchlist.watchlist;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.parse.FindCallback;
 import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
 
 public class SearchActivity extends Activity {
 
+    protected ListView list;
+    protected TextView showTitle;
+    protected TextView overview;
+    protected ImageView poster;
+    protected EditText searchShowET;
+    ArrayList<HashMap<String, String>> searchlist = new ArrayList<HashMap<String, String>>();
+    protected ImageLoader imageLoader = ImageLoader.getInstance();
+
+
+
     private static final String TAG_TITLE = "title";
-    private EditText searchET;
-    private EditText userET;
-    private Intent intent;
-    private List<String> searchResults = new ArrayList<String>();
+    private static final String TAG_OVERVIEW = "overview";
+    private static final String TAG_POSTER = "poster";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-
-        ActionBar actionBar = getActionBar();
-
-        // Enabling Back navigation on Action Bar icon
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        handleIntent(getIntent());
+        imageLoader.init(ImageLoaderConfiguration.createDefault(getBaseContext()));
+        searchlist = new ArrayList<HashMap<String, String>>();
 
         Parse.initialize(this, "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
 
-        //userET = (EditText) findViewById(R.id.searchUserET);
-        //searchET = (EditText) findViewById(R.id.SearchET);
-
-
-        /*searchET.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        searchShowET = (EditText) findViewById(R.id.searchShowET);
+        searchShowET.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    performSearch();
-                    return true;
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH){
+                    searchlist.clear();
+                    new JSONParse().execute();
                 }
-                return false;
-            }
 
-            public void performSearch() {
-                new JSONParse().execute();
+                return true;
             }
         });
+    }
+    private class JSONParse extends AsyncTask<String, String, JSONArray> {
+        private ProgressDialog pDialog;
 
-        userET.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent keyEvent) {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    performUserSearch();
-                    return true;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            showTitle = (TextView) findViewById(R.id.showTitle);
+            overview = (TextView) findViewById(R.id.overview);
+            //poster = (Imageview)findViewById(R.id.poster);
+            pDialog = new ProgressDialog(SearchActivity.this);
+            pDialog.setMessage("Getting Data ...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+
+        }
+
+        protected JSONArray doInBackground(String... args) {
+            ServiceHandler jParser = new ServiceHandler();
+            String searchword = searchShowET.getText().toString();
+            String searchword2 = searchword.replaceAll(" ","+");
+            String url = "http://api.trakt.tv/search/shows/390983740f2092270bc0fa267334db88/20140627/"+searchword2;
+            JSONArray jsonSearch = jParser.getJsonArray(url);
+            JSONArray jsonArray = new JSONArray();
+            jsonArray.put(jsonSearch);
+
+            return jsonArray;
+        }
+
+        protected void onPostExecute(JSONArray jsonArray) {
+            pDialog.dismiss();
+            try {
+                JSONArray jsonSearch = jsonArray.getJSONArray(0);
+                for (int i = 0; i < jsonSearch.length(); i++) {
+                    JSONObject e;
+                    e = jsonSearch.getJSONObject(i);
+                    String name = e.getString("title");
+                    String overview = e.getString("overview");
+
+                    HashMap<String, String> map = new HashMap<String, String>();
+                    map.put(TAG_TITLE, name);
+                    map.put(TAG_OVERVIEW, overview);
+                    searchlist.add(map);
+                    list = (ListView) findViewById(R.id.list);
+                    ListAdapter adapter = new SimpleAdapter(SearchActivity.this, searchlist,
+                            R.layout.search_listview,
+                            new String[]{TAG_TITLE, TAG_OVERVIEW}, new int[]{
+                            R.id.showTitle, R.id.overview}
+                    );
+                    list.setAdapter(adapter);
+                    list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view,
+                                                int position, long id) {
+                            Intent intent;
+                            intent = new Intent(SearchActivity.this, InfoPage.class);
+                            String word2 = searchlist.get(+position).get("title");
+                            String traktWord = word2.replaceAll(" ", "-");
+                            intent.putExtra("trakt", traktWord);
+
+                            startActivity(intent);
+                        }
+                    });
+
                 }
-                return false;
+
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-
-            public void performUserSearch() {
-                Toast.makeText(getApplicationContext(), "Feature not available yet", Toast.LENGTH_SHORT).show();
-                InputMethodManager imm = (InputMethodManager) getSystemService(
-                        Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(userET.getWindowToken(), 0);
-            }
-        });
-        */
-
-    }
-
-    private class StableArrayAdapter extends ArrayAdapter<String> {
-
-        HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
-
-        public StableArrayAdapter(Context context, int textViewResourceId,
-                                  List<String> objects) {
-            super(context, textViewResourceId, objects);
-            for (int i = 0; i < objects.size(); ++i) {
-                mIdMap.put(objects.get(i), i);
-            }
-        }
-
-        @Override
-        public long getItemId(int position) {
-            String item = getItem(position);
-            return mIdMap.get(item);
-        }
-
-        @Override
-        public boolean hasStableIds() {
-            return true;
-        }
-
-    }
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        handleIntent(intent);
-    }
-
-    private void handleIntent(Intent intent) {
-
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
-            String query1 = query.replace(" ", "+");
-            new JSONParse().execute(query1);
         }
     }
 
@@ -149,103 +160,4 @@ public class SearchActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    public class JSONParse extends AsyncTask<String, String, JSONArray> {
-        private ProgressDialog pDialog;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-            pDialog = new ProgressDialog(SearchActivity.this);
-            pDialog.setMessage("Getting Data ...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(false);
-            pDialog.show();
-        }
-
-
-        @Override
-        protected JSONArray doInBackground(String... query) {
-
-
-            //String word2 = searchET.getText().toString();
-            //String searchWord = word2.replaceAll(" ", "+");
-            String query1 = Arrays.toString(query);
-            String querySearch = query1.replace("[", "");
-            String urlSearch = "http://api.trakt.tv/search/shows.json/2c0bdfbdb92cb55e844c997757180341?query=" + querySearch;
-            ServiceHandler jParser = new ServiceHandler();
-
-            // Getting JSON from URL
-            JSONArray jsonSearch = jParser.getJsonArray(urlSearch);
-            return jsonSearch;
-
-        }
-
-        @Override
-        protected void onPostExecute(JSONArray jsonSearch) {
-            pDialog.dismiss();
-            try {
-                DisplayImageOptions options = new DisplayImageOptions.Builder()
-                        .cacheOnDisk(true)
-                        .cacheInMemory(true)
-                        .build();
-                // Storing  JSON item in a Variable
-
-                if (jsonSearch != null) {
-                    for (int i = 0; i < jsonSearch.length(); i++) {
-                        JSONObject s;
-                        s = jsonSearch.getJSONObject(i);
-                        String test1 = s.getString(TAG_TITLE);
-                        String title = test1.replace("[", "");
-                        searchResults.add(title);
-                    }
-
-                    showResults();
-
-                } else {
-                    Toast.makeText(getApplicationContext(), "No Information Available", Toast.LENGTH_SHORT).show();
-
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-
-
-    }
-
-    public void showResults(){
-
-        final ListView listview = (ListView) findViewById(R.id.listview);
-
-        String[] values = searchResults.toArray(new String[searchResults.size()]);
-
-        final ArrayList<String> list = new ArrayList<String>();
-        for (int i = 0; i < values.length; ++i) {
-            list.add(values[i]);
-        }
-
-        final StableArrayAdapter adapter = new StableArrayAdapter(this,
-                android.R.layout.simple_list_item_1, list);
-        listview.setAdapter(adapter);
-
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, final View view,
-                                    int position, long id) {
-                final String item = (String) parent.getItemAtPosition(position);
-                String search = item.replace(" ","-");
-
-                intent = new Intent(SearchActivity.this, InfoPage.class);
-                intent.putExtra("trakt", search);
-                startActivity(intent);
-
-            }
-
-        });
-
-    }
-
 }
