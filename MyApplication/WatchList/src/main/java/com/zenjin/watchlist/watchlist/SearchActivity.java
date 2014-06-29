@@ -1,9 +1,14 @@
 package com.zenjin.watchlist.watchlist;
 
+import android.app.ActionBar;
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,47 +18,55 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.parse.Parse;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class SearchActivity extends Activity {
 
     private EditText searchET;
     private EditText userET;
-    public final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";
-    protected Intent intent;
+    private Intent intent;
+    private static final String TAG_TITLE = "title";
+    private List<String> searchResults = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        ActionBar actionBar = getActionBar();
+
+        // Enabling Back navigation on Action Bar icon
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        handleIntent(getIntent());
+
         Parse.initialize(this, "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
 
-        searchET = (EditText) findViewById(R.id.SearchET);
         userET = (EditText) findViewById(R.id.searchUserET);
+        searchET = (EditText) findViewById(R.id.SearchET);
+
+
 
         searchET.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    performShowSearch();
+                    performSearch();
                     return true;
                 }
                 return false;
             }
-
-            public void performShowSearch() {
-
-                String word = java.net.URLEncoder.encode(searchET.getText().toString());
-                String word2 = searchET.getText().toString();
-                InfoPage.INFOTITLE = word;
-
-                String traktWord = word2.replaceAll(" ","-");
-                intent = new Intent(SearchActivity.this,InfoPage.class);
-                intent.putExtra("trakt", traktWord);
-
-                startActivity(intent);
+            public void performSearch(){
+                new JSONParse().execute();
             }
         });
 
@@ -71,10 +84,87 @@ public class SearchActivity extends Activity {
                InputMethodManager imm = (InputMethodManager)getSystemService(
                        Context.INPUT_METHOD_SERVICE);
                imm.hideSoftInputFromWindow(userET.getWindowToken(), 0);
-
-
            }
        });
+
+
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        handleIntent(intent);
+    }
+
+    private void handleIntent(Intent intent) {
+
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            Log.d("hallo", query);
+            new JSONParse().execute(query);
+        }
+    }
+
+    public class JSONParse extends AsyncTask<String, String, JSONArray> {
+        private ProgressDialog pDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            pDialog = new ProgressDialog(SearchActivity.this);
+            pDialog.setMessage("Getting Data ...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(false);
+            pDialog.show();
+        }
+
+
+
+        @Override
+        protected JSONArray doInBackground(String... query) {
+
+
+            //String word2 = searchET.getText().toString();
+            //String searchWord = word2.replaceAll(" ", "+");
+            String query1 =  Arrays.toString(query);
+            String querySearch = query1.replace("[","");
+            String urlSearch = "http://api.trakt.tv/search/shows.json/2c0bdfbdb92cb55e844c997757180341?query="+ querySearch;
+            ServiceHandler jParser = new ServiceHandler();
+
+            // Getting JSON from URL
+            JSONArray jsonSearch = jParser.getJsonArray(urlSearch);
+            return jsonSearch;
+
+        }
+
+        @Override
+        protected void onPostExecute(JSONArray jsonSearch) {
+            pDialog.dismiss();
+            try {
+                DisplayImageOptions options = new DisplayImageOptions.Builder()
+                        .cacheOnDisk(true)
+                        .cacheInMemory(true)
+                        .build();
+                // Storing  JSON item in a Variable
+
+                if(jsonSearch != null){
+                    for(int i=0;i<jsonSearch.length();i++){
+                        JSONObject s;
+                        s = jsonSearch.getJSONObject(i);
+                        String test1 = s.getString(TAG_TITLE);
+                        String title = test1.replace("[", "");
+                        searchResults.add(title);
+                    }
+                    System.out.println(searchResults);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "No Information Available", Toast.LENGTH_SHORT).show();
+
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
 
 
     }
@@ -82,16 +172,12 @@ public class SearchActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.search, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;

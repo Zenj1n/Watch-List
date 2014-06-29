@@ -1,24 +1,21 @@
 package com.zenjin.watchlist.watchlist;
 
 
-
-
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -27,72 +24,14 @@ import java.util.List;
 
 public class HomeActivity extends MyWatchList {
 
-
+    protected ImageLoader imageLoader = ImageLoader.getInstance();
     private static final String TAG_IMAGE = "poster";
 
-    List<String>trendingTitles = new ArrayList<String>();
-    List<String>todayTitles = new ArrayList<String>();
-
     Intent intent;
-    public final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";
-
-
-
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        super.replaceContentLayout(R.layout.hm_activity, R.id.frame_container);
-        new JSONParse().execute();
-
-        ImageView todayImage1 = (ImageView) findViewById(R.id.todayImage1);
-        ImageView todayImage2 = (ImageView) findViewById(R.id.todayImage2);
-        ImageView todayImage3 = (ImageView) findViewById(R.id.todayImage3);
-        ImageView todayImage4 = (ImageView) findViewById(R.id.todayImage4);
-        ImageView todayImage5 = (ImageView) findViewById(R.id.todayImage5);
-        ImageView todayImage6 = (ImageView) findViewById(R.id.todayImage6);
-        ImageView todayImage7 = (ImageView) findViewById(R.id.todayImage7);
-        ImageView todayImage8 = (ImageView) findViewById(R.id.todayImage8);
-        ImageView todayImage9 = (ImageView) findViewById(R.id.todayImage9);
-        ImageView todayImage10 = (ImageView) findViewById(R.id.todayImage10);
-
-        ImageView trendingImage1 = (ImageView) findViewById(R.id.trendingImage1);
-        ImageView trendingImage2 = (ImageView) findViewById(R.id.trendingImage2);
-        ImageView trendingImage3 = (ImageView) findViewById(R.id.trendingImage3);
-        ImageView trendingImage4 = (ImageView) findViewById(R.id.trendingImage4);
-        ImageView trendingImage5 = (ImageView) findViewById(R.id.trendingImage5);
-        ImageView trendingImage6 = (ImageView) findViewById(R.id.trendingImage6);
-        ImageView trendingImage7 = (ImageView) findViewById(R.id.trendingImage7);
-        ImageView trendingImage8 = (ImageView) findViewById(R.id.trendingImage8);
-        ImageView trendingImage9 = (ImageView) findViewById(R.id.trendingImage9);
-        ImageView trendingImage10 = (ImageView) findViewById(R.id.trendingImage10);
-
-        todayImage1.setOnClickListener(onClickListener);
-        todayImage2.setOnClickListener(onClickListener);
-        todayImage3.setOnClickListener(onClickListener);
-        todayImage4.setOnClickListener(onClickListener);
-        todayImage5.setOnClickListener(onClickListener);
-        todayImage6.setOnClickListener(onClickListener);
-        todayImage7.setOnClickListener(onClickListener);
-        todayImage8.setOnClickListener(onClickListener);
-        todayImage9.setOnClickListener(onClickListener);
-        todayImage10.setOnClickListener(onClickListener);
-
-        trendingImage1.setOnClickListener(onClickListener);
-        trendingImage2.setOnClickListener(onClickListener);
-        trendingImage3.setOnClickListener(onClickListener);
-        trendingImage4.setOnClickListener(onClickListener);
-        trendingImage5.setOnClickListener(onClickListener);
-        trendingImage6.setOnClickListener(onClickListener);
-        trendingImage7.setOnClickListener(onClickListener);
-        trendingImage8.setOnClickListener(onClickListener);
-        trendingImage9.setOnClickListener(onClickListener);
-        trendingImage10.setOnClickListener(onClickListener);
-    }
-
     public View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            // TODO Auto-generated method stub
-
+            //Wij hadden te weining tijd om dit te wijzigen naar een loop
             switch (v.getId()) {
                 case R.id.todayImage1:
                     String todayTitle1 = todayTitles.get(0).replaceAll(" ","-");
@@ -237,13 +176,91 @@ public class HomeActivity extends MyWatchList {
             }
         }
     };
+    private List<String>trendingTitles = new ArrayList<String>();
+    private List<String>todayTitles = new ArrayList<String>();
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        super.replaceContentLayout(R.layout.hm_activity);
+        new JSONParse().execute();
+        imageLoader.init(ImageLoaderConfiguration.createDefault(getBaseContext()));
+
+        //Veel te laat om in een array te stoppen / te weining tijd
+        ImageView todayImage1 = (ImageView) findViewById(R.id.todayImage1);
+        ImageView todayImage2 = (ImageView) findViewById(R.id.todayImage2);
+        ImageView todayImage3 = (ImageView) findViewById(R.id.todayImage3);
+        ImageView todayImage4 = (ImageView) findViewById(R.id.todayImage4);
+        ImageView todayImage5 = (ImageView) findViewById(R.id.todayImage5);
+        ImageView todayImage6 = (ImageView) findViewById(R.id.todayImage6);
+        ImageView todayImage7 = (ImageView) findViewById(R.id.todayImage7);
+        ImageView todayImage8 = (ImageView) findViewById(R.id.todayImage8);
+        ImageView todayImage9 = (ImageView) findViewById(R.id.todayImage9);
+        ImageView todayImage10 = (ImageView) findViewById(R.id.todayImage10);
+
+        ImageView trendingImage1 = (ImageView) findViewById(R.id.trendingImage1);
+        ImageView trendingImage2 = (ImageView) findViewById(R.id.trendingImage2);
+        ImageView trendingImage3 = (ImageView) findViewById(R.id.trendingImage3);
+        ImageView trendingImage4 = (ImageView) findViewById(R.id.trendingImage4);
+        ImageView trendingImage5 = (ImageView) findViewById(R.id.trendingImage5);
+        ImageView trendingImage6 = (ImageView) findViewById(R.id.trendingImage6);
+        ImageView trendingImage7 = (ImageView) findViewById(R.id.trendingImage7);
+        ImageView trendingImage8 = (ImageView) findViewById(R.id.trendingImage8);
+        ImageView trendingImage9 = (ImageView) findViewById(R.id.trendingImage9);
+        ImageView trendingImage10 = (ImageView) findViewById(R.id.trendingImage10);
+
+        todayImage1.setOnClickListener(onClickListener);
+        todayImage2.setOnClickListener(onClickListener);
+        todayImage3.setOnClickListener(onClickListener);
+        todayImage4.setOnClickListener(onClickListener);
+        todayImage5.setOnClickListener(onClickListener);
+        todayImage6.setOnClickListener(onClickListener);
+        todayImage7.setOnClickListener(onClickListener);
+        todayImage8.setOnClickListener(onClickListener);
+        todayImage9.setOnClickListener(onClickListener);
+        todayImage10.setOnClickListener(onClickListener);
+
+        trendingImage1.setOnClickListener(onClickListener);
+        trendingImage2.setOnClickListener(onClickListener);
+        trendingImage3.setOnClickListener(onClickListener);
+        trendingImage4.setOnClickListener(onClickListener);
+        trendingImage5.setOnClickListener(onClickListener);
+        trendingImage6.setOnClickListener(onClickListener);
+        trendingImage7.setOnClickListener(onClickListener);
+        trendingImage8.setOnClickListener(onClickListener);
+        trendingImage9.setOnClickListener(onClickListener);
+        trendingImage10.setOnClickListener(onClickListener);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main_activity_actions, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        if (id == R.id.action_search){
+            Intent intent = new Intent (HomeActivity.this,SearchActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private class JSONParse extends AsyncTask<String, String, JSONArray> {
         private ProgressDialog pDialog;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
             pDialog = new ProgressDialog(HomeActivity.this);
             pDialog.setMessage("Getting Data ...");
             pDialog.setIndeterminate(false);
@@ -258,20 +275,14 @@ public class HomeActivity extends MyWatchList {
             System.out.println("Current time => " + c.getTime());
             SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
             String formattedDate = df.format(c.getTime());
-            System.out.println(formattedDate);
-
             String urlTraktTrending = "http://api.trakt.tv/shows/trending.json/390983740f2092270bc0fa267334db88/";
             String urlToday    = "http://api.trakt.tv/calendar/shows.json/390983740f2092270bc0fa267334db88/"+formattedDate;
             ServiceHandler jParser = new ServiceHandler();
 
-            System.out.println(urlToday);
 
-            // Getting JSON from URL
             JSONArray jsonTrakt = jParser.getJsonArray(urlTraktTrending);
             JSONArray jsonTraktToday = jParser.getJsonArray(urlToday);
-
             JSONArray jsonArray = new JSONArray();
-
             jsonArray.put(jsonTraktToday);
             jsonArray.put(jsonTrakt);
 
@@ -281,10 +292,14 @@ public class HomeActivity extends MyWatchList {
         @Override
         protected void onPostExecute(JSONArray jsonArray) {
             pDialog.dismiss();
+            DisplayImageOptions options = new DisplayImageOptions.Builder()
+                    .cacheOnDisk(true)
+                    .cacheInMemory(true)
+                    .build();
+
             try {
                 JSONArray jsonTrakt = jsonArray.getJSONArray(1);
                 JSONArray jsonTraktToday = jsonArray.getJSONArray(0);
-
 
                 for(int i=0;i<jsonTrakt.length();i++){
                     JSONObject e;
@@ -292,7 +307,6 @@ public class HomeActivity extends MyWatchList {
                     String name = e.getString("title");
                     trendingTitles.add(name);
                 }
-
                 for(int i=0;i<10;i++){
                     JSONObject e ;
                     e = jsonTraktToday.getJSONObject(0);
@@ -300,10 +314,6 @@ public class HomeActivity extends MyWatchList {
                     String todayShows =  shows.getJSONObject(i).getJSONObject("show").getString("title");
                     todayTitles.add(todayShows);
                 }
-
-
-                System.out.println("trending"+trendingTitles);
-                System.out.println("today"+ todayTitles);
 
                 TextView [] tvTodayTitles = new TextView[10];
                 tvTodayTitles[0] = (TextView) findViewById(R.id.todayTextView1);
@@ -330,7 +340,7 @@ public class HomeActivity extends MyWatchList {
                 tvTrendTitles[9]=(TextView)findViewById(R.id.trendingText10);
 
                 for(int i=0;i<10;i++){
-                   tvTrendTitles[i].setText(trendingTitles.get(i));
+                    tvTrendTitles[i].setText(trendingTitles.get(i));
                 }
                 for(int i=0;i<todayTitles.size();i++){
                     tvTodayTitles[i].setText(todayTitles.get(i));
@@ -364,13 +374,12 @@ public class HomeActivity extends MyWatchList {
                     JSONObject e ;
                     e = jsonTraktToday.getJSONObject(0);
                     JSONArray shows = e.getJSONArray("episodes");
-                    new DownloadImageTask(tvTodayImages[i]).execute(shows.getJSONObject(i).getJSONObject("show").getJSONObject("images").getString(TAG_IMAGE));
+                    imageLoader.displayImage(shows.getJSONObject(i).getJSONObject("show").getJSONObject("images").getString(TAG_IMAGE), tvTodayImages[i], options);
                 }
 
-               for (int i=0;i<10;i++){
-                   new DownloadImageTask(tvTrendImages[i]).execute(jsonTrakt.getJSONObject(i).getString(TAG_IMAGE));
-               }
-
+                for (int i=0;i<10;i++){
+                    imageLoader.displayImage(jsonTrakt.getJSONObject(i).getString(TAG_IMAGE), tvTrendImages[i], options);
+                }
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -378,56 +387,6 @@ public class HomeActivity extends MyWatchList {
         }
     }
 
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
-
-        public DownloadImageTask(ImageView bmImage) {
-            this.bmImage = bmImage;
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap mIcon11 = null;
-            try {
-                InputStream in = new java.net.URL(urldisplay).openStream();
-                mIcon11 = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
-            return mIcon11;
-        }
-
-        protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
-        }
-
-    }
-
-
-        @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_activity_actions, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        if (id == R.id.action_search){
-            Intent intent = new Intent (HomeActivity.this,SearchActivity.class);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }
 
 

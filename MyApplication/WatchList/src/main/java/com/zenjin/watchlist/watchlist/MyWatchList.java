@@ -1,7 +1,5 @@
 package com.zenjin.watchlist.watchlist;
 
-import java.util.ArrayList;
-
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
@@ -20,19 +18,17 @@ import com.parse.ParseUser;
 import com.zenjin.watchlist.watchlist.adapter.NavDrawerListAdapter;
 import com.zenjin.watchlist.watchlist.model.NavDrawerItem;
 
+import java.util.ArrayList;
+
 
 
 public class MyWatchList extends BaseActivity {
 
-    protected DrawerLayout mDrawerLayout;
+    private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
-    private String[] navMenuTitles;
-    private TypedArray navMenuIcons;
-    private ArrayList<NavDrawerItem> navDrawerItems;
-    private NavDrawerListAdapter adapter;
     //Context context = getApplicationContext();
 
 
@@ -42,16 +38,13 @@ public class MyWatchList extends BaseActivity {
         setContentView(R.layout.activity_nav_drawer);
 
         mTitle = mDrawerTitle = getTitle();
-
-        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
-
-        navMenuIcons = getResources()
+        String[] navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
+        TypedArray navMenuIcons = getResources()
                 .obtainTypedArray(R.array.nav_drawer_icons);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
-
-        navDrawerItems = new ArrayList<NavDrawerItem>();
+        ArrayList<NavDrawerItem> navDrawerItems = new ArrayList<NavDrawerItem>();
 
         // MyWatchList
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
@@ -67,13 +60,10 @@ public class MyWatchList extends BaseActivity {
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
 
         navMenuIcons.recycle();
-
         mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
-
-        adapter = new NavDrawerListAdapter(getApplicationContext(),
+        NavDrawerListAdapter adapter = new NavDrawerListAdapter(getApplicationContext(),
                 navDrawerItems);
         mDrawerList.setAdapter(adapter);
-
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
 
@@ -93,8 +83,6 @@ public class MyWatchList extends BaseActivity {
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-
-
     }
 
 
@@ -111,43 +99,29 @@ public class MyWatchList extends BaseActivity {
                         | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     mDrawerLayout.closeDrawer(mDrawerList);
                     break;
-
                 case 1:
-                    /*launchIntent = new Intent(getApplicationContext(), ProfileActivity.class);
-                    launchIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);*/
                     Toast.makeText(getApplicationContext(),"Feature not available yet",Toast.LENGTH_SHORT).show();
                     mDrawerLayout.closeDrawer(mDrawerList);
                     break;
-
                 case 2:
-                    /*launchIntent = new Intent(getApplicationContext(), NewsFeedActivity.class);
-                    launchIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);*/
-                        Toast.makeText(getApplicationContext(),"Feature not available yet",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Feature not available yet",Toast.LENGTH_SHORT).show();
                     mDrawerLayout.closeDrawer(mDrawerList);
                     break;
-
                 case 3:
                     launchIntent = new Intent(getApplicationContext(), HomeActivity.class);
                     launchIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     mDrawerLayout.closeDrawer(mDrawerList);
                     break;
-
-
                 case 4:
-                    /*launchIntent = new Intent(getApplicationContext(), SettingsActivity.class);
-                    launchIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);*/
                     Toast.makeText(getApplicationContext(),"Feature not available yet",Toast.LENGTH_SHORT).show();
                     mDrawerLayout.closeDrawer(mDrawerList);
                     break;
-
                 case 5:
                     ParseUser.logOut();
                     Intent intent3 = new Intent(MyWatchList.this, MainActivity.class);
                     intent3.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent3);
                     break;
-
-
             }
             if (launchIntent == null) {
                 mDrawerLayout.closeDrawer(mDrawerList);
@@ -169,7 +143,6 @@ public class MyWatchList extends BaseActivity {
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-
         switch (item.getItemId()) {
             case R.id.action_settings:
                 return true;
@@ -185,9 +158,6 @@ public class MyWatchList extends BaseActivity {
         menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }
-
-
-
 
     @Override
     public void setTitle(CharSequence title) {

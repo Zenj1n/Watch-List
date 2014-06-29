@@ -3,18 +3,18 @@
 
     <item
         android:id="@+id/watching"
-        android:title="Watching"
+        android:title="@string/popmenu_watching"
         android:background="#5BC0EB"
         />
 
     <item
         android:id="@+id/plantowatch"
-        android:title="Plan to watch"
+        android:title="@string/popupmenu_plantowatch"
         android:background="#5BC0EB"/>
 
     <item
         android:id="@+id/completed"
-        android:title="Completed"
+        android:title="@string/popupmenu_completed"
         android:background="#5BC0EB"/>
 
 </menu>  
