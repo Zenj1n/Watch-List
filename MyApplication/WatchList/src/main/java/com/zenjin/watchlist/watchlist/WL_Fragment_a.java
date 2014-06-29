@@ -302,21 +302,36 @@ public class WL_Fragment_a extends Fragment {
                     a_imageurl.clear();
                     a_imageurl.add(i, "https://www.google.com/images/srpr/logo11w.png");
                 }
+                Log.d("einde","einde van het eerswte blok");
             }
 
             String[] a_images_for_method = (String[]) a_imageurl.toArray(new String[a_imageurl.size()]);
             ArrayList<Bitmap> a_images = null;
             try {
+                Log.d("hallo1","begin");
                 ArrayList<Bitmap> images = new ArrayList<Bitmap>();
                 i = 0;
                 count = a_images_for_method.length;
                 do {
+                    Log.d("hallo2","begin");
                     Bitmap bmp;
+                    URL imageURL = null;
                     try {
-                        bmp = imageLoader.loadImageSync(a_images_for_method[i]);
+                        imageURL = new URL(a_images_for_method[i]);
+                    } catch (Exception e) {
+                    }
+                    try {
+                        Log.d("hallo3","begin");
+                        HttpURLConnection connection = (HttpURLConnection) imageURL.openConnection();
+                        connection.setDoInput(true);
+                        connection.connect();
+                        InputStream inputStream = connection.getInputStream();
+                        bmp = BitmapFactory.decodeStream(inputStream);
+                        //bmp = imageLoader.getInstance().loadImageSync(a_images_for_method[1], options);
                         Log.d("wtf","waarom voegt hij niks toe");
                         images.add(i, bmp);
                     } catch (Exception e) {
+                        Log.d("hallo4","begin");
                         images = new ArrayList<Bitmap>();
                         Bitmap icon = BitmapFactory.decodeResource(getActivity().getResources(),
                                 R.drawable.ic_launcher);
@@ -384,7 +399,7 @@ class myArrayAdaptera extends ArrayAdapter<String> {
         TextView titlea = (TextView) row.findViewById(R.id.wl_title);
         TextView messagea = (TextView) row.findViewById(R.id.wl_message);
 
-        //imagea.setImageBitmap(imagesarray.get(position));
+        imagea.setImageBitmap(imagesarray.get(position));
         titlea.setText(titlearray[position]);
         messagea.setText(messagearray[position]);
 
