@@ -372,7 +372,7 @@ class myArrayAdaptera extends ArrayAdapter<String> {
         TextView titlea = (TextView) row.findViewById(R.id.wl_title);
         TextView messagea = (TextView) row.findViewById(R.id.wl_message);
 
-        //imagea.setImageBitmap(imagesarray.get(position));
+        imagea.setImageBitmap(imagesarray.get(position));
         titlea.setText(titlearray[position]);
         messagea.setText(messagearray[position]);
 
