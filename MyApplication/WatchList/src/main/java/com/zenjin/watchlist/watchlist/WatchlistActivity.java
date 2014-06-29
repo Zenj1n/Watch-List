@@ -79,7 +79,7 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.mywatchlist_activity, menu);
 
-        // Associate searchable configuration with the SearchView
+       // Associate searchable configuration with the SearchView
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView) menu.findItem(R.id.search)
                 .getActionView();
