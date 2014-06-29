@@ -13,12 +13,15 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
@@ -37,25 +40,25 @@ import java.util.List;
 
 public class SearchActivity extends Activity {
 
-    ListView list;
-    TextView showTitle;
-    TextView overview;
-    TextView api;
-    Button Btngetdata;
-    EditText searchShowET;
+    protected ListView list;
+    protected TextView showTitle;
+    protected TextView overview;
+    protected ImageView poster;
+    protected EditText searchShowET;
     ArrayList<HashMap<String, String>> searchlist = new ArrayList<HashMap<String, String>>();
+    protected ImageLoader imageLoader = ImageLoader.getInstance();
+
 
 
     private static final String TAG_TITLE = "title";
     private static final String TAG_OVERVIEW = "overview";
     private static final String TAG_POSTER = "poster";
 
-    JSONArray searchResult = null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        imageLoader.init(ImageLoaderConfiguration.createDefault(getBaseContext()));
         searchlist = new ArrayList<HashMap<String, String>>();
 
         Parse.initialize(this, "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
@@ -65,6 +68,7 @@ public class SearchActivity extends Activity {
             @Override
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH){
+                    searchlist.clear();
                     new JSONParse().execute();
                 }
 
@@ -110,6 +114,7 @@ public class SearchActivity extends Activity {
                     e = jsonSearch.getJSONObject(i);
                     String name = e.getString("title");
                     String overview = e.getString("overview");
+
                     HashMap<String, String> map = new HashMap<String, String>();
                     map.put(TAG_TITLE, name);
                     map.put(TAG_OVERVIEW, overview);
@@ -134,6 +139,7 @@ public class SearchActivity extends Activity {
                             startActivity(intent);
                         }
                     });
+                  
                 }
 
             } catch (JSONException e) {

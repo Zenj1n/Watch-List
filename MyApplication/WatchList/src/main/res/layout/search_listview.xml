@@ -6,7 +6,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/wl_row_background_xml"
         >
 
         <TextView
@@ -17,8 +16,10 @@
         android:layout_margin="2dp"
         android:textSize="20sp"
         android:ellipsize="end"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+            />
 
-        />
     <TextView
         android:id="@+id/overview"
         android:layout_width="wrap_content"
@@ -27,7 +28,8 @@
         android:layout_below="@+id/showTitle"
         android:layout_margin="2dp"
         android:ellipsize="end"
-
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         />
     <View
         android:layout_width="match_parent"
