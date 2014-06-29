@@ -1,95 +1,95 @@
 <ScrollView
 
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="fill_parent"
-android:layout_height="fill_parent"
-android:background="#909090"
-    >
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.zenjin.watchlist.watchlist.MainActivity"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:background="#909090">
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/scrollView2" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#909090"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.zenjin.watchlist.watchlist.MainActivity">
 
-    <EditText
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/Username"
-        android:hint="@string/Username"
-        android:textColorHint="#FFFFFF"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/abc_action_bar_stacked_tab_max_width"
-        android:textColor="#ffffff"
-        android:inputType="text"
-        android:autoText="false"
-        android:clickable="true"
-        android:background="@drawable/abc_ab_bottom_solid_dark_holo"
-        android:paddingStart="20dp" />
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/Username"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/abc_action_bar_stacked_tab_max_width"
+            android:autoText="false"
+            android:background="@drawable/abc_ab_bottom_solid_dark_holo"
+            android:clickable="true"
+            android:hint="@string/Username"
+            android:inputType="text"
+            android:paddingStart="20dp"
+            android:textColor="#ffffff"
+            android:textColorHint="#FFFFFF" />
 
 
-    <EditText
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/Password"
-        android:layout_below="@+id/Username"
-        android:layout_alignLeft="@+id/Username"
-        android:layout_alignStart="@+id/Username"
-        android:hint="@string/Password"
-        android:textColor="#ffffff"
-        android:textColorHint="#FFFFFF"
-        android:inputType="textPassword"
-        android:textColorHighlight="#ffffff"
-        android:textColorLink="#ffffff"
-        android:autoText="false"
-        android:layout_marginTop="2dp"
-        android:background="@drawable/abc_ab_bottom_solid_dark_holo"
-        android:paddingStart="20dp" />
+        <EditText
+            android:id="@+id/Password"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/Username"
+            android:layout_alignStart="@+id/Username"
+            android:layout_below="@+id/Username"
+            android:layout_marginTop="2dp"
+            android:autoText="false"
+            android:background="@drawable/abc_ab_bottom_solid_dark_holo"
+            android:hint="@string/Password"
+            android:inputType="textPassword"
+            android:paddingStart="20dp"
+            android:textColor="#ffffff"
+            android:textColorHighlight="#ffffff"
+            android:textColorHint="#FFFFFF"
+            android:textColorLink="#ffffff" />
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Remember"
-        android:id="@+id/Remember"
-        android:layout_below="@+id/Password"
-        android:layout_alignLeft="@+id/Password"
-        android:layout_alignStart="@+id/Password"
-        android:textColor="#ffffff"
-        android:textColorLink="#ffffff"/>
+        <CheckBox
+            android:id="@+id/Remember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/Password"
+            android:layout_alignStart="@+id/Password"
+            android:layout_below="@+id/Password"
+            android:text="@string/Remember"
+            android:textColor="#ffffff"
+            android:textColorLink="#ffffff" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/LogIn"
-        android:id="@+id/LogIn"
-        android:layout_below="@+id/Remember"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="49dp"
-        android:textColor="#ffffff"
-        android:background="#000000" />
+        <Button
+            android:id="@+id/LogIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Remember"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="49dp"
+            android:background="#000000"
+            android:text="@string/LogIn"
+            android:textColor="#ffffff" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        <TextView
+            android:id="@+id/Forgot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-        android:id="@+id/Forgot"
-        android:layout_below="@+id/LogIn"
-        android:layout_centerHorizontal="true"
-        android:textColor="#ffffff"
-        android:layout_marginTop="10dp"
-        android:clickable="true"/>
+            android:layout_below="@+id/LogIn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#ffffff" />
 
-</RelativeLayout>
+    </RelativeLayout>
 
 </ScrollView>

@@ -19,8 +19,7 @@ public class NavDrawerListAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<NavDrawerItem> navDrawerItems;
 
-    public NavDrawerListAdapter(Context context, ArrayList<NavDrawerItem> navDrawerItems)
-    {
+    public NavDrawerListAdapter(Context context, ArrayList<NavDrawerItem> navDrawerItems) {
         this.context = context;
         this.navDrawerItems = navDrawerItems;
     }
@@ -31,15 +30,13 @@ public class NavDrawerListAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position)
-    {
+    public Object getItem(int position) {
 
         return navDrawerItems.get(position);
     }
 
     @Override
-    public long getItemId(int position)
-    {
+    public long getItemId(int position) {
         return position;
     }
 
@@ -59,9 +56,9 @@ public class NavDrawerListAdapter extends BaseAdapter {
         txtTitle.setText(navDrawerItems.get(position).getTitle());
 
 
-        if(navDrawerItems.get(position).getCounterVisibility()){
+        if (navDrawerItems.get(position).getCounterVisibility()) {
             txtCount.setText(navDrawerItems.get(position).getCount());
-        }else{
+        } else {
             txtCount.setVisibility(View.GONE);
         }
 

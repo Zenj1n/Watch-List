@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:padding="3dp"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="3dp"
 
     >
 
@@ -11,54 +11,51 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/wl_row_background_xml"
-        >
+        android:background="@drawable/wl_row_background_xml">
 
         <ImageView
-            android:layout_margin="10dp"
+            android:id="@+id/wl_image"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:id="@+id/wl_image"
-            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            />
+            android:layout_alignParentTop="true"
+            android:layout_margin="10dp" />
 
         <TextView
+            android:id="@+id/wl_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/wl_title"
-            android:id="@+id/wl_title"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/wl_image"
             android:layout_toRightOf="@+id/wl_image"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:textColor="#000000"
             android:fontFamily="sans-serif-condensed"
-            android:textIsSelectable="false"/>
+            android:text="@string/wl_title"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#000000"
+            android:textIsSelectable="false" />
 
         <TextView
+            android:id="@+id/wl_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/wl_message"
-            android:id="@+id/wl_message"
-            android:layout_marginTop="45dp"
             android:layout_alignLeft="@+id/wl_title"
-            android:layout_alignStart="@+id/wl_title"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignStart="@+id/wl_title"
+            android:layout_marginTop="45dp"
             android:fontFamily="sans-serif-light"
-            android:textColor="@android:color/darker_gray"/>
+            android:text="@string/wl_message"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@android:color/darker_gray" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:layout_below="@+id/wl_message"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
-        </View>
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/wl_message"></View>
 
 
     </RelativeLayout>

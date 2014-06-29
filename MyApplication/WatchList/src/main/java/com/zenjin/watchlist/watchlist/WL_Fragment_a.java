@@ -21,11 +21,15 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -42,11 +46,12 @@ import java.util.List;
 public class WL_Fragment_a extends Fragment {
 
 
-
     private ListView mListView;
     private ArrayList a_titlelist = new ArrayList();                    // empty arrays for titels, massages and images
     private ArrayList a_messagelist = new ArrayList();
     private ArrayList a_imageurl = new ArrayList();
+    private static final String TAG_IMAGE = "poster";
+    protected ImageLoader imageLoader = ImageLoader.getInstance();
 
     public WL_Fragment_a() {
         // Required empty public constructor
@@ -57,7 +62,6 @@ public class WL_Fragment_a extends Fragment {
                              Bundle savedInstanceState) {
 
         Resources res = getResources();
-
 
 
         Parse.initialize(getActivity(), "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
@@ -239,7 +243,6 @@ public class WL_Fragment_a extends Fragment {
             Pair p = new Pair();
             p.message = a_message;
             p.title = a_title;
-            Log.i("einde800", "");
             return p;
         }
 
@@ -260,6 +263,7 @@ public class WL_Fragment_a extends Fragment {
             int count = a_titlelist.size();
             int i = 0;
             String check = (String) a_titlelist.get(0);
+            ServiceHandler jParser = new ServiceHandler();
 
             if (check == "No series added") {
                 a_imageurl.clear();
@@ -273,24 +277,13 @@ public class WL_Fragment_a extends Fragment {
                 try {
                     do {
                         String serie = (String) a_titlelist.get(i);
-                        String prep = serie.replaceAll(" ", "%20");
+                        String prep = serie.replaceAll(" ", "-");
                         String url;
                         try {
-                            String omdbapi = "http://www.omdbapi.com/?t=" + prep;
-                            URL omdb = new URL(omdbapi);
-                            BufferedReader in = new BufferedReader(new InputStreamReader(omdb.openStream()));
-                            String lijn;
-                            String fullsite = "";
-                            String imageurl;
-
-                            while ((lijn = in.readLine()) != null) {
-
-                                fullsite = fullsite + lijn;
-
-                            }
-
-                            imageurl = fullsite.substring(fullsite.indexOf("http://"), fullsite.indexOf("\",\"Metascore"));
-                            url = imageurl;
+                            String urlTrakt = "http://api.trakt.tv/show/summary.json/390983740f2092270bc0fa267334db88/" + prep;
+                            JSONObject jsonTrakt = jParser.getJSONFromUrl(urlTrakt);
+                            String Image = jsonTrakt.getString(TAG_IMAGE);
+                            url = Image;
                         } catch (Exception e) {
                             String noimage = "http://i.imgur.com/ZNt7DXU.png";
                             url = noimage;
@@ -312,20 +305,10 @@ public class WL_Fragment_a extends Fragment {
                 i = 0;
                 count = a_images_for_method.length;
                 do {
-                    Bitmap bitmap;
-                    URL imageURL = null;
+                    Bitmap bmp;
                     try {
-                        imageURL = new URL(a_images_for_method[i]);
-                    } catch (Exception e) {
-                    }
-
-                    try {
-                        HttpURLConnection connection = (HttpURLConnection) imageURL.openConnection();
-                        connection.setDoInput(true);
-                        connection.connect();
-                        InputStream inputStream = connection.getInputStream();
-                        bitmap = BitmapFactory.decodeStream(inputStream);
-                        images.add(i, bitmap);
+                        bmp = imageLoader.loadImageSync(a_images_for_method[i]);
+                        images.add(i, bmp);
                     } catch (Exception e) {
                         images = new ArrayList<Bitmap>();
                         Bitmap icon = BitmapFactory.decodeResource(getActivity().getResources(),
@@ -365,13 +348,6 @@ public class WL_Fragment_a extends Fragment {
 }
 
 
-
-
-
-
-
-
-
 class myArrayAdaptera extends ArrayAdapter<String> {
     private Context mContext;
     private ArrayList<Bitmap> imagesarray;
@@ -396,7 +372,7 @@ class myArrayAdaptera extends ArrayAdapter<String> {
         TextView titlea = (TextView) row.findViewById(R.id.wl_title);
         TextView messagea = (TextView) row.findViewById(R.id.wl_message);
 
-        imagea.setImageBitmap(imagesarray.get(position));
+        //imagea.setImageBitmap(imagesarray.get(position));
         titlea.setText(titlearray[position]);
         messagea.setText(messagearray[position]);
 

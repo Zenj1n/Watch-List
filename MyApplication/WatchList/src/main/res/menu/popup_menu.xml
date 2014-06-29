@@ -3,18 +3,17 @@
 
     <item
         android:id="@+id/watching"
-        android:title="@string/popmenu_watching"
         android:background="#5BC0EB"
-        />
+        android:title="@string/popmenu_watching" />
 
     <item
         android:id="@+id/plantowatch"
-        android:title="@string/popupmenu_plantowatch"
-        android:background="#5BC0EB"/>
+        android:background="#5BC0EB"
+        android:title="@string/popupmenu_plantowatch" />
 
     <item
         android:id="@+id/completed"
-        android:title="@string/popupmenu_completed"
-        android:background="#5BC0EB"/>
+        android:background="#5BC0EB"
+        android:title="@string/popupmenu_completed" />
 
 </menu>  

@@ -6,25 +6,24 @@
     >
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:padding="0dp">
 
         <TextView
-            style="@style/TitleView"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/trendingTitle"
             android:id="@+id/todayTitleTextView"
+            style="@style/TitleView"
             android:layout_margin="0dp"
-            />
+            android:text="@string/trendingTitle"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
         <HorizontalScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:background="#FFFFFF"
-            >
+            android:background="#FFFFFF">
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -34,173 +33,172 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:id="@+id/trendingImage1"
                         style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        />
+                        android:scaleType="centerCrop" />
+
                     <TextView
-                        style="@style/BrowseTextView"
-                        android:layout_below="@id/trendingImage1"
                         android:id="@+id/trendingText1"
-                        />
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/trendingImage1" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:id="@+id/trendingImage2"
                         style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        />
+                        android:scaleType="centerCrop" />
+
                     <TextView
-                        style="@style/BrowseTextView"
-                        android:layout_below="@id/trendingImage2"
                         android:id="@+id/trendingText2"
-                        />
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/trendingImage2" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:id="@+id/trendingImage3"
                         style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        />
+                        android:scaleType="centerCrop" />
+
                     <TextView
-                        style="@style/BrowseTextView"
-                        android:layout_below="@id/trendingImage3"
                         android:id="@+id/trendingText3"
-                        />
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/trendingImage3" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:id="@+id/trendingImage4"
                         style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        />
+                        android:scaleType="centerCrop" />
+
                     <TextView
-                        style="@style/BrowseTextView"
-                        android:layout_below="@id/trendingImage4"
                         android:id="@+id/trendingText4"
-                        />
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/trendingImage4" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:id="@+id/trendingImage5"
                         style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        />
+                        android:scaleType="centerCrop" />
+
                     <TextView
-                        style="@style/BrowseTextView"
-                        android:layout_below="@id/trendingImage5"
                         android:id="@+id/trendingText5"
-                        />
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/trendingImage5" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:id="@+id/trendingImage6"
                         style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        />
+                        android:scaleType="centerCrop" />
+
                     <TextView
-                        style="@style/BrowseTextView"
-                        android:layout_below="@id/trendingImage6"
                         android:id="@+id/trendingText6"
-                        />
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/trendingImage6" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:id="@+id/trendingImage7"
                         style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        />
+                        android:scaleType="centerCrop" />
+
                     <TextView
-                        style="@style/BrowseTextView"
-                        android:layout_below="@id/trendingImage7"
                         android:id="@+id/trendingText7"
-                        />
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/trendingImage7" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:id="@+id/trendingImage8"
                         style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        />
+                        android:scaleType="centerCrop" />
+
                     <TextView
-                        style="@style/BrowseTextView"
-                        android:layout_below="@id/trendingImage8"
                         android:id="@+id/trendingText8"
-                        />
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/trendingImage8" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:id="@+id/trendingImage9"
                         style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        />
+                        android:scaleType="centerCrop" />
+
                     <TextView
-                        style="@style/BrowseTextView"
-                        android:layout_below="@id/trendingImage9"
                         android:id="@+id/trendingText9"
-                        />
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/trendingImage9" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:id="@+id/trendingImage10"
                         style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        />
+                        android:scaleType="centerCrop" />
+
                     <TextView
-                        style="@style/BrowseTextView"
-                        android:layout_below="@id/trendingImage10"
                         android:id="@+id/trendingText10"
-                        />
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/trendingImage10" />
                 </RelativeLayout>
             </LinearLayout>
         </HorizontalScrollView>
 
 
-
         <TextView
-            style="@style/TitleView"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/todayTitle"
             android:id="@+id/trendingTitleTextView"
+            style="@style/TitleView"
             android:layout_margin="0dp"
+            android:text="@string/todayTitle"
+            android:textAppearance="?android:attr/textAppearanceLarge"
 
             />
 
@@ -210,8 +208,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:background="#FFFFFF"
-            >
+            android:background="#FFFFFF">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -221,162 +218,163 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:id="@+id/todayImage1"
                         style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        />
+                        android:scaleType="centerCrop" />
+
                     <TextView
-                        style="@style/BrowseTextView"
-                        android:layout_below="@id/todayImage1"
                         android:id="@+id/todayTextView1"
-                        />
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/todayImage1" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:id="@+id/todayImage2"
                         style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        />
+                        android:scaleType="centerCrop" />
+
                     <TextView
                         android:id="@+id/todayTextView2"
                         style="@style/BrowseTextView"
-                        android:layout_below="@id/todayImage2"
-                        />
+                        android:layout_below="@id/todayImage2" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:id="@+id/todayImage3"
                         style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        />
+                        android:scaleType="centerCrop" />
+
                     <TextView
                         android:id="@+id/todayTextView3"
                         style="@style/BrowseTextView"
-                        android:layout_below="@id/todayImage3"
-                        />
+                        android:layout_below="@id/todayImage3" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:id="@+id/todayImage4"
                         style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        />
+                        android:scaleType="centerCrop" />
+
                     <TextView
                         android:id="@+id/todayTextView4"
                         style="@style/BrowseTextView"
-                        android:layout_below="@id/todayImage4"
-                        />
+                        android:layout_below="@id/todayImage4" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:id="@+id/todayImage5"
                         style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        />
+                        android:scaleType="centerCrop" />
+
                     <TextView
-                        style="@style/BrowseTextView"
                         android:id="@+id/todayTextView5"
-                        android:layout_below="@id/todayImage5"
-                        />
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/todayImage5" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:id="@+id/todayImage6"
                         style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        />
+                        android:scaleType="centerCrop" />
+
                     <TextView
-                        style="@style/BrowseTextView"
                         android:id="@+id/todayTextView6"
-                        android:layout_below="@id/todayImage6"
-                        />
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/todayImage6" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:id="@+id/todayImage7"
                         style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        />
+                        android:scaleType="centerCrop" />
+
                     <TextView
                         android:id="@+id/todayTextView7"
                         style="@style/BrowseTextView"
-                        android:layout_below="@id/todayImage7"
-                        />
+                        android:layout_below="@id/todayImage7" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:id="@+id/todayImage8"
                         style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        />
+                        android:scaleType="centerCrop" />
+
                     <TextView
                         android:id="@+id/todayTextView8"
                         style="@style/BrowseTextView"
-                        android:layout_below="@id/todayImage8"
-                        />
+                        android:layout_below="@id/todayImage8" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:id="@+id/todayImage9"
                         style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
                         android:layout_margin="10dp"
-                        />
+                        android:scaleType="centerCrop" />
+
                     <TextView
-                        style="@style/BrowseTextView"
                         android:id="@+id/todayTextView9"
-                        android:layout_below="@id/todayImage9"
-                        />
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/todayImage9" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:id="@+id/todayImage10"
                         style="@style/BrowseImageView"
-                        android:scaleType="centerCrop"
                         android:layout_margin="10dp"
+                        android:scaleType="centerCrop"
 
                         />
+
                     <TextView
-                        style="@style/BrowseTextView"
                         android:id="@+id/todayTextView10"
-                        android:layout_below="@id/todayImage10"
-                        />
+                        style="@style/BrowseTextView"
+                        android:layout_below="@id/todayImage10" />
                 </RelativeLayout>
 
             </LinearLayout>

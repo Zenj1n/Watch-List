@@ -10,7 +10,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SearchView;
@@ -31,7 +30,7 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
         super.onCreate(savedInstanceState);
         super.replaceContentLayout(R.layout.activity_watchlist);
 
-        mViewPager= (ViewPager) findViewById(R.id.wl_pager);
+        mViewPager = (ViewPager) findViewById(R.id.wl_pager);
         mViewPager.setOffscreenPageLimit(3);
         mViewPager.setAdapter(new WL_myAdapter(getSupportFragmentManager()));
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -48,7 +47,6 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
             public void onPageScrollStateChanged(int state) {
             }
         });
-
 
 
         mActionBar = getActionBar();
@@ -92,10 +90,10 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
         if (id == R.id.action_settings) {
             return true;
         }
-        if (id == R.id.action_search){
+        if (id == R.id.action_search) {
         }
-        if (id == R.id.action_refresh){
-            
+        if (id == R.id.action_refresh) {
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -116,20 +114,23 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
     }
 }
 
-class WL_myAdapter extends FragmentPagerAdapter
-{
+class WL_myAdapter extends FragmentPagerAdapter {
     public WL_myAdapter(FragmentManager fm) {
         super(fm);
     }
+
     @Override
     public Fragment getItem(int fragment_position) {
         Fragment fragment = null;
-        switch (fragment_position){
-            case 0: fragment = new WL_Fragment_a();
+        switch (fragment_position) {
+            case 0:
+                fragment = new WL_Fragment_a();
                 break;
-            case 1: fragment = new WL_Fragment_b();
+            case 1:
+                fragment = new WL_Fragment_b();
                 break;
-            case 2: fragment = new WL_Fragment_c();
+            case 2:
+                fragment = new WL_Fragment_c();
                 break;
         }
         return fragment;

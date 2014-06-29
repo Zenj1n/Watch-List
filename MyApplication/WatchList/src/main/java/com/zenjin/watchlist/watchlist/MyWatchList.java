@@ -21,7 +21,6 @@ import com.zenjin.watchlist.watchlist.model.NavDrawerItem;
 import java.util.ArrayList;
 
 
-
 public class MyWatchList extends BaseActivity {
 
     private DrawerLayout mDrawerLayout;
@@ -85,52 +84,6 @@ public class MyWatchList extends BaseActivity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
 
-
-    private class SlideMenuClickListener implements
-            ListView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position,
-                                long id) {
-            Intent launchIntent = null;
-            switch (position) {
-                case 0:
-                    launchIntent = new Intent(getApplicationContext(), WatchlistActivity.class);
-                    launchIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK
-                        | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                    mDrawerLayout.closeDrawer(mDrawerList);
-                    break;
-                case 1:
-                    Toast.makeText(getApplicationContext(),"Feature not available yet",Toast.LENGTH_SHORT).show();
-                    mDrawerLayout.closeDrawer(mDrawerList);
-                    break;
-                case 2:
-                    Toast.makeText(getApplicationContext(),"Feature not available yet",Toast.LENGTH_SHORT).show();
-                    mDrawerLayout.closeDrawer(mDrawerList);
-                    break;
-                case 3:
-                    launchIntent = new Intent(getApplicationContext(), HomeActivity.class);
-                    launchIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                    mDrawerLayout.closeDrawer(mDrawerList);
-                    break;
-                case 4:
-                    Toast.makeText(getApplicationContext(),"Feature not available yet",Toast.LENGTH_SHORT).show();
-                    mDrawerLayout.closeDrawer(mDrawerList);
-                    break;
-                case 5:
-                    ParseUser.logOut();
-                    Intent intent3 = new Intent(MyWatchList.this, MainActivity.class);
-                    intent3.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent3);
-                    break;
-            }
-            if (launchIntent == null) {
-                mDrawerLayout.closeDrawer(mDrawerList);
-                return;
-            }
-            startActivity(launchIntent);
-        }
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -151,7 +104,6 @@ public class MyWatchList extends BaseActivity {
         }
     }
 
-
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
@@ -165,7 +117,6 @@ public class MyWatchList extends BaseActivity {
         getActionBar().setTitle(mTitle);
     }
 
-
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -176,5 +127,50 @@ public class MyWatchList extends BaseActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    private class SlideMenuClickListener implements
+            ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position,
+                                long id) {
+            Intent launchIntent = null;
+            switch (position) {
+                case 0:
+                    launchIntent = new Intent(getApplicationContext(), WatchlistActivity.class);
+                    launchIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK
+                            | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    mDrawerLayout.closeDrawer(mDrawerList);
+                    break;
+                case 1:
+                    Toast.makeText(getApplicationContext(), "Feature not available yet", Toast.LENGTH_SHORT).show();
+                    mDrawerLayout.closeDrawer(mDrawerList);
+                    break;
+                case 2:
+                    Toast.makeText(getApplicationContext(), "Feature not available yet", Toast.LENGTH_SHORT).show();
+                    mDrawerLayout.closeDrawer(mDrawerList);
+                    break;
+                case 3:
+                    launchIntent = new Intent(getApplicationContext(), HomeActivity.class);
+                    launchIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    mDrawerLayout.closeDrawer(mDrawerList);
+                    break;
+                case 4:
+                    Toast.makeText(getApplicationContext(), "Feature not available yet", Toast.LENGTH_SHORT).show();
+                    mDrawerLayout.closeDrawer(mDrawerList);
+                    break;
+                case 5:
+                    ParseUser.logOut();
+                    Intent intent3 = new Intent(MyWatchList.this, MainActivity.class);
+                    intent3.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent3);
+                    break;
+            }
+            if (launchIntent == null) {
+                mDrawerLayout.closeDrawer(mDrawerList);
+                return;
+            }
+            startActivity(launchIntent);
+        }
     }
 }

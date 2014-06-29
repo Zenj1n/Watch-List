@@ -14,18 +14,6 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
  * Created by Fabian on 27-6-2014.
  */
 public class UniversalImageLoader extends Application {
-    @Override
-    public void onCreate() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
-            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectAll().penaltyDialog().build());
-            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyDeath().build());
-        }
-
-        super.onCreate();
-
-        initImageLoader(getApplicationContext());
-    }
-
     public static void initImageLoader(Context context) {
         // This configuration tuning is custom. You can tune every option, you may tune some of them,
         // or you can create default configuration by
@@ -40,5 +28,17 @@ public class UniversalImageLoader extends Application {
                 .build();
         // Initialize ImageLoader with configuration.
         ImageLoader.getInstance().init(config);
+    }
+
+    @Override
+    public void onCreate() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectAll().penaltyDialog().build());
+            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyDeath().build());
+        }
+
+        super.onCreate();
+
+        initImageLoader(getApplicationContext());
     }
 }

@@ -20,7 +20,8 @@ public class SignUpOrLoginInActivity extends Activity {
             }
         });
     }
-    public void onClickLogin(View v){
+
+    public void onClickLogin(View v) {
         startActivity(new Intent(SignUpOrLoginInActivity.this, LoginActivity.class));
     }
 
