@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -23,6 +24,7 @@ import android.widget.Toast;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseObject;
@@ -543,6 +545,8 @@ public class InfoPage extends Activity {
                 DisplayImageOptions options = new DisplayImageOptions.Builder()
                         .cacheOnDisk(true)
                         .cacheInMemory(true)
+                        .bitmapConfig(Bitmap.Config.RGB_565)
+                        .imageScaleType(ImageScaleType.EXACTLY)
                         .build();
                 // Storing  JSON item in a Variable
                 //int Seasons = allSeasons.getInt(TAG_SEASONS);
@@ -572,10 +576,6 @@ public class InfoPage extends Activity {
                     TGenres.setText(test4);
                     Tplot.setText(PlotMovie);
                     TStatus.setText(Status);
-
-                    /*new DownloadImageTask((ImageView) findViewById(R.id.Image))
-                            .execute(jsonArray.getJSONObject(0).getString(TAG_IMAGE));
-                            */
 
                     imageLoader.displayImage(Image, (ImageView) findViewById(R.id.Image), options);
                 } else {

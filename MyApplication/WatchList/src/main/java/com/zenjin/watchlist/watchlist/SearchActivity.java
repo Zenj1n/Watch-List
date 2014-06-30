@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -131,8 +132,9 @@ public class SearchActivity extends Activity {
                             Intent intent;
                             intent = new Intent(SearchActivity.this, InfoPage.class);
                             String word2 = searchlist.get(+position).get("title");
-                            String traktWord = word2.replaceAll(" ", "-");
-                            intent.putExtra("trakt", traktWord);
+                            String traktWord = word2.replaceAll("[ ]", "-");
+                            String traktword2 = traktWord.replaceAll("[' : ( ) ,]", "");
+                            intent.putExtra("trakt", traktword2);
 
                             startActivity(intent);
                         }

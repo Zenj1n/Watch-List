@@ -25,6 +25,9 @@ public class UniversalImageLoader extends Application {
                 .diskCacheFileNameGenerator(new Md5FileNameGenerator())
                 .tasksProcessingOrder(QueueProcessingType.LIFO)
                 .writeDebugLogs() // Remove for release app
+                .threadPoolSize(5)
+                .diskCacheExtraOptions(480, 320, null)
+                .denyCacheImageMultipleSizesInMemory()
                 .build();
         // Initialize ImageLoader with configuration.
         ImageLoader.getInstance().init(config);

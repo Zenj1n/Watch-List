@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseObject;
@@ -99,8 +100,9 @@ public class WL_Fragment_b extends Fragment {
                     String titleSerie = java.net.URLEncoder.encode(titleSerieRaw);
 
                     String word2 = (String) b_titlelist.get(i);
-                    String traktWord = word2.replaceAll(" ", "-");
-                    intent.putExtra("trakt", traktWord);
+                    String traktWord = word2.replaceAll("[ ]", "-");
+                    String traktword2 = traktWord.replaceAll("[' : ( ) ,]", "");
+                    intent.putExtra("trakt", traktword2);
 
                     intent.putExtra(EXTRA_MESSAGE, titleSerie);
                     startActivity(intent);
@@ -261,6 +263,8 @@ public class WL_Fragment_b extends Fragment {
             DisplayImageOptions options = new DisplayImageOptions.Builder()
                     .cacheOnDisk(true)
                     .cacheInMemory(true)
+                    .bitmapConfig(Bitmap.Config.RGB_565)
+                    .imageScaleType(ImageScaleType.EXACTLY)
                     .build();
 
             if (check == "No series added") {
