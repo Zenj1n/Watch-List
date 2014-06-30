@@ -91,6 +91,12 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
             Intent intent = new Intent(WatchlistActivity.this, SearchActivity.class);
             startActivity(intent);
         }
+        if (id == R.id.action_refresh){
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
+            this.overridePendingTransition(0,0);
+        }
         return super.onOptionsItemSelected(item);
     }
 

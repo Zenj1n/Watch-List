@@ -106,8 +106,8 @@ public class MyWatchList extends BaseActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-        menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
+        /*boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+        menu.findItem(R.id.action_settings).setVisible(!drawerOpen);*/
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -171,6 +171,7 @@ public class MyWatchList extends BaseActivity {
                 return;
             }
             startActivity(launchIntent);
+            overridePendingTransition(0,0);
         }
     }
 }
