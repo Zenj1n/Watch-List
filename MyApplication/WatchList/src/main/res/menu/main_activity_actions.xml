@@ -9,11 +9,6 @@
         android:showAsAction="ifRoom"
         android:title="@string/action_search" />
 
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        yourapp:showAsAction="never" />
 
 
 </menu>
