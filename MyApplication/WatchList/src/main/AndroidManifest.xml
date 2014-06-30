@@ -1,71 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zenjin.watchlist.watchlist" >
-
-
+    package="com.zenjin.watchlist.watchlist">
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/WatchListTheme"
-        >
+        android:theme="@style/WatchListTheme">
+        <meta-data
+            android:name="android.app.default_searchable"
+            android:value=".SearchActivity" />
 
         <activity
             android:name=".WatchlistActivity"
-            android:label="@string/wl_title" >
-        </activity>
+            android:label="@string/wl_title">
+
+            </activity>
         <activity
             android:name=".MyWatchList"
-            android:label="@string/title_activity_main_main"
-            android:hardwareAccelerated="true">
-        </activity>
+            android:hardwareAccelerated="true"
+            android:label="@string/title_activity_main_main">
+
+            </activity>
         <activity
             android:name=".InfoPage"
-            android:label="@string/title_activity_info_page" >
+            android:label="@string/title_activity_info_page">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.zenjin.watchlist.watchlist.WatchlistActivity" />
         </activity>
         <activity
             android:name=".RegistreerActivity"
-            android:label="@string/title_activity_login" >
-        </activity>
+            android:label="@string/title_activity_login">
+
+            </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_dispatch" >
+            android:label="@string/title_activity_dispatch">
             <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".SignUpOrLoginInActivity"
-            android:label="@string/title_activity_signup_or_login" >
-        </activity>
+            android:label="@string/title_activity_signup_or_login">
+
+            </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login" >
-        </activity>
+            android:label="@string/title_activity_login">
+
+            </activity>
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_browse" >
+            android:label="@string/title_activity_browse">
 
-        </activity>
+            </activity>
         <activity
             android:name=".SearchActivity"
             android:label="@string/title_activity_search"
-            android:parentActivityName=".WatchlistActivity">
+            android:parentActivityName="com.zenjin.watchlist.watchlist.WatchlistActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.zenjin.watchlist.watchlist.WatchlistActivity" />
         </activity>
     </application>
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
 
 </manifest>
 

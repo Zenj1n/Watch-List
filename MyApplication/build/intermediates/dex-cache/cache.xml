@@ -2,37 +2,28 @@
 <pre-dex-items>
 
     <item
-<<<<<<< HEAD
-        dex="C:\Users\Fabian\Documents\GitHub\Watch-List\MyApplication\WatchList\build\intermediates\pre-dexed\debug\Parse-1.5.1-eb6de47e261fefbff2ec757b12e3bf03e2fc0af1.jar"
-        jar="C:\Users\Fabian\Documents\GitHub\Watch-List\MyApplication\WatchList\libs\Parse-1.5.1\Parse-1.5.1.jar"
-=======
-        dex="C:\Users\hoye\Documents\GitHub\Watch-List\MyApplication\WatchList\build\intermediates\pre-dexed\debug\classes-07688033cf7cda99b0934d52d98ee3814b98946f.jar"
-        jar="C:\Users\hoye\Documents\GitHub\Watch-List\MyApplication\build\intermediates\exploded-aar\com.android.support\appcompat-v7\19.1.0\classes.jar"
->>>>>>> origin/hoye4
+        dex="E:\Git Hub Repositories\Watch-List\MyApplication\WatchList\build\intermediates\pre-dexed\debug\classes-8ecd7da5b4d156cd91091b1424ec53a1c3394054.jar"
+        jar="E:\Git Hub Repositories\Watch-List\MyApplication\build\intermediates\exploded-aar\com.android.support\appcompat-v7\19.1.0\classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28"/>
+    <item
+        dex="E:\Git Hub Repositories\Watch-List\MyApplication\WatchList\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.2-with-sources-5dd7bcdad8259579b4f484976392a6234edcbe76.jar"
+        jar="E:\Git Hub Repositories\Watch-List\MyApplication\WatchList\libs\universal-image-loader-1.9.2-with-sources.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="111169c43b8a601f571585f75d998e6027e48ff4"/>
+    <item
+        dex="E:\Git Hub Repositories\Watch-List\MyApplication\WatchList\build\intermediates\pre-dexed\debug\Parse-1.5.1-69d8083314a1fcd72bc3da3ad48ec4c7315705a0.jar"
+        jar="E:\Git Hub Repositories\Watch-List\MyApplication\WatchList\libs\Parse-1.5.1\Parse-1.5.1.jar"
         jumboMode="false"
         revision="19.1.0"
         sha1="3d645417e7780d44f32e29a3ec6b729b75aef26c"/>
     <item
-<<<<<<< HEAD
-        dex="C:\Users\Fabian\Documents\GitHub\Watch-List\MyApplication\WatchList\build\intermediates\pre-dexed\debug\support-v4-19.1.0-2c864f6adba546daee3b26660472b6caec896c1b.jar"
-        jar="E:\Program Files\Android Studio\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
-=======
-        dex="C:\Users\hoye\Documents\GitHub\Watch-List\MyApplication\WatchList\build\intermediates\pre-dexed\debug\support-v4-19.1.0-e311e493b238b75da4095bd5ee7b69d76d73dc42.jar"
-        jar="C:\Program Files (x86)\Android\android-studio\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
->>>>>>> origin/hoye4
+        dex="E:\Git Hub Repositories\Watch-List\MyApplication\WatchList\build\intermediates\pre-dexed\debug\support-v4-19.1.0-42c61c4d77c9c8d60ef1235aafe0c3bee2c3d9a6.jar"
+        jar="E:\Program files\Android Studio\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
         jumboMode="false"
         revision="19.1.0"
         sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>
-    <item
-<<<<<<< HEAD
-        dex="C:\Users\Fabian\Documents\GitHub\Watch-List\MyApplication\WatchList\build\intermediates\pre-dexed\debug\classes-ad48babd60658615c05eabb7d5f36b5374beb5ae.jar"
-        jar="C:\Users\Fabian\Documents\GitHub\Watch-List\MyApplication\build\intermediates\exploded-aar\com.android.support\appcompat-v7\19.1.0\classes.jar"
-=======
-        dex="C:\Users\hoye\Documents\GitHub\Watch-List\MyApplication\WatchList\build\intermediates\pre-dexed\debug\Parse-1.5.1-39aca034cbf070a4784b7cc4cad9b13934135f80.jar"
-        jar="C:\Users\hoye\Documents\GitHub\Watch-List\MyApplication\WatchList\libs\Parse-1.5.1\Parse-1.5.1.jar"
->>>>>>> origin/hoye4
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28"/>
 
 </pre-dex-items>

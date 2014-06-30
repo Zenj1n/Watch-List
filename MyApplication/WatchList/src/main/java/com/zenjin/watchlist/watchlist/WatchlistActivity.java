@@ -2,6 +2,8 @@ package com.zenjin.watchlist.watchlist;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +12,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SearchView;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 /**
  * Created by Rinesh Ramadhin on 16-05-2014 13:00.
@@ -21,13 +27,15 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
     ViewPager mViewPager;
     ActionBar mActionBar;
     Intent intent;
+    protected ImageLoader imageLoader = ImageLoader.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.replaceContentLayout(R.layout.activity_watchlist);
+        imageLoader.init(ImageLoaderConfiguration.createDefault(getBaseContext()));
 
-        mViewPager= (ViewPager) findViewById(R.id.wl_pager);
+        mViewPager = (ViewPager) findViewById(R.id.wl_pager);
         mViewPager.setOffscreenPageLimit(3);
         mViewPager.setAdapter(new WL_myAdapter(getSupportFragmentManager()));
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -44,7 +52,6 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
             public void onPageScrollStateChanged(int state) {
             }
         });
-
 
 
         mActionBar = getActionBar();
@@ -80,22 +87,9 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
         if (id == R.id.action_settings) {
             return true;
         }
-        if (id == R.id.action_search){
-            Intent intent = new Intent (WatchlistActivity.this,SearchActivity.class);
+        if (id == R.id.search) {
+            Intent intent = new Intent(WatchlistActivity.this, SearchActivity.class);
             startActivity(intent);
-        }
-        if (id == R.id.action_refresh){
-
-            int x = mViewPager.getCurrentItem();
-            switch (x){
-                case 0: // this;
-                    break;
-                case 1: // this;
-                    break;
-                case 2: // this;
-                    break;
-            }
-
         }
         return super.onOptionsItemSelected(item);
     }
@@ -116,20 +110,23 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
     }
 }
 
-class WL_myAdapter extends FragmentPagerAdapter
-{
+class WL_myAdapter extends FragmentPagerAdapter {
     public WL_myAdapter(FragmentManager fm) {
         super(fm);
     }
+
     @Override
     public Fragment getItem(int fragment_position) {
         Fragment fragment = null;
-        switch (fragment_position){
-            case 0: fragment = new WL_Fragment_a();
+        switch (fragment_position) {
+            case 0:
+                fragment = new WL_Fragment_a();
                 break;
-            case 1: fragment = new WL_Fragment_b();
+            case 1:
+                fragment = new WL_Fragment_b();
                 break;
-            case 2: fragment = new WL_Fragment_c();
+            case 2:
+                fragment = new WL_Fragment_c();
                 break;
         }
         return fragment;

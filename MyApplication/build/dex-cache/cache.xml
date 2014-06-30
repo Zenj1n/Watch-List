@@ -4,20 +4,14 @@
     <item
         dex="C:\Users\Fabian\Documents\GitHub\Watch-List\MyApplication\WatchList\build\pre-dexed\debug\Parse-1.5.1-eb6de47e261fefbff2ec757b12e3bf03e2fc0af1.jar"
         jar="C:\Users\Fabian\Documents\GitHub\Watch-List\MyApplication\WatchList\libs\Parse-1.5.1\Parse-1.5.1.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="3d645417e7780d44f32e29a3ec6b729b75aef26c"/>
+        jumboMode="false" revision="19.1.0" sha1="3d645417e7780d44f32e29a3ec6b729b75aef26c" />
     <item
         dex="C:\Users\Fabian\Documents\GitHub\Watch-List\MyApplication\WatchList\build\pre-dexed\debug\classes-f4d2b3a72a17ab519f5dc9d018dbde36642ae58a.jar"
         jar="C:\Users\Fabian\Documents\GitHub\Watch-List\MyApplication\build\exploded-aar\com.android.support\appcompat-v7\19.1.0\classes.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28"/>
+        jumboMode="false" revision="19.1.0" sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28" />
     <item
         dex="C:\Users\Fabian\Documents\GitHub\Watch-List\MyApplication\WatchList\build\pre-dexed\debug\support-v4-19.1.0-2c864f6adba546daee3b26660472b6caec896c1b.jar"
         jar="E:\Program Files\Android Studio\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>
+        jumboMode="false" revision="19.1.0" sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67" />
 
 </pre-dex-items>

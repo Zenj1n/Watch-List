@@ -2,33 +2,27 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#5BC0EB"
-    >
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="10dp"
-    android:background="#FFFFFF"
-    >
+    android:background="#5BC0EB">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
 
-        >
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
            >
 
             <TextView
                 style="@style/TitleView"
                 android:gravity="left"
-                android:layout_marginLeft="30dp"
                 android:id="@+id/title"
+                android:paddingLeft="20dp"
                 android:textSize="30sp"
-
                 />
 
             <ImageView
@@ -73,101 +67,98 @@
                 android:layout_marginLeft="20dp"
                 />
 
+
+            >
+
+           </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/Tgenre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="20dp"
+                android:text="@string/genre"
+                android:textSize="18sp" />
+
+
+            <TextView
+                android:id="@+id/Tgenres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_toRightOf="@+id/Tgenre" />
+
+            <TextView
+                android:id="@+id/TStatusW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:paddingLeft="20dp"
+                android:text="@string/statusw"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/TStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+
+                android:layout_marginTop="50dp"
+                android:layout_toRightOf="@+id/TStatusW" />
+
+            <TextView
+                android:id="@+id/TRatingW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:paddingLeft="20dp"
+                android:text="@string/rating"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/TRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="77dp"
+                android:layout_toRightOf="@+id/TRatingW"
+                android:maxLength="3" />
+
+            <TextView
+                android:id="@+id/TProgressW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="93dp"
+                android:paddingLeft="20dp"
+                android:text="@string/progress"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/TProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="98dp"
+                android:layout_toRightOf="@+id/TProgressW" />
+
         </RelativeLayout>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/plot"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/Tgenre"
-            android:text="@string/genre"
-            android:paddingLeft="20dp"
-            android:paddingTop="20dp"
-            android:textSize="18sp"/>
+            android:padding="20dp" />
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/Tgenres"
-
-            android:layout_toRightOf="@+id/Tgenre"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="25dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/TStatusW"
-            android:text="@string/statusw"
-            android:paddingLeft="20dp"
-            android:layout_marginTop="45dp"
-            android:textSize="18sp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/TStatus"
-            android:layout_toRightOf="@+id/TStatusW"
-
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="50dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/TRatingW"
-            android:text="@string/rating"
-            android:paddingLeft="20dp"
-            android:layout_marginTop="70dp"
-            android:textSize="18sp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/TRating"
-            android:maxLength="3"
-            android:layout_toRightOf="@+id/TRatingW"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="77dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/TProgressW"
-            android:text="@string/progress"
-            android:paddingLeft="20dp"
-            android:layout_marginTop="93dp"
-            android:textSize="18sp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/TProgress"
-            android:layout_toRightOf="@+id/TProgressW"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="98dp"
-            />
-
-    </RelativeLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:id="@+id/plot"
-        />
-
-
-</LinearLayout>
+    </LinearLayout>
 
 
 </ScrollView>
