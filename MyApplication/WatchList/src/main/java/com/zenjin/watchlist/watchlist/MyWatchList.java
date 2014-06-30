@@ -171,7 +171,7 @@ public class MyWatchList extends BaseActivity {
                 return;
             }
             startActivity(launchIntent);
-            overridePendingTransition(0,0);
+            overridePendingTransition(0, 0);
         }
     }
 }

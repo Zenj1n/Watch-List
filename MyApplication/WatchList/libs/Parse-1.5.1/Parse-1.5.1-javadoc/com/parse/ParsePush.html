@@ -18,6 +18,7 @@ function windowTitle()
     }
 }
 
+
     </SCRIPT>
     <NOSCRIPT>
     </NOSCRIPT>
@@ -79,6 +80,7 @@ function windowTitle()
     document.writeln('<A HREF="../../allclasses-noframe.html"><B>All Classes</B></A>');
   }
   //-->
+
 
             </SCRIPT>
             <NOSCRIPT>
@@ -161,229 +163,234 @@ function windowTitle()
 
 <A NAME="method_summary"><!-- --></A>
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
-    <TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
-        <TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
-            <B>Method Summary</B></FONT></TH>
-    </TR>
-    <TR BGCOLOR="white" CLASS="TableRowColor">
-        <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-            <CODE>&nbsp;void</CODE></FONT></TD>
-        <TD><CODE><B><A HREF="../../com/parse/ParsePush.html#clearExpiration()">clearExpiration</A></B>()</CODE>
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+    <TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+        <B>Method Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+    <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+        <CODE>&nbsp;void</CODE></FONT></TD>
+    <TD><CODE><B><A HREF="../../com/parse/ParsePush.html#clearExpiration()">clearExpiration</A></B>()</CODE>
 
-            <BR>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Clears both expiration
-            values, indicating that the notification should never expire.
-        </TD>
-    </TR>
-    <TR BGCOLOR="white" CLASS="TableRowColor">
-        <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-            <CODE>&nbsp;void</CODE></FONT></TD>
-        <TD><CODE><B><A HREF="../../com/parse/ParsePush.html#send()">send</A></B>()</CODE>
+        <BR>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Clears both expiration
+        values, indicating that the notification should never expire.
+    </TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+    <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+        <CODE>&nbsp;void</CODE></FONT></TD>
+    <TD><CODE><B><A HREF="../../com/parse/ParsePush.html#send()">send</A></B>()</CODE>
 
-            <BR>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sends this push notification
-            while blocking this thread until the push notification has
-            successfully reached the Parse servers.
-        </TD>
-    </TR>
-    <TR BGCOLOR="white" CLASS="TableRowColor">
-        <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-            <CODE>static&nbsp;void</CODE></FONT></TD>
-        <TD><CODE><B><A
-                HREF="../../com/parse/ParsePush.html#sendDataInBackground(org.json.JSONObject, com.parse.ParseQuery)">sendDataInBackground</A></B>(<A
-                target="_top"
-                HREF="http://developer.android.com/reference/org/json/JSONObject.html?is-external=true"
-                title="class or interface in org.json">JSONObject</A>&nbsp;data,
-            <A HREF="../../com/parse/ParseQuery.html"
-               title="class in com.parse">ParseQuery</A>&lt;<A
-                    HREF="../../com/parse/ParseInstallation.html" title="class in com.parse">ParseInstallation</A>&gt;&nbsp;query)</CODE>
-
-            <BR>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A helper method to concisely
-            send a push to a query.
-        </TD>
-    </TR>
-    <TR BGCOLOR="white" CLASS="TableRowColor">
-        <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-            <CODE>static&nbsp;void</CODE></FONT></TD>
-        <TD><CODE><B><A
-                HREF="../../com/parse/ParsePush.html#sendDataInBackground(org.json.JSONObject, com.parse.ParseQuery, com.parse.SendCallback)">sendDataInBackground</A></B>(<A
-                target="_top"
-                HREF="http://developer.android.com/reference/org/json/JSONObject.html?is-external=true"
-                title="class or interface in org.json">JSONObject</A>&nbsp;data,
-            <A HREF="../../com/parse/ParseQuery.html"
-               title="class in com.parse">ParseQuery</A>&lt;<A
-                    HREF="../../com/parse/ParseInstallation.html" title="class in com.parse">ParseInstallation</A>&gt;&nbsp;query,
-            <A HREF="../../com/parse/SendCallback.html" title="class in com.parse">SendCallback</A>&nbsp;callback)</CODE>
-
-            <BR>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A helper method to concisely
-            send a push to a query.
-        </TD>
-    </TR>
-    <TR BGCOLOR="white" CLASS="TableRowColor">
-        <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-            <CODE>&nbsp;void</CODE></FONT></TD>
-        <TD><CODE><B><A
-                HREF="../../com/parse/ParsePush.html#sendInBackground()">sendInBackground</A></B>()</CODE>
-
-            <BR>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sends this push notification
-            in a background thread.
-        </TD>
-    </TR>
-    <TR BGCOLOR="white" CLASS="TableRowColor">
-        <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-            <CODE>&nbsp;void</CODE></FONT></TD>
-        <TD><CODE><B><A
-                HREF="../../com/parse/ParsePush.html#sendInBackground(com.parse.SendCallback)">sendInBackground</A></B>(<A
-                HREF="../../com/parse/SendCallback.html" title="class in com.parse">SendCallback</A>&nbsp;callback)</CODE>
-
-            <BR>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sends this push notification
-            in a background thread.
-        </TD>
-    </TR>
-    <TR BGCOLOR="white" CLASS="TableRowColor">
-        <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-            <CODE>static&nbsp;void</CODE></FONT></TD>
-        <TD><CODE><B><A
-                HREF="../../com/parse/ParsePush.html#sendMessageInBackground(java.lang.String, com.parse.ParseQuery)">sendMessageInBackground</A></B>(<A
-                target="_top"
-                HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true"
-                title="class or interface in java.lang">String</A>&nbsp;message,
-            <A HREF="../../com/parse/ParseQuery.html"
-               title="class in com.parse">ParseQuery</A>&lt;<A
-                    HREF="../../com/parse/ParseInstallation.html" title="class in com.parse">ParseInstallation</A>&gt;&nbsp;query)</CODE>
-
-            <BR>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A helper method to concisely
-            send a push message to a query.
-        </TD>
-    </TR>
-    <TR BGCOLOR="white" CLASS="TableRowColor">
-        <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-            <CODE>static&nbsp;void</CODE></FONT></TD>
-        <TD><CODE><B><A
-                HREF="../../com/parse/ParsePush.html#sendMessageInBackground(java.lang.String, com.parse.ParseQuery, com.parse.SendCallback)">sendMessageInBackground</A></B>(<A
-                target="_top"
-                HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true"
-                title="class or interface in java.lang">String</A>&nbsp;message,
-            <A HREF="../../com/parse/ParseQuery.html"
-               title="class in com.parse">ParseQuery</A>&lt;<A
-                    HREF="../../com/parse/ParseInstallation.html" title="class in com.parse">ParseInstallation</A>&gt;&nbsp;query,
-            <A HREF="../../com/parse/SendCallback.html" title="class in com.parse">SendCallback</A>&nbsp;callback)</CODE>
-
-            <BR>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A helper method to concisely
-            send a push message to a query.
-        </TD>
-    </TR>
-    <TR BGCOLOR="white" CLASS="TableRowColor">
-        <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-            <CODE>&nbsp;void</CODE></FONT></TD>
-        <TD><CODE><B><A HREF="../../com/parse/ParsePush.html#setChannel(java.lang.String)">setChannel</A></B>(<A
-                target="_top"
-                HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true"
-                title="class or interface in java.lang">String</A>&nbsp;channel)</CODE>
-
-            <BR>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the channel on which
-            this push notification will be sent.
-        </TD>
-    </TR>
-    <TR BGCOLOR="white" CLASS="TableRowColor">
-        <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-            <CODE>&nbsp;void</CODE></FONT></TD>
-        <TD><CODE><B><A HREF="../../com/parse/ParsePush.html#setChannels(java.util.Collection)">setChannels</A></B>(<A
-                target="_top"
-                HREF="http://developer.android.com/reference/java/util/Collection.html?is-external=true"
-                title="class or interface in java.util">Collection</A>&lt;<A target="_top"
-                                                                             HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true"
-                                                                             title="class or interface in java.lang">String</A>&gt;&nbsp;channels)</CODE>
-
-            <BR>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the collection of
-            channels on which this push notification will be sent.
-        </TD>
-    </TR>
-    <TR BGCOLOR="white" CLASS="TableRowColor">
-        <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-            <CODE>&nbsp;void</CODE></FONT></TD>
-        <TD><CODE><B><A
-                HREF="../../com/parse/ParsePush.html#setData(org.json.JSONObject)">setData</A></B>(<A
-                target="_top"
-                HREF="http://developer.android.com/reference/org/json/JSONObject.html?is-external=true"
-                title="class or interface in org.json">JSONObject</A>&nbsp;data)</CODE>
-
-            <BR>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the entire data of the
-            push message.
-        </TD>
-    </TR>
-    <TR BGCOLOR="white" CLASS="TableRowColor">
-        <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-            <CODE>&nbsp;void</CODE></FONT></TD>
-        <TD><CODE><B><A HREF="../../com/parse/ParsePush.html#setExpirationTime(long)">setExpirationTime</A></B>(long&nbsp;time)</CODE>
-
-            <BR>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets a UNIX epoch timestamp
-            at which this notification should expire, in seconds (UTC).
-        </TD>
-    </TR>
-    <TR BGCOLOR="white" CLASS="TableRowColor">
-        <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-            <CODE>&nbsp;void</CODE></FONT></TD>
-        <TD><CODE><B><A HREF="../../com/parse/ParsePush.html#setExpirationTimeInterval(long)">setExpirationTimeInterval</A></B>(long&nbsp;timeInterval)</CODE>
-
-            <BR>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the time interval after
-            which this notification should expire, in seconds.
-        </TD>
-    </TR>
-    <TR BGCOLOR="white" CLASS="TableRowColor">
-        <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-            <CODE>&nbsp;void</CODE></FONT></TD>
-        <TD><CODE><B><A HREF="../../com/parse/ParsePush.html#setMessage(java.lang.String)">setMessage</A></B>(<A
-                target="_top"
-                HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true"
-                title="class or interface in java.lang">String</A>&nbsp;message)</CODE>
-
-            <BR>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the message that will
-            be shown in the notification.
-        </TD>
-    </TR>
-    <TR BGCOLOR="white" CLASS="TableRowColor">
-        <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-            <CODE>&nbsp;void</CODE></FONT></TD>
-        <TD><CODE><B><A HREF="../../com/parse/ParsePush.html#setPushToAndroid(boolean)">setPushToAndroid</A></B>(boolean&nbsp;pushToAndroid)</CODE>
-
-            <BR>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;
-        </TD>
-    </TR>
-    <TR BGCOLOR="white" CLASS="TableRowColor">
-        <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-            <CODE>&nbsp;void</CODE></FONT></TD>
-        <TD><CODE><B><A HREF="../../com/parse/ParsePush.html#setPushToIOS(boolean)">setPushToIOS</A></B>(boolean&nbsp;pushToIOS)</CODE>
-
-            <BR>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;
-        </TD>
-    </TR>
-    <TR BGCOLOR="white" CLASS="TableRowColor">
-        <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-            <CODE>&nbsp;void</CODE></FONT></TD>
-        <TD><CODE><B><A HREF="../../com/parse/ParsePush.html#setQuery(com.parse.ParseQuery)">setQuery</A></B>(<A
-                HREF="../../com/parse/ParseQuery.html" title="class in com.parse">ParseQuery</A>&lt;<A
+        <BR>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sends this push notification
+        while blocking this thread until the push notification has
+        successfully reached the Parse servers.
+    </TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+    <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+        <CODE>static&nbsp;void</CODE></FONT></TD>
+    <TD><CODE><B><A
+            HREF="../../com/parse/ParsePush.html#sendDataInBackground(org.json.JSONObject, com.parse.ParseQuery)">sendDataInBackground</A></B>(<A
+            target="_top"
+            HREF="http://developer.android.com/reference/org/json/JSONObject.html?is-external=true"
+            title="class or interface in org.json">JSONObject</A>&nbsp;data,
+        <A HREF="../../com/parse/ParseQuery.html"
+           title="class in com.parse">ParseQuery</A>&lt;<A
                 HREF="../../com/parse/ParseInstallation.html" title="class in com.parse">ParseInstallation</A>&gt;&nbsp;query)</CODE>
 
-            <BR>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the query for this push
-            for which this push notification will be sent.
-        </TD>
-    </TR>
+        <BR>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A helper method to concisely
+        send a push to a query.
+    </TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+    <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+        <CODE>static&nbsp;void</CODE></FONT></TD>
+    <TD><CODE><B><A
+            HREF="../../com/parse/ParsePush.html#sendDataInBackground(org.json.JSONObject, com.parse.ParseQuery, com.parse.SendCallback)">sendDataInBackground</A></B>(<A
+            target="_top"
+            HREF="http://developer.android.com/reference/org/json/JSONObject.html?is-external=true"
+            title="class or interface in org.json">JSONObject</A>&nbsp;data,
+        <A HREF="../../com/parse/ParseQuery.html"
+           title="class in com.parse">ParseQuery</A>&lt;<A
+                HREF="../../com/parse/ParseInstallation.html" title="class in com.parse">ParseInstallation</A>&gt;&nbsp;query,
+        <A HREF="../../com/parse/SendCallback.html" title="class in com.parse">SendCallback</A>&nbsp;callback)</CODE>
+
+        <BR>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A helper method to concisely
+        send a push to a query.
+    </TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+    <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+        <CODE>&nbsp;void</CODE></FONT></TD>
+    <TD><CODE><B><A
+            HREF="../../com/parse/ParsePush.html#sendInBackground()">sendInBackground</A></B>()</CODE>
+
+        <BR>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sends this push notification
+        in a background thread.
+    </TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+    <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+        <CODE>&nbsp;void</CODE></FONT></TD>
+    <TD><CODE><B><A
+            HREF="../../com/parse/ParsePush.html#sendInBackground(com.parse.SendCallback)">sendInBackground</A></B>(<A
+            HREF="../../com/parse/SendCallback.html" title="class in com.parse">SendCallback</A>&nbsp;callback)</CODE>
+
+        <BR>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sends this push notification
+        in a background thread.
+    </TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+    <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+        <CODE>static&nbsp;void</CODE></FONT></TD>
+    <TD><CODE><B><A
+            HREF="../../com/parse/ParsePush.html#sendMessageInBackground(java.lang.String, com.parse.ParseQuery)">sendMessageInBackground</A></B>(<A
+            target="_top"
+            HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true"
+            title="class or interface in java.lang">String</A>&nbsp;message,
+        <A HREF="../../com/parse/ParseQuery.html"
+           title="class in com.parse">ParseQuery</A>&lt;<A
+                HREF="../../com/parse/ParseInstallation.html" title="class in com.parse">ParseInstallation</A>&gt;&nbsp;query)</CODE>
+
+        <BR>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A helper method to concisely
+        send a push message to a query.
+    </TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+    <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+        <CODE>static&nbsp;void</CODE></FONT></TD>
+    <TD><CODE><B><A
+            HREF="../../com/parse/ParsePush.html#sendMessageInBackground(java.lang.String, com.parse.ParseQuery, com.parse.SendCallback)">sendMessageInBackground</A></B>(<A
+            target="_top"
+            HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true"
+            title="class or interface in java.lang">String</A>&nbsp;message,
+        <A HREF="../../com/parse/ParseQuery.html"
+           title="class in com.parse">ParseQuery</A>&lt;<A
+                HREF="../../com/parse/ParseInstallation.html" title="class in com.parse">ParseInstallation</A>&gt;&nbsp;query,
+        <A HREF="../../com/parse/SendCallback.html" title="class in com.parse">SendCallback</A>&nbsp;callback)</CODE>
+
+        <BR>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A helper method to concisely
+        send a push message to a query.
+    </TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+    <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+        <CODE>&nbsp;void</CODE></FONT></TD>
+    <TD><CODE><B><A
+            HREF="../../com/parse/ParsePush.html#setChannel(java.lang.String)">setChannel</A></B>(<A
+            target="_top"
+            HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true"
+            title="class or interface in java.lang">String</A>&nbsp;channel)</CODE>
+
+        <BR>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the channel on which
+        this push notification will be sent.
+    </TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+    <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+        <CODE>&nbsp;void</CODE></FONT></TD>
+    <TD><CODE><B><A HREF="../../com/parse/ParsePush.html#setChannels(java.util.Collection)">setChannels</A></B>(<A
+            target="_top"
+            HREF="http://developer.android.com/reference/java/util/Collection.html?is-external=true"
+            title="class or interface in java.util">Collection</A>&lt;<A target="_top"
+                                                                         HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true"
+                                                                         title="class or interface in java.lang">String</A>&gt;&nbsp;channels)</CODE>
+
+        <BR>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the collection of
+        channels on which this push notification will be sent.
+    </TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+    <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+        <CODE>&nbsp;void</CODE></FONT></TD>
+    <TD><CODE><B><A
+            HREF="../../com/parse/ParsePush.html#setData(org.json.JSONObject)">setData</A></B>(<A
+            target="_top"
+            HREF="http://developer.android.com/reference/org/json/JSONObject.html?is-external=true"
+            title="class or interface in org.json">JSONObject</A>&nbsp;data)</CODE>
+
+        <BR>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the entire data of the
+        push message.
+    </TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+    <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+        <CODE>&nbsp;void</CODE></FONT></TD>
+    <TD><CODE><B><A
+            HREF="../../com/parse/ParsePush.html#setExpirationTime(long)">setExpirationTime</A></B>(long&nbsp;time)</CODE>
+
+        <BR>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets a UNIX epoch timestamp
+        at which this notification should expire, in seconds (UTC).
+    </TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+    <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+        <CODE>&nbsp;void</CODE></FONT></TD>
+    <TD><CODE><B><A HREF="../../com/parse/ParsePush.html#setExpirationTimeInterval(long)">setExpirationTimeInterval</A></B>(long&nbsp;timeInterval)</CODE>
+
+        <BR>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the time interval after
+        which this notification should expire, in seconds.
+    </TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+    <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+        <CODE>&nbsp;void</CODE></FONT></TD>
+    <TD><CODE><B><A
+            HREF="../../com/parse/ParsePush.html#setMessage(java.lang.String)">setMessage</A></B>(<A
+            target="_top"
+            HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true"
+            title="class or interface in java.lang">String</A>&nbsp;message)</CODE>
+
+        <BR>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the message that will
+        be shown in the notification.
+    </TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+    <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+        <CODE>&nbsp;void</CODE></FONT></TD>
+    <TD><CODE><B><A
+            HREF="../../com/parse/ParsePush.html#setPushToAndroid(boolean)">setPushToAndroid</A></B>(boolean&nbsp;pushToAndroid)</CODE>
+
+        <BR>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;
+    </TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+    <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+        <CODE>&nbsp;void</CODE></FONT></TD>
+    <TD><CODE><B><A HREF="../../com/parse/ParsePush.html#setPushToIOS(boolean)">setPushToIOS</A></B>(boolean&nbsp;pushToIOS)</CODE>
+
+        <BR>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;
+    </TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+    <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+        <CODE>&nbsp;void</CODE></FONT></TD>
+    <TD><CODE><B><A
+            HREF="../../com/parse/ParsePush.html#setQuery(com.parse.ParseQuery)">setQuery</A></B>(<A
+            HREF="../../com/parse/ParseQuery.html" title="class in com.parse">ParseQuery</A>&lt;<A
+            HREF="../../com/parse/ParseInstallation.html" title="class in com.parse">ParseInstallation</A>&gt;&nbsp;query)</CODE>
+
+        <BR>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the query for this push
+        for which this push notification will be sent.
+    </TD>
+</TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_Object"><!-- --></A>
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
@@ -911,6 +918,7 @@ public void <B>sendInBackground</B>()</PRE>
     document.writeln('<A HREF="../../allclasses-noframe.html"><B>All Classes</B></A>');
   }
   //-->
+
 
             </SCRIPT>
             <NOSCRIPT>

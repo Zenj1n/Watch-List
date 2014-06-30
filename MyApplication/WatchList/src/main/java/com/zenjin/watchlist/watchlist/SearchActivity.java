@@ -5,7 +5,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,12 +20,7 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.parse.FindCallback;
 import com.parse.Parse;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
-import com.parse.ParseUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,7 +28,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 
 public class SearchActivity extends Activity {
@@ -46,7 +39,6 @@ public class SearchActivity extends Activity {
     protected EditText searchShowET;
     ArrayList<HashMap<String, String>> searchlist = new ArrayList<HashMap<String, String>>();
     protected ImageLoader imageLoader = ImageLoader.getInstance();
-
 
 
     private static final String TAG_TITLE = "title";
@@ -66,7 +58,7 @@ public class SearchActivity extends Activity {
         searchShowET.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH){
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     searchlist.clear();
                     new JSONParse().execute();
                 }
@@ -75,6 +67,7 @@ public class SearchActivity extends Activity {
             }
         });
     }
+
     private class JSONParse extends AsyncTask<String, String, JSONArray> {
         private ProgressDialog pDialog;
 
@@ -95,8 +88,8 @@ public class SearchActivity extends Activity {
         protected JSONArray doInBackground(String... args) {
             ServiceHandler jParser = new ServiceHandler();
             String searchword = searchShowET.getText().toString();
-            String searchword2 = searchword.replaceAll(" ","+");
-            String url = "http://api.trakt.tv/search/shows/390983740f2092270bc0fa267334db88/20140627/"+searchword2;
+            String searchword2 = searchword.replaceAll(" ", "+");
+            String url = "http://api.trakt.tv/search/shows/390983740f2092270bc0fa267334db88/20140627/" + searchword2;
             JSONArray jsonSearch = jParser.getJsonArray(url);
             JSONArray jsonArray = new JSONArray();
             jsonArray.put(jsonSearch);

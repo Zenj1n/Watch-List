@@ -2,8 +2,6 @@ package com.zenjin.watchlist.watchlist;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,7 +10,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.SearchView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -91,11 +88,11 @@ public class WatchlistActivity extends MyWatchList implements ActionBar.TabListe
             Intent intent = new Intent(WatchlistActivity.this, SearchActivity.class);
             startActivity(intent);
         }
-        if (id == R.id.action_refresh){
+        if (id == R.id.action_refresh) {
             Intent intent = getIntent();
             finish();
             startActivity(intent);
-            this.overridePendingTransition(0,0);
+            this.overridePendingTransition(0, 0);
         }
         return super.onOptionsItemSelected(item);
     }

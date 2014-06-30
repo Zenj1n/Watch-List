@@ -25,6 +25,6 @@
         android:layout_height="wrap_content" android:layout_gravity="center"
         android:layout_marginBottom="@dimen/abc_action_bar_icon_vertical_padding"
         android:layout_marginRight="8dip"
-        android:layout_marginTop="@dimen/abc_action_bar_icon_vertical_padding" android:adjustViewBounds="true"
-        android:scaleType="fitCenter" />
+        android:layout_marginTop="@dimen/abc_action_bar_icon_vertical_padding"
+        android:adjustViewBounds="true" android:scaleType="fitCenter" />
 </view><!-- From: file:/usr/local/google/buildbot/repo_clients/https___googleplex-android.googlesource.com_a_platform_manifest.git/klp-ub-dev/frameworks/support/v7/appcompat/res/layout/abc_action_bar_home.xml -->

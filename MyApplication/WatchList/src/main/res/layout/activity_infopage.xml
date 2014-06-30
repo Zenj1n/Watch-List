@@ -15,15 +15,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-           >
+            >
 
             <TextView
                 style="@style/TitleView"
                 android:gravity="left"
                 android:id="@+id/title"
                 android:paddingLeft="20dp"
-                android:textSize="30sp"
-                />
+                android:textSize="30sp" />
 
             <ImageView
                 android:layout_width="200dp"
@@ -55,8 +54,7 @@
                 android:layout_below="@+id/Baddto"
                 android:layout_toRightOf="@+id/Image"
                 android:layout_marginLeft="20dp"
-                android:layout_marginBottom="30dp"
-                />
+                android:layout_marginBottom="30dp" />
 
             <Button
                 style="@style/InfoButton"
@@ -64,13 +62,12 @@
                 android:text="@string/bprogress"
                 android:layout_toRightOf="@+id/Image"
                 android:layout_below="@+id/Brate"
-                android:layout_marginLeft="20dp"
-                />
+                android:layout_marginLeft="20dp" />
 
 
             >
 
-           </RelativeLayout>
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"

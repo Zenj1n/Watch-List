@@ -38,6 +38,6 @@
     </LinearLayout>
     <android.support.v7.internal.widget.ActionBarContainer android:id="@+id/split_action_bar"
         style="?attr/actionBarSplitStyle" android:layout_width="fill_parent"
-        android:layout_height="wrap_content" android:layout_gravity="bottom" android:gravity="center"
-        android:visibility="gone" />
+        android:layout_height="wrap_content" android:layout_gravity="bottom"
+        android:gravity="center" android:visibility="gone" />
 </android.support.v7.internal.widget.ActionBarOverlayLayout><!-- From: file:/usr/local/google/buildbot/repo_clients/https___googleplex-android.googlesource.com_a_platform_manifest.git/klp-ub-dev/frameworks/support/v7/appcompat/res/layout/abc_action_bar_decor_overlay.xml -->

@@ -2,42 +2,40 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <TextView
-        android:id="@+id/showTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:layout_margin="2dp"
-        android:textSize="20sp"
-        android:ellipsize="end"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-            />
+            android:id="@+id/showTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:layout_margin="2dp"
+            android:textSize="20sp"
+            android:ellipsize="end"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp" />
 
-    <TextView
-        android:id="@+id/overview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxLines="4"
-        android:layout_below="@+id/showTitle"
-        android:layout_margin="2dp"
-        android:ellipsize="end"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:layout_below="@+id/overview"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-    </View>
+        <TextView
+            android:id="@+id/overview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="4"
+            android:layout_below="@+id/showTitle"
+            android:layout_margin="2dp"
+            android:ellipsize="end"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@+id/overview"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"></View>
 
     </RelativeLayout>
 
