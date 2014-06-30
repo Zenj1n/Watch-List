@@ -92,8 +92,9 @@ public class WL_Fragment_a extends Fragment {
                     Intent intent;
                     intent = new Intent(getActivity(), InfoPage.class);
                     String word2 = (String) a_titlelist.get(i);
-                    String traktWord = word2.replaceAll(" ", "-");
-                    intent.putExtra("trakt", traktWord);
+                    String traktWord = word2.replaceAll("[ ]", "-");
+                    String traktword2 = traktWord.replaceAll("[' : ( ) ,]", "");
+                    intent.putExtra("trakt", traktword2);
 
                     startActivity(intent);
 
@@ -284,7 +285,8 @@ public class WL_Fragment_a extends Fragment {
                 try {
                     do {
                         String serie = (String) a_titlelist.get(i);
-                        String prep = serie.replaceAll(" ", "-");
+                        String prep0 = serie.replaceAll("[ ]", "-");
+                        String prep = prep0.replaceAll("[' : ( ) ,]", "");
                         String url;
                         try {
                             String urlTrakt = "http://api.trakt.tv/show/summary.json/390983740f2092270bc0fa267334db88/" + prep;
@@ -303,13 +305,11 @@ public class WL_Fragment_a extends Fragment {
                     a_imageurl.clear();
                     a_imageurl.add(i, "https://www.google.com/images/srpr/logo11w.png");
                 }
-                Log.d("einde","einde van het eerswte blok");
             }
 
             String[] a_images_for_method = (String[]) a_imageurl.toArray(new String[a_imageurl.size()]);
             ArrayList<Bitmap> a_images = null;
             try {
-                Log.d("hallo1","begin");
                 ArrayList<Bitmap> images = new ArrayList<Bitmap>();
                 i = 0;
                 count = a_images_for_method.length;
