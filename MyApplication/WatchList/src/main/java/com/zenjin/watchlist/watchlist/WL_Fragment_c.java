@@ -284,7 +284,8 @@ public class WL_Fragment_c extends Fragment {
                     do {
 
                         String serie = (String) c_titlelist.get(i);
-                        String prep = serie.replaceAll(" ", "-");
+                        String prep0 = serie.replaceAll("[ ]", "-");
+                        String prep = prep0.replaceAll("[' : ( ) ,]", "");
                         String url;
                         try {
                             String urlTrakt = "http://api.trakt.tv/show/summary.json/390983740f2092270bc0fa267334db88/" + prep;
