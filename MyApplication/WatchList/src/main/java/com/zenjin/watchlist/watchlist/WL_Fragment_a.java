@@ -165,16 +165,6 @@ public class WL_Fragment_a extends Fragment {
         });
     }
 
-    public void createview(String[] a_title,String[] a_message, ArrayList<Bitmap> a_images) {
-        try {
-            WebView webview = (WebView) getActivity().findViewById(R.id.webViewA);
-            webview.setVisibility(View.GONE);
-        } catch (Exception e) {
-        }
-
-        myArrayAdaptera adapter = new myArrayAdaptera(getActivity().getApplicationContext(), a_title, a_images,a_message);
-        mListView.setAdapter(adapter);
-    }
 
     public class Pair {
         public String[] message;
@@ -311,6 +301,7 @@ public class WL_Fragment_a extends Fragment {
                         i++;
                     }
                     while (i < count);
+
                 } catch (Exception a) {
                     a_imageurl.clear();
                     a_imageurl.add(i, "https://www.google.com/images/srpr/logo11w.png");
@@ -346,8 +337,10 @@ public class WL_Fragment_a extends Fragment {
                 a_images = images;
             }
 
+            String[] a_message = (String[]) a_messagelist.toArray(new String[a_messagelist.size()]);
+
             Pair p = new Pair();
-            //p.message = a_message;
+            p.message = a_message;
             p.title = a_title;
             p.a_images = a_images;
             return p;
@@ -363,8 +356,15 @@ public class WL_Fragment_a extends Fragment {
         }
     }
 
-    public void test() {
+    public void createview(String[] a_title,String[] a_message, ArrayList<Bitmap> a_images) {
+        try {
+            WebView webview = (WebView) getActivity().findViewById(R.id.webViewA);
+            webview.setVisibility(View.GONE);
+        } catch (Exception e) {
+        }
 
+        myArrayAdaptera adapter = new myArrayAdaptera(getActivity().getApplicationContext(), a_title, a_images,a_message);
+        mListView.setAdapter(adapter);
     }
 
 }
@@ -396,7 +396,7 @@ class myArrayAdaptera extends ArrayAdapter<String> {
 
         imagea.setImageBitmap(imagesarray.get(position));
         titlea.setText(titlearray[position]);
-        //messagea.setText(messagearray[position]);
+        messagea.setText(messagearray[position]);
 
         return row;
     }
