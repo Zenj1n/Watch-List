@@ -35,6 +35,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -50,6 +51,7 @@ public class WL_Fragment_a extends Fragment {
     private ArrayList a_imageurl = new ArrayList();
     private static final String TAG_IMAGE = "poster";
     protected ImageLoader imageLoader = ImageLoader.getInstance();
+
 
     public WL_Fragment_a() {
         // Required empty public constructor
@@ -163,14 +165,14 @@ public class WL_Fragment_a extends Fragment {
         });
     }
 
-    public void createview(String[] a_title, ArrayList<Bitmap> a_images) {
+    public void createview(String[] a_title,String[] a_message, ArrayList<Bitmap> a_images) {
         try {
             WebView webview = (WebView) getActivity().findViewById(R.id.webViewA);
             webview.setVisibility(View.GONE);
         } catch (Exception e) {
         }
 
-        myArrayAdaptera adapter = new myArrayAdaptera(getActivity().getApplicationContext(), a_title, a_images);
+        myArrayAdaptera adapter = new myArrayAdaptera(getActivity().getApplicationContext(), a_title, a_images,a_message);
         mListView.setAdapter(adapter);
     }
 
@@ -295,6 +297,9 @@ public class WL_Fragment_a extends Fragment {
                             String urlTrakt = "http://api.trakt.tv/show/summary.json/390983740f2092270bc0fa267334db88/" + prep;
                             JSONObject jsonTrakt = jParser.getJSONFromUrl(urlTrakt);
                             String Image = jsonTrakt.getString(TAG_IMAGE);
+                            String overview = jsonTrakt.getString("overview");
+                            a_messagelist.add(overview);
+                            System.out.println(a_imageurl);
                             url = Image;
                         } catch (Exception e) {
                             String noimage = "http://i.imgur.com/ZNt7DXU.png";
@@ -348,10 +353,10 @@ public class WL_Fragment_a extends Fragment {
 
         protected void onPostExecute(Pair p) {
 
-            //String[] a_message = p.message;
+            String[] a_message = p.message;
             String[] a_title = p.title;
             ArrayList<Bitmap> a_images = p.a_images;
-            createview(a_title, a_images);
+            createview(a_title,a_message, a_images);
 
         }
     }
@@ -369,12 +374,12 @@ class myArrayAdaptera extends ArrayAdapter<String> {
     private String[] titlearray;
     private String[] messagearray;
 
-    myArrayAdaptera(Context a, String[] wl_a_title, ArrayList<Bitmap> img) {
+    myArrayAdaptera(Context a, String[] wl_a_title, ArrayList<Bitmap> img, String[] mssg)  {
         super(a, R.layout.single_row_wl, R.id.wl_title, wl_a_title);
         this.mContext = a;
         this.imagesarray = img;
         this.titlearray = wl_a_title;
-        //this.messagearray = mssg;
+        this.messagearray = mssg;
     }
 
     @Override
@@ -385,11 +390,11 @@ class myArrayAdaptera extends ArrayAdapter<String> {
 
         ImageView imagea = (ImageView) row.findViewById(R.id.wl_image);
         TextView titlea = (TextView) row.findViewById(R.id.wl_title);
-        //TextView messagea = (TextView) row.findViewById(R.id.wl_message);
+        TextView messagea = (TextView) row.findViewById(R.id.wl_message);
 
         imagea.setImageBitmap(imagesarray.get(position));
         titlea.setText(titlearray[position]);
-        //messagea.setText(messagearray[position]);
+        messagea.setText(messagearray[position]);
 
         return row;
     }
