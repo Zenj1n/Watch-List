@@ -157,17 +157,6 @@ public class WL_Fragment_b extends Fragment {
         });
     }
 
-    public void createview(String[] b_title, String[] b_message, ArrayList<Bitmap> b_images) {
-
-        try {
-            WebView webview = (WebView) getActivity().findViewById(R.id.webViewB);
-            webview.setVisibility(View.GONE);
-        } catch (Exception e) {
-        }
-        myArrayAdapterb adapter = new myArrayAdapterb(getActivity().getApplicationContext(), b_title, b_images);
-        mListView.setAdapter(adapter);
-    }
-
     public class Pair {
         public String[] message;
         public String[] title;
@@ -348,6 +337,19 @@ public class WL_Fragment_b extends Fragment {
             createview(a_title, a_message, a_images);
         }
     }
+
+
+    public void createview(String[] b_title, String[] b_message, ArrayList<Bitmap> b_images) {
+
+        try {
+            WebView webview = (WebView) getActivity().findViewById(R.id.webViewB);
+            webview.setVisibility(View.GONE);
+        } catch (Exception e) {
+        }
+        myArrayAdapterb adapter = new myArrayAdapterb(getActivity().getApplicationContext(), b_title, b_images);
+        mListView.setAdapter(adapter);
+    }
+
 }
 
 class myArrayAdapterb extends ArrayAdapter<String> {
