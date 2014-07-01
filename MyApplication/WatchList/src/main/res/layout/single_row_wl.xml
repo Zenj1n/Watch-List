@@ -45,6 +45,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignStart="@+id/wl_title"
             android:layout_marginTop="45dp"
+            android:maxLines="2"
             android:fontFamily="sans-serif-light"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@android:color/darker_gray" />
