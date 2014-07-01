@@ -31,9 +31,6 @@ import com.parse.ParseUser;
 
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,13 +41,12 @@ import java.util.List;
 public class WL_Fragment_b extends Fragment {
 
     private final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";
+    private static final String TAG_IMAGE = "poster";
+    protected ImageLoader imageLoader = ImageLoader.getInstance();
     private ListView mListView;
-
     private ArrayList b_titlelist = new ArrayList();
     private ArrayList b_messagelist = new ArrayList();
     private ArrayList b_imageurl = new ArrayList();
-    private static final String TAG_IMAGE = "poster";
-    protected ImageLoader imageLoader = ImageLoader.getInstance();
 
     public WL_Fragment_b() {
         // Required empty public constructor
@@ -157,10 +153,15 @@ public class WL_Fragment_b extends Fragment {
         });
     }
 
-    public class Pair {
-        public String[] message;
-        public String[] title;
-        public ArrayList<Bitmap> b_images;
+    public void createview(String[] b_title, String[] b_message, ArrayList<Bitmap> b_images) {
+
+        try {
+            WebView webview = (WebView) getActivity().findViewById(R.id.webViewB);
+            webview.setVisibility(View.GONE);
+        } catch (Exception e) {
+        }
+        myArrayAdapterb adapter = new myArrayAdapterb(getActivity().getApplicationContext(), b_title, b_images, b_message);
+        mListView.setAdapter(adapter);
     }
 
     /*
@@ -239,6 +240,12 @@ public class WL_Fragment_b extends Fragment {
             new getimages().execute(b_title, b_message);
         }
     }*/
+
+    public class Pair {
+        public String[] message;
+        public String[] title;
+        public ArrayList<Bitmap> b_images;
+    }
 
     private class getimages extends AsyncTask<Object, Void, Pair> {
         @Override
@@ -346,18 +353,6 @@ public class WL_Fragment_b extends Fragment {
         }
     }
 
-
-    public void createview(String[] b_title, String[] b_message, ArrayList<Bitmap> b_images) {
-
-        try {
-            WebView webview = (WebView) getActivity().findViewById(R.id.webViewB);
-            webview.setVisibility(View.GONE);
-        } catch (Exception e) {
-        }
-        myArrayAdapterb adapter = new myArrayAdapterb(getActivity().getApplicationContext(), b_title, b_images, b_message);
-        mListView.setAdapter(adapter);
-    }
-
 }
 
 class myArrayAdapterb extends ArrayAdapter<String> {
@@ -366,7 +361,7 @@ class myArrayAdapterb extends ArrayAdapter<String> {
     private String[] titlearray;
     private String[] messagearray;
 
-    myArrayAdapterb(Context b, String[] wl_b_title, ArrayList<Bitmap> img,  String[] mssg) {
+    myArrayAdapterb(Context b, String[] wl_b_title, ArrayList<Bitmap> img, String[] mssg) {
         super(b, R.layout.single_row_wl, R.id.wl_title, wl_b_title);
         this.mContext = b;
         this.imagesarray = img;

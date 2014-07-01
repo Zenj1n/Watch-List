@@ -31,9 +31,6 @@ import com.parse.ParseUser;
 
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,13 +41,12 @@ import java.util.List;
 public class WL_Fragment_c extends Fragment {
 
     private final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";
+    private static final String TAG_IMAGE = "poster";
+    protected ImageLoader imageLoader = ImageLoader.getInstance();
     private ListView mListView;
-
     private ArrayList c_titlelist = new ArrayList();                    // empty arrays for titels, massages and images
     private ArrayList c_messagelist = new ArrayList();
     private ArrayList c_imageurl = new ArrayList();
-    private static final String TAG_IMAGE = "poster";
-    protected ImageLoader imageLoader = ImageLoader.getInstance();
 
     public WL_Fragment_c() {
         // Required empty public constructor
@@ -159,12 +155,17 @@ public class WL_Fragment_c extends Fragment {
         });
     }
 
+    public void createview(String[] c_title, ArrayList<Bitmap> c_images, String[] c_message) {
 
+        try {
+            WebView webview = (WebView) getActivity().findViewById(R.id.webViewC);
+            webview.setVisibility(View.GONE);
 
-    public class Pair {
-        public String[] message;
-        public String[] title;
-        public ArrayList<Bitmap> c_images;
+        } catch (Exception e) {
+        }
+
+        myArrayAdapterc adapter = new myArrayAdapterc(getActivity().getApplicationContext(), c_title, c_images, c_message);
+        mListView.setAdapter(adapter);
     }
 
     /*
@@ -243,6 +244,12 @@ public class WL_Fragment_c extends Fragment {
             new getimages().execute(c_title, c_message);
         }
     }*/
+
+    public class Pair {
+        public String[] message;
+        public String[] title;
+        public ArrayList<Bitmap> c_images;
+    }
 
     private class getimages extends AsyncTask<Object, Void, Pair> {
         @Override
@@ -347,19 +354,6 @@ public class WL_Fragment_c extends Fragment {
             ArrayList<Bitmap> c_images = p.c_images;
             createview(c_title, c_images, c_message);
         }
-    }
-
-    public void createview(String[] c_title, ArrayList<Bitmap> c_images, String[] c_message) {
-
-        try {
-            WebView webview = (WebView) getActivity().findViewById(R.id.webViewC);
-            webview.setVisibility(View.GONE);
-
-        } catch (Exception e) {
-        }
-
-        myArrayAdapterc adapter = new myArrayAdapterc(getActivity().getApplicationContext(), c_title, c_images, c_message);
-        mListView.setAdapter(adapter);
     }
 }
 

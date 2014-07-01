@@ -32,18 +32,16 @@ import java.util.HashMap;
 
 public class SearchActivity extends Activity {
 
+    private static final String TAG_TITLE = "title";
+    private static final String TAG_OVERVIEW = "overview";
+    private static final String TAG_POSTER = "poster";
     protected ListView list;
     protected TextView showTitle;
     protected TextView overview;
     protected ImageView poster;
     protected EditText searchShowET;
-    ArrayList<HashMap<String, String>> searchlist = new ArrayList<HashMap<String, String>>();
     protected ImageLoader imageLoader = ImageLoader.getInstance();
-
-
-    private static final String TAG_TITLE = "title";
-    private static final String TAG_OVERVIEW = "overview";
-    private static final String TAG_POSTER = "poster";
+    ArrayList<HashMap<String, String>> searchlist = new ArrayList<HashMap<String, String>>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +64,21 @@ public class SearchActivity extends Activity {
                 return true;
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.search, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private class JSONParse extends AsyncTask<String, String, JSONArray> {
@@ -139,20 +152,5 @@ public class SearchActivity extends Activity {
                 e.printStackTrace();
             }
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.search, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }

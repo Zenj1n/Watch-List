@@ -22,6 +22,7 @@ public class MainActivity extends Activity {
             finish();
         } else {
             startActivity(new Intent(this, SignUpOrLoginInActivity.class));
+            finish();
         }
     }
 }

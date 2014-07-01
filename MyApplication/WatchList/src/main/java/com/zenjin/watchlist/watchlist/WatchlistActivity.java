@@ -21,10 +21,10 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
  */
 public class WatchlistActivity extends MyWatchList implements ActionBar.TabListener {
 
+    protected ImageLoader imageLoader = ImageLoader.getInstance();
     ViewPager mViewPager;
     ActionBar mActionBar;
     Intent intent;
-    protected ImageLoader imageLoader = ImageLoader.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
