@@ -145,19 +145,21 @@ public class WL_Fragment_c extends Fragment {
                     }
 
                     String[] c_title = (String[]) c_titlelist.toArray(new String[c_titlelist.size()]);
-                    new getmessages().execute(c_title);     // get messages from API
+                    //new getmessages().execute(c_title);     // get messages from API
+                    new getimages().execute(c_title);
 
                 } else {
                     c_titlelist.clear();
                     c_titlelist.add(0, "No internet connection");
                     String[] c_title = (String[]) c_titlelist.toArray(new String[c_titlelist.size()]);
-                    new getmessages().execute(c_title);     // get messages from API
+                    //new getmessages().execute(c_title);     // get messages from API
+                    new getimages().execute(c_title);
                 }
             }
         });
     }
 
-    public void createview(String[] c_title, String[] c_message, ArrayList<Bitmap> c_images) {
+    public void createview(String[] c_title, ArrayList<Bitmap> c_images) {
 
         try {
             WebView webview = (WebView) getActivity().findViewById(R.id.webViewC);
@@ -166,7 +168,7 @@ public class WL_Fragment_c extends Fragment {
         } catch (Exception e) {
         }
 
-        myArrayAdapterc adapter = new myArrayAdapterc(getActivity().getApplicationContext(), c_title, c_images, c_message);
+        myArrayAdapterc adapter = new myArrayAdapterc(getActivity().getApplicationContext(), c_title, c_images);
         mListView.setAdapter(adapter);
     }
 
@@ -176,6 +178,7 @@ public class WL_Fragment_c extends Fragment {
         public ArrayList<Bitmap> c_images;
     }
 
+    /*
     private class getmessages extends AsyncTask<String, Void, Pair> {
         @Override
         protected Pair doInBackground(String... c_title) {
@@ -250,14 +253,14 @@ public class WL_Fragment_c extends Fragment {
             String[] c_title = p.title;
             new getimages().execute(c_title, c_message);
         }
-    }
+    }*/
 
     private class getimages extends AsyncTask<Object, Void, Pair> {
         @Override
         protected Pair doInBackground(Object... object) {
 
-            String[] c_title = (String[]) object[0];
-            String[] c_message = (String[]) object[1];
+            String[] c_title = (String[]) object;
+            //String[] c_message = (String[]) object[1];
             int count = c_titlelist.size();
             int i = 0;
             String check = (String) c_titlelist.get(0);
@@ -336,7 +339,7 @@ public class WL_Fragment_c extends Fragment {
             }
 
             Pair p = new Pair();
-            p.message = c_message;
+            //p.message = c_message;
             p.title = c_title;
             p.c_images = c_images;
             return p;
@@ -344,10 +347,10 @@ public class WL_Fragment_c extends Fragment {
 
         protected void onPostExecute(Pair p) {
 
-            String[] c_message = p.message;
+            //String[] c_message = p.message;
             String[] c_title = p.title;
             ArrayList<Bitmap> c_images = p.c_images;
-            createview(c_title, c_message, c_images);
+            createview(c_title, c_images);
         }
     }
 }
@@ -358,12 +361,12 @@ class myArrayAdapterc extends ArrayAdapter<String> {
     private String[] titlearray;
     private String[] messagearray;
 
-    myArrayAdapterc(Context c, String[] wl_c_title, ArrayList<Bitmap> img, String[] mssg) {
+    myArrayAdapterc(Context c, String[] wl_c_title, ArrayList<Bitmap> img) {
         super(c, R.layout.single_row_wl, R.id.wl_title, wl_c_title);
         this.mContext = c;
         this.imagesarray = img;
         this.titlearray = wl_c_title;
-        this.messagearray = mssg;
+        //this.messagearray = mssg;
     }
 
     @Override
@@ -378,7 +381,7 @@ class myArrayAdapterc extends ArrayAdapter<String> {
 
         imagec.setImageBitmap(imagesarray.get(position));
         titlec.setText(titlearray[position]);
-        messagec.setText(messagearray[position]);
+        //messagec.setText(messagearray[position]);
 
         return row;
     }

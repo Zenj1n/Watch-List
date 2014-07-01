@@ -144,12 +144,14 @@ public class WL_Fragment_b extends Fragment {
                         b_titlelist.add(i, "No series added");
                     }
                     String[] b_title = (String[]) b_titlelist.toArray(new String[b_titlelist.size()]);
-                    new getmessages().execute(b_title);     // get messages from API
+                    //new getmessages().execute(b_title);     // get messages from API
+                    new getimages().execute(b_title);
                 } else {
                     b_titlelist.clear();
                     b_titlelist.add(0, "No internet connection");
                     String[] b_title = (String[]) b_titlelist.toArray(new String[b_titlelist.size()]);
-                    new getmessages().execute(b_title);     // get messages from API
+                    //new getmessages().execute(b_title);     // get messages from API
+                    new getimages().execute(b_title);
                 }
             }
         });
@@ -162,7 +164,7 @@ public class WL_Fragment_b extends Fragment {
             webview.setVisibility(View.GONE);
         } catch (Exception e) {
         }
-        myArrayAdapterb adapter = new myArrayAdapterb(getActivity().getApplicationContext(), b_title, b_images, b_message);
+        myArrayAdapterb adapter = new myArrayAdapterb(getActivity().getApplicationContext(), b_title, b_images);
         mListView.setAdapter(adapter);
     }
 
@@ -172,6 +174,7 @@ public class WL_Fragment_b extends Fragment {
         public ArrayList<Bitmap> b_images;
     }
 
+    /*
     private class getmessages extends AsyncTask<String, Void, Pair> {
         @Override
         protected Pair doInBackground(String... b_title) {
@@ -246,13 +249,13 @@ public class WL_Fragment_b extends Fragment {
             String[] b_title = p.title;
             new getimages().execute(b_title, b_message);
         }
-    }
+    }*/
 
     private class getimages extends AsyncTask<Object, Void, Pair> {
         @Override
         protected Pair doInBackground(Object... object) {
-            String[] b_title = (String[]) object[0];
-            String[] b_message = (String[]) object[1];
+            String[] b_title = (String[]) object;
+            //String[] b_message = (String[]) object[1];
             int count = b_titlelist.size();
             int i = 0;
             String check = (String) b_titlelist.get(0);
@@ -331,7 +334,7 @@ public class WL_Fragment_b extends Fragment {
             }
 
             Pair p = new Pair();
-            p.message = b_message;
+            //p.message = b_message;
             p.title = b_title;
             p.b_images = b_images;
             return p;
@@ -353,12 +356,12 @@ class myArrayAdapterb extends ArrayAdapter<String> {
     private String[] titlearray;
     private String[] messagearray;
 
-    myArrayAdapterb(Context b, String[] wl_b_title, ArrayList<Bitmap> img, String[] mssg) {
+    myArrayAdapterb(Context b, String[] wl_b_title, ArrayList<Bitmap> img) {
         super(b, R.layout.single_row_wl, R.id.wl_title, wl_b_title);
         this.mContext = b;
         this.imagesarray = img;
         this.titlearray = wl_b_title;
-        this.messagearray = mssg;
+        //this.messagearray = mssg;
     }
 
     @Override
@@ -373,7 +376,7 @@ class myArrayAdapterb extends ArrayAdapter<String> {
 
         imageb.setImageBitmap(imagesarray.get(position));
         titleb.setText(titlearray[position]);
-        messageb.setText(messagearray[position]);
+        //messageb.setText(messagearray[position]);
 
         return row;
     }

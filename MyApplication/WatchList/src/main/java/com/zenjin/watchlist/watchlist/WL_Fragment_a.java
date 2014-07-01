@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,6 +72,7 @@ public class WL_Fragment_a extends Fragment {
         webview.loadUrl("file:///android_asset/loadingshows.gif");
 
         mListView = getListView();
+        Log.d("begin code", "begin van onItemClickListener ");
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
 
@@ -110,6 +112,7 @@ public class WL_Fragment_a extends Fragment {
                 getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
             }
         });
+        Log.d("begin code", "einde van onItemClickListener ");
 
         return v;
     }
@@ -147,25 +150,27 @@ public class WL_Fragment_a extends Fragment {
                         a_titlelist.add(i, "No series added");
                     }
                     String[] a_title = (String[]) a_titlelist.toArray(new String[a_titlelist.size()]);
-                    new getmessages().execute(a_title);     // get messages from API
+                    //new getmessages().execute(a_title);     // get messages from API
+                    new getimages().execute(a_title);
                 } else {
                     a_titlelist.clear();
                     a_titlelist.add(0, "No internet connection");
                     String[] a_title = (String[]) a_titlelist.toArray(new String[a_titlelist.size()]);
-                    new getmessages().execute(a_title);     // get messages from API
+                    //new getmessages().execute(a_title);     // get messages from API
+                        new getimages().execute(a_title);
                 }
             }
         });
     }
 
-    public void createview(String[] a_title, String[] a_message, ArrayList<Bitmap> a_images) {
+    public void createview(String[] a_title, ArrayList<Bitmap> a_images) {
         try {
             WebView webview = (WebView) getActivity().findViewById(R.id.webViewA);
             webview.setVisibility(View.GONE);
         } catch (Exception e) {
         }
 
-        myArrayAdaptera adapter = new myArrayAdaptera(getActivity().getApplicationContext(), a_title, a_images, a_message);
+        myArrayAdaptera adapter = new myArrayAdaptera(getActivity().getApplicationContext(), a_title, a_images);
         mListView.setAdapter(adapter);
     }
 
@@ -175,7 +180,8 @@ public class WL_Fragment_a extends Fragment {
         public ArrayList<Bitmap> a_images;
     }
 
-    private class getmessages extends AsyncTask<String, Void, Pair> {
+
+    /*private class getmessages extends AsyncTask<String, Void, Pair> {
         @Override
         protected Pair doInBackground(String... a_title) {
             int count = a_titlelist.size();
@@ -203,6 +209,7 @@ public class WL_Fragment_a extends Fragment {
                             String fullsite = "";
                             String nextepisode;
 
+
                             while ((lijn = in.readLine()) != null) {
                                 fullsite = fullsite + lijn;
                             }
@@ -210,6 +217,7 @@ public class WL_Fragment_a extends Fragment {
                             nextepisode = fullsite.substring(fullsite.indexOf("Next Episode@"), fullsite.indexOf("Country"));
                             nextepisode = nextepisode.replace("^", "    ");
                             nextepisode = nextepisode.substring(13);
+
 
                             try {
                                 nextepisode = nextepisode.substring(0, nextepisode.indexOf("RFC"));
@@ -250,7 +258,7 @@ public class WL_Fragment_a extends Fragment {
             String[] a_title = p.title;
             new getimages().execute(a_title, a_message);
         }
-    }
+    }*/
 
     private class getimages extends AsyncTask<Object, Void, Pair> {
         @Override
@@ -261,8 +269,8 @@ public class WL_Fragment_a extends Fragment {
                     .cacheInMemory(true)
                     .build();
 
-            String[] a_title = (String[]) object[0];
-            String[] a_message = (String[]) object[1];
+            String[] a_title = (String[]) object;
+            //String[] a_message = (String[]) object[1];
             int count = a_titlelist.size();
             int i = 0;
             String check = (String) a_titlelist.get(0);
@@ -332,7 +340,7 @@ public class WL_Fragment_a extends Fragment {
             }
 
             Pair p = new Pair();
-            p.message = a_message;
+            //p.message = a_message;
             p.title = a_title;
             p.a_images = a_images;
             return p;
@@ -340,10 +348,10 @@ public class WL_Fragment_a extends Fragment {
 
         protected void onPostExecute(Pair p) {
 
-            String[] a_message = p.message;
+            //String[] a_message = p.message;
             String[] a_title = p.title;
             ArrayList<Bitmap> a_images = p.a_images;
-            createview(a_title, a_message, a_images);
+            createview(a_title, a_images);
 
         }
     }
@@ -361,12 +369,12 @@ class myArrayAdaptera extends ArrayAdapter<String> {
     private String[] titlearray;
     private String[] messagearray;
 
-    myArrayAdaptera(Context a, String[] wl_a_title, ArrayList<Bitmap> img, String[] mssg) {
+    myArrayAdaptera(Context a, String[] wl_a_title, ArrayList<Bitmap> img) {
         super(a, R.layout.single_row_wl, R.id.wl_title, wl_a_title);
         this.mContext = a;
         this.imagesarray = img;
         this.titlearray = wl_a_title;
-        this.messagearray = mssg;
+        //this.messagearray = mssg;
     }
 
     @Override
@@ -377,11 +385,11 @@ class myArrayAdaptera extends ArrayAdapter<String> {
 
         ImageView imagea = (ImageView) row.findViewById(R.id.wl_image);
         TextView titlea = (TextView) row.findViewById(R.id.wl_title);
-        TextView messagea = (TextView) row.findViewById(R.id.wl_message);
+        //TextView messagea = (TextView) row.findViewById(R.id.wl_message);
 
         imagea.setImageBitmap(imagesarray.get(position));
         titlea.setText(titlearray[position]);
-        messagea.setText(messagearray[position]);
+        //messagea.setText(messagearray[position]);
 
         return row;
     }
