@@ -10,18 +10,15 @@
         <meta-data
             android:name="android.app.default_searchable"
             android:value=".SearchActivity" />
-
         <activity
             android:name=".WatchlistActivity"
             android:label="@string/wl_title"
             android:configChanges="orientation|screenSize">
-
         </activity>
         <activity
             android:name=".MyWatchList"
             android:hardwareAccelerated="true"
             android:label="@string/title_activity_main_main">
-
         </activity>
         <activity
             android:name=".InfoPage"
@@ -33,9 +30,8 @@
         </activity>
         <activity
             android:name=".RegistreerActivity"
-            android:label="@string/title_activity_login"
+            android:label="@string/title_activity_register"
             android:configChanges="orientation|screenSize">
-
         </activity>
         <activity
             android:name=".MainActivity"
@@ -50,19 +46,16 @@
             android:name=".SignUpOrLoginInActivity"
             android:label="@string/title_activity_signup_or_login"
             android:configChanges="orientation|screenSize">
-
         </activity>
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
             android:configChanges="orientation|screenSize">
-
         </activity>
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_browse"
             android:configChanges="orientation|screenSize">
-
         </activity>
         <activity
             android:name=".SearchActivity"
