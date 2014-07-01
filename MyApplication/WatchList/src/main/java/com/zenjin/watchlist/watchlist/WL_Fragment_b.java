@@ -271,16 +271,21 @@ public class WL_Fragment_b extends Fragment {
                         String prep0 = serie.replaceAll("[ ]", "-");
                         String prep = prep0.replaceAll("[' : ( ) ,]", "");
                         String url;
+                        String desc = null;
                         try {
                             String urlTrakt = "http://api.trakt.tv/show/summary.json/390983740f2092270bc0fa267334db88/" + prep;
                             JSONObject jsonTrakt = jParser.getJSONFromUrl(urlTrakt);
                             String Image = jsonTrakt.getString(TAG_IMAGE);
+                            String overview = jsonTrakt.getString("overview");
+                            desc = overview;
                             url = Image;
                         } catch (Exception e) {
                             String noimage = "http://i.imgur.com/ZNt7DXU.png";
                             url = noimage;
                         }
                         b_imageurl.add(i, url);
+                        b_messagelist.add(i, desc);
+
                         i++;
                     }
                     while (i < count);
@@ -322,8 +327,11 @@ public class WL_Fragment_b extends Fragment {
                 b_images = images;
             }
 
+            String[] b_message = (String[]) b_messagelist.toArray(new String[b_messagelist.size()]);
+
+
             Pair p = new Pair();
-            //p.message = b_message;
+            p.message = b_message;
             p.title = b_title;
             p.b_images = b_images;
             return p;
@@ -346,7 +354,7 @@ public class WL_Fragment_b extends Fragment {
             webview.setVisibility(View.GONE);
         } catch (Exception e) {
         }
-        myArrayAdapterb adapter = new myArrayAdapterb(getActivity().getApplicationContext(), b_title, b_images);
+        myArrayAdapterb adapter = new myArrayAdapterb(getActivity().getApplicationContext(), b_title, b_images, b_message);
         mListView.setAdapter(adapter);
     }
 
@@ -358,12 +366,12 @@ class myArrayAdapterb extends ArrayAdapter<String> {
     private String[] titlearray;
     private String[] messagearray;
 
-    myArrayAdapterb(Context b, String[] wl_b_title, ArrayList<Bitmap> img) {
+    myArrayAdapterb(Context b, String[] wl_b_title, ArrayList<Bitmap> img,  String[] mssg) {
         super(b, R.layout.single_row_wl, R.id.wl_title, wl_b_title);
         this.mContext = b;
         this.imagesarray = img;
         this.titlearray = wl_b_title;
-        //this.messagearray = mssg;
+        this.messagearray = mssg;
     }
 
     @Override
@@ -378,7 +386,7 @@ class myArrayAdapterb extends ArrayAdapter<String> {
 
         imageb.setImageBitmap(imagesarray.get(position));
         titleb.setText(titlearray[position]);
-        //messageb.setText(messagearray[position]);
+        messageb.setText(messagearray[position]);
 
         return row;
     }
