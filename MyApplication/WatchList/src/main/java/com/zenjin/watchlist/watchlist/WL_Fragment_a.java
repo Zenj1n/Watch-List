@@ -293,19 +293,21 @@ public class WL_Fragment_a extends Fragment {
                         String prep0 = serie.replaceAll("[ ]", "-");
                         String prep = prep0.replaceAll("[' : ( ) ,]", "");
                         String url;
+                        String desc = null;
                         try {
                             String urlTrakt = "http://api.trakt.tv/show/summary.json/390983740f2092270bc0fa267334db88/" + prep;
                             JSONObject jsonTrakt = jParser.getJSONFromUrl(urlTrakt);
                             String Image = jsonTrakt.getString(TAG_IMAGE);
                             String overview = jsonTrakt.getString("overview");
-                            a_messagelist.add(overview);
-                            System.out.println(a_imageurl);
+                            System.out.println(a_messagelist);
+                            desc = overview;
                             url = Image;
                         } catch (Exception e) {
                             String noimage = "http://i.imgur.com/ZNt7DXU.png";
                             url = noimage;
                         }
                         a_imageurl.add(i, url);
+                        a_messagelist.add(i, desc);
                         i++;
                     }
                     while (i < count);
@@ -394,7 +396,7 @@ class myArrayAdaptera extends ArrayAdapter<String> {
 
         imagea.setImageBitmap(imagesarray.get(position));
         titlea.setText(titlearray[position]);
-        messagea.setText(messagearray[position]);
+        //messagea.setText(messagearray[position]);
 
         return row;
     }
