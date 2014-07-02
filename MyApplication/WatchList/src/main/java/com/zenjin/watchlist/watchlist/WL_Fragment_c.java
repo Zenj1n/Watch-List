@@ -322,10 +322,7 @@ public class WL_Fragment_c extends Fragment {
                 do {
                     Bitmap bmp;
                     try {
-                        Log.d("wtf", c_images_for_method[i]);
-                         bmp = BitmapFactory.decodeResource(getActivity().getResources(),
-                                R.drawable.ic_launcher);
-                        //bmp = imageLoader.loadImageSync(c_images_for_method[i], options);
+                        bmp = imageLoader.loadImageSync(c_images_for_method[i], options);
                         images.add(i, bmp);
                     } catch (Exception e) {
                         images = new ArrayList<Bitmap>();
