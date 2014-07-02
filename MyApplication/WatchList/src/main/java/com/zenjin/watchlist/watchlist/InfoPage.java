@@ -210,6 +210,7 @@ public class InfoPage extends Activity {
                                         koppel.put(ParseUtil.STATUS, ParseUtil.COMPLETED);
                                         koppel.put(ParseUtil.PROGRESS, sum);
                                         progress.setText(sum + "/" + sum);
+                                        PROGRESS = sum;
                                         koppel.saveInBackground();
                                     } catch (Exception e) {
                                         ParseObject koppel = new ParseObject(ParseUtil.KOPPEL);
@@ -218,6 +219,7 @@ public class InfoPage extends Activity {
                                         koppel.put(ParseUtil.STATUS, ParseUtil.COMPLETED);
                                         koppel.put(ParseUtil.PROGRESS, sum);
                                         progress.setText(sum + "/" + sum);
+                                        PROGRESS = sum;
                                         koppel.saveInBackground();
                                     }
                                 }
