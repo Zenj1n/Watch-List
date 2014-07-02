@@ -130,12 +130,10 @@ public class WL_Fragment_c extends Fragment {
                     int i = 0;
                     c_titlelist.clear();
                     try {
-                        do {
+                        for(i = 0;i < count; i++) {
                             ParseObject koppel = User.get(i);
                             c_titlelist.add(i, koppel.getString("Serie"));
-                            i++;
                         }
-                        while (i < count);
                     } catch (Exception a) {
                         c_titlelist.clear();
                         c_titlelist.add(i, "No series added");
@@ -281,8 +279,7 @@ public class WL_Fragment_c extends Fragment {
 
             } else {
                 try {
-                    do {
-
+                    for(i = 0;i < count; i++) {
                         String serie = (String) c_titlelist.get(i);
                         String prep0 = serie.replaceAll("[  ;]", "-");
                         String prep = prep0.replaceAll("[' : ( ) , !]", "");
@@ -303,9 +300,7 @@ public class WL_Fragment_c extends Fragment {
                         }
                         c_imageurl.add(i, url);
                         c_messagelist.add(i, desc);
-                        i++;
                     }
-                    while (i < count);
                 } catch (Exception a) {
                     c_imageurl.clear();
                     c_imageurl.add(i, "https://www.google.com/images/srpr/logo11w.png");
@@ -317,9 +312,8 @@ public class WL_Fragment_c extends Fragment {
 
             try {
                 ArrayList<Bitmap> images = new ArrayList<Bitmap>();
-                i = 0;
                 count = c_images_for_method.length;
-                do {
+                for(i = 0;i < count; i++) {
                     Bitmap bmp;
                     try {
                         bmp = imageLoader.loadImageSync(c_images_for_method[i], options);
@@ -330,9 +324,7 @@ public class WL_Fragment_c extends Fragment {
                                 R.drawable.ic_launcher);
                         images.add(0, icon);
                     }
-                    i++;
                 }
-                while (i < count);
                 c_images = images;
 
             } catch (Exception e) {
