@@ -41,141 +41,141 @@ public class HomeActivity extends MyWatchList {
             //Wij hadden te weining tijd om dit te wijzigen naar een loop
             switch (v.getId()) {
                 case R.id.todayImage1:
-                    String todayTitle1 = todayTitles.get(0).replaceAll("[ ]", "-");
-                    String todayTitle2 = todayTitle1.replaceAll("[' : ( ) ,]", "");
+                    String todayTitle1 = todayTitles.get(0).replaceAll("[  ;]", "-");
+                    String todayTitle2 = todayTitle1.replaceAll("[' : ( ) , !]", "");
                     intent = new Intent(HomeActivity.this, InfoPage.class);
                     intent.putExtra("trakt", todayTitle2);
                     startActivity(intent);
                     break;
                 case R.id.todayImage2:
-                    String todayTitle3 = todayTitles.get(1).replaceAll("[ ]", "-");
-                    String todayTitle4 = todayTitle3.replaceAll("[' : ( ) ,]", "");
+                    String todayTitle3 = todayTitles.get(1).replaceAll("[  ;]", "-");
+                    String todayTitle4 = todayTitle3.replaceAll("[' : ( ) , !]", "");
                     intent = new Intent(HomeActivity.this, InfoPage.class);
                     intent.putExtra("trakt", todayTitle4);
                     startActivity(intent);
                     break;
                 case R.id.todayImage3:
-                    String todayTitle5 = todayTitles.get(2).replaceAll("[ ]", "-");
-                    String todayTitle6 = todayTitle5.replaceAll("[' : ( ) ,]", "");
+                    String todayTitle5 = todayTitles.get(2).replaceAll("[  ;]", "-");
+                    String todayTitle6 = todayTitle5.replaceAll("[' : ( ) , !]", "");
                     intent = new Intent(HomeActivity.this, InfoPage.class);
                     intent.putExtra("trakt", todayTitle6);
                     startActivity(intent);
                     break;
                 case R.id.todayImage4:
-                    String todayTitle7 = todayTitles.get(3).replaceAll("[ ]", "-");
-                    String todayTitle8 = todayTitle7.replaceAll("[' : ( ) ,]", "");
+                    String todayTitle7 = todayTitles.get(3).replaceAll("[  ;]", "-");
+                    String todayTitle8 = todayTitle7.replaceAll("[' : ( ) , !]", "");
                     intent = new Intent(HomeActivity.this, InfoPage.class);
                     intent.putExtra("trakt", todayTitle8);
                     startActivity(intent);
                     break;
                 case R.id.todayImage5:
-                    String todayTitle9 = todayTitles.get(4).replaceAll("[ ]", "-");
-                    String todayTitle10 = todayTitle9.replaceAll("[' : ( ) ,]", "");
+                    String todayTitle9 = todayTitles.get(4).replaceAll("[  ;]", "-");
+                    String todayTitle10 = todayTitle9.replaceAll("[' : ( ) , !]", "");
                     intent = new Intent(HomeActivity.this, InfoPage.class);
                     intent.putExtra("trakt", todayTitle10);
                     startActivity(intent);
                     break;
                 case R.id.todayImage6:
-                    String todayTitle11 = todayTitles.get(5).replaceAll("[ ]", "-");
-                    String todayTitle12 = todayTitle11.replaceAll("[' : ( ) ,]", "");
+                    String todayTitle11 = todayTitles.get(5).replaceAll("[  ;]", "-");
+                    String todayTitle12 = todayTitle11.replaceAll("[' : ( ) , !]", "");
                     intent = new Intent(HomeActivity.this, InfoPage.class);
                     intent.putExtra("trakt", todayTitle12);
                     startActivity(intent);
                     break;
                 case R.id.todayImage7:
-                    String todayTitle13 = todayTitles.get(6).replaceAll("[ ]", "-");
-                    String todayTitle14 = todayTitle13.replaceAll("[' : ( ) ,]", "");
+                    String todayTitle13 = todayTitles.get(6).replaceAll("[  ;]", "-");
+                    String todayTitle14 = todayTitle13.replaceAll("[' : ( ) , !]", "");
                     intent = new Intent(HomeActivity.this, InfoPage.class);
                     intent.putExtra("trakt", todayTitle14);
                     startActivity(intent);
                     break;
                 case R.id.todayImage8:
-                    String todayTitle15 = todayTitles.get(7).replaceAll("[ ]", "-");
-                    String todayTitle16 = todayTitle15.replaceAll("[' : ( ) ,]", "");
+                    String todayTitle15 = todayTitles.get(7).replaceAll("[  ;]", "-");
+                    String todayTitle16 = todayTitle15.replaceAll("[' : ( ) ,] !", "");
                     intent = new Intent(HomeActivity.this, InfoPage.class);
                     intent.putExtra("trakt", todayTitle16);
                     startActivity(intent);
                     break;
                 case R.id.todayImage9:
-                    String todayTitle17 = todayTitles.get(8).replaceAll("[ ]", "-");
-                    String todayTitle18 = todayTitle17.replaceAll("[' : ( ) ,]", "");
+                    String todayTitle17 = todayTitles.get(8).replaceAll("[  ;]", "-");
+                    String todayTitle18 = todayTitle17.replaceAll("[' : ( ) , !]", "");
                     intent = new Intent(HomeActivity.this, InfoPage.class);
                     intent.putExtra("trakt", todayTitle18);
                     startActivity(intent);
                     break;
                 case R.id.todayImage10:
-                    String todayTitle19 = todayTitles.get(9).replaceAll("[ ]", "-");
-                    String todayTitle20 = todayTitle19.replaceAll("[' : ( ) ,]", "");
+                    String todayTitle19 = todayTitles.get(9).replaceAll("[  ;]", "-");
+                    String todayTitle20 = todayTitle19.replaceAll("[' : ( ) , !]", "");
                     intent = new Intent(HomeActivity.this, InfoPage.class);
                     intent.putExtra("trakt", todayTitle20);
                     startActivity(intent);
                     break;
                 case R.id.trendingImage1:
-                    String trendingTitle1 = trendingTitles.get(0).replaceAll("[ ]", "-");
-                    String trendingTitle2 = trendingTitle1.replaceAll("[' : ( ) ,]", "");
+                    String trendingTitle1 = trendingTitles.get(0).replaceAll("[  ;]", "-");
+                    String trendingTitle2 = trendingTitle1.replaceAll("[' : ( ) , !]", "");
                     intent = new Intent(HomeActivity.this, InfoPage.class);
                     intent.putExtra("trakt", trendingTitle2);
                     startActivity(intent);
                     break;
                 case R.id.trendingImage2:
-                    String trendingTitle3 = trendingTitles.get(1).replaceAll("[ ]", "-");
-                    String trendingTitle4 = trendingTitle3.replaceAll("[' : ( ) ,]", "");
+                    String trendingTitle3 = trendingTitles.get(1).replaceAll("[  ;]", "-");
+                    String trendingTitle4 = trendingTitle3.replaceAll("[' : ( ) , !]", "");
                     intent = new Intent(HomeActivity.this, InfoPage.class);
                     intent.putExtra("trakt", trendingTitle4);
                     startActivity(intent);
                     break;
                 case R.id.trendingImage3:
-                    String trendingTitle5 = trendingTitles.get(2).replaceAll("[ ]", "-");
-                    String trendingTitle6 = trendingTitle5.replaceAll("[' : ( ) ,]", "");
+                    String trendingTitle5 = trendingTitles.get(2).replaceAll("[  ;]", "-");
+                    String trendingTitle6 = trendingTitle5.replaceAll("[' : ( ) , !]", "");
                     intent = new Intent(HomeActivity.this, InfoPage.class);
                     intent.putExtra("trakt", trendingTitle6);
                     startActivity(intent);
                     break;
                 case R.id.trendingImage4:
-                    String trendingTitle7 = trendingTitles.get(3).replaceAll("[ ]", "-");
-                    String trendingTitle8 = trendingTitle7.replaceAll("[' : ( ) ,]", "");
+                    String trendingTitle7 = trendingTitles.get(3).replaceAll("[  ;]", "-");
+                    String trendingTitle8 = trendingTitle7.replaceAll("[' : ( ) ,] !", "");
                     intent = new Intent(HomeActivity.this, InfoPage.class);
                     intent.putExtra("trakt", trendingTitle8);
                     startActivity(intent);
                     break;
                 case R.id.trendingImage5:
-                    String trendingTitle9 = trendingTitles.get(4).replaceAll("[ ]", "-");
-                    String trendingTitle10 = trendingTitle9.replaceAll("[' : ( ) ,]", "");
+                    String trendingTitle9 = trendingTitles.get(4).replaceAll("[  ;]", "-");
+                    String trendingTitle10 = trendingTitle9.replaceAll("[' : ( ) ,] !", "");
                     intent = new Intent(HomeActivity.this, InfoPage.class);
                     intent.putExtra("trakt", trendingTitle10);
                     startActivity(intent);
                     break;
                 case R.id.trendingImage6:
-                    String trendingTitle11 = trendingTitles.get(5).replaceAll("[ ]", "-");
-                    String trendingTitle12 = trendingTitle11.replaceAll("[' : ( ) ,]", "");
+                    String trendingTitle11 = trendingTitles.get(5).replaceAll("[  ;]", "-");
+                    String trendingTitle12 = trendingTitle11.replaceAll("[' : ( ) , !]", "");
                     intent = new Intent(HomeActivity.this, InfoPage.class);
                     intent.putExtra("trakt", trendingTitle12);
                     startActivity(intent);
                     break;
                 case R.id.trendingImage7:
-                    String trendingTitle13 = trendingTitles.get(6).replaceAll("[ ]", "-");
-                    String trendingTitle14 = trendingTitle13.replaceAll("[' : ( ) ,]", "");
+                    String trendingTitle13 = trendingTitles.get(6).replaceAll("[  ;]", "-");
+                    String trendingTitle14 = trendingTitle13.replaceAll("[' : ( ) , !]", "");
                     intent = new Intent(HomeActivity.this, InfoPage.class);
                     intent.putExtra("trakt", trendingTitle14);
                     startActivity(intent);
                     break;
                 case R.id.trendingImage8:
-                    String trendingTitle15 = trendingTitles.get(7).replaceAll("[ ]", "-");
-                    String trendingTitle16 = trendingTitle15.replaceAll("[' : ( ) ,]", "");
+                    String trendingTitle15 = trendingTitles.get(7).replaceAll("[  ;]", "-");
+                    String trendingTitle16 = trendingTitle15.replaceAll("[' : ( ) , !]", "");
                     intent = new Intent(HomeActivity.this, InfoPage.class);
                     intent.putExtra("trakt", trendingTitle16);
                     startActivity(intent);
                     break;
                 case R.id.trendingImage9:
-                    String trendingTitle17 = trendingTitles.get(8).replaceAll("[ ]", "-");
-                    String trendingTitle18 = trendingTitle17.replaceAll("[' : ( ) ,]", "");
+                    String trendingTitle17 = trendingTitles.get(8).replaceAll("[  ;]", "-");
+                    String trendingTitle18 = trendingTitle17.replaceAll("[' : ( ) , !]", "");
                     intent = new Intent(HomeActivity.this, InfoPage.class);
                     intent.putExtra("trakt", trendingTitle18);
                     startActivity(intent);
                     break;
                 case R.id.trendingImage10:
-                    String trendingTitle19 = trendingTitles.get(9).replaceAll("[ ]", "-");
-                    String trendingTitle20 = trendingTitle19.replaceAll("[' : ( ) ,]", "");
+                    String trendingTitle19 = trendingTitles.get(9).replaceAll("[  ;]", "-");
+                    String trendingTitle20 = trendingTitle19.replaceAll("[' : ( ) , !]", "");
                     intent = new Intent(HomeActivity.this, InfoPage.class);
                     intent.putExtra("trakt", trendingTitle20);
                     startActivity(intent);

@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -93,8 +94,8 @@ public class WL_Fragment_c extends Fragment {
                     String titleSerie = java.net.URLEncoder.encode(titleSerieRaw);
 
                     String word2 = (String) c_titlelist.get(i);
-                    String traktWord = word2.replaceAll("[ ]", "-");
-                    String traktword2 = traktWord.replaceAll("[' : ( ) ,]", "");
+                    String traktWord = word2.replaceAll("[  ;]", "-");
+                    String traktword2 = traktWord.replaceAll("[' : ( ) , 1] !", "");
                     intent.putExtra("trakt", traktword2);
 
                     intent.putExtra(EXTRA_MESSAGE, titleSerie);
@@ -271,20 +272,22 @@ public class WL_Fragment_c extends Fragment {
             if (check == "No series added") {
                 c_imageurl.clear();
                 c_imageurl.add(i, "http://i.imgur.com/ZNt7DXU.png");
+                c_messagelist.add(i, "");
 
             } else if (check == "No internet connection") {
                 c_imageurl.clear();
                 c_imageurl.add(i, "http://i.imgur.com/ZNt7DXU.png");
+                c_messagelist.add(i, "");
 
             } else {
                 try {
                     do {
 
                         String serie = (String) c_titlelist.get(i);
-                        String prep0 = serie.replaceAll("[ ]", "-");
-                        String prep = prep0.replaceAll("[' : ( ) ,]", "");
+                        String prep0 = serie.replaceAll("[  ;]", "-");
+                        String prep = prep0.replaceAll("[' : ( ) , !]", "");
                         String url;
-                        String desc = null;
+                        String desc;
                         try {
                             String urlTrakt = "http://api.trakt.tv/show/summary.json/390983740f2092270bc0fa267334db88/" + prep;
                             JSONObject jsonTrakt = jParser.getJSONFromUrl(urlTrakt);
@@ -294,7 +297,9 @@ public class WL_Fragment_c extends Fragment {
                             url = Image;
                         } catch (Exception e) {
                             String noimage = "http://i.imgur.com/ZNt7DXU.png";
+                            String noSum = "";
                             url = noimage;
+                            desc = noSum;
                         }
                         c_imageurl.add(i, url);
                         c_messagelist.add(i, desc);
@@ -317,7 +322,10 @@ public class WL_Fragment_c extends Fragment {
                 do {
                     Bitmap bmp;
                     try {
-                        bmp = imageLoader.loadImageSync(c_images_for_method[i], options);
+                        Log.d("wtf", c_images_for_method[i]);
+                         bmp = BitmapFactory.decodeResource(getActivity().getResources(),
+                                R.drawable.ic_launcher);
+                        //bmp = imageLoader.loadImageSync(c_images_for_method[i], options);
                         images.add(i, bmp);
                     } catch (Exception e) {
                         images = new ArrayList<Bitmap>();

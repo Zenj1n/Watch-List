@@ -95,7 +95,7 @@ public class WL_Fragment_b extends Fragment {
 
                     String word2 = (String) b_titlelist.get(i);
                     String traktWord = word2.replaceAll("[ ]", "-");
-                    String traktword2 = traktWord.replaceAll("[' : ( ) ,]", "");
+                    String traktword2 = traktWord.replaceAll("[' : ( ) , ! ;]", "");
                     intent.putExtra("trakt", traktword2);
 
                     intent.putExtra(EXTRA_MESSAGE, titleSerie);
@@ -267,18 +267,20 @@ public class WL_Fragment_b extends Fragment {
             if (check == "No series added") {
                 b_imageurl.clear();
                 b_imageurl.add(i, "http://i.imgur.com/ZNt7DXU.png");
+                b_messagelist.add(i, "");
             } else if (check == "No internet connection") {
                 b_imageurl.clear();
                 b_imageurl.add(i, "http://i.imgur.com/ZNt7DXU.png");
+                b_messagelist.add(i, "");
             } else {
                 try {
                     do {
 
                         String serie = (String) b_titlelist.get(i);
-                        String prep0 = serie.replaceAll("[ ]", "-");
-                        String prep = prep0.replaceAll("[' : ( ) ,]", "");
+                        String prep0 = serie.replaceAll("[  ;]", "-");
+                        String prep = prep0.replaceAll("[' : ( ) , !]", "");
                         String url;
-                        String desc = null;
+                        String desc;
                         try {
                             String urlTrakt = "http://api.trakt.tv/show/summary.json/390983740f2092270bc0fa267334db88/" + prep;
                             JSONObject jsonTrakt = jParser.getJSONFromUrl(urlTrakt);
@@ -288,7 +290,10 @@ public class WL_Fragment_b extends Fragment {
                             url = Image;
                         } catch (Exception e) {
                             String noimage = "http://i.imgur.com/ZNt7DXU.png";
+                            String noSum = "";
                             url = noimage;
+                            desc = noSum;
+
                         }
                         b_imageurl.add(i, url);
                         b_messagelist.add(i, desc);

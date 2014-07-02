@@ -87,7 +87,7 @@ public class WL_Fragment_a extends Fragment {
                     intent = new Intent(getActivity(), InfoPage.class);
                     String word2 = (String) a_titlelist.get(i);
                     String traktWord = word2.replaceAll("[ ]", "-");
-                    String traktword2 = traktWord.replaceAll("[' : ( ) ,]", "");
+                    String traktword2 = traktWord.replaceAll("[' : ( ) , ! ;]", "");
                     intent.putExtra("trakt", traktword2);
 
                     startActivity(intent);
@@ -106,7 +106,6 @@ public class WL_Fragment_a extends Fragment {
                         }
                     });
                 }
-                getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
             }
         });
 
@@ -159,16 +158,6 @@ public class WL_Fragment_a extends Fragment {
         });
     }
 
-    public void createview(String[] a_title, String[] a_message, ArrayList<Bitmap> a_images) {
-        try {
-            WebView webview = (WebView) getActivity().findViewById(R.id.webViewA);
-            webview.setVisibility(View.GONE);
-        } catch (Exception e) {
-        }
-
-        myArrayAdaptera adapter = new myArrayAdaptera(getActivity().getApplicationContext(), a_title, a_images, a_message);
-        mListView.setAdapter(adapter);
-    }
 
 
     /*private class getmessages extends AsyncTask<String, Void, Pair> {
@@ -275,19 +264,21 @@ public class WL_Fragment_a extends Fragment {
             if (check == "No series added") {
                 a_imageurl.clear();
                 a_imageurl.add(i, "http://i.imgur.com/ZNt7DXU.png");
+                a_messagelist.add(i, "");
 
             } else if (check == "No internet connection") {
                 a_imageurl.clear();
                 a_imageurl.add(i, "http://i.imgur.com/ZNt7DXU.png");
+                a_messagelist.add(i, "");
 
             } else {
                 try {
                     do {
                         String serie = (String) a_titlelist.get(i);
-                        String prep0 = serie.replaceAll("[ ]", "-");
-                        String prep = prep0.replaceAll("[' : ( ) ,]", "");
+                        String prep0 = serie.replaceAll("[  ;]", "-");
+                        String prep = prep0.replaceAll("[' : ( ) , !]", "");
                         String url;
-                        String desc = null;
+                        String desc;
                         try {
                             String urlTrakt = "http://api.trakt.tv/show/summary.json/390983740f2092270bc0fa267334db88/" + prep;
                             JSONObject jsonTrakt = jParser.getJSONFromUrl(urlTrakt);
@@ -297,7 +288,9 @@ public class WL_Fragment_a extends Fragment {
                             url = Image;
                         } catch (Exception e) {
                             String noimage = "http://i.imgur.com/ZNt7DXU.png";
+                            String noSum = "";
                             url = noimage;
+                            desc = noSum;
                         }
                         a_imageurl.add(i, url);
                         a_messagelist.add(i, desc);
@@ -351,6 +344,7 @@ public class WL_Fragment_a extends Fragment {
             return p;
         }
 
+
         protected void onPostExecute(Pair p) {
 
             String[] a_message = p.message;
@@ -360,6 +354,18 @@ public class WL_Fragment_a extends Fragment {
 
         }
     }
+
+    public void createview(String[] a_title, String[] a_message, ArrayList<Bitmap> a_images) {
+        try {
+            WebView webview = (WebView) getActivity().findViewById(R.id.webViewA);
+            webview.setVisibility(View.GONE);
+        } catch (Exception e) {
+        }
+
+        myArrayAdaptera adapter = new myArrayAdaptera(getActivity().getApplicationContext(), a_title, a_images, a_message);
+        mListView.setAdapter(adapter);
+    }
+
 
 }
 

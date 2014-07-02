@@ -5,15 +5,12 @@
         android:id="@+id/watching"
         android:background="#5BC0EB"
         android:title="@string/popmenu_watching" />
-
-    <item
-        android:id="@+id/plantowatch"
-        android:background="#5BC0EB"
-        android:title="@string/popupmenu_plantowatch" />
-
     <item
         android:id="@+id/completed"
         android:background="#5BC0EB"
         android:title="@string/popupmenu_completed" />
-
+    <item
+        android:id="@+id/plantowatch"
+        android:background="#5BC0EB"
+        android:title="@string/popupmenu_plantowatch" />
 </menu>  
