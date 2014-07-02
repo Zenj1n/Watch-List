@@ -429,7 +429,6 @@ public class InfoPage extends Activity {
         helpBuilder.setTitle("Episode " + progress.getText());
         final EditText input = new EditText(this);
         input.setSingleLine();
-        helpBuilder.setCancelable(false);
         input.setText(Integer.toString(PROGRESS));
         helpBuilder.setView(input);
         helpBuilder.setNeutralButton("Save", new DialogInterface.OnClickListener() {

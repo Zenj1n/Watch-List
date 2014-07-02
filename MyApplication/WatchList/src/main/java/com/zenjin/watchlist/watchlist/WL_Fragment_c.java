@@ -94,7 +94,7 @@ public class WL_Fragment_c extends Fragment {
 
                     String word2 = (String) c_titlelist.get(i);
                     String traktWord = word2.replaceAll("[  ;]", "-");
-                    String traktword2 = traktWord.replaceAll("[' : ( ) , 1] !", "");
+                    String traktword2 = traktWord.replaceAll("[' : ( ) , !]", "");
                     intent.putExtra("trakt", traktword2);
 
                     intent.putExtra(EXTRA_MESSAGE, titleSerie);

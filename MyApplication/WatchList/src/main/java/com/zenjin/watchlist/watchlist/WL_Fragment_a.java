@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +56,8 @@ public class WL_Fragment_a extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.d("getViewww", "Begin");
+
 
         Resources res = getResources();
 
@@ -107,6 +110,7 @@ public class WL_Fragment_a extends Fragment {
                 }
             }
         });
+        Log.d("getView", "Einde");
 
         return v;
     }
@@ -246,7 +250,9 @@ public class WL_Fragment_a extends Fragment {
 
     private class getimages extends AsyncTask<Object, Void, Pair> {
         @Override
-        protected Pair doInBackground(Object... object) {
+        protected Pair doInBackground(Object... object){
+            Log.d("getImages", "begin");
+
 
             DisplayImageOptions options = new DisplayImageOptions.Builder()
                     .cacheOnDisk(true)
@@ -349,17 +355,19 @@ public class WL_Fragment_a extends Fragment {
             String[] a_message = p.message;
             String[] a_title = p.title;
             ArrayList<Bitmap> a_images = p.a_images;
+            Log.d("getImages", "einde");
             createview(a_title, a_message, a_images);
 
         }
+
     }
 
     public void createview(String[] a_title, String[] a_message, ArrayList<Bitmap> a_images) {
-        try {
+        /*try {
             WebView webview = (WebView) getActivity().findViewById(R.id.webViewA);
             webview.setVisibility(View.GONE);
         } catch (Exception e) {
-        }
+        }*/
 
         myArrayAdaptera adapter = new myArrayAdaptera(getActivity().getApplicationContext(), a_title, a_images, a_message);
         mListView.setAdapter(adapter);

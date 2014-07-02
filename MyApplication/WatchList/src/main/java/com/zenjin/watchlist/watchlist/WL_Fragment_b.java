@@ -244,7 +244,6 @@ public class WL_Fragment_b extends Fragment {
             //String[] b_message = (String[]) object[1];
             int count = b_titlelist.size();
             int i = 0;
-            Log.d("begin try", "hier crashed hijy");
 
             String check = (String) b_titlelist.get(0);
             ServiceHandler jParser = new ServiceHandler();
