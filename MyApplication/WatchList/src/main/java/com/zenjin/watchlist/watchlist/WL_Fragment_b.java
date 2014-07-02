@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -127,7 +128,7 @@ public class WL_Fragment_b extends Fragment {
                     int count = User.size();                // number of items on Parse
                     int i = 0;
                     b_titlelist.clear();
-
+                    Log.d("begin try", "Dit is hetbegin van de try");
                     try {
                         for(i = 0;i < count; i++) {
                             ParseObject koppel = User.get(i);
@@ -252,6 +253,8 @@ public class WL_Fragment_b extends Fragment {
             //String[] b_message = (String[]) object[1];
             int count = b_titlelist.size();
             int i = 0;
+            Log.d("begin try", "hier crashed hijy");
+
             String check = (String) b_titlelist.get(0);
             ServiceHandler jParser = new ServiceHandler();
 
