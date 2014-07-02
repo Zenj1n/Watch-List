@@ -10,7 +10,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -156,18 +155,6 @@ public class WL_Fragment_c extends Fragment {
         });
     }
 
-    public void createview(String[] c_title, ArrayList<Bitmap> c_images, String[] c_message) {
-
-        try {
-            WebView webview = (WebView) getActivity().findViewById(R.id.webViewC);
-            webview.setVisibility(View.GONE);
-
-        } catch (Exception e) {
-        }
-
-        myArrayAdapterc adapter = new myArrayAdapterc(getActivity().getApplicationContext(), c_title, c_images, c_message);
-        mListView.setAdapter(adapter);
-    }
 
     /*
     private class getmessages extends AsyncTask<String, Void, Pair> {
@@ -359,6 +346,20 @@ public class WL_Fragment_c extends Fragment {
             ArrayList<Bitmap> c_images = p.c_images;
             createview(c_title, c_images, c_message);
         }
+    }
+
+
+    public void createview(String[] c_title, ArrayList<Bitmap> c_images, String[] c_message) {
+
+        try {
+            WebView webview = (WebView) getActivity().findViewById(R.id.webViewC);
+            webview.setVisibility(View.GONE);
+
+        } catch (Exception e) {
+        }
+
+        myArrayAdapterc adapter = new myArrayAdapterc(getActivity().getApplicationContext(), c_title, c_images, c_message);
+        mListView.setAdapter(adapter);
     }
 }
 

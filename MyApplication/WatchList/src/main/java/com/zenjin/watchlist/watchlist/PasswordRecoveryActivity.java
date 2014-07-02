@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -36,20 +35,20 @@ public class PasswordRecoveryActivity extends Activity {
                         new RequestPasswordResetCallback() {
                             public void done(ParseException e) {
                                 if (e == null) {
-                                    Toast.makeText(PasswordRecoveryActivity.this, "A E-mail has been send to " +  email.getText().toString(), Toast.LENGTH_LONG)
+                                    Toast.makeText(PasswordRecoveryActivity.this, "An e-mail has been send to " + email.getText().toString(), Toast.LENGTH_LONG)
                                             .show();
-                                            finish();
+                                    finish();
                                 } else {
-                                    Toast.makeText(PasswordRecoveryActivity.this,"Not a Registered E-Mail", Toast.LENGTH_LONG)
+                                    Toast.makeText(PasswordRecoveryActivity.this, "Not a registered e-mail", Toast.LENGTH_LONG)
                                             .show();
                                 }
                             }
-                        });
+                        }
+                );
 
 
             }
-         });
-
+        });
 
 
     }
