@@ -11,17 +11,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
+
+import java.util.List;
 
 
 public class RegistreerActivity extends Activity {
     private EditText usernameregister;
     private EditText passwordregister;
     private EditText passwordAgainView;
-    private Button registreer;
+    private EditText emailregister;
+    private EditText emailAgainView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +40,8 @@ public class RegistreerActivity extends Activity {
         usernameregister = (EditText) findViewById(R.id.UsernameRegister);
         passwordregister = (EditText) findViewById(R.id.PasswordRegister);
         passwordAgainView = (EditText) findViewById(R.id.PasswordRegisterAgain);
+        emailregister = (EditText) findViewById(R.id.EmailRegister);
+        emailAgainView = (EditText) findViewById(R.id.EmailRegisterAgain);
 
         findViewById(R.id.RegistreerButton).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -59,6 +68,15 @@ public class RegistreerActivity extends Activity {
                     validationErrorMessage.append(getResources().getString(
                             R.string.error_mismatched_passwords));
                 }
+                if (!isMatching(emailregister, emailAgainView)) {
+                    if (validationError) {
+                        validationErrorMessage.append(getResources().getString(R.string.error_join));
+                    }
+                    validationError = true;
+                    validationErrorMessage.append(getResources().getString(
+                            R.string.error_mismatched_emails));
+                }
+
                 validationErrorMessage.append(getResources().getString(R.string.error_end));
                 if (validationError) {
                     Toast.makeText(RegistreerActivity.this, validationErrorMessage.toString(), Toast.LENGTH_LONG)
@@ -74,7 +92,7 @@ public class RegistreerActivity extends Activity {
                 ParseUser user = new ParseUser();
                 user.setUsername(usernameregister.getText().toString().toLowerCase());
                 user.setPassword(passwordregister.getText().toString());
-
+                user.setEmail(emailregister.getText().toString().toLowerCase());
                 user.signUpInBackground(new SignUpCallback() {
 
 

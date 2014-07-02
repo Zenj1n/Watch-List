@@ -84,6 +84,13 @@ public class LoginActivity extends Activity {
                 });
             }
         });
+
+        findViewById(R.id.Recover_password).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, PasswordRecoveryActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private boolean isEmpty(EditText etText) {

@@ -11,4 +11,5 @@ class ParseUtil {
     public static final String STATUS = "Status";
     public static final String WATCHING = "Watching";
     public static final String SERIE = "Serie";
+    public static final String EMAIL = "email";
 }

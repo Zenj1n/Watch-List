@@ -99,7 +99,7 @@
     <!-- Strings related to login -->
     <string name="prompt_username">Username</string>
     <string name="prompt_password">Password</string>
-    <string name="prompt_password_again">Password Again</string>
+    <string name="prompt_password_again">Confirm Password</string>
     <string name="action_sign_in_register"><b>Sign in</b> or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="login_progress_signing_in">Signing in…</string>
@@ -111,6 +111,7 @@
     <string name="error_blank_username">enter a username</string>
     <string name="error_blank_password">enter a password</string>
     <string name="error_mismatched_passwords">enter the same password twice</string>
+    <string name="error_mismatched_emails">enter the same E-mail twice</string>
     <string name="error_join">", and "</string>
     <string name="error_end">.</string>
     <string name="title_activity_dispatch">My Watchlist</string>
@@ -134,6 +135,14 @@
     <string name="good">4 - Good</string>
     <string name="great">5 - Great</string>
     <string name="registreer">Register</string>
+    <string name="Register_Email">E-mail</string>
+    <string name="Register_Email_Again">Confirm E-mail</string>
+    <string name="error_invalid_username">enter a valid E-mail</string>
+    <string name="Recover">Recover</string>
+    <string name="Recover_password">Recover password</string>
+
+
+
 
     <string name="applicationId">cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6</string>
     <string name="clientKey">Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6</string>

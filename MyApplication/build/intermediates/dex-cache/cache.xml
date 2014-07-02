@@ -2,8 +2,28 @@
 <pre-dex-items>
 
     <item
-        dex="C:\Users\Fabian\Documents\GitHub\Watch-List\MyApplication\WatchList\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.2-with-sources-19d8627e763fc5dbe668bd887cde4382653bb8ad.jar"
-        jar="C:\Users\Fabian\Documents\GitHub\Watch-List\MyApplication\WatchList\libs\universal-image-loader-1.9.2-with-sources.jar"
-        jumboMode="false" revision="19.1.0" sha1="111169c43b8a601f571585f75d998e6027e48ff4" />
+        dex="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication\WatchList\build\intermediates\pre-dexed\release\classes-ede0ef8c8629b5a8eb4e90c573db309c726d76fa.jar"
+        jar="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication\build\intermediates\exploded-aar\com.android.support\appcompat-v7\19.1.0\classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28"/>
+    <item
+        dex="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication\WatchList\build\intermediates\pre-dexed\release\universal-image-loader-1.9.2-with-sources-61c66924e4b706378c69f1e9999232259bd28f79.jar"
+        jar="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication\WatchList\libs\universal-image-loader-1.9.2-with-sources.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="111169c43b8a601f571585f75d998e6027e48ff4"/>
+    <item
+        dex="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication\WatchList\build\intermediates\pre-dexed\release\Parse-1.5.1-e0ca3a75b96201e4ee26830774b982ab9e0aeb1c.jar"
+        jar="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication\WatchList\libs\Parse-1.5.1\Parse-1.5.1.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="3d645417e7780d44f32e29a3ec6b729b75aef26c"/>
+    <item
+        dex="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication\WatchList\build\intermediates\pre-dexed\release\support-v4-19.1.0-13c47047e811b2f1198024c3765cff16b7c9ff6f.jar"
+        jar="C:\Users\Jason\AppData\Local\Android\android-studio\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>
 
 </pre-dex-items>
