@@ -130,10 +130,12 @@ public class WL_Fragment_b extends Fragment {
                     b_titlelist.clear();
                     Log.d("begin try", "Dit is hetbegin van de try");
                     try {
-                        for(i = 0;i < count; i++) {
+                        do {
                             ParseObject koppel = User.get(i);
                             b_titlelist.add(i, koppel.getString("Serie"));
+                            i++;
                         }
+                        while (i < count);
                     } catch (Exception a) {
                         b_titlelist.clear();
                         b_titlelist.add(i, "No series added");
@@ -275,7 +277,8 @@ public class WL_Fragment_b extends Fragment {
                 b_messagelist.add(i, "");
             } else {
                 try {
-                    for(i = 0;i < count; i++) {
+                    do {
+
                         String serie = (String) b_titlelist.get(i);
                         String prep0 = serie.replaceAll("[  ;]", "-");
                         String prep = prep0.replaceAll("[' : ( ) , !]", "");
@@ -293,10 +296,15 @@ public class WL_Fragment_b extends Fragment {
                             String noSum = "";
                             url = noimage;
                             desc = noSum;
+
                         }
                         b_imageurl.add(i, url);
                         b_messagelist.add(i, desc);
+
+                        i++;
                     }
+                    while (i < count);
+
                 } catch (Exception a) {
                     b_imageurl.clear();
                     b_imageurl.add(i, "https://www.google.com/images/srpr/logo11w.png");
@@ -308,8 +316,9 @@ public class WL_Fragment_b extends Fragment {
 
             try {
                 ArrayList<Bitmap> images = new ArrayList<Bitmap>();
+                i = 0;
                 count = b_images_for_method.length;
-                for(i = 0;i < count; i++) {
+                do {
                     Bitmap bmp;
                     try {
                         bmp = imageLoader.loadImageSync(b_images_for_method[i], options);
@@ -320,7 +329,9 @@ public class WL_Fragment_b extends Fragment {
                                 R.drawable.ic_launcher);
                         images.add(0, icon);
                     }
+                    i++;
                 }
+                while (i < count);
                 b_images = images;
 
             } catch (Exception e) {

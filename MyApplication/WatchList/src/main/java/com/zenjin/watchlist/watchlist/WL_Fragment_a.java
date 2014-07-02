@@ -23,7 +23,6 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.utils.MemoryCacheUtils;
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseObject;
@@ -135,10 +134,12 @@ public class WL_Fragment_a extends Fragment {
                     int i = 0;
                     a_titlelist.clear();
                     try {
-                        for(i = 0;i < count; i++) {
+                        do {
                             ParseObject koppel = User.get(i);
                             a_titlelist.add(i, koppel.getString(ParseUtil.SERIE));
+                            i++;
                         }
+                        while (i < count);
                     } catch (Exception a) {
                         a_titlelist.clear();
                         a_titlelist.add(i, "No series added");
@@ -252,6 +253,7 @@ public class WL_Fragment_a extends Fragment {
                     .cacheOnDisk(true)
                     .cacheInMemory(true)
                     .build();
+
             String[] a_title = (String[]) object;
             //String[] a_message = (String[]) object[1];
             int count = a_titlelist.size();
@@ -271,7 +273,7 @@ public class WL_Fragment_a extends Fragment {
 
             } else {
                 try {
-                    for(i = 0;i < count; i++) {
+                    do {
                         String serie = (String) a_titlelist.get(i);
                         String prep0 = serie.replaceAll("[  ;]", "-");
                         String prep = prep0.replaceAll("[' : ( ) , !]", "");
@@ -292,7 +294,9 @@ public class WL_Fragment_a extends Fragment {
                         }
                         a_imageurl.add(i, url);
                         a_messagelist.add(i, desc);
+                        i++;
                     }
+                    while (i < count);
 
                 } catch (Exception a) {
                     a_imageurl.clear();
@@ -304,26 +308,22 @@ public class WL_Fragment_a extends Fragment {
             ArrayList<Bitmap> a_images = null;
             try {
                 ArrayList<Bitmap> images = new ArrayList<Bitmap>();
+                i = 0;
                 count = a_images_for_method.length;
-                for(i = 0;i < count; i++) {
-                    if (MemoryCacheUtils.findCachedBitmapsForImageUri(a_images_for_method[i], ImageLoader.getInstance().getMemoryCache()) == null) {
-                        Bitmap bmp;
-                        try {
-                            bmp = imageLoader.loadImageSync(a_images_for_method[i], options);
-                            images.add(i, bmp);
-                        } catch (Exception e) {
-                            images = new ArrayList<Bitmap>();
-                            Bitmap icon = BitmapFactory.decodeResource(getActivity().getResources(),
-                                    R.drawable.ic_launcher);
-                            images.add(0, icon);
-                        }
-                        i++;
-                    }else{
-                        Bitmap bmp;
+                do {
+                    Bitmap bmp;
+                    try {
                         bmp = imageLoader.loadImageSync(a_images_for_method[i], options);
                         images.add(i, bmp);
+                    } catch (Exception e) {
+                        images = new ArrayList<Bitmap>();
+                        Bitmap icon = BitmapFactory.decodeResource(getActivity().getResources(),
+                                R.drawable.ic_launcher);
+                        images.add(0, icon);
                     }
+                    i++;
                 }
+                while (i < count);
                 a_images = images;
 
 
@@ -334,7 +334,6 @@ public class WL_Fragment_a extends Fragment {
                 images.add(0, icon);
                 a_images = images;
             }
-
 
             String[] a_message = (String[]) a_messagelist.toArray(new String[a_messagelist.size()]);
 
