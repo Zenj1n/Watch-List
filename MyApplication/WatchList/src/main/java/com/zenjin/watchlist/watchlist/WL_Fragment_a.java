@@ -370,21 +370,6 @@ public class WL_Fragment_a extends Fragment {
 
     }
 
-<<<<<<< HEAD
-    public void createview(String[] a_title, String[] a_message, ArrayList<Bitmap> a_images) {
-        try {
-            WebView webview = (WebView) getActivity().findViewById(R.id.webViewA);
-            webview.setVisibility(View.GONE);
-        } catch (Exception e) {
-        }
-
-        myArrayAdaptera adapter = new myArrayAdaptera(getActivity().getApplicationContext(), a_title, a_images, a_message);
-        mListView.setAdapter(adapter);
-    }
-
-=======
->>>>>>> origin/performance-optimise2
-
 }
 
 
