@@ -1,3 +1,4 @@
+<!--suppress AndroidDomInspection -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:state_pressed="true" android:drawable="@color/com_parse_ui_facebook_login_button_push"/>

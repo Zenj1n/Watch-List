@@ -18,54 +18,52 @@
             >
 
             <TextView
+                android:id="@+id/title"
                 style="@style/TitleView"
                 android:gravity="left"
-                android:id="@+id/title"
                 android:paddingLeft="20dp"
                 android:textSize="30sp" />
 
             <ImageView
+                android:id="@+id/Image"
                 android:layout_width="200dp"
                 android:layout_height="298dp"
-                android:id="@+id/Image"
+                android:layout_below="@+id/title"
                 android:adjustViewBounds="true"
                 android:maxHeight="300dp"
                 android:paddingLeft="20dp"
-                android:paddingTop="0dp"
-                android:layout_below="@+id/title" />
+                android:paddingTop="0dp" />
 
             <Button
-                style="@style/InfoButton"
                 android:id="@+id/Baddto"
-                android:onClick="showPopup"
-                android:text="@string/addto"
-                android:layout_toRightOf="@+id/Image"
+                style="@style/InfoButton"
+                android:layout_marginBottom="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="65dp"
-                android:layout_marginBottom="50dp"
+                android:layout_toRightOf="@+id/Image"
+                android:onClick="showPopup"
+                android:text="@string/addto"
 
 
                 />
 
             <Button
-                style="@style/InfoButton"
                 android:id="@+id/Brate"
-                android:text="@string/rate"
+                style="@style/InfoButton"
                 android:layout_below="@+id/Baddto"
-                android:layout_toRightOf="@+id/Image"
+                android:layout_marginBottom="30dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginBottom="30dp" />
+                android:layout_toRightOf="@+id/Image"
+                android:text="@string/rate" />
 
             <Button
-                style="@style/InfoButton"
                 android:id="@+id/addepisode"
-                android:text="@string/bprogress"
-                android:layout_toRightOf="@+id/Image"
+                style="@style/InfoButton"
                 android:layout_below="@+id/Brate"
-                android:layout_marginLeft="20dp" />
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/Image"
+                android:text="@string/bprogress" />
 
-
-            >
 
         </RelativeLayout>
 
