@@ -36,13 +36,10 @@ public class SearchActivity extends Activity {
     private static final String TAG_TITLE = "title";
     private static final String TAG_OVERVIEW = "overview";
     private static final String TAG_POSTER = "poster";
-    protected ListView list;
-    protected TextView showTitle;
-    protected TextView overview;
     protected ImageView poster;
-    protected EditText searchShowET;
-    protected ImageLoader imageLoader = ImageLoader.getInstance();
-    ArrayList<HashMap<String, String>> searchlist = new ArrayList<HashMap<String, String>>();
+    private EditText searchShowET;
+    private ImageLoader imageLoader = ImageLoader.getInstance();
+    private ArrayList<HashMap<String, String>> searchlist = new ArrayList<HashMap<String, String>>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,10 +73,7 @@ public class SearchActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        return id == R.id.action_settings || super.onOptionsItemSelected(item);
     }
 
     private class JSONParse extends AsyncTask<String, String, JSONArray> {
@@ -88,8 +82,8 @@ public class SearchActivity extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            showTitle = (TextView) findViewById(R.id.showTitle);
-            overview = (TextView) findViewById(R.id.overview);
+            TextView showTitle = (TextView) findViewById(R.id.showTitle);
+            TextView overview = (TextView) findViewById(R.id.overview);
             //poster = (Imageview)findViewById(R.id.poster);
             pDialog = new ProgressDialog(SearchActivity.this);
             pDialog.setMessage("Getting Data ...");
@@ -125,7 +119,7 @@ public class SearchActivity extends Activity {
                     map.put(TAG_TITLE, name);
                     map.put(TAG_OVERVIEW, overview);
                     searchlist.add(map);
-                    list = (ListView) findViewById(R.id.list);
+                    ListView list = (ListView) findViewById(R.id.list);
                     ListAdapter adapter = new SimpleAdapter(SearchActivity.this, searchlist,
                             R.layout.search_listview,
                             new String[]{TAG_TITLE, TAG_OVERVIEW}, new int[]{

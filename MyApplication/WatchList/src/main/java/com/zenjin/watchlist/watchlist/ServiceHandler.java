@@ -54,7 +54,7 @@ class ServiceHandler {
             BufferedReader reader = new BufferedReader(new InputStreamReader(
                     is, ISO_8859_1), 8);
             StringBuilder sb = new StringBuilder();
-            String line = null;
+            String line;
             while ((line = reader.readLine()) != null) {
                 sb.append(line).append("n");
             }

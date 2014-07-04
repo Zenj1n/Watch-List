@@ -16,7 +16,6 @@ import com.parse.RequestPasswordResetCallback;
 public class PasswordRecoveryActivity extends Activity {
 
     private EditText email;
-    private Button button;
 
 
     @Override
@@ -28,7 +27,7 @@ public class PasswordRecoveryActivity extends Activity {
         Parse.initialize(this, "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
 
         email = (EditText) findViewById(R.id.Email);
-        button = (Button) findViewById(R.id.Recover);
+        Button button = (Button) findViewById(R.id.Recover);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 ParseUser.requestPasswordResetInBackground(email.getText().toString().toLowerCase(),

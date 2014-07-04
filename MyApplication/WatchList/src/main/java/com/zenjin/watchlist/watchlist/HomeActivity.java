@@ -33,9 +33,8 @@ public class HomeActivity extends MyWatchList {
 
 
     private static final String TAG_IMAGE = "poster";
-    protected ImageLoader imageLoader = ImageLoader.getInstance();
-    Intent intent;
-    public View.OnClickListener onClickListener = new View.OnClickListener() {
+    private ImageLoader imageLoader = ImageLoader.getInstance();
+    private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             //Wij hadden te weining tijd om dit te wijzigen naar een loop
@@ -43,7 +42,7 @@ public class HomeActivity extends MyWatchList {
                 case R.id.todayImage1:
                     String todayTitle1 = todayTitles.get(0).replaceAll("[  ;]", "-");
                     String todayTitle2 = todayTitle1.replaceAll("[' : ( ) , !]", "");
-                    intent = new Intent(HomeActivity.this, InfoPage.class);
+                    Intent intent = new Intent(HomeActivity.this, InfoPage.class);
                     intent.putExtra("trakt", todayTitle2);
                     startActivity(intent);
                     break;

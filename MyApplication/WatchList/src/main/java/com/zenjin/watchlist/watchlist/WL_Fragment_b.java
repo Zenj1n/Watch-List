@@ -3,7 +3,6 @@ package com.zenjin.watchlist.watchlist;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -43,7 +42,7 @@ public class WL_Fragment_b extends Fragment {
 
     private final static String EXTRA_MESSAGE = "com.zenjin.watchlist.watchlist";
     private static final String TAG_IMAGE = "poster";
-    protected ImageLoader imageLoader = ImageLoader.getInstance();
+    private ImageLoader imageLoader = ImageLoader.getInstance();
     private ListView mListView;
     private ArrayList b_titlelist = new ArrayList();
     private ArrayList b_messagelist = new ArrayList();
@@ -58,7 +57,6 @@ public class WL_Fragment_b extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        Resources res = getResources();
 
         // initialiseer Parse
         Parse.initialize(getActivity(), "cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6", "Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6");
@@ -108,15 +106,15 @@ public class WL_Fragment_b extends Fragment {
         return v;
     }
 
-    public ListView getListView() {
+    ListView getListView() {
         return mListView;
     }
 
-    public void getvalues() {
+    void getvalues() {
         gettitles();            // get titels from Parse
     }
 
-    public void gettitles() {
+    void gettitles() {
         ParseQuery<ParseObject> watching_query = ParseQuery.getQuery("Koppel");
         watching_query.whereEqualTo("User", ParseUser.getCurrentUser().getUsername());
         watching_query.whereEqualTo("Status", "Completed");
@@ -231,6 +229,18 @@ public class WL_Fragment_b extends Fragment {
         }
     }*/
 
+    void createview(String[] b_title, String[] b_message, ArrayList<Bitmap> b_images) {
+
+        try {
+            WebView webview = (WebView) getActivity().findViewById(R.id.webViewB);
+            webview.setVisibility(View.GONE);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        myArrayAdapterb adapter = new myArrayAdapterb(getActivity().getApplicationContext(), b_title, b_images, b_message);
+        mListView.setAdapter(adapter);
+    }
+
     public class Pair {
         public String[] message;
         public String[] title;
@@ -255,11 +265,11 @@ public class WL_Fragment_b extends Fragment {
                     .imageScaleType(ImageScaleType.EXACTLY)
                     .build();
 
-            if (check == "No series added") {
+            if (check.equals("No series added")) {
                 b_imageurl.clear();
                 b_imageurl.add(i, "http://i.imgur.com/ZNt7DXU.png");
                 b_messagelist.add(i, "");
-            } else if (check == "No internet connection") {
+            } else if (check.equals("No internet connection")) {
                 b_imageurl.clear();
                 b_imageurl.add(i, "http://i.imgur.com/ZNt7DXU.png");
                 b_messagelist.add(i, "");
@@ -347,17 +357,6 @@ public class WL_Fragment_b extends Fragment {
             ArrayList<Bitmap> a_images = p.b_images;
             createview(a_title, a_message, a_images);
         }
-    }
-
-    public void createview(String[] b_title, String[] b_message, ArrayList<Bitmap> b_images) {
-
-        try {
-            WebView webview = (WebView) getActivity().findViewById(R.id.webViewB);
-            webview.setVisibility(View.GONE);
-        } catch (Exception e) {
-        }
-        myArrayAdapterb adapter = new myArrayAdapterb(getActivity().getApplicationContext(), b_title, b_images, b_message);
-        mListView.setAdapter(adapter);
     }
 
 

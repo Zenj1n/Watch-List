@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 
 public class SignUpOrLoginInActivity extends Activity {
@@ -14,7 +13,7 @@ public class SignUpOrLoginInActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup_or_login);
 
-        ((Button) findViewById(R.id.signUpButton)).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.signUpButton).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent(SignUpOrLoginInActivity.this, RegistreerActivity.class));
             }

@@ -51,13 +51,13 @@ public class InfoPage extends Activity {
     private static final String TAG_STATUS = "status";
     public static int PROGRESS = 0;
     private static String INFOTITLE;
-    protected ImageLoader imageLoader = ImageLoader.getInstance();
-    private Button Baddto;
-    private Button Brate;
-    private TextView Title;
-    private TextView TGenres;
-    private TextView Tplot;
-    private TextView TStatus;
+    private ImageLoader imageLoader = ImageLoader.getInstance();
+    private Button b_addto;
+    private Button b_rate;
+    private TextView title;
+    private TextView t_genres;
+    private TextView t_plot;
+    private TextView t_status;
     private ArrayList<Integer> ratings = new ArrayList<Integer>();
     private double avgRating;
     private String stringRating;
@@ -79,8 +79,8 @@ public class InfoPage extends Activity {
 
         new JSONParse().execute();
 
-        Baddto = (Button) findViewById(R.id.Baddto);
-        Baddto.setOnClickListener(new View.OnClickListener() {
+        b_addto = (Button) findViewById(R.id.Baddto);
+        b_addto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AddTo();
@@ -88,8 +88,8 @@ public class InfoPage extends Activity {
         });
 
 
-        Brate = (Button) findViewById(R.id.Brate);
-        Brate.setOnClickListener(new View.OnClickListener() {
+        b_rate = (Button) findViewById(R.id.Brate);
+        b_rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Rate();
@@ -119,7 +119,7 @@ public class InfoPage extends Activity {
 
 */
 
-    public void sumEpisodes() {
+    void sumEpisodes() {
 
         for (int a : allEpisodes) {
             sum += a;
@@ -142,7 +142,7 @@ public class InfoPage extends Activity {
     }
 
     private void AddTo() {
-        PopupMenu popup = new PopupMenu(InfoPage.this, Baddto);
+        PopupMenu popup = new PopupMenu(InfoPage.this, b_addto);
         MenuInflater inflater = popup.getMenuInflater();
         inflater.inflate(R.menu.popup_menu, popup.getMenu());
         popup.show();
@@ -153,7 +153,7 @@ public class InfoPage extends Activity {
                     case R.id.watching:
                         ParseQuery<ParseObject> watching_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
                         watching_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
-                        watching_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
+                        watching_query.whereEqualTo(ParseUtil.SERIE, title.getText());
                         watching_query.findInBackground(new FindCallback<ParseObject>() {
                             @Override
                             public void done(List<ParseObject> User, com.parse.ParseException p) {
@@ -165,7 +165,7 @@ public class InfoPage extends Activity {
                                     } catch (Exception e) {
                                         ParseObject watching = new ParseObject(ParseUtil.KOPPEL);
                                         watching.put(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
-                                        watching.put(ParseUtil.SERIE, Title.getText());
+                                        watching.put(ParseUtil.SERIE, title.getText());
                                         watching.put(ParseUtil.STATUS, ParseUtil.WATCHING);
                                         watching.saveInBackground();
                                     }
@@ -176,7 +176,7 @@ public class InfoPage extends Activity {
                     case R.id.plantowatch:
                         ParseQuery<ParseObject> plan_to_watch_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
                         plan_to_watch_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
-                        plan_to_watch_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
+                        plan_to_watch_query.whereEqualTo(ParseUtil.SERIE, title.getText());
                         plan_to_watch_query.findInBackground(new FindCallback<ParseObject>() {
                             @Override
                             public void done(List<ParseObject> User, com.parse.ParseException p) {
@@ -188,7 +188,7 @@ public class InfoPage extends Activity {
                                     } catch (Exception e) {
                                         ParseObject koppel = new ParseObject(ParseUtil.KOPPEL);
                                         koppel.put(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
-                                        koppel.put(ParseUtil.SERIE, Title.getText());
+                                        koppel.put(ParseUtil.SERIE, title.getText());
                                         koppel.put(ParseUtil.STATUS, ParseUtil.PLAN_TO_WATCH);
                                         koppel.saveInBackground();
                                     }
@@ -200,7 +200,7 @@ public class InfoPage extends Activity {
                         final TextView progress = (TextView) findViewById(R.id.TProgress);
                         ParseQuery<ParseObject> completed_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
                         completed_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
-                        completed_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
+                        completed_query.whereEqualTo(ParseUtil.SERIE, title.getText());
                         completed_query.findInBackground(new FindCallback<ParseObject>() {
                             @Override
                             public void done(List<ParseObject> User, com.parse.ParseException p) {
@@ -215,7 +215,7 @@ public class InfoPage extends Activity {
                                     } catch (Exception e) {
                                         ParseObject koppel = new ParseObject(ParseUtil.KOPPEL);
                                         koppel.put(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
-                                        koppel.put(ParseUtil.SERIE, Title.getText());
+                                        koppel.put(ParseUtil.SERIE, title.getText());
                                         koppel.put(ParseUtil.STATUS, ParseUtil.COMPLETED);
                                         koppel.put(ParseUtil.PROGRESS, sum);
                                         progress.setText(sum + "/" + sum);
@@ -235,7 +235,7 @@ public class InfoPage extends Activity {
     }
 
     private void Rate() {
-        PopupMenu popup = new PopupMenu(InfoPage.this, Brate);
+        PopupMenu popup = new PopupMenu(InfoPage.this, b_rate);
         MenuInflater inflater = popup.getMenuInflater();
         inflater.inflate(R.menu.rating, popup.getMenu());
         popup.show();
@@ -246,7 +246,7 @@ public class InfoPage extends Activity {
                     case R.id.Remove_rating:
                         ParseQuery<ParseObject> remove_rating_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
                         remove_rating_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
-                        remove_rating_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
+                        remove_rating_query.whereEqualTo(ParseUtil.SERIE, title.getText());
                         remove_rating_query.findInBackground(new FindCallback<ParseObject>() {
                             @Override
                             public void done(List<ParseObject> User, com.parse.ParseException p) {
@@ -266,7 +266,7 @@ public class InfoPage extends Activity {
                     case R.id.Very_bad:
                         ParseQuery<ParseObject> very_bad_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
                         very_bad_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
-                        very_bad_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
+                        very_bad_query.whereEqualTo(ParseUtil.SERIE, title.getText());
                         very_bad_query.findInBackground(new FindCallback<ParseObject>() {
                             @Override
                             public void done(List<ParseObject> User, com.parse.ParseException p) {
@@ -275,7 +275,7 @@ public class InfoPage extends Activity {
                                         ParseObject koppel = User.get(0);
                                         koppel.put(ParseUtil.RATING, 1);
                                         koppel.saveInBackground();
-                                        Toast.makeText(InfoPage.this, YOU_RATED + Title.getText(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(InfoPage.this, YOU_RATED + title.getText(), Toast.LENGTH_SHORT).show();
                                     } catch (Exception e) {
                                         Toast.makeText(InfoPage.this, ADD_TO_YOUR_LIST_FIRST, Toast.LENGTH_SHORT).show();
                                     }
@@ -286,7 +286,7 @@ public class InfoPage extends Activity {
                     case R.id.Bad:
                         ParseQuery<ParseObject> bad_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
                         bad_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
-                        bad_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
+                        bad_query.whereEqualTo(ParseUtil.SERIE, title.getText());
                         bad_query.findInBackground(new FindCallback<ParseObject>() {
                             @Override
                             public void done(List<ParseObject> User, com.parse.ParseException p) {
@@ -295,7 +295,7 @@ public class InfoPage extends Activity {
                                         ParseObject koppel = User.get(0);
                                         koppel.put(ParseUtil.RATING, 2);
                                         koppel.saveInBackground();
-                                        Toast.makeText(InfoPage.this, YOU_RATED + Title.getText(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(InfoPage.this, YOU_RATED + title.getText(), Toast.LENGTH_SHORT).show();
                                     } catch (Exception e) {
                                         Toast.makeText(InfoPage.this, ADD_TO_YOUR_LIST_FIRST, Toast.LENGTH_SHORT).show();
                                     }
@@ -306,7 +306,7 @@ public class InfoPage extends Activity {
                     case R.id.Average:
                         ParseQuery<ParseObject> average_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
                         average_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
-                        average_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
+                        average_query.whereEqualTo(ParseUtil.SERIE, title.getText());
                         average_query.findInBackground(new FindCallback<ParseObject>() {
                             @Override
                             public void done(List<ParseObject> User, com.parse.ParseException p) {
@@ -315,7 +315,7 @@ public class InfoPage extends Activity {
                                         ParseObject koppel = User.get(0);
                                         koppel.put(ParseUtil.RATING, 3);
                                         koppel.saveInBackground();
-                                        Toast.makeText(InfoPage.this, YOU_RATED + Title.getText(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(InfoPage.this, YOU_RATED + title.getText(), Toast.LENGTH_SHORT).show();
                                     } catch (Exception e) {
                                         Toast.makeText(InfoPage.this, ADD_TO_YOUR_LIST_FIRST, Toast.LENGTH_SHORT).show();
                                     }
@@ -326,7 +326,7 @@ public class InfoPage extends Activity {
                     case R.id.Good:
                         ParseQuery<ParseObject> good_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
                         good_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
-                        good_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
+                        good_query.whereEqualTo(ParseUtil.SERIE, title.getText());
                         good_query.findInBackground(new FindCallback<ParseObject>() {
                             @Override
                             public void done(List<ParseObject> User, com.parse.ParseException p) {
@@ -335,7 +335,7 @@ public class InfoPage extends Activity {
                                         ParseObject koppel = User.get(0);
                                         koppel.put(ParseUtil.RATING, 4);
                                         koppel.saveInBackground();
-                                        Toast.makeText(InfoPage.this, YOU_RATED + Title.getText(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(InfoPage.this, YOU_RATED + title.getText(), Toast.LENGTH_SHORT).show();
                                     } catch (Exception e) {
                                         Toast.makeText(InfoPage.this, ADD_TO_YOUR_LIST_FIRST, Toast.LENGTH_SHORT).show();
                                     }
@@ -346,7 +346,7 @@ public class InfoPage extends Activity {
                     case R.id.Great:
                         ParseQuery<ParseObject> great_query = ParseQuery.getQuery(ParseUtil.KOPPEL);
                         great_query.whereEqualTo(ParseUtil.PARSE_USER, ParseUser.getCurrentUser().getUsername());
-                        great_query.whereEqualTo(ParseUtil.SERIE, Title.getText());
+                        great_query.whereEqualTo(ParseUtil.SERIE, title.getText());
                         great_query.findInBackground(new FindCallback<ParseObject>() {
                             @Override
                             public void done(List<ParseObject> User, com.parse.ParseException p) {
@@ -355,7 +355,7 @@ public class InfoPage extends Activity {
                                         ParseObject koppel = User.get(0);
                                         koppel.put(ParseUtil.RATING, 5);
                                         koppel.saveInBackground();
-                                        Toast.makeText(InfoPage.this, YOU_RATED + Title.getText(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(InfoPage.this, YOU_RATED + title.getText(), Toast.LENGTH_SHORT).show();
                                     } catch (Exception e) {
                                         Toast.makeText(InfoPage.this, ADD_TO_YOUR_LIST_FIRST, Toast.LENGTH_SHORT).show();
                                     }
@@ -499,11 +499,10 @@ public class InfoPage extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Title = (TextView) findViewById(R.id.title);
-            TGenres = (TextView) findViewById(R.id.Tgenres);
-            Tplot = (TextView) findViewById(R.id.plot);
-            ImageView image = (ImageView) findViewById(R.id.Image);
-            TStatus = (TextView) findViewById(R.id.TStatus);
+            title = (TextView) findViewById(R.id.title);
+            t_genres = (TextView) findViewById(R.id.Tgenres);
+            t_plot = (TextView) findViewById(R.id.plot);
+            t_status = (TextView) findViewById(R.id.TStatus);
 
 
             pDialog = new ProgressDialog(InfoPage.this);
@@ -573,10 +572,10 @@ public class InfoPage extends Activity {
                     String test4 = test3.replaceAll(",(\\d|\\w)", ", $1");
 
                     //Set JSON Data in TextView
-                    Title.setText(TitleMovie);
-                    TGenres.setText(test4);
-                    Tplot.setText(PlotMovie);
-                    TStatus.setText(Status);
+                    title.setText(TitleMovie);
+                    t_genres.setText(test4);
+                    t_plot.setText(PlotMovie);
+                    t_status.setText(Status);
 
                     imageLoader.displayImage(Image, (ImageView) findViewById(R.id.Image), options);
                 } else {
