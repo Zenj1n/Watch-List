@@ -11,7 +11,7 @@ import com.parse.ParseUser;
      * Activity which starts an intent for either the logged in (MainActivity) or logged out
      * (SignUpOrLoginActivity) activity.
      */
-    public class MainActivity extends Activity {
+    public class MainActivity extends Activity
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
