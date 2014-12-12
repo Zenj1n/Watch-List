@@ -94,14 +94,14 @@ class ServiceHandler {
 
         try {
 
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is, "iso-8859-1"), 8);
             StringBuilder sb = new StringBuilder();
-            String line = null;
+            String line;
             while ((line = reader.readLine()) != null) {
                 sb.append(line).append("\n");
             }
             is.close();
-            result=sb.toString();
+            result = sb.toString();
 
         } catch (Exception e) {
             Log.e("Buffer Error", "Error converting result " + e.toString());

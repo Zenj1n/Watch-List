@@ -20,16 +20,19 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,12 +49,8 @@ public class WL_Fragment_c extends Fragment {
     private ArrayList c_titlelist = new ArrayList();                    // empty arrays for titels, massages and images
     private ArrayList c_messagelist = new ArrayList();
     private ArrayList c_imageurl = new ArrayList();
-
-    public class Pair {
-        public String[] message;
-        public String[] title;
-        public ArrayList<Bitmap> c_images;
-    }
+    private static final String TAG_IMAGE = "poster";
+    protected ImageLoader imageLoader = ImageLoader.getInstance();
 
     public WL_Fragment_c() {
         // Required empty public constructor
@@ -77,19 +76,19 @@ public class WL_Fragment_c extends Fragment {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
 
-                if (c_titlelist.get(0) == "No series added"){
+                if (c_titlelist.get(0) == "No series added") {
 
                     Intent intent;
                     intent = new Intent(getActivity(), SearchActivity.class);
                     startActivity(intent);
                     getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
 
-                }else if (c_titlelist.get(0) == "No internet connection"){
+                } else if (c_titlelist.get(0) == "No internet connection") {
 
                     startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
                     getActivity().overridePendingTransition(R.anim.push_in, R.anim.push_out);
 
-                }else {
+                } else {
 
                     Intent intent;
                     intent = new Intent(getActivity(), InfoPage.class);
@@ -98,8 +97,9 @@ public class WL_Fragment_c extends Fragment {
                     String titleSerie = java.net.URLEncoder.encode(titleSerieRaw);
 
                     String word2 = (String) c_titlelist.get(i);
-                    String traktWord = word2.replaceAll(" ", "-");
-                    intent.putExtra("trakt", traktWord);
+                    String traktWord = word2.replaceAll("[ ]", "-");
+                    String traktword2 = traktWord.replaceAll("[' : ( ) ,]", "");
+                    intent.putExtra("trakt", traktword2);
 
                     intent.putExtra(EXTRA_MESSAGE, titleSerie);
                     startActivity(intent);
@@ -112,16 +112,13 @@ public class WL_Fragment_c extends Fragment {
         return v;
     }
 
-
     public ListView getListView() {
         return mListView;
     }
 
-
     public void getvalues() {
         gettitles();            // get titels from Parse
     }
-
 
     public void gettitles() {
 
@@ -160,6 +157,24 @@ public class WL_Fragment_c extends Fragment {
         });
     }
 
+    public void createview(String[] c_title, String[] c_message, ArrayList<Bitmap> c_images) {
+
+        try {
+            WebView webview = (WebView) getActivity().findViewById(R.id.webViewC);
+            webview.setVisibility(View.GONE);
+
+        } catch (Exception e) {
+        }
+
+        myArrayAdapterc adapter = new myArrayAdapterc(getActivity().getApplicationContext(), c_title, c_images, c_message);
+        mListView.setAdapter(adapter);
+    }
+
+    public class Pair {
+        public String[] message;
+        public String[] title;
+        public ArrayList<Bitmap> c_images;
+    }
 
     private class getmessages extends AsyncTask<String, Void, Pair> {
         @Override
@@ -229,6 +244,7 @@ public class WL_Fragment_c extends Fragment {
             p.title = c_title;
             return p;
         }
+
         protected void onPostExecute(Pair p) {
             String[] c_message = p.message;
             String[] c_title = p.title;
@@ -245,6 +261,13 @@ public class WL_Fragment_c extends Fragment {
             int count = c_titlelist.size();
             int i = 0;
             String check = (String) c_titlelist.get(0);
+            ServiceHandler jParser = new ServiceHandler();
+            DisplayImageOptions options = new DisplayImageOptions.Builder()
+                    .cacheOnDisk(true)
+                    .cacheInMemory(true)
+                    .bitmapConfig(Bitmap.Config.RGB_565)
+                    .imageScaleType(ImageScaleType.EXACTLY)
+                    .build();
 
             if (check == "No series added") {
                 c_imageurl.clear();
@@ -257,24 +280,16 @@ public class WL_Fragment_c extends Fragment {
             } else {
                 try {
                     do {
+
                         String serie = (String) c_titlelist.get(i);
-                        String prep = serie.replaceAll(" ", "%20");
+                        String prep0 = serie.replaceAll("[ ]", "-");
+                        String prep = prep0.replaceAll("[' : ( ) ,]", "");
                         String url;
-
                         try {
-                            String omdbapi = "http://www.omdbapi.com/?t=" + prep;
-                            URL omdb = new URL(omdbapi);
-                            BufferedReader in = new BufferedReader(new InputStreamReader(omdb.openStream()));
-                            String lijn;
-                            String fullsite = "";
-                            String imageurl;
-
-                            while ((lijn = in.readLine()) != null) {
-                                fullsite = fullsite + lijn;
-                            }
-                            imageurl = fullsite.substring(fullsite.indexOf("http://"), fullsite.indexOf("\",\"Metascore"));
-                            url = imageurl;
-
+                            String urlTrakt = "http://api.trakt.tv/show/summary.json/390983740f2092270bc0fa267334db88/" + prep;
+                            JSONObject jsonTrakt = jParser.getJSONFromUrl(urlTrakt);
+                            String Image = jsonTrakt.getString(TAG_IMAGE);
+                            url = Image;
                         } catch (Exception e) {
                             String noimage = "http://i.imgur.com/ZNt7DXU.png";
                             url = noimage;
@@ -297,20 +312,10 @@ public class WL_Fragment_c extends Fragment {
                 i = 0;
                 count = c_images_for_method.length;
                 do {
-                    Bitmap bitmap;
-                    URL imageURL = null;
+                    Bitmap bmp;
                     try {
-                        imageURL = new URL(c_images_for_method[i]);
-                    } catch (Exception e) {
-                    }
-
-                    try {
-                        HttpURLConnection connection = (HttpURLConnection) imageURL.openConnection();
-                        connection.setDoInput(true);
-                        connection.connect();
-                        InputStream inputStream = connection.getInputStream();
-                        bitmap = BitmapFactory.decodeStream(inputStream);//Convert to bitmap
-                        images.add(i, bitmap);
+                        bmp = imageLoader.loadImageSync(c_images_for_method[i], options);
+                        images.add(i, bmp);
                     } catch (Exception e) {
                         images = new ArrayList<Bitmap>();
                         Bitmap icon = BitmapFactory.decodeResource(getActivity().getResources(),
@@ -344,20 +349,6 @@ public class WL_Fragment_c extends Fragment {
             ArrayList<Bitmap> c_images = p.c_images;
             createview(c_title, c_message, c_images);
         }
-    }
-
-
-    public void createview(String[] c_title, String[] c_message, ArrayList<Bitmap> c_images) {
-
-        try {
-            WebView webview = (WebView) getActivity().findViewById(R.id.webViewC);
-            webview.setVisibility(View.GONE);
-
-        } catch (Exception e) {
-        }
-
-        myArrayAdapterc adapter = new myArrayAdapterc(getActivity().getApplicationContext(), c_title, c_images, c_message);
-        mListView.setAdapter(adapter);
     }
 }
 

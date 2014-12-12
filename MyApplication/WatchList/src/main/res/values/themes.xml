@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="WatchListTheme"
-        parent="@android:style/Theme.Holo.Light.DarkActionBar">
+
+    <style name="WatchListTheme" parent="@android:style/Theme.Holo.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/MyActionBar</item>
     </style>
 
-    <style name="MyActionBar"
-        parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+    <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:background">#00A1E7</item>
         <item name="android:backgroundStacked">#5D71B2</item>
         <item name="android:backgroundSplit">#5D71B2</item>
