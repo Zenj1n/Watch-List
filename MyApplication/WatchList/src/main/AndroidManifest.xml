@@ -12,33 +12,33 @@
             android:value=".SearchActivity" />
 
         <activity
-            android:name=".WatchlistActivity"
+            android:name=".ui.WatchlistActivity"
             android:label="@string/wl_title"
             android:configChanges="orientation|screenSize">
 
         </activity>
         <activity
-            android:name=".MyWatchList"
+            android:name=".ui.MyWatchList"
             android:hardwareAccelerated="true"
             android:label="@string/title_activity_main_main">
 
         </activity>
         <activity
-            android:name=".InfoPage"
+            android:name=".ui.InfoPage"
             android:label="@string/title_activity_info_page"
             android:configChanges="orientation|screenSize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.zenjin.watchlist.watchlist.WatchlistActivity" />
+                android:value=".ui.WatchlistActivity" />
         </activity>
         <activity
-            android:name=".RegistreerActivity"
+            android:name=".ui.RegistreerActivity"
             android:label="@string/title_activity_login"
             android:configChanges="orientation|screenSize">
 
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:label="@string/title_activity_dispatch"
             android:configChanges="orientation|screenSize">
             <intent-filter>
@@ -47,31 +47,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignUpOrLoginInActivity"
+            android:name=".ui.SignUpOrLoginInActivity"
             android:label="@string/title_activity_signup_or_login"
             android:configChanges="orientation|screenSize">
 
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.LoginActivity"
             android:label="@string/title_activity_login"
             android:configChanges="orientation|screenSize">
 
         </activity>
         <activity
-            android:name=".HomeActivity"
+            android:name=".ui.HomeActivity"
             android:label="@string/title_activity_browse"
             android:configChanges="orientation|screenSize">
 
         </activity>
         <activity
-            android:name=".SearchActivity"
+            android:name=".ui.SearchActivity"
             android:label="@string/title_activity_search"
-            android:parentActivityName="com.zenjin.watchlist.watchlist.WatchlistActivity"
+            android:parentActivityName=".ui.WatchlistActivity"
             android:configChanges="orientation|screenSize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.zenjin.watchlist.watchlist.WatchlistActivity" />
+                android:value=".ui.WatchlistActivity" />
         </activity>
     </application>
 

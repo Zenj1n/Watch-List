@@ -122,6 +122,9 @@ function windowTitle()
     <PRE>public class <B>ParseAnalytics</B><DT>extends <A target="_top"
                                                           HREF="http://developer.android.com/reference/java/lang/Object.html?is-external=true"
                                                           title="class or interface in java.lang">Object</A>
+
+    </DT>
+    </PRE>
 </DL>
 </PRE>
 
@@ -197,12 +200,12 @@ function windowTitle()
         <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
             <CODE>static&nbsp;void</CODE></FONT></TD>
         <TD><CODE><B><A
-                HREF="../../com/parse/ParseAnalytics.html#trackEvent(java.lang.String, java.util.Map)">trackEvent</A></B>(<A
+                HREF="../../com/parse/ParseAnalytics.html#trackEvent(java.lang.String, java.com.zenjin.watchlist.watchlist.util.Map)">trackEvent</A></B>(<A
                 target="_top"
                 HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true"
                 title="class or interface in java.lang">String</A>&nbsp;name,
             <A target="_top"
-               HREF="http://developer.android.com/reference/java/util/Map.html?is-external=true"
+               HREF="http://developer.android.com/reference/java/com.zenjin.watchlist.watchlist.util/Map.html?is-external=true"
                title="class or interface in java.util">Map</A>&lt;<A target="_top"
                                                                      HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true"
                                                                      title="class or interface in java.lang">String</A>,<A
@@ -333,7 +336,7 @@ public static void <B>trackEvent</B>(<A target="_top"
 </DL>
 <HR>
 
-<A NAME="trackEvent(java.lang.String, java.util.Map)"><!-- --></A>
+<A NAME="trackEvent(java.lang.String, java.com.zenjin.watchlist.watchlist.util.Map)"><!-- --></A>
 
 <H3>
     trackEvent</H3>
@@ -342,7 +345,7 @@ public static void <B>trackEvent</B>(<A target="_top"
                                         HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true"
                                         title="class or interface in java.lang">String</A>&nbsp;name,
                               <A target="_top"
-                                 HREF="http://developer.android.com/reference/java/util/Map.html?is-external=true"
+                                 HREF="http://developer.android.com/reference/java/com.zenjin.watchlist.watchlist.util/Map.html?is-external=true"
                                  title="class or interface in java.util">Map</A>&lt;<A target="_top"
                                                                                        HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true"
                                                                                        title="class or interface in java.lang">String</A>,<A
@@ -356,8 +359,12 @@ public static void <B>trackEvent</B>(<A target="_top"
         of the occurrences of this custom event.
         <p>
             To track a user signup along with additional metadata, consider the following:
+        </p>
+        </DD>
+    </DL>
+
  <pre>
- Map<String, String> dimensions = new HashMap<String, String>();
+ Map<String> dimensions = new HashMap</String>();
  dimensions.put("gender", "m");
  dimensions.put("source", "web");
  dimensions.put("dayType", "weekend");

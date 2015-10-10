@@ -133,5 +133,7 @@
     <string name="good">4 - Good</string>
     <string name="great">5 - Great</string>
     <string name="registreer">Register</string>
+    <string name="app_key">cbrzBhn5G4akqqJB5bXOF6X1zCMfbRQsce7knkZ6</string>
+    <string name="client_key">Z6VQMULpWaYibP77oMzf0p2lgcWsxmhbi8a0tIs6</string>
 
 </resources>

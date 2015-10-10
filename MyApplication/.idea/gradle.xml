@@ -5,14 +5,14 @@
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="1.8" />
         <option name="modules">
           <set>
-            <option value="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication" />
-            <option value="C:\Users\Jason\Documents\GitHub\Watch-List\MyApplication\WatchList" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/WatchList" />
           </set>
         </option>
       </GradleProjectSettings>
     </option>
   </component>
 </project>
-

@@ -122,6 +122,8 @@ function windowTitle()
     <PRE>public class <B>ParseCloud</B><DT>extends <A target="_top"
                                                       HREF="http://developer.android.com/reference/java/lang/Object.html?is-external=true"
                                                       title="class or interface in java.lang">Object</A>
+    </DT>
+    </PRE>
 </DL>
 </PRE>
 
@@ -129,7 +131,7 @@ function windowTitle()
     The ParseCloud class defines provides methods for interacting with Parse Cloud Functions. A
     Cloud
     Function can be called with <A
-        HREF="../../com/parse/ParseCloud.html#callFunctionInBackground(java.lang.String, java.util.Map, com.parse.FunctionCallback)"><CODE>ParseCloud.callFunctionInBackground(String,
+        HREF="../../com/parse/ParseCloud.html#callFunctionInBackground(java.lang.String, java.com.zenjin.watchlist.watchlist.util.Map, com.parse.FunctionCallback)"><CODE>ParseCloud.callFunctionInBackground(String,
     Map, FunctionCallback)</CODE></A>
     using a <A HREF="../../com/parse/FunctionCallback.html" title="class in com.parse"><CODE>FunctionCallback</CODE></A>.
     For example, this sample code calls the "validateGame" Cloud
@@ -145,11 +147,13 @@ function windowTitle()
      }
      }
      }
+    </Object>
  </pre>
+
 
 Using the callback methods is usually preferred because the network operation will not block the
 calling thread. However, in some cases it may be easier to use the
-<A HREF="../../com/parse/ParseCloud.html#callFunction(java.lang.String, java.util.Map)"><CODE>ParseCloud.callFunction(String,
+<A HREF="../../com/parse/ParseCloud.html#callFunction(java.lang.String, java.com.zenjin.watchlist.watchlist.util.Map)"><CODE>ParseCloud.callFunction(String,
     Map)</CODE></A> call which do block the calling thread. For example, if your
 application has already spawned a background task to perform work, that background task could use
 the blocking calls and avoid the code complexity of callbacks.
@@ -196,12 +200,12 @@ the blocking calls and avoid the code complexity of callbacks.
                 </TABLE>
             </CODE></FONT></TD>
         <TD><CODE><B><A
-                HREF="../../com/parse/ParseCloud.html#callFunction(java.lang.String, java.util.Map)">callFunction</A></B>(<A
+                HREF="../../com/parse/ParseCloud.html#callFunction(java.lang.String, java.com.zenjin.watchlist.watchlist.util.Map)">callFunction</A></B>(<A
                 target="_top"
                 HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true"
                 title="class or interface in java.lang">String</A>&nbsp;name,
             <A target="_top"
-               HREF="http://developer.android.com/reference/java/util/Map.html?is-external=true"
+               HREF="http://developer.android.com/reference/java/com.zenjin.watchlist.watchlist.util/Map.html?is-external=true"
                title="class or interface in java.util">Map</A>&lt;<A target="_top"
                                                                      HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true"
                                                                      title="class or interface in java.lang">String</A>,?&gt;&nbsp;params)</CODE>
@@ -221,12 +225,12 @@ the blocking calls and avoid the code complexity of callbacks.
                 </TABLE>
             </CODE></FONT></TD>
         <TD><CODE><B><A
-                HREF="../../com/parse/ParseCloud.html#callFunctionInBackground(java.lang.String, java.util.Map, com.parse.FunctionCallback)">callFunctionInBackground</A></B>(<A
+                HREF="../../com/parse/ParseCloud.html#callFunctionInBackground(java.lang.String, java.com.zenjin.watchlist.watchlist.util.Map, com.parse.FunctionCallback)">callFunctionInBackground</A></B>(<A
                 target="_top"
                 HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true"
                 title="class or interface in java.lang">String</A>&nbsp;name,
             <A target="_top"
-               HREF="http://developer.android.com/reference/java/util/Map.html?is-external=true"
+               HREF="http://developer.android.com/reference/java/com.zenjin.watchlist.watchlist.util/Map.html?is-external=true"
                title="class or interface in java.util">Map</A>&lt;<A target="_top"
                                                                      HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true"
                                                                      title="class or interface in java.lang">String</A>,?&gt;&nbsp;params,
@@ -309,7 +313,7 @@ public <B>ParseCloud</B>()</PRE>
     </TR>
 </TABLE>
 
-<A NAME="callFunction(java.lang.String, java.util.Map)"><!-- --></A>
+<A NAME="callFunction(java.lang.String, java.com.zenjin.watchlist.watchlist.util.Map)"><!-- --></A>
 
 <H3>
     callFunction</H3>
@@ -318,7 +322,7 @@ public static &lt;T&gt; T <B>callFunction</B>(<A target="_top"
                                                  HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true"
                                                  title="class or interface in java.lang">String</A>&nbsp;name,
                                  <A target="_top"
-                                    HREF="http://developer.android.com/reference/java/util/Map.html?is-external=true"
+                                    HREF="http://developer.android.com/reference/java/com.zenjin.watchlist.watchlist.util/Map.html?is-external=true"
                                     title="class or interface in java.util">Map</A>&lt;<A
         target="_top"
         HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true"
@@ -342,7 +346,7 @@ public static &lt;T&gt; T <B>callFunction</B>(<A target="_top"
                 ?&gt;,
                 <A HREF="../../com/parse/ParseObject.html" title="class in com.parse"><CODE>ParseObject</CODE></A>,
                 <A target="_top"
-                   HREF="http://developer.android.com/reference/java/util/List.html?is-external=true"
+                   HREF="http://developer.android.com/reference/java/com.zenjin.watchlist.watchlist.util/List.html?is-external=true"
                    title="class or interface in java.util"><CODE>List</CODE></A>&lt;?&gt;, or any
                 type that can be set as a field in a
                 ParseObject.
@@ -353,7 +357,7 @@ public static &lt;T&gt; T <B>callFunction</B>(<A target="_top"
 </DL>
 <HR>
 
-<A NAME="callFunctionInBackground(java.lang.String, java.util.Map, com.parse.FunctionCallback)">
+<A NAME="callFunctionInBackground(java.lang.String, java.com.zenjin.watchlist.watchlist.util.Map, com.parse.FunctionCallback)">
     <!-- --></A>
 
 <H3>
@@ -363,7 +367,7 @@ public static &lt;T&gt; void <B>callFunctionInBackground</B>(<A target="_top"
                                                                 HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true"
                                                                 title="class or interface in java.lang">String</A>&nbsp;name,
                                                 <A target="_top"
-                                                   HREF="http://developer.android.com/reference/java/util/Map.html?is-external=true"
+                                                   HREF="http://developer.android.com/reference/java/com.zenjin.watchlist.watchlist.util/Map.html?is-external=true"
                                                    title="class or interface in java.util">Map</A>&lt;<A
         target="_top"
         HREF="http://developer.android.com/reference/java/lang/String.html?is-external=true"
